@@ -1,0 +1,192 @@
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollStep1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/layoutStep1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+        <!--Property-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/title_margin"
+            android:paddingLeft="@dimen/title_margin"
+            android:paddingRight="@dimen/title_margin"
+            android:paddingTop="@dimen/layout_margin"
+            android:text="@string/text_hint_property" />
+
+        <TextView
+            android:id="@+id/tvSelectProperty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:drawableRight="@drawable/vector_arrow_right"
+            android:padding="@dimen/title_margin"
+            android:singleLine="true"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="@dimen/text_size_primary" />
+
+        <include layout="@layout/layout_divider_horizontal" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/title_margin"
+            android:paddingLeft="@dimen/title_margin"
+            android:paddingRight="@dimen/title_margin"
+            android:paddingTop="@dimen/layout_margin"
+            android:text="@string/text_key_info" />
+        <!--Province - District-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvProvinceCreateProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="@dimen/title_margin"
+                android:singleLine="true"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/text_size_primary" />
+
+            <include layout="@layout/layout_divider_vertical" />
+
+            <TextView
+                android:id="@+id/tvDistrictCreateProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="@dimen/title_margin"
+                android:singleLine="true"
+                android:text="@string/text_district"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/text_size_primary" />
+        </LinearLayout>
+
+        <include layout="@layout/layout_divider_horizontal" />
+
+        <!--Building-->
+        <LinearLayout
+            android:id="@+id/buildingLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tvBuilding"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/vector_building"
+                android:drawablePadding="@dimen/layout_margin_half"
+                android:drawableRight="@drawable/vector_arrow_right"
+                android:padding="@dimen/title_margin"
+                android:singleLine="true"
+                android:text="@string/text_building"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/text_size_primary" />
+
+            <include layout="@layout/layout_divider_horizontal" />
+        </LinearLayout>
+
+        <!--Address-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/inputProductAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_weight="1"
+                android:background="@android:color/white"
+                android:drawableLeft="@drawable/vector_address"
+                android:drawablePadding="@dimen/layout_margin_half"
+                android:gravity="center_vertical"
+                android:hint="@string/text_hint_address"
+                android:padding="@dimen/title_margin"
+                android:singleLine="true"
+                android:textSize="@dimen/text_size_primary" />
+
+            <Button
+                android:id="@+id/btnLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_primary_bg"
+                android:text="@string/text_location"
+                android:paddingLeft="@dimen/title_margin"
+                android:paddingRight="@dimen/title_margin"
+                android:textColor="@android:color/white"
+                android:enabled="false"/>
+        </LinearLayout>
+
+        <include layout="@layout/layout_divider_horizontal" />
+        <!--Map-->
+        <LinearLayout
+            android:id="@+id/layoutLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/layout_margin_quarter"
+            android:background="@android:color/white"
+            android:orientation="vertical">
+
+            <fragment
+                android:id="@+id/mapCreateProduct"
+                android:name="vn.hellosoft.ui.WorkaroundMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:tag="create_map">
+
+                <ImageView
+                    android:id="@+id/latLngCenter"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="24dp"
+                    android:src="@drawable/vector_current_location" />
+            </fragment>
+
+            <TextView
+                android:id="@+id/tvLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|bottom"
+                android:background="@color/colorOverlay"
+                android:gravity="center"
+                android:padding="@dimen/title_margin_half"
+                android:singleLine="true"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/text_size_small" />
+        </LinearLayout>
+
+        <include layout="@layout/layout_divider_horizontal" />
+
+        <Button
+            android:id="@+id/btnNextStep2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginBottom="@dimen/layout_margin_double"
+            android:layout_marginRight="@dimen/layout_margin"
+            android:layout_marginTop="@dimen/layout_margin_double"
+            android:background="@drawable/btn_primary_bg"
+            android:text="@string/btn_continues"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

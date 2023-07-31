@@ -1,0 +1,78 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    android:padding="@dimen/layout_margin">
+
+    <!--Select Province-->
+    <RelativeLayout
+        android:id="@+id/btnSelectProvince"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/input_height"
+        android:layout_marginTop="@dimen/layout_margin"
+        android:background="@drawable/border_layout"
+        android:padding="1dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:adjustViewBounds="true"
+            android:src="@drawable/vector_dropdown_corner" />
+
+        <TextView
+            android:id="@+id/tvSelectProvince"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:paddingLeft="@dimen/layout_margin_half"
+            android:paddingRight="@dimen/layout_margin_half"
+            android:singleLine="true"
+            android:text="@string/text_province"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="@dimen/text_size_primary" />
+    </RelativeLayout>
+
+    <!--Select District-->
+    <RelativeLayout
+        android:id="@+id/btnSelectDistrict"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/input_height"
+        android:layout_marginTop="@dimen/layout_margin_double"
+        android:background="@drawable/border_layout"
+        android:padding="1dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:adjustViewBounds="true"
+            android:src="@drawable/vector_dropdown_corner" />
+
+        <TextView
+            android:id="@+id/tvSelectDistrict"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:paddingLeft="@dimen/layout_margin_half"
+            android:paddingRight="@dimen/layout_margin_half"
+            android:singleLine="true"
+            android:text="@string/text_district"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="@dimen/text_size_primary" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btnLocationSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/layout_margin_double"
+        android:background="@drawable/btn_primary_bg"
+        android:enabled="false"
+        android:text="@string/text_btn_search"
+        android:textColor="@android:color/white" />
+
+</LinearLayout>

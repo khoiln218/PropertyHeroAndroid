@@ -1,0 +1,374 @@
+<resources>
+    <string name="app_name">HelloRent</string>
+    <string name="title_activity_login">Đăng nhập HelloRent</string>
+    <string name="title_activity_member_regis">Đăng ký thành viên</string>
+    <string name="title_activity_create_product">Đăng tin rao</string>
+    <string name="title_activity_choose_location">Chọn vị trí</string>
+    <string name="title_activity_gallery">Chọn hình ảnh</string>
+    <string name="title_activity_filter">Bộ lọc nâng cao</string>
+    <string name="title_activity_find_area">Tìm Khu Vực</string>
+    <string name="title_activity_management">Quản Lý Thông Tin</string>
+
+    <!--API KEY-->
+    <string name="google_app_api">AIzaSyDP0f5gQnGiFJ2BXD17Ms81rer4rw8NP-M</string>
+    <string name="server_client_id">872286576235-lmmlrhugen56tn4e54n5coqbr0ciaiv8.apps.googleusercontent.com</string>
+    <string name="facebook_app_id">252792145080242</string>
+
+    <!--TODO: Main TabLayout List Icons-->
+    <array name="tab_icons">
+        <item>@mipmap/ic_action_home</item>
+        <item>@mipmap/ic_action_search</item>
+        <item>@mipmap/ic_action_collection</item>
+        <item>@mipmap/ic_action_notification</item>
+        <item>@mipmap/ic_action_more</item>
+    </array>
+
+    <!--TODO: Select Distance-->
+    <string-array name="distance_text">
+        <item>Bán kính 1km</item>
+        <item>Bán kính 3km</item>
+        <item>Bán kính 5km</item>
+    </string-array>
+
+    <integer-array name="distance_value">
+        <item>1</item>
+        <item>3</item>
+        <item>5</item>
+    </integer-array>
+
+    <string-array name="map_type">
+        <item>Tìm Tất Cả</item>
+        <item>Tìm Căn Hộ</item>
+        <item>Tìm Phòng Trọ</item>
+    </string-array>
+
+    <string-array name="image_option">
+        <item>Chụp ảnh</item>
+        <item>Chọn hình từ thư viện</item>
+        <item>Hủy bỏ</item>
+    </string-array>
+
+    <string-array name="gender">
+        <item>Nữ</item>
+        <item>Nam</item>
+        <item>Khác</item>
+    </string-array>
+
+    <!--TODO: Selected List-->
+    <string-array name="selected_text">
+        <item>Xem chi tiết</item>
+        <item>Xóa khỏi danh sách</item>
+    </string-array>
+
+    <!--TODO: Product Status List-->
+    <string-array name="management_status">
+        <item>Tất cả</item>
+        <item>Tiến hành quảng cáo</item>
+        <item>Kết thúc quảng cáo</item>
+        <item>Hoàn thành giao dịch</item>
+        <item>Đang kiểm tra</item>
+        <item>Tin sai phạm</item>
+    </string-array>
+
+    <integer-array name="management_status_value">
+        <item>254</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </integer-array>
+
+    <string-array name="management_status_title">
+        <item>Có tất cả ... tin trong hệ thống</item>
+        <item>Có ... tin đang tiến hành quảng cáo</item>
+        <item>Có ... tin kết thúc quảng cáo</item>
+        <item>Có ... tin hoàn thành giao dịch</item>
+        <item>Có ... tin đang kiểm tra</item>
+        <item>Có ... tin sai phạm</item>
+    </string-array>
+
+
+    <!--TODO: Error Message-->
+    <string name="err_title_google_play">Google Play Services</string>
+    <string name="err_msg_google_play">Thiết bị của bạn chưa hỗ trợ Dịch vụ của Google Play, vui lòng cài đặt hoặc cập nhật và thử lại.</string>
+    <string name="err_msg_sd_card">Không có thẻ nhớ. Vui lòng kiểm tra lại</string>
+
+    <string name="err_request_api">Lỗi hệ thống vui lòng thử lại</string>
+    <string name="request_time_out">Error: Request Time-out (408)</string>
+    <string name="err_msg_connection">Lỗi kết nối internet!</string>
+    <string name="err_msg_province">Vui lòng chọn Tỉnh/Thành phố</string>
+    <string name="err_msg_district">Vui lòng chọn Quận/Huyện</string>
+
+    <string name="text_notify">Thông báo</string>
+    <string name="text_hint_notify">Nhận thông báo</string>
+    <string name="text_user_setting">Cài đặt người dùng</string>
+    <string name="text_country">Quốc gia</string>
+    <string name="text_language">Ngôn ngữ</string>
+    <string name="text_about">Thông tin về Hello Rent</string>
+    <string name="text_version">Phiên bản:&#160;</string>
+    <string name="text_copyright">\u00a9... Một sản phẩm của HelloSoft</string>
+
+    <string name="text_view_all">Tất Cả</string>
+    <string name="text_apartment">Căn Hộ</string>
+    <string name="text_room">Phòng Trọ</string>
+    <string name="text_attraction">Tìm Theo Khu Vực</string>
+    <string name="text_attraction_more">Khu vực khác ></string>
+    <string name="text_attraction_vietnam">Việt Nam</string>
+    <string name="text_attraction_korea">Hàn Quốc</string>
+    <string name="text_hello_toon">Trải Nghiệm Hello Toon</string>
+    <string name="text_hello_toon_more">Xem tất cả ></string>
+    <string name="text_reg_note">Đồng ý với Điều khoản và Sự Siêng tư để tiếp tục</string>
+    <string name="text_terms">Điều khoản và Thỏa thuận dịch vụ HelloRent</string>
+    <string name="text_privacy">Đồng ý với Việc Thu Thập và Sử Dụng Thông Tin cá nhân</string>
+
+    <string name="text_loading">Đang tải dữ liệu...</string>
+    <string name="text_login">Đăng nhập</string>
+    <string name="text_login_success">Đăng nhập thành công</string>
+    <string name="text_msg_login">Đang đăng nhập...</string>
+    <string name="err_title_login">Sai Username/Password</string>
+    <string name="err_msg_login">Vui lòng kiểm tra lại thông tin đăng nhập và thử lại</string>
+    <string name="title_acc_locked">Tài khoản bị tạm khóa</string>
+    <string name="msg_acc_locked">Vui lòng kiểm tra lại thông tin đăng nhập hoặc liên hệ HelloRent để biết chi tiết</string>
+
+    <string name="text_register">Đăng ký</string>
+    <string name="text_msg_reg">Đang đăng ký...</string>
+    <string name="text_verify_user">Email hoặc số điện thoại đã tồn tại</string>
+    <string name="text_verify_phone">Số điện thoại liên hệ đã tồn tại</string>
+    <string name="text_register_success">Đăng ký thành công</string>
+    <string name="text_forgot_password">Quên mật khẩu?</string>
+
+    <string name="text_tab_location">Tỉnh Thành</string>
+    <string name="text_tab_marker">Địa Điểm</string>
+    <string name="text_tab_recent_view">Xem Gần Đây</string>
+    <string name="text_tab_favorite">Yêu Thích</string>
+    <string name="text_tab_houses">Nhà riêng / Phòng trọ</string>
+    <string name="text_tab_apartment">Căn hộ chung cư</string>
+
+    <string name="text_btn_search">Tìm Kiếm</string>
+    <string name="text_btn_list_view">Xem danh sách</string>
+    <string name="text_btn_facebook">Đăng nhập bằng Facebook</string>
+    <string name="text_btn_google">Đăng nhập bằng Google</string>
+    <string name="text_btn_email">Đăng nhập với Email</string>
+    <string name="err_msg_login_facebook">Đăng nhập bằng Facebook không thành công, vui lòng thử lại</string>
+    <string name="err_msg_login_google">Đăng nhập bằng Google không thành công, vui lòng thử lại</string>
+
+    <string name="text_province">Chọn Tỉnh/Thành phố</string>
+    <string name="text_err_province">Vui lòng chọn Tỉnh/Thành phố</string>
+    <string name="text_district">Chọn Quận/Huyện</string>
+    <string name="text_err_district">Vui lòng chọn Quận/Huyện</string>
+
+    <string name="text_hint_find_area">Nhập tên khu vực</string>
+    <string name="text_find_marker">Tìm Địa Điểm</string>
+    <string name="text_hint_find_marker">Tên tòa nhà, Trường đại học</string>
+
+    <string name="text_hint_user_name">Email hoặc số điện thoại</string>
+    <string name="text_err_username">Email hoặc số điện thoại không đúng định dạng</string>
+    <string name="text_err_username_empty">Vui lòng nhập email hoặc số điện thoại</string>
+
+    <string name="text_hint_password">Mật khẩu</string>
+    <string name="text_err_pwd_empty">Vui lòng nhập mật khẩu</string>
+    <string name="text_err_pwd_length">Mật khẩu phải lớn hơn 6 và nhỏ hơn 32 ký tự</string>
+    <string name="text_hint_old_pwd">Nhập mật khẩu cũ</string>
+    <string name="text_err_old_pwd">Mật khẩu cũ không đúng, vui lòng nhập lại</string>
+    <string name="text_hint_new_pwd">Nhập mật khẩu mới</string>
+    <string name="text_err_new_pwd_empty">Vui lòng nhập mật khẩu mới</string>
+
+    <string name="text_hint_confirm_pwd">Nhập lại mật khẩu</string>
+    <string name="text_err_confirm">Mật khẩu không khớp</string>
+
+    <string name="text_hint_full_name">Họ tên</string>
+    <string name="text_err_full_name">Vui lòng nhập họ tên</string>
+
+    <string name="text_hint_email">Email</string>
+    <string name="text_err_email_empty">Vui lòng nhập email</string>
+    <string name="text_err_email">Email không đúng định dạng</string>
+
+    <string name="text_hint_content">Nhập nội dung góp ý</string>
+    <string name="text_err_content">Vui lòng nhập nội dung</string>
+    <string name="text_contact_success">Rất cảm ơn bạn đã đóng góp ý kiến về Hello Rent.</string>
+
+    <string name="title_update_phone">Cập nhật Số điện thoại</string>
+    <string name="msg_update_phone">Thành viên chưa có Số điện thoại liên hệ không thể đăng tin. Vui lòng cập nhật số điện thoại liên hệ</string>
+    <string name="text_hint_phone">Số điện thoại liên hệ</string>
+    <string name="text_hint_phone_num">Số điện thoại</string>
+    <string name="text_err_phone_empty">Vui lòng nhập số điện thoại</string>
+    <string name="text_err_phone">Số điện thoại không đúng định dạng (09xxxxxxxx, 01xxxxxxxxx, 08xxxxxxxx)</string>
+
+    <string name="text_hint_gender">Giới tính</string>
+    <string name="text_hint_birth_date">Ngày sinh</string>
+
+    <string name="text_property">Loại bất động sản</string>
+    <string name="text_hint_property">Chọn loại bất động sản</string>
+    <string name="text_err_property">Vui lòng chọn loại bất động sản</string>
+    <string name="text_building">Chọn tên tòa nhà</string>
+    <string name="text_err_building">Vui lòng chọn tên tòa nhà</string>
+    <string name="msg_building_empty">Hệ thống chưa cập nhật thông tin tòa nhà khu vực này, vui lòng kiểm tra và thử lại.</string>
+    <string name="text_key_info">Thông tin cơ bản</string>
+    <string name="text_select_photo">Chọn hình ảnh</string>
+
+    <string name="text_hint_address">Địa chỉ</string>
+    <string name="text_err_address">Vui lòng nhập địa chỉ</string>
+
+    <string name="text_hint_province">Tỉnh/Thành</string>
+    <string name="text_hint_district">Quận/Huyện</string>
+
+    <string name="text_location">Vị trí</string>
+    <string name="text_err_location">Vui lòng xác định vị trí trên bản đồ</string>
+
+    <string name="text_hint_image">Số lượng hình ảnh từ 5~20 hình. Phải là hình thực tế không được chụp màn hình điện thoại hoặc PC và không chứa thông tin liên lạc, quảng cáo, wartermark...  </string>
+
+    <string name="text_details_info">Thông tin chi tiết</string>
+    <string name="text_deposit">Tiền cọc</string>
+    <string name="text_price">Tiền thuê</string>
+    <string name="text_hint_price">1 triệu = 1,000,000 vnđ</string>
+    <string name="text_err_price">Vui lòng nhập tiền thuê</string>
+    <string name="text_floor">Tầng</string>
+    <string name="text_floor_count">Số tầng</string>
+    <string name="text_site_area">Diện tích thực</string>
+    <string name="text_gross_floor_area">Diện tích sử dụng</string>
+    <string name="text_err_gross_floor_area">Vui lòng nhập diện tích sử dụng</string>
+    <string name="text_beds">Số phòng ngủ</string>
+    <string name="text_baths">Số phòng tắm</string>
+    <string name="text_service_fee">Phí dịch vụ</string>
+
+    <string name="text_feature">Tiện ích</string>
+    <string name="text_hint_feature">Chọn Tiện ích</string>
+
+    <string name="text_more_info">Thông tin khác</string>
+    <string name="text_house_direction">Hướng nhà</string>
+    <string name="title_house_direction">Chọn hướng nhà</string>
+    <string name="text_furniture">Nội thất</string>
+    <string name="text_hint_furniture">Chọn Nội thất</string>
+    <string name="text_elevator">Thang máy</string>
+    <string name="text_pest">Vật nuôi</string>
+    <string name="text_number_person">Số người</string>
+
+    <string name="text_content_details">Thông tin mô tả</string>
+    <string name="text_title_product">Tiêu đề</string>
+    <string name="text_hint_title_product">Tiêu đề tin đăng của ban. Độ dài 18~180 ký tự</string>
+    <string name="text_err_title_product">Tiêu đề phải từ 18~800 ký tự. Vui lòng nhập lại</string>
+
+    <string name="text_content_product">Mô tả chi tiết</string>
+    <string name="text_hint_content_product">Giới thiệu chung về bất động sản của bạn. Tối đa 30~3000 ký tự</string>
+    <string name="text_err_content_product">Nội dung mô tả phải từ 30~3000 ký tự. Vui lòng nhập lại</string>
+
+    <string name="title_finish_create_product">Hủy bỏ đăng tin</string>
+    <string name="msg_finish_create_product">Bạn muốn hủy bỏ đăng tin mới?</string>
+
+    <string name="text_err_filter_price">Mức giá không hợp lệ vui lòng nhập lại</string>
+    <string name="text_err_filter_area">Diện tích không hợp lệ vui lòng nhập lại</string>
+
+    <string name="text_area">Diện Tích</string>
+    <string name="text_deposit_price">Tiền cọc / Tiền thuê</string>
+    <string name="text_floor_fc">Tầng / Số tầng</string>
+    <string name="text_bed_bath">Phòng ngủ / Phòng tắm</string>
+    <string name="text_relocation">Dịch vụ chuyển nhà</string>
+
+    <string name="unit_price">triệu</string>
+    <string name="unit_price_month">tr/thg</string>
+    <string name="unit_floor">tầng</string>
+    <string name="unit_square">m<sup><small>2</small></sup></string>
+    <string name="unit_item">&#160;tin</string>
+    <string name="unit_image">&#160;Hình ảnh</string>
+
+    <string name="text_hint_management_search">Mã tin, Tiêu đề, Ghi chú</string>
+
+    <string name="btn_create_product">Đăng tin</string>
+    <string name="text_msg_create_product">Đang đăng tin...</string>
+    <string name="create_product_success">Đăng tin mới thành công</string>
+
+    <string name="btn_update">Cập Nhật</string>
+    <string name="text_msg_update">Đang cập nhật...</string>
+    <string name="text_update_success">Cập nhật thành công</string>
+
+    <string name="btn_rating">Bình chọn cho Hello Rent</string>
+    <string name="btn_management_product">Quản lý tin đăng</string>
+    <string name="btn_contact">Email góp ý</string>
+    <string name="btn_setting">Cài đặt</string>
+    <string name="btn_change_pws">Thay đổi mật khẩu</string>
+    <string name="btn_user_info">Thông tin cá nhân</string>
+    <string name="btn_logout">Đăng xuất</string>
+
+    <string name="btn_send">Gửi</string>
+    <string name="btn_continues">Tiếp Tục</string>
+    <string name="btn_cancel">Hủy bỏ</string>
+    <string name="btn_back">Quay lại</string>
+    <string name="btn_choose">Xong</string>
+    <string name="text_off">Không</string>
+    <string name="text_on">Có</string>
+    <string name="text_call">Liên Hệ</string>
+
+    <string name="text_certified">Đã Xác Thực</string>
+    <string name="text_activated">Đang Xác Thực</string>
+    <string name="text_total_items">(Trong khu vực có ... tin)</string>
+
+    <string name="title_product">Mã Tin: ...</string>
+    <string name="text_map_bounds">Trong khu vực có</string>
+    <string name="text_no_product">Không tìm thấy tin đăng trong khu vực này. vui lòng kiểm tra lại điều kiện tìm kiếm hoặc chuyển sang khu vực khác.</string>
+    <string name="text_no_result">Chưa có dữ liệu</string>
+
+    <string name="text_view_product">Xem thông tin</string>
+    <string name="text_hint_view_product">Xem chi tiết thông tin</string>
+
+    <string name="text_note_product">Ghi chú cá nhân</string>
+    <string name="text_hint_note_product">Chỉ người đăng tin mới được xem và được bảo mật</string>
+
+    <string name="text_edit_product">Sửa thông tin</string>
+    <string name="text_hint_edit_product">Chỉ áp dụng với những tin chưa xác thực hoặc kết thúc xác thực.</string>
+    <string name="msg_edit_product">Tin #... đã xác thực. Vui lòng kết thúc xác thực.</string>
+
+    <string name="text_delete_product">Xóa tin rao</string>
+    <string name="text_hint_delete_product">Thông tin bị xóa xong không thể phục hồi</string>
+    <string name="title_delete_product">Xóa tin #...</string>
+    <string name="text_msg_delete_product">Thông tin bị xóa xong không thể phục hồi. Bạn có muốn tiếp tục xóa?</string>
+    <string name="msg_delete_success">Xóa tin thành công</string>
+
+    <string name="text_certified_product">Đăng ký xác thực</string>
+    <string name="text_hint_certified_product">Nếu tin đã kết thúc xác thực khi đăng ký lại sẽ tương tự như tin mới</string>
+    <string name="msg_re_certified_success">Bạn đã yêu cầu xác thực thành công, chúng tôi sẽ liên hệ trong thời gian sớm nhất</string>
+    <string name="title_re_certified">Gia hạn xác thực tin #...</string>
+    <string name="msg_re_certified">Tin đã xác thực, bạn muốn tiếp tục gia hạn thêm?</string>
+
+    <string name="text_completed_product">Hoàn thành giao dịch</string>
+    <string name="text_hint_completed_product">Tin rao đã có người thuê</string>
+    <string name="msg_completed_product">Tin rao #... đã hoàn thành giao dịch</string>
+
+    <string name="text_end_certified_product">Kết thúc xác thực</string>
+    <string name="text_hint_end_certified_product">Tin sẽ không được hiển thị trong danh sách tin và được xử lý bảo mật</string>
+    <string name="title_end_certified">Kết thúc xác thực tin #...</string>
+    <string name="msg_end_certified">Tin sẽ không được hiển thị trong danh sách tin và được xử lý bảo mật. Bạn có muốn tiếp tục kết thúc xác thực?</string>
+    <string name="text_end_certified_success">Kết thúc xác thực tin #... thành công</string>
+    <string name="text_end_certified_err">Tin #... chưa xác thực, vui lòng kiểm tra lại</string>
+
+    <string name="text_warning">Báo thông tin ảo</string>
+    <string name="text_warning_completed">Tin rao đã có người thuê</string>
+    <string name="text_warning_info">Thông tin không chính xác (hình ảnh, địa chỉ, giá thuê...)</string>
+    <string name="text_hint_warning_content">Nhập mô tả thêm</string>
+    <string name="btn_send_warning">Gửi Thông Báo</string>
+    <string name="text_warning_success">Cảm ơn phản hồi của bạn!</string>
+    <string name="text_warning_error">Bạn đã phản hồi quá 3 lần cho một tin rao, vui lòng kiểm tra và thử lại</string>
+
+    <string name="no_location_data_provided">No Location Data Provided</string>
+    <string name="service_not_available">Sorry, the service is not available</string>
+    <string name="invalid_location">Invalid latitude or longitude used</string>
+
+    <string name="text_info_content">
+        Hello Rent là ứng dụng điện thoại di động đầu tiên tại Việt Nam để “Tìm kiếm” và “Đăng tin” các địa điểm bất động sản cho thuê tại Việt Nam… Mọi thông tin đăng trên Hello Rent đều được KIỂM TRA và XÁC NHẬN.
+        Với cách sắp xếp thông tin rõ ràng cụ thể, hình ảnh thực tế chính xác sẽ giúp bạn tìm địa điểm tốt nhất và ưng ý nhất.
+
+        \n\nTính năng chính của ứng dụng HelloRent:
+        \n\n* THÔNG TIN XÁC NHẬN
+        \n- Thông tin được đội ngũ kiểm định chất lượng (Checking Team) đảm bảo kiểm tra tận nơi xác nhận nội dung, hình ảnh thực tế.
+        \n- Thực trạng, và phản hồi về thông tin của tin đăng sẽ được hệ thống xử lý và có thể đội ngũ kiểm định chất lượng (Checking Team) sẽ đi kiểm tra ngay lập tức
+
+        \n\n* TÌM KIẾM ĐỊA ĐIỂM BẤT ĐỘNG SẢN PHÙ HỢP VỚI BẠN NHẤT
+        \n- Phân loại bất động sản Căn hộ Chung cư / Văn Phòng, Phòng trọ / Nhà trọ được hiển thị ngay vị trí đầu tiên
+        \n- Tìm kiếm các địa điểm xung quanh bạn hoặc các khu vực trung tâm
+        \n- Cung cấp các lựa chọn tìm kiếm theo giá thuê, diện tích…
+
+        \n\n* ĐĂNG TIN MỚI
+        \n- Cho phép người dùng đăng tin cho thuê bất động sản mới.
+
+    </string>
+</resources>

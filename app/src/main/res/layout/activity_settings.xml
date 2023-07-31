@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/loginEmail"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!--Notification-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/layout_margin_half"
+                android:paddingLeft="@dimen/title_margin"
+                android:paddingRight="@dimen/title_margin"
+                android:paddingTop="@dimen/layout_margin"
+                android:text="@string/text_notify" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/layout_margin">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_vector_notify" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/title_margin"
+                    android:layout_weight="1"
+                    android:singleLine="true"
+                    android:text="@string/text_hint_notify"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/colorPrimaryText" />
+
+                <Switch
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:textOff="@string/text_off"
+                    android:textOn="@string/text_on" />
+            </LinearLayout>
+
+            <include layout="@layout/layout_divider_horizontal" />
+
+            <!--User Setting-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/layout_margin_half"
+                android:paddingLeft="@dimen/title_margin"
+                android:paddingRight="@dimen/title_margin"
+                android:paddingTop="@dimen/layout_margin"
+                android:text="@string/text_user_setting" />
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:shrinkColumns="*">
+
+                <TableRow
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/layout_margin">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/title_margin"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_vector_country" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:text="@string/text_country"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/colorPrimaryText" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/title_margin"
+                            android:layout_weight="1"
+                            android:drawablePadding="@dimen/title_margin_half"
+                            android:drawableRight="@drawable/vector_arrow_right"
+                            android:gravity="right"
+                            android:singleLine="true"
+                            android:text="Việt Nam"
+                            android:textColor="@color/colorSecondaryText"
+                            android:textSize="@dimen/text_size_primary" />
+                    </LinearLayout>
+                </TableRow>
+
+                <TableRow>
+
+                    <View android:layout_height="1dp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="@dimen/title_margin"
+                        android:layout_weight="1"
+                        android:background="@color/colorDivider" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/btnProvince"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/layout_margin">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/title_margin"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_vector_province" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:text="@string/text_hint_province"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/colorPrimaryText" />
+
+                        <TextView
+                            android:id="@+id/tvProvince"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/title_margin"
+                            android:layout_weight="1"
+                            android:drawablePadding="@dimen/title_margin_half"
+                            android:drawableRight="@drawable/vector_arrow_right"
+                            android:gravity="right"
+                            android:singleLine="true"
+                            android:textColor="@color/colorSecondaryText"
+                            android:textSize="@dimen/text_size_primary" />
+                    </LinearLayout>
+                </TableRow>
+
+                <TableRow>
+
+                    <View android:layout_height="1dp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="@dimen/title_margin"
+                        android:layout_weight="1"
+                        android:background="@color/colorDivider" />
+                </TableRow>
+
+                <TableRow
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/layout_margin">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/title_margin"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_vector_language" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:text="@string/text_language"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/colorPrimaryText" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/title_margin"
+                            android:layout_weight="1"
+                            android:drawablePadding="@dimen/title_margin_half"
+                            android:drawableRight="@drawable/vector_arrow_right"
+                            android:gravity="right"
+                            android:singleLine="true"
+                            android:text="Tiếng việt"
+                            android:textColor="@color/colorSecondaryText"
+                            android:textSize="@dimen/text_size_primary" />
+                    </LinearLayout>
+                </TableRow>
+            </TableLayout>
+
+            <include layout="@layout/layout_divider_horizontal" />
+
+            <LinearLayout
+                android:id="@+id/btnAbout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_margin"
+                android:background="@android:color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/layout_margin">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_vector_info" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/title_margin"
+                    android:layout_weight="1"
+                    android:drawablePadding="@dimen/title_margin_half"
+                    android:drawableRight="@drawable/vector_arrow_right"
+                    android:singleLine="true"
+                    android:text="@string/text_about"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/colorPrimaryText" />
+
+            </LinearLayout>
+
+            <include layout="@layout/layout_divider_horizontal" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/colorWindowBackground"
+                android:gravity="bottom"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/title_margin_double"
+                android:padding="@dimen/title_margin">
+
+                <TextView
+                    android:id="@+id/tvVersion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_secondary"
+                    android:gravity="center"
+                    android:textColor="@color/colorSecondaryText" />
+                <TextView
+                    android:id="@+id/tvCopyright"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/colorLinkText"
+                    android:textSize="@dimen/text_size_small" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

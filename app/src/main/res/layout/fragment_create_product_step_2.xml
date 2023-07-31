@@ -1,0 +1,211 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layoutStep2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/title_margin"
+        android:paddingLeft="@dimen/title_margin"
+        android:paddingRight="@dimen/title_margin"
+        android:paddingTop="@dimen/layout_margin">
+
+
+        <TextView
+            android:id="@+id/step2Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_select_photo" />
+
+        <TextView
+            android:id="@+id/tvNumImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/title_margin_half"
+            android:textSize="@dimen/text_size_small" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@android:color/white">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerImageProduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/title_margin"
+            android:layout_marginTop="@dimen/title_margin" />
+
+        <TextView
+            android:id="@+id/tvHintImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="@dimen/title_margin_double"
+            android:gravity="center"
+            android:text="@string/text_hint_image" />
+    </RelativeLayout>
+
+    <include layout="@layout/layout_divider_horizontal" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:gravity="center_horizontal"
+        android:padding="@dimen/layout_margin_half">
+
+        <ImageButton
+            android:id="@+id/btnCaptureImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:src="@drawable/vector_camera" />
+
+        <ImageButton
+            android:id="@+id/btnChooseGallery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/title_margin_double"
+            android:background="@null"
+            android:src="@drawable/vector_gallery" />
+    </LinearLayout>
+
+    <include layout="@layout/layout_divider_horizontal" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="?attr/actionBarSize"
+        android:padding="@dimen/title_margin">
+
+        <Button
+            android:id="@+id/btnBackStep1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/border_layout"
+            android:paddingLeft="@dimen/title_margin"
+            android:paddingRight="@dimen/title_margin"
+            android:text="@string/btn_back" />
+
+        <Button
+            android:id="@+id/btnNextStep3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/btn_primary_bg"
+            android:enabled="false"
+            android:paddingLeft="@dimen/title_margin"
+            android:paddingRight="@dimen/title_margin"
+            android:text="@string/btn_continues"
+            android:textColor="@android:color/white" />
+    </RelativeLayout>
+
+</LinearLayout>
+
+    <!--
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:id="@+id/layoutStep2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/title_margin"
+            android:paddingLeft="@dimen/title_margin"
+            android:paddingRight="@dimen/title_margin"
+            android:paddingTop="@dimen/layout_margin"
+            android:text="@string/text_select_photo" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerImageProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/title_margin"
+                android:layout_marginTop="@dimen/title_margin" />
+
+            <TextView
+                android:id="@+id/tvHintImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_margin="@dimen/title_margin_double"
+                android:gravity="center"
+                android:text="@string/text_hint_image" />
+
+            <include layout="@layout/layout_divider_horizontal" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="@dimen/layout_margin_half">
+
+                <ImageButton
+                    android:id="@+id/btnCaptureImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:src="@drawable/vector_camera" />
+
+                <ImageButton
+                    android:id="@+id/btnChooseGallery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/title_margin_double"
+                    android:background="@null"
+                    android:src="@drawable/vector_gallery" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <include layout="@layout/layout_divider_horizontal" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/layout_margin">
+
+            <Button
+                android:id="@+id/btnBackStep1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/border_layout"
+                android:paddingLeft="@dimen/title_margin"
+                android:paddingRight="@dimen/title_margin"
+                android:text="@string/btn_back" />
+
+            <Button
+                android:id="@+id/btnNextStep3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/btn_primary_bg"
+                android:paddingLeft="@dimen/title_margin"
+                android:paddingRight="@dimen/title_margin"
+                android:enabled="false"
+                android:text="@string/btn_continues"
+                android:textColor="@android:color/white" />
+        </RelativeLayout>
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>-->

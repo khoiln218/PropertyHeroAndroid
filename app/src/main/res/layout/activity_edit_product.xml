@@ -1,0 +1,864 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/scrollEditProduct"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWindowBackground"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:id="@+id/editProductLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:descendantFocusability="beforeDescendants"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/layout_margin">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/title_margin"
+                android:paddingLeft="@dimen/title_margin"
+                android:paddingRight="@dimen/title_margin"
+                android:paddingTop="@dimen/layout_margin"
+                android:text="@string/text_property" />
+            <!--Property-->
+            <TextView
+                android:id="@+id/tvSelectProperty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:drawableRight="@drawable/vector_arrow_right"
+                android:padding="@dimen/title_margin"
+                android:singleLine="true"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/text_size_primary" />
+
+            <include layout="@layout/layout_divider_horizontal" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/title_margin"
+                android:paddingLeft="@dimen/title_margin"
+                android:paddingRight="@dimen/title_margin"
+                android:paddingTop="@dimen/layout_margin"
+                android:text="@string/text_key_info" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:orientation="horizontal">
+                <!--Province-->
+                <TextView
+                    android:id="@+id/tvProvince"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="@dimen/title_margin"
+                    android:singleLine="true"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/text_size_primary" />
+
+                <include layout="@layout/layout_divider_vertical" />
+
+                <TextView
+                    android:id="@+id/tvDistrict"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="@dimen/title_margin"
+                    android:singleLine="true"
+                    android:text="@string/text_district"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/text_size_primary" />
+            </LinearLayout>
+
+            <include layout="@layout/layout_divider_horizontal" />
+
+            <!--Building-->
+            <LinearLayout
+                android:id="@+id/buildingLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:orientation="vertical"
+                android:visibility="gone">
+                <TextView
+                    android:id="@+id/tvBuilding"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/vector_building"
+                    android:drawablePadding="@dimen/layout_margin_half"
+                    android:drawableRight="@drawable/vector_arrow_right"
+                    android:padding="@dimen/title_margin"
+                    android:singleLine="true"
+                    android:text="@string/text_building"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/text_size_primary" />
+
+                <include layout="@layout/layout_divider_horizontal" />
+            </LinearLayout>
+
+            <!--Address-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/inputEditAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_weight="1"
+                    android:background="@android:color/white"
+                    android:drawableLeft="@drawable/vector_address"
+                    android:drawablePadding="@dimen/layout_margin_half"
+                    android:gravity="center_vertical"
+                    android:hint="@string/text_hint_address"
+                    android:padding="@dimen/title_margin"
+                    android:singleLine="true"
+                    android:textSize="@dimen/text_size_primary" />
+
+                <Button
+                    android:id="@+id/btnLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_primary_bg"
+                    android:text="@string/text_location"
+                    android:textColor="@android:color/white"
+                    android:enabled="false"/>
+            </LinearLayout>
+
+            <include layout="@layout/layout_divider_horizontal" />
+
+            <LinearLayout
+                android:id="@+id/layoutLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_margin_quarter"
+                android:background="@android:color/white"
+                android:orientation="vertical">
+
+                <fragment
+                    android:id="@+id/mapFragment"
+                    android:name="vn.hellosoft.ui.WorkaroundMapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:tag="fragment_map">
+
+                    <ImageView
+                        android:id="@+id/latLngCenter"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="24dp"
+                        android:src="@drawable/vector_current_location" />
+                </fragment>
+
+                <TextView
+                    android:id="@+id/tvLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:background="@color/colorOverlay"
+                    android:gravity="center"
+                    android:padding="@dimen/title_margin_half"
+                    android:singleLine="true"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/text_size_small" />
+            </LinearLayout>
+
+            <include layout="@layout/layout_divider_horizontal" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/title_margin"
+                android:paddingLeft="@dimen/title_margin"
+                android:paddingRight="@dimen/title_margin"
+                android:paddingTop="@dimen/layout_margin"
+                android:text="@string/text_details_info" />
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:paddingTop="@dimen/title_margin">
+
+                <!--Deposit-->
+                <TableRow
+                    android:layout_marginLeft="@dimen/title_margin"
+                    android:layout_marginRight="@dimen/title_margin">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/text_deposit"
+                        android:textColor="@color/colorTitleText"
+                        android:textSize="@dimen/text_size_primary" />
+
+                    <EditText
+                        android:id="@+id/inputEditDeposit"
+                        style="@style/AppTheme.InputBorder"
+                        android:layout_width="@dimen/input_width"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:hint="0"
+                        android:inputType="numberDecimal" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/layout_margin_half"
+                        android:text="@string/unit_price"
+                        android:textColor="@color/colorSecondaryText"
+                        android:textSize="@dimen/text_size_secondary" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_marginBottom="@dimen/layout_margin_half"
+                    android:layout_marginLeft="@dimen/title_margin"
+                    android:layout_marginTop="@dimen/layout_margin_half">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorDivider" />
+                </TableRow>
+                <!--Price-->
+                <TableRow
+                    android:layout_marginLeft="@dimen/title_margin"
+                    android:layout_marginRight="@dimen/title_margin">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/text_price"
+                        android:textColor="@color/colorTitleText"
+                        android:textSize="@dimen/text_size_primary" />
+
+                    <EditText
+                        android:id="@+id/inputEditPrice"
+                        style="@style/AppTheme.InputBorder"
+                        android:layout_width="@dimen/input_width"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:hint="0"
+                        android:inputType="numberDecimal" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/layout_margin_half"
+                        android:text="@string/unit_price_month"
+                        android:textColor="@color/colorSecondaryText"
+                        android:textSize="@dimen/text_size_secondary" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_marginBottom="@dimen/title_margin"
+                    android:layout_marginTop="@dimen/title_margin">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorDivider" />
+                </TableRow>
+                <!--Floor-->
+                <TableRow
+                    android:layout_marginLeft="@dimen/title_margin"
+                    android:layout_marginRight="@dimen/title_margin">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/text_floor"
+                        android:textColor="@color/colorTitleText"
+                        android:textSize="@dimen/text_size_primary" />
+
+                    <EditText
+                        android:id="@+id/inputEditFloor"
+                        style="@style/AppTheme.InputBorder"
+                        android:layout_width="@dimen/input_width"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:hint="0"
+                        android:inputType="number" />
+
+                    <View />
+                </TableRow>
+
+                <TableRow
+                    android:layout_marginBottom="@dimen/layout_margin_half"
+                    android:layout_marginLeft="@dimen/title_margin"
+                    android:layout_marginTop="@dimen/layout_margin_half">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorDivider" />
+                </TableRow>
+                <!--Floor Count-->
+                <TableRow
+                    android:layout_marginLeft="@dimen/title_margin"
+                    android:layout_marginRight="@dimen/title_margin">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/text_floor_count"
+                        android:textColor="@color/colorTitleText"
+                        android:textSize="@dimen/text_size_primary" />
+
+                    <EditText
+                        android:id="@+id/inputEditFloorCount"
+                        style="@style/AppTheme.InputBorder"
+                        android:layout_width="@dimen/input_width"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:hint="0"
+                        android:inputType="number" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/layout_margin_half"
+                        android:text="@string/unit_floor"
+                        android:textColor="@color/colorSecondaryText"
+                        android:textSize="@dimen/text_size_secondary" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_marginBottom="@dimen/title_margin"
+                    android:layout_marginTop="@dimen/title_margin">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorDivider" />
+                </TableRow>
+                <!--Site Area-->
+                <TableRow
+                    android:layout_marginLeft="@dimen/title_margin"
+                    android:layout_marginRight="@dimen/title_margin"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/text_site_area"
+                        android:textColor="@color/colorTitleText"
+                        android:textSize="@dimen/text_size_primary" />
+
+                    <EditText
+                        android:id="@+id/inputEditSiteArea"
+                        style="@style/AppTheme.InputBorder"
+                        android:layout_width="@dimen/input_width"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:hint="0"
+                        android:inputType="numberDecimal" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/layout_margin_half"
+                        android:text="@string/unit_square"
+                        android:textColor="@color/colorSecondaryText"
+                        android:textSize="@dimen/text_size_secondary" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_marginBottom="@dimen/layout_margin_half"
+                    android:layout_marginLeft="@dimen/title_margin"
+                    android:layout_marginTop="@dimen/layout_margin_half"
+                    android:visibility="gone">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorDivider" />
+                </TableRow>
+                <!--GFA-->
+                <TableRow
+                    android:layout_marginLeft="@dimen/title_margin"
+                    android:layout_marginRight="@dimen/title_margin">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/text_gross_floor_area"
+                        android:textColor="@color/colorTitleText"
+                        android:textSize="@dimen/text_size_primary" />
+
+                    <EditText
+                        android:id="@+id/inputEditGFArea"
+                        style="@style/AppTheme.InputBorder"
+                        android:layout_width="@dimen/input_width"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:hint="0"
+                        android:inputType="numberDecimal" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/layout_margin_half"
+                        android:text="@string/unit_square"
+                        android:textColor="@color/colorSecondaryText"
+                        android:textSize="@dimen/text_size_secondary" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_marginBottom="@dimen/title_margin"
+                    android:layout_marginTop="@dimen/title_margin">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorDivider" />
+                </TableRow>
+                <!--Bedrooms-->
+                <TableRow
+                    android:layout_marginLeft="@dimen/title_margin"
+                    android:layout_marginRight="@dimen/title_margin">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/text_beds"
+                        android:textColor="@color/colorTitleText"
+                        android:textSize="@dimen/text_size_primary" />
+
+                    <EditText
+                        android:id="@+id/inputEditBeds"
+                        style="@style/AppTheme.InputBorder"
+                        android:layout_width="@dimen/input_width"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:hint="0"
+                        android:inputType="numberDecimal" />
+
+                    <View />
+                </TableRow>
+
+                <TableRow
+                    android:layout_marginBottom="@dimen/layout_margin_half"
+                    android:layout_marginLeft="@dimen/title_margin"
+                    android:layout_marginTop="@dimen/layout_margin_half">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorDivider" />
+                </TableRow>
+                <!--Bathrooms-->
+                <TableRow
+                    android:layout_marginLeft="@dimen/title_margin"
+                    android:layout_marginRight="@dimen/title_margin">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/text_baths"
+                        android:textColor="@color/colorTitleText"
+                        android:textSize="@dimen/text_size_primary" />
+
+                    <EditText
+                        android:id="@+id/inputEditBaths"
+                        style="@style/AppTheme.InputBorder"
+                        android:layout_width="@dimen/input_width"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_layout"
+                        android:gravity="right"
+                        android:hint="0"
+                        android:inputType="numberDecimal" />
+
+                    <View />
+                </TableRow>
+
+                <TableRow
+                    android:layout_marginBottom="@dimen/title_margin"
+                    android:layout_marginTop="@dimen/title_margin">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorDivider" />
+                </TableRow>
+                <!--Service Fee-->
+                <TableRow
+                    android:layout_marginBottom="@dimen/title_margin"
+                    android:layout_marginLeft="@dimen/title_margin"
+                    android:layout_marginRight="@dimen/title_margin">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/text_service_fee"
+                        android:textColor="@color/colorTitleText"
+                        android:textSize="@dimen/text_size_primary" />
+
+                    <EditText
+                        android:id="@+id/inputEditServiceFee"
+                        style="@style/AppTheme.InputBorder"
+                        android:layout_width="@dimen/input_width"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:hint="0"
+                        android:inputType="numberDecimal" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/layout_margin_half"
+                        android:text="@string/unit_price"
+                        android:textColor="@color/colorSecondaryText"
+                        android:textSize="@dimen/text_size_secondary" />
+                </TableRow>
+            </TableLayout>
+
+            <include layout="@layout/layout_divider_horizontal" />
+
+            <!--Selected Feature-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_margin"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/layout_margin_half"
+                    android:paddingLeft="@dimen/title_margin"
+                    android:paddingRight="@dimen/title_margin"
+                    android:text="@string/text_feature" />
+
+
+                <TextView
+                    android:id="@+id/tvFeature"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white"
+                    android:drawablePadding="@dimen/layout_margin_quarter"
+                    android:drawableRight="@drawable/vector_arrow_right"
+                    android:padding="@dimen/title_margin"
+                    android:singleLine="true"
+                    android:text="@string/text_hint_feature"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/text_size_secondary" />
+
+                <include layout="@layout/layout_divider_horizontal" />
+            </LinearLayout>
+
+            <!--Selected Furniture-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_margin"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/layout_margin_half"
+                    android:paddingLeft="@dimen/title_margin"
+                    android:paddingRight="@dimen/title_margin"
+                    android:text="@string/text_furniture" />
+
+
+                <TextView
+                    android:id="@+id/tvFurniture"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white"
+                    android:drawablePadding="@dimen/layout_margin_quarter"
+                    android:drawableRight="@drawable/vector_arrow_right"
+                    android:padding="@dimen/title_margin"
+                    android:singleLine="true"
+                    android:text="@string/text_hint_furniture"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/text_size_secondary" />
+
+                <include layout="@layout/layout_divider_horizontal" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/title_margin"
+                android:paddingLeft="@dimen/title_margin"
+                android:paddingRight="@dimen/title_margin"
+                android:paddingTop="@dimen/layout_margin"
+                android:text="@string/text_more_info" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:orientation="vertical">
+                <!--House Direction-->
+                <LinearLayout
+                    android:id="@+id/btnSelectDirection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/title_margin">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:singleLine="true"
+                        android:text="@string/text_house_direction"
+                        android:textColor="@color/colorTitleText"
+                        android:textSize="@dimen/text_size_primary" />
+
+                    <TextView
+                        android:id="@+id/tvDirection"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/title_margin"
+                        android:layout_weight="1"
+                        android:drawablePadding="@dimen/layout_margin_quarter"
+                        android:drawableRight="@drawable/vector_arrow_right"
+                        android:gravity="right"
+                        android:singleLine="true"
+                        android:textColor="@color/colorSecondaryText"
+                        android:textSize="@dimen/text_size_secondary" />
+                </LinearLayout>
+
+                <include layout="@layout/layout_divider_horizontal" />
+
+                <!--Elevator-->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/title_margin">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:gravity="center_vertical"
+                        android:singleLine="true"
+                        android:text="@string/text_elevator"
+                        android:textColor="@color/colorTitleText"
+                        android:textSize="@dimen/text_size_primary" />
+
+                    <Switch
+                        android:id="@+id/swtElevator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:textOff="@string/text_off"
+                        android:textOn="@string/text_on" />
+                </RelativeLayout>
+
+                <include layout="@layout/layout_divider_horizontal" />
+                <!--Pets-->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/title_margin">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:gravity="center_vertical"
+                        android:singleLine="true"
+                        android:text="@string/text_pest"
+                        android:textColor="@color/colorTitleText"
+                        android:textSize="@dimen/text_size_primary" />
+
+                    <Switch
+                        android:id="@+id/swtPets"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:textOff="@string/text_off"
+                        android:textOn="@string/text_on" />
+                </RelativeLayout>
+
+                <include layout="@layout/layout_divider_horizontal" />
+                <!--Number of Person-->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/title_margin">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:gravity="center_vertical"
+                        android:singleLine="true"
+                        android:text="@string/text_number_person"
+                        android:textColor="@color/colorTitleText"
+                        android:textSize="@dimen/text_size_primary" />
+
+                    <EditText
+                        android:id="@+id/inputNumberOfPerson"
+                        style="@style/AppTheme.InputBorder"
+                        android:layout_width="@dimen/input_width"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:gravity="right"
+                        android:hint="0"
+                        android:inputType="number" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <include layout="@layout/layout_divider_horizontal" />
+            <!--Content-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/title_margin"
+                android:paddingLeft="@dimen/title_margin"
+                android:paddingRight="@dimen/title_margin"
+                android:paddingTop="@dimen/layout_margin"
+                android:text="@string/text_content_details" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:orientation="vertical"
+                android:padding="@dimen/title_margin">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginBottom="@dimen/layout_margin_half"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/text_title_product"
+                        android:textColor="@color/colorTitleText"
+                        android:textSize="@dimen/text_size_primary" />
+
+                    <TextView
+                        android:id="@+id/tvTitleLength"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:textColor="@color/colorSecondaryText"
+                        android:textSize="@dimen/text_size_small" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/inputTitle"
+                    style="@style/AppTheme.InputBorder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/text_hint_title_product"
+                    android:maxLength="180"
+                    android:singleLine="true" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginBottom="@dimen/layout_margin_half"
+                    android:layout_marginTop="@dimen/layout_margin"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/text_content_product"
+                        android:textColor="@color/colorTitleText"
+                        android:textSize="@dimen/text_size_primary" />
+
+                    <TextView
+                        android:id="@+id/tvContentLength"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:text="0/3000"
+                        android:textColor="@color/colorSecondaryText"
+                        android:textSize="@dimen/text_size_small" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/inputContent"
+                    style="@style/AppTheme.InputBorder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:gravity="left|top"
+                    android:hint="@string/text_hint_content_product"
+                    android:inputType="textMultiLine"
+                    android:lines="8"
+                    android:maxLength="3000"
+                    android:scrollbars="vertical" />
+
+            </LinearLayout>
+
+            <include layout="@layout/layout_divider_horizontal" />
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+    <include layout="@layout/layout_progress" />
+
+</android.support.design.widget.CoordinatorLayout>

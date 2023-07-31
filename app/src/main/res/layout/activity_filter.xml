@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:id="@+id/layoutFilter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/propertyContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/layout_margin_half"
+                    android:paddingLeft="@dimen/title_margin"
+                    android:paddingRight="@dimen/title_margin"
+                    android:paddingTop="@dimen/layout_margin"
+                    android:text="@string/text_property" />
+
+                <TextView
+                    android:id="@+id/btnProperty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white"
+                    android:drawableRight="@drawable/vector_arrow_right"
+                    android:padding="@dimen/title_margin"
+                    android:singleLine="true"
+                    android:text="@string/text_view_all"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/text_size_primary" />
+
+                <include layout="@layout/layout_divider_horizontal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="bottom"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/layout_margin_half"
+                android:paddingLeft="@dimen/title_margin"
+                android:paddingRight="@dimen/title_margin"
+                android:paddingTop="@dimen/layout_margin">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/text_price" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:text="@string/text_hint_price"
+                    android:textColor="@color/colorSecondaryText"
+                    android:textSize="@dimen/text_size_small" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/layout_margin_half"
+                android:paddingLeft="@dimen/title_margin"
+                android:paddingRight="@dimen/title_margin"
+                android:paddingTop="@dimen/layout_margin_half">
+
+                <EditText
+                    android:id="@+id/inputMinPrice"
+                    style="@style/AppTheme.InputBorder"
+                    android:layout_width="@dimen/input_width"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:hint="0"
+                    android:inputType="numberDecimal" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/layout_margin_half"
+                    android:layout_marginRight="@dimen/layout_margin_half"
+                    android:text="~"
+                    android:textColor="@color/colorSecondaryText"
+                    android:textSize="@dimen/text_size_secondary" />
+
+                <EditText
+                    android:id="@+id/inputMaxPrice"
+                    style="@style/AppTheme.InputBorder"
+                    android:layout_width="@dimen/input_width"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:hint="999999"
+                    android:inputType="numberDecimal" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/layout_margin_half"
+                    android:text="@string/unit_price"
+                    android:textColor="@color/colorSecondaryText"
+                    android:textSize="@dimen/text_size_secondary" />
+            </LinearLayout>
+
+            <include layout="@layout/layout_divider_horizontal" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/layout_margin_half"
+                android:paddingLeft="@dimen/title_margin"
+                android:paddingRight="@dimen/title_margin"
+                android:paddingTop="@dimen/layout_margin"
+                android:text="@string/text_gross_floor_area" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/layout_margin_half"
+                android:paddingLeft="@dimen/title_margin"
+                android:paddingRight="@dimen/title_margin"
+                android:paddingTop="@dimen/layout_margin_half">
+
+                <EditText
+                    android:id="@+id/inputMinArea"
+                    style="@style/AppTheme.InputBorder"
+                    android:layout_width="@dimen/input_width"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:hint="0"
+                    android:inputType="numberDecimal" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/layout_margin_half"
+                    android:layout_marginRight="@dimen/layout_margin_half"
+                    android:text="~"
+                    android:textColor="@color/colorSecondaryText"
+                    android:textSize="@dimen/text_size_secondary" />
+
+                <EditText
+                    android:id="@+id/inputMaxArea"
+                    style="@style/AppTheme.InputBorder"
+                    android:layout_width="@dimen/input_width"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:hint="999999"
+                    android:inputType="numberDecimal" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/layout_margin_half"
+                    android:text="@string/unit_square"
+                    android:textColor="@color/colorSecondaryText"
+                    android:textSize="@dimen/text_size_secondary" />
+            </LinearLayout>
+
+            <include layout="@layout/layout_divider_horizontal" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/layout_margin_half"
+                android:paddingLeft="@dimen/title_margin"
+                android:paddingRight="@dimen/title_margin"
+                android:paddingTop="@dimen/layout_margin"
+                android:text="@string/text_beds" />
+
+            <RadioGroup
+                android:id="@+id/groupBeds"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/layout_margin_half"
+                android:paddingLeft="@dimen/title_margin"
+                android:paddingRight="@dimen/title_margin"
+                android:paddingTop="@dimen/layout_margin_half">
+
+                <RadioButton
+                    android:id="@+id/bedAny"
+                    style="@style/AppTheme.RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/input_height"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:text="Any" />
+
+                <RadioButton
+                    android:id="@+id/bed1"
+                    style="@style/AppTheme.RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/input_height"
+                    android:layout_weight="1"
+                    android:text="1+" />
+
+                <RadioButton
+                    android:id="@+id/bed2"
+                    style="@style/AppTheme.RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/input_height"
+                    android:layout_weight="1"
+                    android:text="2+" />
+
+                <RadioButton
+                    android:id="@+id/bed3"
+                    style="@style/AppTheme.RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/input_height"
+                    android:layout_weight="1"
+                    android:text="3+" />
+
+                <RadioButton
+                    android:id="@+id/bed4"
+                    style="@style/AppTheme.RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/input_height"
+                    android:layout_weight="1"
+                    android:text="4+" />
+
+                <RadioButton
+                    android:id="@+id/bed5"
+                    style="@style/AppTheme.RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/input_height"
+                    android:layout_weight="1"
+                    android:text="5+" />
+            </RadioGroup>
+
+            <include layout="@layout/layout_divider_horizontal" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/layout_margin_half"
+                android:paddingLeft="@dimen/title_margin"
+                android:paddingRight="@dimen/title_margin"
+                android:paddingTop="@dimen/layout_margin"
+                android:text="@string/text_baths" />
+
+            <RadioGroup
+                android:id="@+id/groupBaths"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/layout_margin_half"
+                android:paddingLeft="@dimen/title_margin"
+                android:paddingRight="@dimen/title_margin"
+                android:paddingTop="@dimen/layout_margin_half">
+
+                <RadioButton
+                    android:id="@+id/bathAny"
+                    style="@style/AppTheme.RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/input_height"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:text="Any" />
+
+                <RadioButton
+                    android:id="@+id/bath1"
+                    style="@style/AppTheme.RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/input_height"
+                    android:layout_weight="1"
+                    android:text="1+" />
+
+                <RadioButton
+                    android:id="@+id/bath2"
+                    style="@style/AppTheme.RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/input_height"
+                    android:layout_weight="1"
+                    android:text="2+" />
+
+                <RadioButton
+                    android:id="@+id/bath3"
+                    style="@style/AppTheme.RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/input_height"
+                    android:layout_weight="1"
+                    android:text="3+" />
+
+                <RadioButton
+                    android:id="@+id/bath4"
+                    style="@style/AppTheme.RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/input_height"
+                    android:layout_weight="1"
+                    android:text="4+" />
+
+                <RadioButton
+                    android:id="@+id/bath5"
+                    style="@style/AppTheme.RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/input_height"
+                    android:layout_weight="1"
+                    android:text="5+" />
+            </RadioGroup>
+
+            <include layout="@layout/layout_divider_horizontal" />
+
+            <Button
+                android:id="@+id/btnUpdateFilter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/layout_margin_double"
+                android:layout_marginLeft="@dimen/layout_margin"
+                android:layout_marginRight="@dimen/layout_margin"
+                android:layout_marginTop="@dimen/layout_margin_double"
+                android:background="@drawable/btn_primary_bg"
+                android:text="@string/btn_update"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

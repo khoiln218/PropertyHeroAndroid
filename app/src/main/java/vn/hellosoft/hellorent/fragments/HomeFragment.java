@@ -1,0 +1,284 @@
+package vn.hellosoft.hellorent.fragments;
+
+
+import android.app.Activity;
+import android.content.Intent;
+import android.location.Location;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.daimajia.slider.library.SliderLayout;
+import com.daimajia.slider.library.SliderTypes.BaseSliderView;
+import com.daimajia.slider.library.SliderTypes.TextSliderView;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.maps.model.LatLng;
+
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import vn.hellosoft.app.AppController;
+import vn.hellosoft.app.Config;
+import vn.hellosoft.app.GoogleApiHelper;
+import vn.hellosoft.hellorent.R;
+import vn.hellosoft.hellorent.activities.CreateProductActivity;
+import vn.hellosoft.hellorent.activities.FindAreaActivity;
+import vn.hellosoft.hellorent.activities.LoginActivity;
+import vn.hellosoft.hellorent.adapters.AreaNearbyAdapter;
+import vn.hellosoft.hellorent.extras.EndPoints;
+import vn.hellosoft.hellorent.extras.UrlParams;
+import vn.hellosoft.hellorent.json.Parser;
+import vn.hellosoft.hellorent.model.Advertising;
+import vn.hellosoft.hellorent.model.Marker;
+import vn.hellosoft.helper.L;
+import vn.hellosoft.helper.Utils;
+import vn.hellosoft.ui.ChildAnimation;
+import vn.hellosoft.ui.ExpandableHeightGridView;
+
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class HomeFragment extends Fragment implements View.OnClickListener {
+
+    private static final String TAG = HomeFragment.class.getSimpleName();
+
+    private GoogleApiHelper googleApi;
+    private LocationListener listener;
+    private LatLng latLng;
+
+    private List<Advertising> advList;
+    private SliderLayout imageSlider;
+
+    private List<Marker> areaList;
+    private AreaNearbyAdapter areaNearbyAdapter;
+    private ExpandableHeightGridView grvAttractionNearby;
+
+    private List<Marker> universityList;
+    private AreaNearbyAdapter universityAdapter;
+    private ExpandableHeightGridView grvUniversity;
+
+    public HomeFragment() {
+        // Required empty public constructor
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+
+        View root = inflater.inflate(R.layout.fragment_home, container, false);
+
+        imageSlider = (SliderLayout) root.findViewById(R.id.imageSlider);
+        grvAttractionNearby = (ExpandableHeightGridView) root.findViewById(R.id.grvAttractionNearby);
+        grvUniversity = (ExpandableHeightGridView) root.findViewById(R.id.grvUniversity);
+
+        imageSlider.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, Utils.getScreenWidth() / 2));
+
+        setupAttractionNearby();
+        setupUniversity();
+
+        root.findViewById(R.id.btnViewAll).setOnClickListener(this);
+        root.findViewById(R.id.btnApartment).setOnClickListener(this);
+        root.findViewById(R.id.btnRoom).setOnClickListener(this);
+        root.findViewById(R.id.btnFindArea).setOnClickListener(this);
+        root.findViewById(R.id.fabAddInfo).setOnClickListener(this);
+
+        return root;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        googleApi = new GoogleApiHelper(getActivity());
+        googleApi.checkLocationSettings();
+        this.listener = new LocationListener() {
+            @Override
+            public void onLocationChanged(Location location) {
+                if (location != null)
+                    latLng = new LatLng(location.getLatitude(), location.getLongitude());
+
+                fetchAttractionNearby();
+            }
+        };
+        googleApi.registerListener(listener);
+
+        fetchImageSliderData();
+        fetchUniversity();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        if (googleApi.isConnected())
+            googleApi.disconnect();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        imageSlider.stopAutoCycle();
+
+        AppController.getInstance().cancelPedingRequesrs(TAG);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == Config.REQUEST_CHECK_SETTINGS && resultCode != Activity.RESULT_OK) {
+            latLng = AppController.getInstance().getPrefManager().getLastLatLng();
+            fetchAttractionNearby();
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btnViewAll:
+                Utils.launchMapView(getActivity(), getString(R.string.text_view_all), null, Config.UNDEFINED);
+                break;
+            case R.id.btnApartment:
+                Utils.launchMapView(getActivity(), getString(R.string.text_apartment), null, Config.PROPERTY_APARTMENT);
+                break;
+            case R.id.btnRoom:
+                Utils.launchMapView(getActivity(), getString(R.string.text_room), null, Config.PROPERTY_ROOM);
+                break;
+            case R.id.btnFindArea:
+                startActivity(new Intent(getActivity(), FindAreaActivity.class));
+                break;
+            case R.id.fabAddInfo:
+                if (AppController.getInstance().getPrefManager().getUserID() == 0) {
+                    Intent intentLogin = new Intent(getActivity(), LoginActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString(Config.STRING_DATA, CreateProductActivity.class.getSimpleName());
+                    intentLogin.putExtra(Config.DATA_EXTRA, bundle);
+                    startActivity(intentLogin);
+                } else if (AppController.getInstance().getPrefManager().getPhoneNumber() == null) {
+                    L.launchUpdatePhone(getActivity(), false);
+                } else {
+                    startActivity(new Intent(getActivity(), CreateProductActivity.class));
+                }
+                break;
+        }
+    }
+
+    private void fetchImageSliderData() {
+        advList = new ArrayList<>();
+        JsonObjectRequest reqAdv = new JsonObjectRequest(EndPoints.URL_LIST_ADV_MAIN, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                advList.addAll(Parser.advList(response));
+                addImageSlider();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e(TAG, "Error at fetchImageSliderData()");
+            }
+        });
+
+        AppController.getInstance().addToRequestQueue(reqAdv, TAG);
+    }
+
+    private void addImageSlider() {
+        imageSlider.removeAllSliders();
+        for (Advertising adv : advList) {
+            TextSliderView textSliderView = new TextSliderView(getActivity());
+            textSliderView
+                    .description(null)
+                    .image(adv.getThumbnail())
+                    .setScaleType(BaseSliderView.ScaleType.CenterCrop);
+
+            imageSlider.addSlider(textSliderView);
+        }
+
+        imageSlider.setPresetTransformer(SliderLayout.Transformer.Accordion);
+        imageSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
+        imageSlider.setCustomAnimation(new ChildAnimation());
+        imageSlider.setDuration(4000);
+    }
+
+    private void setupAttractionNearby() {
+        areaList = new ArrayList<>();
+        areaNearbyAdapter = new AreaNearbyAdapter(getActivity(), areaList);
+        grvAttractionNearby.setExpanded(false);
+        grvAttractionNearby.setAdapter(areaNearbyAdapter);
+        grvAttractionNearby.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                L.showSelectDistance(getActivity(), areaList.get(position));
+            }
+        });
+    }
+
+    private void setupUniversity() {
+        universityList = new ArrayList<>();
+        universityAdapter = new AreaNearbyAdapter(getActivity(), universityList);
+        grvUniversity.setExpanded(false);
+        grvUniversity.setAdapter(universityAdapter);
+        grvUniversity.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                L.showSelectDistance(getActivity(), universityList.get(position));
+            }
+        });
+    }
+
+    private void fetchAttractionNearby() {
+        String url = EndPoints.URL_ATTRACTION_BY_LOCATION
+                .replace(UrlParams.LAT, String.valueOf(latLng.latitude))
+                .replace(UrlParams.LNG, String.valueOf(latLng.longitude))
+                .replace(UrlParams.NUM_ITEMS, "3")
+                .replace(UrlParams.LANGUAGE_TYPE, String.valueOf(AppController.getInstance().getPrefManager().getLanguageType()));
+
+        JsonObjectRequest reqAttractionNearby = new JsonObjectRequest(url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                areaList = Parser.markerList(response);
+                areaNearbyAdapter.setAttractionList(areaList);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e(TAG, "Error at fetchAttractionNearby()");
+            }
+        });
+
+        AppController.getInstance().addToRequestQueue(reqAttractionNearby, TAG);
+    }
+
+    private void fetchUniversity() {
+        String url = EndPoints.URL_UNIVERSITY_KOREA
+                .replace(UrlParams.NUM_ITEMS, "3")
+                .replace(UrlParams.LANGUAGE_TYPE, String.valueOf(AppController.getInstance().getPrefManager().getLanguageType()));
+
+        JsonObjectRequest reqUniversity = new JsonObjectRequest(url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                universityList = Parser.markerList(response);
+                universityAdapter.setAttractionList(universityList);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e(TAG, "Error at fetchUniversity()");
+            }
+        });
+
+        AppController.getInstance().addToRequestQueue(reqUniversity, TAG);
+    }
+}

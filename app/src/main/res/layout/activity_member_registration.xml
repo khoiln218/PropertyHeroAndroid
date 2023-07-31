@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/memberRegistration"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:fitsSystemWindows="true">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/layout_margin_double"
+            android:layout_marginRight="@dimen/layout_margin_double"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/layout_margin_double">
+
+            <!--TODO: Input UserName-->
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/inputLayoutUserNameMemberReg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_margin">
+
+                <EditText
+                    android:id="@+id/inputUserNameMemberReg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/text_hint_user_name"
+                    android:inputType="textEmailAddress"
+                    android:singleLine="true" />
+            </android.support.design.widget.TextInputLayout>
+
+            <!--TODO: Input Password-->
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/inputLayoutPasswordMemberReg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_margin_quarter">
+
+                <EditText
+                    android:id="@+id/inputPasswordMemberReg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/text_hint_password"
+                    android:inputType="textPassword"
+                    android:singleLine="true" />
+            </android.support.design.widget.TextInputLayout>
+
+            <!--TODO: Input Confirm Password-->
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/inputLayoutConfirmMemberReg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_margin_quarter">
+
+                <EditText
+                    android:id="@+id/inputConfirmMemberReg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/text_hint_confirm_pwd"
+                    android:inputType="textPassword"
+                    android:singleLine="true" />
+            </android.support.design.widget.TextInputLayout>
+
+            <!--TODO: Input Full Name-->
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/inputLayoutFullNameMemberReg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_margin_quarter">
+
+                <EditText
+                    android:id="@+id/inputFullNameMemberReg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/text_hint_full_name"
+                    android:inputType="textCapWords"
+                    android:singleLine="true" />
+            </android.support.design.widget.TextInputLayout>
+
+            <!--TODO: Input Phone Number-->
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/inputLayoutPhoneMemberReg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_margin_quarter">
+
+                <EditText
+                    android:id="@+id/inputPhoneMemberReg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/text_hint_phone"
+                    android:inputType="phone"
+                    android:singleLine="true" />
+            </android.support.design.widget.TextInputLayout>
+
+            <include
+                layout="@layout/layout_divider_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="@dimen/layout_margin"
+                android:layout_marginTop="@dimen/layout_margin" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_reg_note"
+                android:textSize="@dimen/text_size_primary" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/layout_margin_half">
+
+                <TextView
+                    android:id="@+id/tvTermsMember"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/chkTermsMember"
+                    android:text="@string/text_terms"
+                    android:textColor="@color/colorLinkText"
+                    android:textSize="@dimen/text_size_secondary" />
+
+                <CheckBox
+                    android:id="@+id/chkTermsMember"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="@dimen/title_margin" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/layout_margin_half"
+                android:layout_marginTop="@dimen/layout_margin_half">
+                <TextView
+                    android:id="@+id/tvPrivacyMember"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/chkPrivacyMember"
+                    android:text="@string/text_privacy"
+                    android:textColor="@color/colorLinkText"
+                    android:textSize="@dimen/text_size_secondary" />
+
+                <CheckBox
+                    android:id="@+id/chkPrivacyMember"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="@dimen/title_margin" />
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/btnSubmitMemberReg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_margin"
+                android:background="@drawable/btn_primary_bg"
+                android:enabled="false"
+                android:text="@string/text_register"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</android.support.design.widget.CoordinatorLayout>

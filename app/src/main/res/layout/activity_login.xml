@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:fitsSystemWindows="true">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        android:id="@+id/layoutLogin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <ImageView
+            android:id="@+id/imageLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/layout_margin_double"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_main" />
+
+        <FrameLayout
+            android:id="@+id/fbFrame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageLogin"
+            android:layout_margin="@dimen/layout_margin">
+
+            <com.facebook.login.widget.LoginButton
+                android:id="@+id/fbButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/fbLoginButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/vector_btn_facebook"
+                android:text="@string/text_btn_facebook"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white" />
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/googleButtonLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fbFrame"
+            android:layout_marginLeft="@dimen/layout_margin"
+            android:layout_marginRight="@dimen/layout_margin"
+            android:background="@drawable/vector_btn_google"
+            android:text="@string/text_btn_google"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white" />
+
+
+        <Button
+            android:id="@+id/btnLoginEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/footer"
+            android:layout_margin="@dimen/layout_margin"
+            android:background="@drawable/btn_primary_bg"
+            android:text="@string/text_btn_email"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white" />
+
+        <include
+            layout="@layout/layout_divider_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_above="@+id/footer" />
+
+        <LinearLayout
+            android:id="@+id/footer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnMemberRegistration"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:singleLine="true"
+                android:text="@string/title_activity_member_regis"
+                android:textAllCaps="false"
+                android:textColor="@color/colorTitleText"
+                android:textStyle="bold" />
+
+            <!--
+            <include layout="@layout/layout_divider_vertical" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@color/colorHighlight"
+                            android:singleLine="true"
+                            android:text="Đăng ký nhà môi giới"
+                            android:textAllCaps="false"
+                            android:textColor="@color/colorTitleText" />
+                            -->
+        </LinearLayout>
+    </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

@@ -1,0 +1,168 @@
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/layoutStep4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/title_margin"
+            android:paddingLeft="@dimen/title_margin"
+            android:paddingRight="@dimen/title_margin"
+            android:paddingTop="@dimen/layout_margin"
+            android:text="@string/text_content_details" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+            android:padding="@dimen/title_margin">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="@dimen/layout_margin_half"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/text_title_product"
+                    android:textColor="@color/colorTitleText"
+                    android:textSize="@dimen/text_size_primary" />
+
+                <TextView
+                    android:id="@+id/tvTitleLength"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="0/180"
+                    android:textColor="@color/colorSecondaryText"
+                    android:textSize="@dimen/text_size_small" />
+            </LinearLayout>
+
+
+            <EditText
+                android:id="@+id/inputTitle"
+                style="@style/AppTheme.InputBorder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:maxLength="180"
+                android:hint="@string/text_hint_title_product"
+                android:singleLine="true" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="@dimen/layout_margin_half"
+                android:layout_marginTop="@dimen/layout_margin"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/text_content_product"
+                    android:textColor="@color/colorTitleText"
+                    android:textSize="@dimen/text_size_primary" />
+
+                <TextView
+                    android:id="@+id/tvContentLength"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="0/3000"
+                    android:textColor="@color/colorSecondaryText"
+                    android:textSize="@dimen/text_size_small" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/inputContent"
+                style="@style/AppTheme.InputBorder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:gravity="left|top"
+                android:hint="@string/text_hint_content_product"
+                android:inputType="textMultiLine"
+                android:maxLength="3000"
+                android:lines="8"
+                android:scrollbars="vertical" />
+
+        </LinearLayout>
+
+        <include layout="@layout/layout_divider_horizontal" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/layout_margin"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+            android:padding="@dimen/title_margin">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/layout_margin_half"
+                android:text="@string/text_note_product"
+                android:textColor="@color/colorTitleText"
+                android:textSize="@dimen/text_size_primary" />
+
+            <EditText
+                android:id="@+id/inputNode"
+                style="@style/AppTheme.InputBorder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:gravity="left|top"
+                android:hint="@string/text_hint_note_product"
+                android:inputType="textMultiLine"
+                android:lines="6"
+                android:scrollbars="vertical" />
+
+        </LinearLayout>
+
+        <include layout="@layout/layout_divider_horizontal" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/layout_margin">
+
+            <Button
+                android:id="@+id/btnBackStep3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/border_layout"
+                android:paddingLeft="@dimen/title_margin"
+                android:paddingRight="@dimen/title_margin"
+                android:text="@string/btn_back" />
+
+            <Button
+                android:id="@+id/btnSubmitCreateProduct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/btn_primary_bg"
+                android:paddingLeft="@dimen/title_margin"
+                android:paddingRight="@dimen/title_margin"
+                android:text="@string/btn_create_product"
+                android:textColor="@android:color/white" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

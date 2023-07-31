@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/headerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingBottom="@dimen/layout_margin_half"
+    android:paddingLeft="@dimen/layout_margin"
+    android:paddingTop="@dimen/layout_margin_half">
+
+    <TextView
+        android:id="@+id/tvHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_drawable_item"
+        android:drawablePadding="@dimen/title_margin"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/text_size_primary"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvNumItems"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:layout_marginLeft="@dimen/title_margin_half"
+        android:textColor="@color/colorHighlightYellow"
+        android:textSize="@dimen/text_size_secondary" />
+</LinearLayout>

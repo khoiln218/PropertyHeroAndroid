@@ -1,0 +1,622 @@
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/layoutStep3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/title_margin"
+            android:paddingLeft="@dimen/title_margin"
+            android:paddingRight="@dimen/title_margin"
+            android:paddingTop="@dimen/layout_margin"
+            android:text="@string/text_details_info" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:paddingTop="@dimen/title_margin">
+
+            <!--Deposit-->
+            <TableRow
+                android:layout_marginLeft="@dimen/title_margin"
+                android:layout_marginRight="@dimen/title_margin">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/text_deposit"
+                    android:textColor="@color/colorTitleText"
+                    android:textSize="@dimen/text_size_primary" />
+
+                <EditText
+                    android:id="@+id/inputDepositProduct"
+                    style="@style/AppTheme.InputBorder"
+                    android:layout_width="@dimen/input_width"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:hint="0"
+                    android:inputType="numberDecimal" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/layout_margin_half"
+                    android:text="@string/unit_price"
+                    android:textColor="@color/colorSecondaryText"
+                    android:textSize="@dimen/text_size_secondary" />
+            </TableRow>
+
+            <TableRow
+                android:layout_marginBottom="@dimen/layout_margin_half"
+                android:layout_marginLeft="@dimen/title_margin"
+                android:layout_marginTop="@dimen/layout_margin_half">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorDivider" />
+            </TableRow>
+            <!--Price-->
+            <TableRow
+                android:layout_marginLeft="@dimen/title_margin"
+                android:layout_marginRight="@dimen/title_margin">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/text_price"
+                    android:textColor="@color/colorTitleText"
+                    android:textSize="@dimen/text_size_primary" />
+
+                <EditText
+                    android:id="@+id/inputPriceProduct"
+                    style="@style/AppTheme.InputBorder"
+                    android:layout_width="@dimen/input_width"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:hint="0"
+                    android:inputType="numberDecimal" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/layout_margin_half"
+                    android:text="@string/unit_price_month"
+                    android:textColor="@color/colorSecondaryText"
+                    android:textSize="@dimen/text_size_secondary" />
+            </TableRow>
+
+            <TableRow
+                android:layout_marginBottom="@dimen/title_margin"
+                android:layout_marginTop="@dimen/title_margin">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorDivider" />
+            </TableRow>
+            <!--Floor-->
+            <TableRow
+                android:layout_marginLeft="@dimen/title_margin"
+                android:layout_marginRight="@dimen/title_margin">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/text_floor"
+                    android:textColor="@color/colorTitleText"
+                    android:textSize="@dimen/text_size_primary" />
+
+                <EditText
+                    android:id="@+id/inputFloorProduct"
+                    style="@style/AppTheme.InputBorder"
+                    android:layout_width="@dimen/input_width"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:hint="0"
+                    android:inputType="number" />
+
+                <View />
+                <View />
+            </TableRow>
+
+            <TableRow
+                android:layout_marginBottom="@dimen/layout_margin_half"
+                android:layout_marginLeft="@dimen/title_margin"
+                android:layout_marginTop="@dimen/layout_margin_half">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorDivider" />
+            </TableRow>
+            <!--Floor Count-->
+            <TableRow
+                android:layout_marginLeft="@dimen/title_margin"
+                android:layout_marginRight="@dimen/title_margin">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/text_floor_count"
+                    android:textColor="@color/colorTitleText"
+                    android:textSize="@dimen/text_size_primary" />
+
+                <EditText
+                    android:id="@+id/inputFloorCountProduct"
+                    style="@style/AppTheme.InputBorder"
+                    android:layout_width="@dimen/input_width"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:hint="0"
+                    android:inputType="number" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/layout_margin_half"
+                    android:text="@string/unit_floor"
+                    android:textColor="@color/colorSecondaryText"
+                    android:textSize="@dimen/text_size_secondary" />
+            </TableRow>
+
+            <TableRow
+                android:layout_marginBottom="@dimen/title_margin"
+                android:layout_marginTop="@dimen/title_margin">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorDivider" />
+            </TableRow>
+            <!--Site Area-->
+            <TableRow
+                android:layout_marginLeft="@dimen/title_margin"
+                android:layout_marginRight="@dimen/title_margin"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/text_site_area"
+                    android:textColor="@color/colorTitleText"
+                    android:textSize="@dimen/text_size_primary" />
+
+                <EditText
+                    android:id="@+id/inputSiteAreaProduct"
+                    style="@style/AppTheme.InputBorder"
+                    android:layout_width="@dimen/input_width"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:hint="0"
+                    android:inputType="numberDecimal" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/layout_margin_half"
+                    android:text="@string/unit_square"
+                    android:textColor="@color/colorSecondaryText"
+                    android:textSize="@dimen/text_size_secondary" />
+            </TableRow>
+
+            <TableRow
+                android:layout_marginBottom="@dimen/layout_margin_half"
+                android:layout_marginLeft="@dimen/title_margin"
+                android:layout_marginTop="@dimen/layout_margin_half"
+                android:visibility="gone">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorDivider" />
+            </TableRow>
+            <!--GFA-->
+            <TableRow
+                android:layout_marginLeft="@dimen/title_margin"
+                android:layout_marginRight="@dimen/title_margin">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/text_gross_floor_area"
+                    android:textColor="@color/colorTitleText"
+                    android:textSize="@dimen/text_size_primary" />
+
+                <EditText
+                    android:id="@+id/inputGFAProduct"
+                    style="@style/AppTheme.InputBorder"
+                    android:layout_width="@dimen/input_width"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:hint="0"
+                    android:inputType="numberDecimal" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/layout_margin_half"
+                    android:text="@string/unit_square"
+                    android:textColor="@color/colorSecondaryText"
+                    android:textSize="@dimen/text_size_secondary" />
+            </TableRow>
+
+            <TableRow
+                android:layout_marginBottom="@dimen/title_margin"
+                android:layout_marginTop="@dimen/title_margin">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorDivider" />
+            </TableRow>
+            <!--Bedrooms-->
+            <TableRow
+                android:layout_marginLeft="@dimen/title_margin"
+                android:layout_marginRight="@dimen/title_margin">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/text_beds"
+                    android:textColor="@color/colorTitleText"
+                    android:textSize="@dimen/text_size_primary" />
+
+                <EditText
+                    android:id="@+id/inputBedsProduct"
+                    style="@style/AppTheme.InputBorder"
+                    android:layout_width="@dimen/input_width"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:hint="0"
+                    android:inputType="numberDecimal" />
+
+                <View />
+            </TableRow>
+
+            <TableRow
+                android:layout_marginBottom="@dimen/layout_margin_half"
+                android:layout_marginLeft="@dimen/title_margin"
+                android:layout_marginTop="@dimen/layout_margin_half">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorDivider" />
+            </TableRow>
+            <!--Bathrooms-->
+            <TableRow
+                android:layout_marginLeft="@dimen/title_margin"
+                android:layout_marginRight="@dimen/title_margin">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/text_baths"
+                    android:textColor="@color/colorTitleText"
+                    android:textSize="@dimen/text_size_primary" />
+
+                <EditText
+                    android:id="@+id/inputBathsProduct"
+                    style="@style/AppTheme.InputBorder"
+                    android:layout_width="@dimen/input_width"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_layout"
+                    android:gravity="right"
+                    android:hint="0"
+                    android:inputType="numberDecimal" />
+
+                <View />
+            </TableRow>
+
+            <TableRow
+                android:layout_marginBottom="@dimen/title_margin"
+                android:layout_marginTop="@dimen/title_margin">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorDivider" />
+            </TableRow>
+            <!--Service Fee-->
+            <TableRow
+                android:layout_marginLeft="@dimen/title_margin"
+                android:layout_marginRight="@dimen/title_margin">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/text_service_fee"
+                    android:textColor="@color/colorTitleText"
+                    android:textSize="@dimen/text_size_primary" />
+
+                <EditText
+                    android:id="@+id/inputServiceFee"
+                    style="@style/AppTheme.InputBorder"
+                    android:layout_width="@dimen/input_width"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:hint="0"
+                    android:inputType="numberDecimal" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/layout_margin_half"
+                    android:text="@string/unit_price"
+                    android:textColor="@color/colorSecondaryText"
+                    android:textSize="@dimen/text_size_secondary" />
+            </TableRow>
+
+            <TableRow
+                android:layout_marginLeft="@dimen/title_margin"
+                android:layout_marginTop="@dimen/layout_margin_half">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorDivider" />
+            </TableRow>
+            <!--Selected Feature-->
+            <TableRow>
+
+                <LinearLayout
+                    android:id="@+id/btnSelectFeature"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/title_margin">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:singleLine="true"
+                        android:text="@string/text_feature"
+                        android:textColor="@color/colorTitleText"
+                        android:textSize="@dimen/text_size_primary" />
+
+                    <TextView
+                        android:id="@+id/tvFeature"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/title_margin"
+                        android:layout_weight="1"
+                        android:drawablePadding="@dimen/layout_margin_quarter"
+                        android:drawableRight="@drawable/vector_arrow_right"
+                        android:gravity="right"
+                        android:singleLine="true"
+                        android:textColor="@color/colorSecondaryText"
+                        android:textSize="@dimen/text_size_secondary" />
+                </LinearLayout>
+            </TableRow>
+        </TableLayout>
+
+        <include layout="@layout/layout_divider_horizontal" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/title_margin"
+            android:paddingLeft="@dimen/title_margin"
+            android:paddingRight="@dimen/title_margin"
+            android:paddingTop="@dimen/layout_margin"
+            android:text="@string/text_more_info" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:orientation="vertical">
+            <!--House Direction-->
+            <LinearLayout
+                android:id="@+id/btnSelectDirection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/title_margin">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:singleLine="true"
+                    android:text="@string/text_house_direction"
+                    android:textColor="@color/colorTitleText"
+                    android:textSize="@dimen/text_size_primary" />
+
+                <TextView
+                    android:id="@+id/tvDirection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/title_margin"
+                    android:layout_weight="1"
+                    android:drawablePadding="@dimen/layout_margin_quarter"
+                    android:drawableRight="@drawable/vector_arrow_right"
+                    android:gravity="right"
+                    android:singleLine="true"
+                    android:textColor="@color/colorSecondaryText"
+                    android:textSize="@dimen/text_size_secondary" />
+            </LinearLayout>
+
+            <include layout="@layout/layout_divider_horizontal" />
+            <!--Furniture-->
+            <LinearLayout
+                android:id="@+id/btnSelectFurniture"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/title_margin">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:singleLine="true"
+                    android:text="@string/text_furniture"
+                    android:textColor="@color/colorTitleText"
+                    android:textSize="@dimen/text_size_primary" />
+
+                <TextView
+                    android:id="@+id/tvFurniture"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/title_margin"
+                    android:layout_weight="1"
+                    android:drawablePadding="@dimen/layout_margin_quarter"
+                    android:drawableRight="@drawable/vector_arrow_right"
+                    android:gravity="right"
+                    android:singleLine="true"
+                    android:textColor="@color/colorSecondaryText"
+                    android:textSize="@dimen/text_size_secondary" />
+            </LinearLayout>
+
+            <include layout="@layout/layout_divider_horizontal" />
+
+            <!--Elevator-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/title_margin">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:singleLine="true"
+                    android:text="@string/text_elevator"
+                    android:textColor="@color/colorTitleText"
+                    android:textSize="@dimen/text_size_primary" />
+
+                <Switch
+                    android:id="@+id/swtElevator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:textOff="@string/text_off"
+                    android:textOn="@string/text_on" />
+            </RelativeLayout>
+
+            <include layout="@layout/layout_divider_horizontal" />
+            <!--Pets-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/title_margin">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:singleLine="true"
+                    android:text="@string/text_pest"
+                    android:textColor="@color/colorTitleText"
+                    android:textSize="@dimen/text_size_primary" />
+
+                <Switch
+                    android:id="@+id/swtPets"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:textOff="@string/text_off"
+                    android:textOn="@string/text_on" />
+            </RelativeLayout>
+
+            <include layout="@layout/layout_divider_horizontal" />
+            <!--Number of Person-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/title_margin">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:singleLine="true"
+                    android:text="@string/text_number_person"
+                    android:textColor="@color/colorTitleText"
+                    android:textSize="@dimen/text_size_primary" />
+
+                <EditText
+                    android:id="@+id/inputNumberOfPerson"
+                    style="@style/AppTheme.InputBorder"
+                    android:layout_width="@dimen/input_width"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="right"
+                    android:hint="0"
+                    android:inputType="number" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <include layout="@layout/layout_divider_horizontal" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/layout_margin">
+
+            <Button
+                android:id="@+id/btnBackStep2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/border_layout"
+                android:paddingLeft="@dimen/title_margin"
+                android:paddingRight="@dimen/title_margin"
+                android:text="@string/btn_back" />
+
+            <Button
+                android:id="@+id/btnNextStep3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/btn_primary_bg"
+                android:paddingLeft="@dimen/title_margin"
+                android:paddingRight="@dimen/title_margin"
+                android:text="@string/btn_continues"
+                android:textColor="@android:color/white" />
+        </RelativeLayout>
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

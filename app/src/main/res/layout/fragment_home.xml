@@ -1,0 +1,274 @@
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:descendantFocusability="blocksDescendants"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/layout_margin_double">
+
+            <!--TODO: Image Slider-->
+            <com.daimajia.slider.library.SliderLayout
+                android:id="@+id/imageSlider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:auto_cycle="true"
+                app:indicator_visibility="visible"
+                app:pager_animation="Accordion"
+                app:pager_animation_span="800" />
+
+            <include layout="@layout/layout_divider_horizontal" />
+            <!--TODO: Options Choices-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:orientation="horizontal">
+                <!--View All-->
+                <LinearLayout
+                    android:id="@+id/btnViewAll"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/layout_margin_half"
+                    android:layout_marginTop="@dimen/layout_margin"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="@dimen/ic_link_height"
+                        android:layout_height="@dimen/ic_link_height"
+                        android:layout_marginBottom="@dimen/layout_margin_half"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerCrop"
+                        android:src="@mipmap/ic_option_view_all" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:text="@string/text_view_all"
+                        android:textColor="@color/colorTitleText"
+                        android:textSize="@dimen/word_size" />
+                </LinearLayout>
+
+                <include layout="@layout/layout_divider_vertical" />
+                <!--Apartment-->
+                <LinearLayout
+                    android:id="@+id/btnApartment"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/layout_margin_half"
+                    android:layout_marginTop="@dimen/layout_margin"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="@dimen/ic_link_height"
+                        android:layout_height="@dimen/ic_link_height"
+                        android:layout_marginBottom="@dimen/layout_margin_half"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerCrop"
+                        android:src="@mipmap/ic_option_apartment" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:text="@string/text_apartment"
+                        android:textColor="@color/colorTitleText"
+                        android:textSize="@dimen/text_size_primary" />
+                </LinearLayout>
+
+                <include layout="@layout/layout_divider_vertical" />
+                <!--Room-->
+                <LinearLayout
+                    android:id="@+id/btnRoom"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/layout_margin_half"
+                    android:layout_marginTop="@dimen/layout_margin"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="@dimen/ic_link_height"
+                        android:layout_height="@dimen/ic_link_height"
+                        android:layout_marginBottom="@dimen/layout_margin_half"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerCrop"
+                        android:src="@mipmap/ic_option_room" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center_horizontal"
+                        android:text="@string/text_room"
+                        android:textColor="@color/colorTitleText"
+                        android:textSize="@dimen/word_size" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <include layout="@layout/layout_divider_horizontal" />
+
+            <!--TODO: Attraction-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/title_margin"
+                android:layout_marginTop="@dimen/title_margin_double"
+                android:text="@string/text_attraction"
+                android:textColor="@color/colorSecondaryText"
+                android:textSize="@dimen/text_size_primary"
+                android:textStyle="bold" />
+
+            <!--Viet Nam-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_margin_half"
+                android:background="@android:color/white"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/title_margin">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:drawableLeft="@drawable/ic_drawable_vn"
+                        android:drawablePadding="@dimen/layout_margin_half"
+                        android:text="@string/text_attraction_vietnam"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/colorTitleText" />
+
+                    <TextView
+                        android:id="@+id/btnFindArea"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="@string/text_attraction_more"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                        android:textColor="@color/colorLinkText" />
+                </RelativeLayout>
+
+                <include layout="@layout/layout_divider_horizontal" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/layout_margin"
+                    android:layout_marginLeft="@dimen/layout_margin_half"
+                    android:layout_marginRight="@dimen/layout_margin_half"
+                    android:layout_marginTop="@dimen/layout_margin">
+
+                    <include layout="@layout/item_progress" />
+
+                    <vn.hellosoft.ui.ExpandableHeightGridView
+                        android:id="@+id/grvAttractionNearby"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:horizontalSpacing="@dimen/layout_margin_quarter"
+                        android:isScrollContainer="false"
+                        android:numColumns="3"
+                        android:stretchMode="columnWidth"
+                        android:verticalSpacing="@dimen/layout_margin_quarter" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <include layout="@layout/layout_divider_horizontal" />
+
+            <!--Korea-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_margin_half"
+                android:background="@android:color/white"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/title_margin">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:drawableLeft="@drawable/ic_drawable_korea"
+                        android:drawablePadding="@dimen/layout_margin_half"
+                        android:text="@string/text_attraction_korea"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/colorTitleText" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="BETA"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                        android:textColor="@color/colorErrorText" />
+                </RelativeLayout>
+
+                <include layout="@layout/layout_divider_horizontal" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/layout_margin"
+                    android:layout_marginLeft="@dimen/layout_margin_half"
+                    android:layout_marginRight="@dimen/layout_margin_half"
+                    android:layout_marginTop="@dimen/layout_margin">
+
+                    <include layout="@layout/item_progress" />
+
+                    <vn.hellosoft.ui.ExpandableHeightGridView
+                        android:id="@+id/grvUniversity"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:horizontalSpacing="@dimen/layout_margin_quarter"
+                        android:isScrollContainer="false"
+                        android:numColumns="3"
+                        android:stretchMode="columnWidth"
+                        android:verticalSpacing="@dimen/layout_margin_quarter" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <include layout="@layout/layout_divider_horizontal" />
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabAddInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="@dimen/layout_margin"
+        android:src="@mipmap/ic_dialog_add"
+        app:layout_behavior="vn.hellosoft.ui.ScrollAwareFAB" />
+
+</android.support.design.widget.CoordinatorLayout>

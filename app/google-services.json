@@ -1,0 +1,79 @@
+{
+  "project_info": {
+    "project_number": "872286576235",
+    "project_id": "hello-rent-1260"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:872286576235:android:130635a4c0acb56f",
+        "android_client_info": {
+          "package_name": "vn.hellosoft.hellorentckstart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "872286576235-ckikh6olll45338b8kucc3a8pr36b9li.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDP0f5gQnGiFJ2BXD17Ms81rer4rw8NP-M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:872286576235:android:232cdeb6cffc643f",
+        "android_client_info": {
+          "package_name": "vn.hellosoft.hellorent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "872286576235-lmmlrhugen56tn4e54n5coqbr0ciaiv8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "vn.hellosoft.hellorent",
+            "certificate_hash": "55DDB42507FD779CEB23CBC33CD70C62A8F84A2F"
+          }
+        },
+        {
+          "client_id": "872286576235-ckikh6olll45338b8kucc3a8pr36b9li.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDP0f5gQnGiFJ2BXD17Ms81rer4rw8NP-M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
