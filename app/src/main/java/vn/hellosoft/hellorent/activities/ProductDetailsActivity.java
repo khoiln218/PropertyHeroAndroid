@@ -6,15 +6,15 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.view.ViewPager;
-import android.support.v4.widget.NestedScrollView;
-import android.support.v7.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.viewpager.widget.ViewPager;
+import androidx.core.widget.NestedScrollView;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,7 +22,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -30,7 +29,6 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 
@@ -329,12 +327,12 @@ public class ProductDetailsActivity extends AppCompatActivity implements OnMapRe
             if (this.googleMap != null) {
                 LatLng center = new LatLng(product.getLatitude(), product.getLongitude());
 
-                this.googleMap.addCircle(new CircleOptions().center(center)
-                        .radius(80)
-                        .strokeColor(Color.WHITE)
-                        .strokeWidth(3)
-                        .fillColor(Color.parseColor("#FFC000")));
-                this.googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(center, 15));
+//                this.googleMap.addCircle(new CircleOptions().center(center)
+//                        .radius(80)
+//                        .strokeColor(Color.WHITE)
+//                        .strokeWidth(3)
+//                        .fillColor(Color.parseColor("#FFC000")));
+//                this.googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(center, 15));
             }
 
             tvAddress.setText(product.getAddresss());

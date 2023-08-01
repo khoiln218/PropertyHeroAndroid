@@ -6,16 +6,16 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import com.google.android.material.snackbar.Snackbar;
+import androidx.core.app.ActivityCompat;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.support.v7.widget.helper.ItemTouchHelper;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -95,9 +95,9 @@ public class MapViewProductActivity extends AppCompatActivity implements OnMapRe
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(title = data.getString(Config.STRING_DATA));
 
-        latLng = data.getParcelable(Config.PARCELABLE_DATA);
-        if (latLng == null)
-            latLng = AppController.getInstance().getPrefManager().getLastLatLng();
+//        latLng = data.getParcelable(Config.PARCELABLE_DATA);
+//        if (latLng == null)
+//            latLng = AppController.getInstance().getPrefManager().getLastLatLng();
 
         searchInfo = new SearchInfo(latLng.latitude, latLng.longitude, 0, data.getInt(Config.DATA_TYPE, Config.UNDEFINED));
         clusterTask = new ClusterTask();
@@ -234,7 +234,7 @@ public class MapViewProductActivity extends AppCompatActivity implements OnMapRe
         clusterManager.setOnClusterClickListener(this);
         clusterManager.setOnClusterItemClickListener(this);
 
-        this.googleMap.setOnCameraChangeListener(clusterManager);
+        this.googleMap.setOnCameraChangeListener((GoogleMap.OnCameraChangeListener) clusterManager);
         this.googleMap.setOnMarkerClickListener(clusterManager);
     }
 
@@ -275,8 +275,8 @@ public class MapViewProductActivity extends AppCompatActivity implements OnMapRe
         protected void onBeforeClusterItemRendered(ProductItem item, MarkerOptions markerOptions) {
             super.onBeforeClusterItemRendered(item, markerOptions);
 
-            Bitmap bitmap = Utils.getBitmap(MapViewProductActivity.this, R.drawable.ic_vector_product_item);
-            markerOptions.icon(BitmapDescriptorFactory.fromBitmap(bitmap));
+//            Bitmap bitmap = Utils.getBitmap(MapViewProductActivity.this, R.drawable.ic_vector_product_item);
+//            markerOptions.icon(BitmapDescriptorFactory.fromBitmap(bitmap));
         }
 
         @Override
@@ -322,7 +322,7 @@ public class MapViewProductActivity extends AppCompatActivity implements OnMapRe
         protected void onPostExecute(Float aFloat) {
             super.onPostExecute(aFloat);
             LatLngBounds bounds = googleMap.getProjection().getVisibleRegion().latLngBounds;
-            AppController.getInstance().getPrefManager().addLastLatLng(bounds.getCenter(), aFloat);
+//            AppController.getInstance().getPrefManager().addLastLatLng(bounds.getCenter(), aFloat);
 
             if (aFloat > 7)
                 fetchProductData(bounds.southwest, bounds.northeast);

@@ -3,9 +3,9 @@ package vn.hellosoft.hellorent.fragments;
 
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.text.TextUtils;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +29,6 @@ import vn.hellosoft.hellorent.json.DataRequest;
 import vn.hellosoft.hellorent.model.Feature;
 import vn.hellosoft.hellorent.model.Info;
 import vn.hellosoft.hellorent.model.Product;
-import vn.hellosoft.helper.Constants;
 import vn.hellosoft.helper.InputValidation;
 import vn.hellosoft.helper.L;
 import vn.hellosoft.helper.Utils;

@@ -2,26 +2,21 @@ package vn.hellosoft.hellorent.fragments;
 
 
 import android.Manifest;
-import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcelable;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.widget.NestedScrollView;
+import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.Fragment;
+import androidx.core.widget.NestedScrollView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.InflateException;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
@@ -31,12 +26,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.volley.VolleyError;
-import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
@@ -213,8 +206,8 @@ public class CreateProductStep1Fragment extends Fragment implements View.OnClick
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (googleApiHelper.isConnected())
-            googleApiHelper.disconnect();
+//        if (googleApiHelper.isConnected())
+//            googleApiHelper.disconnect();
     }
 
     @Override
@@ -237,23 +230,23 @@ public class CreateProductStep1Fragment extends Fragment implements View.OnClick
 
     @Override
     public void onCameraChange(CameraPosition cameraPosition) {
-        if (googleMap != null) {
-            LatLngBounds bounds = this.googleMap.getProjection().getVisibleRegion().latLngBounds;
-            latLng = bounds.getCenter();
-
-            timer = new Timer();
-            timer.schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    Utils.startAddressService(getActivity(), addressResult, latLng);
-                }
-            }, Config.TIMER_DELAY);
-        }
+//        if (googleMap != null) {
+//            LatLngBounds bounds = this.googleMap.getProjection().getVisibleRegion().latLngBounds;
+//            latLng = bounds.getCenter();
+//
+//            timer = new Timer();
+//            timer.schedule(new TimerTask() {
+//                @Override
+//                public void run() {
+//                    Utils.startAddressService(getActivity(), addressResult, latLng);
+//                }
+//            }, Config.TIMER_DELAY);
+//        }
     }
 
     @Override
     public boolean onMyLocationButtonClick() {
-        googleApiHelper.checkLocationSettings();
+//        googleApiHelper.checkLocationSettings();
         return false;
     }
 

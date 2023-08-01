@@ -7,12 +7,15 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import android.util.Log;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
@@ -31,11 +34,14 @@ import java.util.List;
 /**
  * Created by CTO-HELLOSOFT on 5/4/2016.
  */
-public class GoogleApiHelper implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,
-        LocationListener, ResultCallback<LocationSettingsResult> {
+public class GoogleApiHelper /*implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,
+        LocationListener, ResultCallback<LocationSettingsResult> */{
 
     private Activity context;
-    private GoogleApiClient googleApiClient;
+
+    private static final int RC_SIGN_IN = 9001;
+
+    private GoogleSignInClient mSignInClient;
     private LocationRequest locationRequest;
     private LocationSettingsRequest locationSettingsRequest;
 
@@ -44,34 +50,37 @@ public class GoogleApiHelper implements GoogleApiClient.ConnectionCallbacks, Goo
     public GoogleApiHelper(Activity context) {
         this.context = context;
 
-        buildGoogleApiClient();
+//        buildGoogleApiClient();
         buildLocationSettingsRequest();
 
-        if (googleApiClient != null) {
-            googleApiClient.connect();
-        }
+//        GoogleSignInOptions options =
+//                new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+//                        .requestScopes(Drive.SCOPE_FILE)
+//                        .build();
+//
+//        mSignInClient = GoogleSignIn.getClient(context, options);
     }
 
-    protected synchronized void buildGoogleApiClient() {
-        googleApiClient = new GoogleApiClient.Builder(context)
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
-                .addApi(LocationServices.API)
-                .build();
+//    protected synchronized void buildGoogleApiClient() {
+//        googleApiClient = new GoogleApiClient.Builder(context)
+//                .addConnectionCallbacks(this)
+//                .addOnConnectionFailedListener(this)
+//                .addApi(LocationServices.API)
+//                .build();
+//
+//        createLocationRequest();
+//    }
 
-        createLocationRequest();
-    }
-
-    protected void createLocationRequest() {
-        locationRequest = new LocationRequest();
-        locationRequest.setInterval(Config.UPDATE_INTERVAL);
-        locationRequest.setFastestInterval(Config.FASTEST_INTERVAL);
-        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-        locationRequest.setSmallestDisplacement(Config.DISPLACEMENT);
-        LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder()
-                .addLocationRequest(locationRequest);
-        builder.setAlwaysShow(true);
-    }
+//    protected void createLocationRequest() {
+//        locationRequest = new LocationRequest();
+//        locationRequest.setInterval(Config.UPDATE_INTERVAL);
+//        locationRequest.setFastestInterval(Config.FASTEST_INTERVAL);
+//        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+//        locationRequest.setSmallestDisplacement(Config.DISPLACEMENT);
+//        LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder()
+//                .addLocationRequest(locationRequest);
+//        builder.setAlwaysShow(true);
+//    }
 
     protected void buildLocationSettingsRequest() {
         LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder();
@@ -79,7 +88,7 @@ public class GoogleApiHelper implements GoogleApiClient.ConnectionCallbacks, Goo
         locationSettingsRequest = builder.build();
     }
 
-    protected void startLocationUpdates() {
+   /* protected void startLocationUpdates() {
         if (Build.VERSION.SDK_INT >= 23) {
             if (ContextCompat.checkSelfPermission(context.getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(context.getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED)
                 // TODO: Consider calling
@@ -175,5 +184,5 @@ public class GoogleApiHelper implements GoogleApiClient.ConnectionCallbacks, Goo
 
     public void removeListener(LocationListener listener) {
         listeners.remove(listener);
-    }
+    }*/
 }

@@ -16,17 +16,12 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.VectorDrawable;
 import android.location.Address;
 import android.location.Geocoder;
-import android.location.Location;
-import android.location.LocationManager;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.v4.content.ContextCompat;
+import androidx.core.content.ContextCompat;
 import android.text.TextUtils;
-import android.util.TypedValue;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
@@ -42,8 +37,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -52,7 +45,6 @@ import java.util.List;
 
 import vn.hellosoft.app.AppController;
 import vn.hellosoft.app.Config;
-import vn.hellosoft.hellorent.R;
 import vn.hellosoft.hellorent.activities.MapViewProductActivity;
 import vn.hellosoft.hellorent.model.Feature;
 import vn.hellosoft.services.AddressResultReceiver;
@@ -267,7 +259,7 @@ public class Utils {
         Intent intent = new Intent(activity, MapViewProductActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString(Config.STRING_DATA, title);
-        bundle.putParcelable(Config.PARCELABLE_DATA, latLng);
+//        bundle.putParcelable(Config.PARCELABLE_DATA, latLng);
         bundle.putInt(Config.DATA_TYPE, type);
         intent.putExtra(Config.DATA_EXTRA, bundle);
         activity.startActivityForResult(intent, Config.REQUEST_FIND_MARKER);
@@ -276,7 +268,7 @@ public class Utils {
     public static void startAddressService(Activity activity, AddressResultReceiver addressResult, LatLng location) {
         Intent addressService = new Intent(activity, FetchAddressIntentService.class);
         addressService.putExtra(Config.RECEIVER, addressResult);
-        addressService.putExtra(Config.PARCELABLE_DATA, location);
+//        addressService.putExtra(Config.PARCELABLE_DATA, location);
         activity.startService(addressService);
     }
 

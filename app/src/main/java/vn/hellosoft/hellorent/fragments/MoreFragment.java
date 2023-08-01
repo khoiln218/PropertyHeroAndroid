@@ -4,7 +4,7 @@ package vn.hellosoft.hellorent.fragments;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +30,6 @@ import vn.hellosoft.hellorent.callbacks.OnAccountRequestListener;
 import vn.hellosoft.hellorent.json.AccountRequest;
 import vn.hellosoft.hellorent.model.Account;
 import vn.hellosoft.helper.L;
-import vn.hellosoft.helper.Utils;
 
 /**
  * A simple {@link Fragment} subclass.

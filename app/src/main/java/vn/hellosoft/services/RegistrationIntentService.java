@@ -3,18 +3,13 @@ package vn.hellosoft.services;
 import android.app.IntentService;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.location.Location;
 import android.preference.PreferenceManager;
-import android.support.v4.content.LocalBroadcastManager;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import android.util.Log;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.facebook.AccessToken;
-import com.google.android.gms.gcm.GcmPubSub;
-import com.google.android.gms.gcm.GoogleCloudMessaging;
-import com.google.android.gms.iid.InstanceID;
-import com.google.android.gms.maps.model.LatLng;
+
 
 import org.json.JSONObject;
 
@@ -29,7 +24,6 @@ import vn.hellosoft.hellorent.extras.EndPoints;
 import vn.hellosoft.hellorent.json.Parser;
 import vn.hellosoft.hellorent.json.Utils;
 import vn.hellosoft.hellorent.model.ResponseInfo;
-import vn.hellosoft.helper.L;
 import vn.hellosoft.helper.MultipartRequest;
 
 
@@ -49,40 +43,40 @@ public class RegistrationIntentService extends IntentService {
                 case Config.SUBSCRIBE:
                     // subscribe to a topic
                     String topic = intent.getStringExtra(Config.TOPIC);
-                    subscribeToTopic(topic);
+//                    subscribeToTopic(topic);
                     break;
                 case Config.UNSUBSCRIBE:
                     break;
                 default:
                     String address = intent.getStringExtra(Config.ADDRESS_DATA);
-                    LatLng latLng = intent.getParcelableExtra(Config.PARCELABLE_DATA);
-                    registerGCM(address, latLng.latitude, latLng.longitude);
+//                    LatLng latLng = intent.getParcelableExtra(Config.PARCELABLE_DATA);
+//                    registerGCM(address, latLng.latitude, latLng.longitude);
             }
         }
     }
 
-    private void registerGCM(String address, double lat, double lng) {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-
-        try {
-            InstanceID instanceID = InstanceID.getInstance(this);
-            String token = instanceID.getToken(getString(R.string.gcm_defaultSenderId), GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
-
-            AppController.getInstance().getPrefManager().addToken(token);
-
-            // sending the registration id to our server
-            sendRegistrationToServer(token, address, lat, lng);
-
-            sharedPreferences.edit().putBoolean(Config.SENT_TOKEN_TO_SERVER, true).apply();
-        } catch (Exception e) {
-            Log.e(TAG, "Failed to complete token refresh", e);
-
-            sharedPreferences.edit().putBoolean(Config.SENT_TOKEN_TO_SERVER, false).apply();
-        }
-        // Notify UI that registration has completed, so the progress indicator can be hidden.
-        Intent registrationComplete = new Intent(Config.REGISTRATION_COMPLETE);
-        LocalBroadcastManager.getInstance(this).sendBroadcast(registrationComplete);
-    }
+//    private void registerGCM(String address, double lat, double lng) {
+//        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//
+//        try {
+//            InstanceID instanceID = InstanceID.getInstance(this);
+//            String token = instanceID.getToken(getString(R.string.gcm_defaultSenderId), GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
+//
+//            AppController.getInstance().getPrefManager().addToken(token);
+//
+//            // sending the registration id to our server
+//            sendRegistrationToServer(token, address, lat, lng);
+//
+//            sharedPreferences.edit().putBoolean(Config.SENT_TOKEN_TO_SERVER, true).apply();
+//        } catch (Exception e) {
+//            Log.e(TAG, "Failed to complete token refresh", e);
+//
+//            sharedPreferences.edit().putBoolean(Config.SENT_TOKEN_TO_SERVER, false).apply();
+//        }
+//        // Notify UI that registration has completed, so the progress indicator can be hidden.
+//        Intent registrationComplete = new Intent(Config.REGISTRATION_COMPLETE);
+//        LocalBroadcastManager.getInstance(this).sendBroadcast(registrationComplete);
+//    }
 
     private void sendRegistrationToServer(String token, String address, double lat, double lng) {
         MultipartRequest reqDevice = new MultipartRequest(EndPoints.URL_CREATE_DEVICE, null, Utils.mimeType, getDevicePathBody(token, address, lat, lng), new Response.Listener<JSONObject>() {
@@ -107,23 +101,23 @@ public class RegistrationIntentService extends IntentService {
     /**
      * Subscribe to a topic
      */
-    public static void subscribeToTopic(String topic) {
-        GcmPubSub pubSub = GcmPubSub.getInstance(AppController.getInstance().getApplicationContext());
-        InstanceID instanceID = InstanceID.getInstance(AppController.getInstance().getApplicationContext());
-        String token = null;
-        try {
-            token = instanceID.getToken(AppController.getInstance().getApplicationContext().getString(R.string.gcm_defaultSenderId),
-                    GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
-            if (token != null) {
-                pubSub.subscribe(token, "/topics/" + topic, null);
-                Log.e(TAG, "Subscribed to topic: " + topic);
-            } else {
-                Log.e(TAG, "error: gcm registration id is null");
-            }
-        } catch (IOException e) {
-            Log.e(TAG, "Topic subscribe error. Topic: " + topic + ", error: " + e.getMessage());
-        }
-    }
+//    public static void subscribeToTopic(String topic) {
+//        GcmPubSub pubSub = GcmPubSub.getInstance(AppController.getInstance().getApplicationContext());
+//        InstanceID instanceID = InstanceID.getInstance(AppController.getInstance().getApplicationContext());
+//        String token = null;
+//        try {
+//            token = instanceID.getToken(AppController.getInstance().getApplicationContext().getString(R.string.gcm_defaultSenderId),
+//                    GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
+//            if (token != null) {
+//                pubSub.subscribe(token, "/topics/" + topic, null);
+//                Log.e(TAG, "Subscribed to topic: " + topic);
+//            } else {
+//                Log.e(TAG, "error: gcm registration id is null");
+//            }
+//        } catch (IOException e) {
+//            Log.e(TAG, "Topic subscribe error. Topic: " + topic + ", error: " + e.getMessage());
+//        }
+//    }
 
     private byte[] getDevicePathBody(String token, String address, double lat, double lng) {
 

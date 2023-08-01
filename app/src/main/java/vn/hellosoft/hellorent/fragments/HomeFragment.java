@@ -5,14 +5,13 @@ import android.app.Activity;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -101,18 +100,18 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public void onStart() {
         super.onStart();
 
-        googleApi = new GoogleApiHelper(getActivity());
-        googleApi.checkLocationSettings();
-        this.listener = new LocationListener() {
-            @Override
-            public void onLocationChanged(Location location) {
-                if (location != null)
-                    latLng = new LatLng(location.getLatitude(), location.getLongitude());
-
-                fetchAttractionNearby();
-            }
-        };
-        googleApi.registerListener(listener);
+//        googleApi = new GoogleApiHelper(getActivity());
+//        googleApi.checkLocationSettings();
+//        this.listener = new LocationListener() {
+//            @Override
+//            public void onLocationChanged(Location location) {
+//                if (location != null)
+//                    latLng = new LatLng(location.getLatitude(), location.getLongitude());
+//
+//                fetchAttractionNearby();
+//            }
+//        };
+//        googleApi.registerListener(listener);
 
         fetchImageSliderData();
         fetchUniversity();
@@ -122,8 +121,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public void onPause() {
         super.onPause();
 
-        if (googleApi.isConnected())
-            googleApi.disconnect();
+//        if (googleApi.isConnected())
+//            googleApi.disconnect();
     }
 
     @Override

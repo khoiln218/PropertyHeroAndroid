@@ -1,33 +1,23 @@
 package vn.hellosoft.hellorent.activities;
 
 import android.content.Intent;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.google.android.gms.common.api.Status;
-import com.google.android.gms.maps.model.LatLng;
 import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersDecoration;
 
-import org.json.JSONObject;
-
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Timer;
@@ -41,11 +31,7 @@ import vn.hellosoft.hellorent.callbacks.OnLoadMoreListener;
 import vn.hellosoft.hellorent.callbacks.OnLoadProductListener;
 import vn.hellosoft.hellorent.callbacks.OnRecyclerTouchListener;
 import vn.hellosoft.hellorent.callbacks.RecyclerTouchListner;
-import vn.hellosoft.hellorent.extras.EndPoints;
-import vn.hellosoft.hellorent.extras.UrlParams;
-import vn.hellosoft.hellorent.json.Parser;
 import vn.hellosoft.hellorent.json.ProductRequest;
-import vn.hellosoft.hellorent.model.Marker;
 import vn.hellosoft.hellorent.model.Product;
 import vn.hellosoft.hellorent.model.SearchInfo;
 import vn.hellosoft.helper.L;

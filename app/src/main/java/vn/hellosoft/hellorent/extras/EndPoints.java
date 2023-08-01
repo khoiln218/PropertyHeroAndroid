@@ -5,7 +5,7 @@ package vn.hellosoft.hellorent.extras;
  */
 public class EndPoints {
 
-    public static final String BASE_URL = "http://www.hellorent.vn/";
+    public static final String BASE_URL = "http://hellorentapi.gomimall.vn/";
 
     public static final String URL_CREATE_DEVICE = BASE_URL + "api/Device/CreateDevice";
 

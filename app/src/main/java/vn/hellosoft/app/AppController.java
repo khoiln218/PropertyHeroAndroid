@@ -1,26 +1,21 @@
 package vn.hellosoft.app;
 
 import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
-import android.support.multidex.MultiDex;
-import android.support.multidex.MultiDexApplication;
+
+import androidx.multidex.MultiDex;
+import androidx.multidex.MultiDexApplication;
 import android.text.TextUtils;
-import android.util.Base64;
-import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
 import vn.hellosoft.database.HelloAppDb;
+import vn.hellosoft.hellorent.BuildConfig;
 
 /**
  * Created by CTO-HELLOSOFT on 3/29/2016.
@@ -67,6 +62,7 @@ public class AppController extends MultiDexApplication {
 
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(this);
+        VolleyLog.DEBUG = BuildConfig.DEBUG;
     }
 
     public Context getAppContext() {

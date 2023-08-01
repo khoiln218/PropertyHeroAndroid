@@ -5,13 +5,12 @@ import android.app.ProgressDialog;
 import android.content.pm.PackageManager;
 import android.os.Handler;
 import android.os.Parcelable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.widget.NestedScrollView;
-import android.support.v7.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.widget.NestedScrollView;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 import android.text.Editable;
-import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
@@ -241,23 +240,23 @@ public class EditProductActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onCameraChange(CameraPosition cameraPosition) {
-        if (googleMap != null) {
-            LatLngBounds bounds = this.googleMap.getProjection().getVisibleRegion().latLngBounds;
-            latLng = bounds.getCenter();
-
-            timer = new Timer();
-            timer.schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    Utils.startAddressService(EditProductActivity.this, addressResult, latLng);
-                }
-            }, Config.TIMER_DELAY);
-        }
+//        if (googleMap != null) {
+//            LatLngBounds bounds = this.googleMap.getProjection().getVisibleRegion().latLngBounds;
+//            latLng = bounds.getCenter();
+//
+//            timer = new Timer();
+//            timer.schedule(new TimerTask() {
+//                @Override
+//                public void run() {
+//                    Utils.startAddressService(EditProductActivity.this, addressResult, latLng);
+//                }
+//            }, Config.TIMER_DELAY);
+//        }
     }
 
     @Override
     public boolean onMyLocationButtonClick() {
-        googleApiHelp.checkLocationSettings();
+//        googleApiHelp.checkLocationSettings();
         return false;
     }
 

@@ -1,5 +1,7 @@
 package vn.hellosoft.hellorent.model;
 
+import androidx.annotation.Nullable;
+
 import com.google.android.gms.maps.model.LatLng;
 import com.google.maps.android.clustering.ClusterItem;
 
@@ -41,5 +43,23 @@ public class ProductItem implements ClusterItem {
     @Override
     public LatLng getPosition() {
         return this.position;
+    }
+
+    @Nullable
+    @Override
+    public String getTitle() {
+        return null;
+    }
+
+    @Nullable
+    @Override
+    public String getSnippet() {
+        return null;
+    }
+
+    @Nullable
+    @Override
+    public Float getZIndex() {
+        return null;
     }
 }
