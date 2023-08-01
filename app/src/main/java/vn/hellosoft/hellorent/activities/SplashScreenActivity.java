@@ -5,16 +5,16 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.location.Location;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
+
 import androidx.annotation.NonNull;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
@@ -56,16 +56,15 @@ public class SplashScreenActivity extends AppCompatActivity {
             launchUpdateGooglePlay();
 
         googleApiHelper = new GoogleApiHelper(this);
-//        googleApiHelper.checkLocationSettings();
+        googleApiHelper.checkLocationSettings();
 
-//        registrationReceiver = new BroadcastReceiver() {
-//            @Override
-//            public void onReceive(Context context, Intent intent) {
-//                if (intent.getAction().equals(Config.REGISTRATION_COMPLETE))
+        registrationReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                if (intent.getAction().equals(Config.REGISTRATION_COMPLETE))
                     launchActivity();
-//            }
-//        };
-        registerReceiver();
+            }
+        };
 
         addressReceiver = new AddressResultReceiver(new Handler());
         addressReceiver.listener = new OnAddressResultListener() {
@@ -141,43 +140,21 @@ public class SplashScreenActivity extends AppCompatActivity {
     }
 
     private void getLocation() {
-        listener = new LocationListener() {
-            @Override
-            public void onLocationChanged(Location location) {
-                latLng = new LatLng(location.getLatitude(), location.getLongitude());
-                startAddressIntent();
-
-            }
+        listener = location -> {
+            latLng = new LatLng(location.getLatitude(), location.getLongitude());
+            startAddressIntent();
         };
-//        googleApiHelper.registerListener(listener);
+        googleApiHelper.registerListener(listener);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
 
-//        googleApiHelper.removeListener(listener);
+        googleApiHelper.removeListener(listener);
 
         LocalBroadcastManager.getInstance(this).unregisterReceiver(registrationReceiver);
         isRegisterReceiver = false;
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-//        if (googleApiHelper.isConnected())
-//            googleApiHelper.disconnect();
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-//        if (requestCode == Config.REQUEST_CHECK_SETTINGS) {
-//            Location location = googleApiHelper.displayLocation();
-//            if (location != null)
-//                latLng = new LatLng(location.getLatitude(), location.getLongitude());
-//            startAddressIntent();
-//        }
     }
 
     private void startAddressIntent() {
@@ -186,7 +163,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, FetchAddressIntentService.class);
         intent.putExtra(Config.RECEIVER, addressReceiver);
-//        intent.putExtra(Config.PARCELABLE_DATA, latLng);
+        intent.putExtra(Config.PARCELABLE_DATA, latLng);
         startService(intent);
     }
 
@@ -194,7 +171,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         Intent intent = new Intent(SplashScreenActivity.this, RegistrationIntentService.class);
         intent.putExtra(Config.KEY, "Register");
         intent.putExtra(Config.ADDRESS_DATA, address);
-//        intent.putExtra(Config.PARCELABLE_DATA, latLng);
+        intent.putExtra(Config.PARCELABLE_DATA, latLng);
         startService(intent);
     }
 

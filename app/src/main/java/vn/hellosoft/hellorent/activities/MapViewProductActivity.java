@@ -1,21 +1,13 @@
 package vn.hellosoft.hellorent.activities;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import com.google.android.material.snackbar.Snackbar;
-import androidx.core.app.ActivityCompat;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,17 +15,27 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.core.app.ActivityCompat;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.android.volley.VolleyError;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.gson.Gson;
 import com.google.maps.android.clustering.Cluster;
 import com.google.maps.android.clustering.ClusterManager;
 import com.google.maps.android.clustering.view.DefaultClusterRenderer;
@@ -79,6 +81,7 @@ public class MapViewProductActivity extends AppCompatActivity implements OnMapRe
     private RecyclerView recyclerCluster;
     private List<ProductItem> itemList;
     private ClusterAdapter clusterAdapter;
+    private boolean mTimerIsRunning = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,9 +98,9 @@ public class MapViewProductActivity extends AppCompatActivity implements OnMapRe
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(title = data.getString(Config.STRING_DATA));
 
-//        latLng = data.getParcelable(Config.PARCELABLE_DATA);
-//        if (latLng == null)
-//            latLng = AppController.getInstance().getPrefManager().getLastLatLng();
+        latLng = data.getParcelable(Config.PARCELABLE_DATA);
+        if (latLng == null)
+            latLng = AppController.getInstance().getPrefManager().getLastLatLng();
 
         searchInfo = new SearchInfo(latLng.latitude, latLng.longitude, 0, data.getInt(Config.DATA_TYPE, Config.UNDEFINED));
         clusterTask = new ClusterTask();
@@ -176,7 +179,7 @@ public class MapViewProductActivity extends AppCompatActivity implements OnMapRe
                 finish();
                 return true;
             case R.id.action_filter:
-                startActivityForResult(new Intent(this, FilterActivity.class), Config.REQUEST_FILTER);
+                ActivityCompat.startActivityForResult(this, new Intent(this, FilterActivity.class), Config.REQUEST_FILTER, null);
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -211,17 +214,11 @@ public class MapViewProductActivity extends AppCompatActivity implements OnMapRe
         }
     }
 
+    @SuppressLint("PotentialBehaviorOverride")
     @Override
     public void onMapReady(GoogleMap googleMap) {
         this.googleMap = googleMap;
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return;
         }
         this.googleMap.setMyLocationEnabled(true);
@@ -233,15 +230,19 @@ public class MapViewProductActivity extends AppCompatActivity implements OnMapRe
         clusterManager.setRenderer(productRender);
         clusterManager.setOnClusterClickListener(this);
         clusterManager.setOnClusterItemClickListener(this);
-
-        this.googleMap.setOnCameraChangeListener((GoogleMap.OnCameraChangeListener) clusterManager);
+        this.googleMap.setOnCameraMoveStartedListener(i -> mTimerIsRunning = true);
+        this.googleMap.setOnCameraIdleListener(clusterManager);
         this.googleMap.setOnMarkerClickListener(clusterManager);
     }
 
     @Override
     public boolean onClusterClick(Cluster<ProductItem> cluster) {
-        itemList = (List<ProductItem>) cluster.getItems();
-        clusterAdapter.setItemList(itemList);
+        try {
+            itemList = (List<ProductItem>) cluster.getItems();
+            clusterAdapter.setItemList(itemList);
+        } catch (Exception e) {
+            return false;
+        }
 
         if (marker != null)
             marker.setAlpha((float) 1);
@@ -260,12 +261,12 @@ public class MapViewProductActivity extends AppCompatActivity implements OnMapRe
 
         itemList.clear();
         clusterAdapter.setItemList(itemList);
-        
+
         launchProductDetails(productItem.getId());
         return false;
     }
 
-    private class ProductRender extends DefaultClusterRenderer<ProductItem> implements GoogleMap.OnCameraChangeListener {
+    private class ProductRender extends DefaultClusterRenderer<ProductItem> implements GoogleMap.OnCameraIdleListener {
 
         public ProductRender(Context context, GoogleMap map, ClusterManager<ProductItem> clusterManager) {
             super(context, map, clusterManager);
@@ -275,8 +276,8 @@ public class MapViewProductActivity extends AppCompatActivity implements OnMapRe
         protected void onBeforeClusterItemRendered(ProductItem item, MarkerOptions markerOptions) {
             super.onBeforeClusterItemRendered(item, markerOptions);
 
-//            Bitmap bitmap = Utils.getBitmap(MapViewProductActivity.this, R.drawable.ic_vector_product_item);
-//            markerOptions.icon(BitmapDescriptorFactory.fromBitmap(bitmap));
+            Bitmap bitmap = Utils.getBitmap(MapViewProductActivity.this, R.drawable.ic_vector_product_item);
+            markerOptions.icon(BitmapDescriptorFactory.fromBitmap(bitmap));
         }
 
         @Override
@@ -286,6 +287,7 @@ public class MapViewProductActivity extends AppCompatActivity implements OnMapRe
 
         @Override
         protected void onBeforeClusterRendered(Cluster<ProductItem> cluster, MarkerOptions markerOptions) {
+            Log.e(TAG, "onBeforeClusterItemRendered: " + new Gson().toJson(cluster));
             super.onBeforeClusterRendered(cluster, markerOptions);
         }
 
@@ -295,10 +297,15 @@ public class MapViewProductActivity extends AppCompatActivity implements OnMapRe
         }
 
         @Override
-        public void onCameraChange(CameraPosition cameraPosition) {
-            clusterTask.cancel(true);
-            clusterTask = new ClusterTask();
-            clusterTask.execute(cameraPosition.zoom);
+        public void onCameraIdle() {
+            if (MapViewProductActivity.this.googleMap == null) return;
+            MapViewProductActivity.this.googleMap.clear();
+            if (mTimerIsRunning) {
+                clusterTask.cancel(true);
+                clusterTask = new ClusterTask();
+                clusterTask.execute(MapViewProductActivity.this.googleMap.getCameraPosition().zoom);
+                mTimerIsRunning = false;
+            }
         }
     }
 
@@ -322,7 +329,7 @@ public class MapViewProductActivity extends AppCompatActivity implements OnMapRe
         protected void onPostExecute(Float aFloat) {
             super.onPostExecute(aFloat);
             LatLngBounds bounds = googleMap.getProjection().getVisibleRegion().latLngBounds;
-//            AppController.getInstance().getPrefManager().addLastLatLng(bounds.getCenter(), aFloat);
+            AppController.getInstance().getPrefManager().addLastLatLng(bounds.getCenter(), aFloat);
 
             if (aFloat > 7)
                 fetchProductData(bounds.southwest, bounds.northeast);

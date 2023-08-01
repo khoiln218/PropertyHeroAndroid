@@ -37,6 +37,7 @@ import vn.hellosoft.hellorent.json.DataRequest;
 import vn.hellosoft.hellorent.model.Marker;
 import vn.hellosoft.hellorent.model.Province;
 import vn.hellosoft.helper.L;
+import vn.hellosoft.helper.Utils;
 import vn.hellosoft.ui.DividerItemDecoration;
 import vn.hellosoft.ui.ListViewDialog;
 
@@ -63,7 +64,7 @@ public class FindAreaActivity extends AppCompatActivity implements View.OnClickL
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        vn.hellosoft.helper.Utils.hideSoftKeyboard(this, findViewById(R.id.findAreaLayout));
+        Utils.hideSoftKeyboard(this, findViewById(R.id.findAreaLayout));
 
         inputKeyword = (EditText) findViewById(R.id.inputKeyword);
         tvSelectProvince = (TextView) findViewById(R.id.tvSelectProvince);

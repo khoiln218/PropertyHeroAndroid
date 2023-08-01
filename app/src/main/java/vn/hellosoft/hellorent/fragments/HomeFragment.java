@@ -1,11 +1,8 @@
 package vn.hellosoft.hellorent.fragments;
 
 
-import android.app.Activity;
 import android.content.Intent;
-import android.location.Location;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +10,9 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 
+import androidx.fragment.app.Fragment;
+
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -21,6 +21,7 @@ import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.gson.Gson;
 
 import org.json.JSONObject;
 
@@ -100,18 +101,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public void onStart() {
         super.onStart();
 
-//        googleApi = new GoogleApiHelper(getActivity());
-//        googleApi.checkLocationSettings();
-//        this.listener = new LocationListener() {
-//            @Override
-//            public void onLocationChanged(Location location) {
-//                if (location != null)
-//                    latLng = new LatLng(location.getLatitude(), location.getLongitude());
-//
-//                fetchAttractionNearby();
-//            }
-//        };
-//        googleApi.registerListener(listener);
+        googleApi = new GoogleApiHelper(getActivity());
+        googleApi.checkLocationSettings();
+        this.listener = location -> {
+            latLng = new LatLng(location.getLatitude(), location.getLongitude());
+            fetchAttractionNearby();
+        };
+        googleApi.registerListener(listener);
 
         fetchImageSliderData();
         fetchUniversity();
@@ -120,9 +116,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onPause() {
         super.onPause();
-
-//        if (googleApi.isConnected())
-//            googleApi.disconnect();
     }
 
     @Override
@@ -132,16 +125,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         imageSlider.stopAutoCycle();
 
         AppController.getInstance().cancelPedingRequesrs(TAG);
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == Config.REQUEST_CHECK_SETTINGS && resultCode != Activity.RESULT_OK) {
-            latLng = AppController.getInstance().getPrefManager().getLastLatLng();
-            fetchAttractionNearby();
-        }
     }
 
     @Override
@@ -177,7 +160,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     private void fetchImageSliderData() {
         advList = new ArrayList<>();
-        JsonObjectRequest reqAdv = new JsonObjectRequest(EndPoints.URL_LIST_ADV_MAIN, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest reqAdv = new JsonObjectRequest(Request.Method.GET, EndPoints.URL_LIST_ADV_MAIN, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 advList.addAll(Parser.advList(response));
@@ -244,7 +227,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 .replace(UrlParams.NUM_ITEMS, "3")
                 .replace(UrlParams.LANGUAGE_TYPE, String.valueOf(AppController.getInstance().getPrefManager().getLanguageType()));
 
-        JsonObjectRequest reqAttractionNearby = new JsonObjectRequest(url, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest reqAttractionNearby = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 areaList = Parser.markerList(response);
@@ -265,7 +248,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 .replace(UrlParams.NUM_ITEMS, "3")
                 .replace(UrlParams.LANGUAGE_TYPE, String.valueOf(AppController.getInstance().getPrefManager().getLanguageType()));
 
-        JsonObjectRequest reqUniversity = new JsonObjectRequest(url, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest reqUniversity = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 universityList = Parser.markerList(response);

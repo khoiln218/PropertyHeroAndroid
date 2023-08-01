@@ -1,6 +1,6 @@
-<resources>
-    <string name="app_name">HelloRent</string>
-    <string name="title_activity_login">Đăng nhập HelloRent</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Property Hero</string>
+    <string name="title_activity_login">Đăng nhập Property Hero</string>
     <string name="title_activity_member_regis">Đăng ký thành viên</string>
     <string name="title_activity_create_product">Đăng tin rao</string>
     <string name="title_activity_choose_location">Chọn vị trí</string>
@@ -10,7 +10,7 @@
     <string name="title_activity_management">Quản Lý Thông Tin</string>
 
     <!--API KEY-->
-    <string name="google_app_api">AIzaSyDP0f5gQnGiFJ2BXD17Ms81rer4rw8NP-M</string>
+    <string name="google_app_api">AIzaSyDlPApwRwfEYM-1Fg3RlKNd-zOHjnUITqk</string>
     <string name="server_client_id">872286576235-lmmlrhugen56tn4e54n5coqbr0ciaiv8.apps.googleusercontent.com</string>
     <string name="facebook_app_id">252792145080242</string>
 
@@ -80,12 +80,12 @@
     </integer-array>
 
     <string-array name="management_status_title">
-        <item>Có tất cả ... tin trong hệ thống</item>
-        <item>Có ... tin đang tiến hành quảng cáo</item>
-        <item>Có ... tin kết thúc quảng cáo</item>
-        <item>Có ... tin hoàn thành giao dịch</item>
-        <item>Có ... tin đang kiểm tra</item>
-        <item>Có ... tin sai phạm</item>
+        <item tools:ignore="TypographyEllipsis">Có tất cả ... tin trong hệ thống</item>
+        <item tools:ignore="TypographyEllipsis">Có ... tin đang tiến hành quảng cáo</item>
+        <item tools:ignore="TypographyEllipsis">Có ... tin kết thúc quảng cáo</item>
+        <item tools:ignore="TypographyEllipsis">Có ... tin hoàn thành giao dịch</item>
+        <item tools:ignore="TypographyEllipsis">Có ... tin đang kiểm tra</item>
+        <item tools:ignore="TypographyEllipsis">Có ... tin sai phạm</item>
     </string-array>
 
 
@@ -107,7 +107,7 @@
     <string name="text_language">Ngôn ngữ</string>
     <string name="text_about">Thông tin về Hello Rent</string>
     <string name="text_version">Phiên bản:&#160;</string>
-    <string name="text_copyright">\u00a9... Một sản phẩm của HelloSoft</string>
+    <string name="text_copyright" tools:ignore="TypographyEllipsis">\u00a9... Một sản phẩm của HelloSoft</string>
 
     <string name="text_view_all">Tất Cả</string>
     <string name="text_apartment">Căn Hộ</string>
@@ -122,17 +122,17 @@
     <string name="text_terms">Điều khoản và Thỏa thuận dịch vụ HelloRent</string>
     <string name="text_privacy">Đồng ý với Việc Thu Thập và Sử Dụng Thông Tin cá nhân</string>
 
-    <string name="text_loading">Đang tải dữ liệu...</string>
+    <string name="text_loading" tools:ignore="TypographyEllipsis">Đang tải dữ liệu...</string>
     <string name="text_login">Đăng nhập</string>
     <string name="text_login_success">Đăng nhập thành công</string>
-    <string name="text_msg_login">Đang đăng nhập...</string>
+    <string name="text_msg_login" tools:ignore="TypographyEllipsis">Đang đăng nhập...</string>
     <string name="err_title_login">Sai Username/Password</string>
     <string name="err_msg_login">Vui lòng kiểm tra lại thông tin đăng nhập và thử lại</string>
     <string name="title_acc_locked">Tài khoản bị tạm khóa</string>
     <string name="msg_acc_locked">Vui lòng kiểm tra lại thông tin đăng nhập hoặc liên hệ HelloRent để biết chi tiết</string>
 
     <string name="text_register">Đăng ký</string>
-    <string name="text_msg_reg">Đang đăng ký...</string>
+    <string name="text_msg_reg" tools:ignore="TypographyEllipsis">Đang đăng ký...</string>
     <string name="text_verify_user">Email hoặc số điện thoại đã tồn tại</string>
     <string name="text_verify_phone">Số điện thoại liên hệ đã tồn tại</string>
     <string name="text_register_success">Đăng ký thành công</string>
@@ -216,7 +216,7 @@
     <string name="text_location">Vị trí</string>
     <string name="text_err_location">Vui lòng xác định vị trí trên bản đồ</string>
 
-    <string name="text_hint_image">Số lượng hình ảnh từ 5~20 hình. Phải là hình thực tế không được chụp màn hình điện thoại hoặc PC và không chứa thông tin liên lạc, quảng cáo, wartermark...  </string>
+    <string name="text_hint_image" tools:ignore="TypographyEllipsis">Số lượng hình ảnh từ 5~20 hình. Phải là hình thực tế không được chụp màn hình điện thoại hoặc PC và không chứa thông tin liên lạc, quảng cáo, wartermark...  </string>
 
     <string name="text_details_info">Thông tin chi tiết</string>
     <string name="text_deposit">Tiền cọc</string>
@@ -275,11 +275,11 @@
     <string name="text_hint_management_search">Mã tin, Tiêu đề, Ghi chú</string>
 
     <string name="btn_create_product">Đăng tin</string>
-    <string name="text_msg_create_product">Đang đăng tin...</string>
+    <string name="text_msg_create_product" tools:ignore="TypographyEllipsis">Đang đăng tin...</string>
     <string name="create_product_success">Đăng tin mới thành công</string>
 
     <string name="btn_update">Cập Nhật</string>
-    <string name="text_msg_update">Đang cập nhật...</string>
+    <string name="text_msg_update" tools:ignore="TypographyEllipsis">Đang cập nhật...</string>
     <string name="text_update_success">Cập nhật thành công</string>
 
     <string name="btn_rating">Bình chọn cho Hello Rent</string>
@@ -301,9 +301,9 @@
 
     <string name="text_certified">Đã Xác Thực</string>
     <string name="text_activated">Đang Xác Thực</string>
-    <string name="text_total_items">(Trong khu vực có ... tin)</string>
+    <string name="text_total_items" tools:ignore="TypographyEllipsis">(Trong khu vực có ... tin)</string>
 
-    <string name="title_product">Mã Tin: ...</string>
+    <string name="title_product" tools:ignore="TypographyEllipsis">Mã Tin: ...</string>
     <string name="text_map_bounds">Trong khu vực có</string>
     <string name="text_no_product">Không tìm thấy tin đăng trong khu vực này. vui lòng kiểm tra lại điều kiện tìm kiếm hoặc chuyển sang khu vực khác.</string>
     <string name="text_no_result">Chưa có dữ liệu</string>
@@ -316,34 +316,34 @@
 
     <string name="text_edit_product">Sửa thông tin</string>
     <string name="text_hint_edit_product">Chỉ áp dụng với những tin chưa xác thực hoặc kết thúc xác thực.</string>
-    <string name="msg_edit_product">Tin #... đã xác thực. Vui lòng kết thúc xác thực.</string>
+    <string name="msg_edit_product" tools:ignore="TypographyEllipsis">Tin #... đã xác thực. Vui lòng kết thúc xác thực.</string>
 
     <string name="text_delete_product">Xóa tin rao</string>
     <string name="text_hint_delete_product">Thông tin bị xóa xong không thể phục hồi</string>
-    <string name="title_delete_product">Xóa tin #...</string>
+    <string name="title_delete_product" tools:ignore="TypographyEllipsis">Xóa tin #...</string>
     <string name="text_msg_delete_product">Thông tin bị xóa xong không thể phục hồi. Bạn có muốn tiếp tục xóa?</string>
     <string name="msg_delete_success">Xóa tin thành công</string>
 
     <string name="text_certified_product">Đăng ký xác thực</string>
     <string name="text_hint_certified_product">Nếu tin đã kết thúc xác thực khi đăng ký lại sẽ tương tự như tin mới</string>
     <string name="msg_re_certified_success">Bạn đã yêu cầu xác thực thành công, chúng tôi sẽ liên hệ trong thời gian sớm nhất</string>
-    <string name="title_re_certified">Gia hạn xác thực tin #...</string>
+    <string name="title_re_certified" tools:ignore="TypographyEllipsis">Gia hạn xác thực tin #...</string>
     <string name="msg_re_certified">Tin đã xác thực, bạn muốn tiếp tục gia hạn thêm?</string>
 
     <string name="text_completed_product">Hoàn thành giao dịch</string>
     <string name="text_hint_completed_product">Tin rao đã có người thuê</string>
-    <string name="msg_completed_product">Tin rao #... đã hoàn thành giao dịch</string>
+    <string name="msg_completed_product" tools:ignore="TypographyEllipsis">Tin rao #... đã hoàn thành giao dịch</string>
 
     <string name="text_end_certified_product">Kết thúc xác thực</string>
     <string name="text_hint_end_certified_product">Tin sẽ không được hiển thị trong danh sách tin và được xử lý bảo mật</string>
-    <string name="title_end_certified">Kết thúc xác thực tin #...</string>
+    <string name="title_end_certified" tools:ignore="TypographyEllipsis">Kết thúc xác thực tin #...</string>
     <string name="msg_end_certified">Tin sẽ không được hiển thị trong danh sách tin và được xử lý bảo mật. Bạn có muốn tiếp tục kết thúc xác thực?</string>
-    <string name="text_end_certified_success">Kết thúc xác thực tin #... thành công</string>
-    <string name="text_end_certified_err">Tin #... chưa xác thực, vui lòng kiểm tra lại</string>
+    <string name="text_end_certified_success" tools:ignore="TypographyEllipsis">Kết thúc xác thực tin #... thành công</string>
+    <string name="text_end_certified_err" tools:ignore="TypographyEllipsis">Tin #... chưa xác thực, vui lòng kiểm tra lại</string>
 
     <string name="text_warning">Báo thông tin ảo</string>
     <string name="text_warning_completed">Tin rao đã có người thuê</string>
-    <string name="text_warning_info">Thông tin không chính xác (hình ảnh, địa chỉ, giá thuê...)</string>
+    <string name="text_warning_info" tools:ignore="TypographyEllipsis">Thông tin không chính xác (hình ảnh, địa chỉ, giá thuê...)</string>
     <string name="text_hint_warning_content">Nhập mô tả thêm</string>
     <string name="btn_send_warning">Gửi Thông Báo</string>
     <string name="text_warning_success">Cảm ơn phản hồi của bạn!</string>

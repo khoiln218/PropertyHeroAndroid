@@ -1,20 +1,27 @@
 package vn.hellosoft.hellorent.activities;
 
+import static com.android.volley.Request.Method.GET;
+
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
+
 import androidx.core.app.ActivityCompat;
 import androidx.viewpager.widget.ViewPager;
 import androidx.core.widget.NestedScrollView;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
+
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
+
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -223,13 +230,6 @@ public class ProductDetailsActivity extends AppCompatActivity implements OnMapRe
                     Intent callIntent = new Intent(Intent.ACTION_CALL);
                     callIntent.setData(Uri.parse("tel:" + phone));
                     if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                        // TODO: Consider calling
-                        //    ActivityCompat#requestPermissions
-                        // here to request the missing permissions, and then overriding
-                        //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                        //                                          int[] grantResults)
-                        // to handle the case where the user grants the permission. See the documentation
-                        // for ActivityCompat#requestPermissions for more details.
                         return;
                     }
                     startActivity(callIntent);
@@ -300,6 +300,7 @@ public class ProductDetailsActivity extends AppCompatActivity implements OnMapRe
         });
     }
 
+    @SuppressLint("SetTextI18n")
     private void updateUI() {
         if (product != null) {
             findViewById(R.id.progressLayout).setVisibility(View.GONE);
@@ -327,12 +328,12 @@ public class ProductDetailsActivity extends AppCompatActivity implements OnMapRe
             if (this.googleMap != null) {
                 LatLng center = new LatLng(product.getLatitude(), product.getLongitude());
 
-//                this.googleMap.addCircle(new CircleOptions().center(center)
-//                        .radius(80)
-//                        .strokeColor(Color.WHITE)
-//                        .strokeWidth(3)
-//                        .fillColor(Color.parseColor("#FFC000")));
-//                this.googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(center, 15));
+                this.googleMap.addCircle(new CircleOptions().center(center)
+                        .radius(80)
+                        .strokeColor(Color.WHITE)
+                        .strokeWidth(3)
+                        .fillColor(Color.parseColor("#FFC000")));
+                this.googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(center, 15));
             }
 
             tvAddress.setText(product.getAddresss());
@@ -373,6 +374,8 @@ public class ProductDetailsActivity extends AppCompatActivity implements OnMapRe
                 findViewById(R.id.furnitureLayout).setVisibility(View.GONE);
 
             fetchRelocationData(product.getProvinceID());
+        }else {
+            Log.e(TAG, "updateUI: ");
         }
     }
 
@@ -383,7 +386,7 @@ public class ProductDetailsActivity extends AppCompatActivity implements OnMapRe
         String url = EndPoints.URL_LIST_POWER_LINK
                 .replace(UrlParams.PROVINCE_ID, String.valueOf(provinceID));
 
-        JsonObjectRequest reqPower = new JsonObjectRequest(url, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest reqPower = new JsonObjectRequest(GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 relocationList.clear();

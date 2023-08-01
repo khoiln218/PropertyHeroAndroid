@@ -37,24 +37,24 @@ public class FetchAddressIntentService extends IntentService {
         if (receiver == null)
             return;
 
-//        LatLng location = intent.getParcelableExtra(Config.PARCELABLE_DATA);
-//        if (location == null) {
-//            errMsg = getString(R.string.no_location_data_provided);
-//            deliverResultToReceiver(Config.FAILURE_RESULT, errMsg);
-//            return;
-//        }
+        LatLng location = intent.getParcelableExtra(Config.PARCELABLE_DATA);
+        if (location == null) {
+            errMsg = getString(R.string.no_location_data_provided);
+            deliverResultToReceiver(Config.FAILURE_RESULT, errMsg);
+            return;
+        }
 
         Geocoder geocoder = new Geocoder(this, Locale.getDefault());
         List<Address> addrs = null;
 
-//        try {
-//            addrs = geocoder.getFromLocation(location.latitude, location.longitude, 1);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//            errMsg = getString(R.string.service_not_available);
-//        } catch (IllegalArgumentException illegalArgumentException) {
-//            errMsg = getString(R.string.invalid_location);
-//        }
+        try {
+            addrs = geocoder.getFromLocation(location.latitude, location.longitude, 1);
+        } catch (IOException e) {
+            e.printStackTrace();
+            errMsg = getString(R.string.service_not_available);
+        } catch (IllegalArgumentException illegalArgumentException) {
+            errMsg = getString(R.string.invalid_location);
+        }
 
         if (addrs == null || addrs.size() == 0) {
             if (errMsg.isEmpty())

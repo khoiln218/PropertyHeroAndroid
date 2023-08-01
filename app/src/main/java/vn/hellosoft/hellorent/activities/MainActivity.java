@@ -66,17 +66,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         Fragment fragment = pagerMainAdapter.getItem(pagerMain.getCurrentItem());
-        switch (requestCode) {
-            case Config.REQUEST_CHECK_SETTINGS:
-                if (fragment instanceof HomeFragment)
-                    fragment.onActivityResult(requestCode, resultCode, data);
-                break;
-            case Config.REQUEST_FIND_MARKER:
-                if (resultCode == RESULT_OK)
-                    pagerMain.setCurrentItem(1);
-                break;
+        if (requestCode == Config.REQUEST_FIND_MARKER) {
+            if (resultCode == RESULT_OK)
+                pagerMain.setCurrentItem(1);
         }
-
     }
 
     @Override

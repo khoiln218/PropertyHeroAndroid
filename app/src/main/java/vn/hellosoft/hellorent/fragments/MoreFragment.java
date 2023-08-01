@@ -4,13 +4,16 @@ package vn.hellosoft.hellorent.fragments;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.Fragment;
 
 import com.android.volley.VolleyError;
 import com.squareup.picasso.Picasso;
@@ -23,8 +26,8 @@ import vn.hellosoft.app.Config;
 import vn.hellosoft.hellorent.R;
 import vn.hellosoft.hellorent.activities.AccountDetailsActivity;
 import vn.hellosoft.hellorent.activities.ContactActivity;
-import vn.hellosoft.hellorent.activities.ManagementProductActivity;
 import vn.hellosoft.hellorent.activities.LoginActivity;
+import vn.hellosoft.hellorent.activities.ManagementProductActivity;
 import vn.hellosoft.hellorent.activities.SettingsActivity;
 import vn.hellosoft.hellorent.callbacks.OnAccountRequestListener;
 import vn.hellosoft.hellorent.json.AccountRequest;
@@ -64,6 +67,8 @@ public class MoreFragment extends Fragment implements View.OnClickListener {
         root.findViewById(R.id.btnContact).setOnClickListener(this);
         root.findViewById(R.id.btnManagement).setOnClickListener(this);
         root.findViewById(R.id.btnSettings).setOnClickListener(this);
+
+        setupUI();
 
         return root;
     }
@@ -115,7 +120,7 @@ public class MoreFragment extends Fragment implements View.OnClickListener {
             imgAvatar.setImageResource(R.drawable.vector_action_login);
             tvFullName.setText(getString(R.string.text_login));
             tvUserName.setVisibility(View.GONE);
-            progressLayout.setVisibility(View.VISIBLE);
+            progressLayout.setVisibility(View.GONE);
         }
     }
 
@@ -124,7 +129,7 @@ public class MoreFragment extends Fragment implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.btnAccount:
                 if (account == null) {
-                    startActivityForResult(new Intent(getActivity(), LoginActivity.class), Config.REQUEST_LOGIN);
+                    ActivityCompat.startActivityForResult(requireActivity(), new Intent(getActivity(), LoginActivity.class), Config.REQUEST_LOGIN, null);
                 } else {
                     Intent accDetails = new Intent(getActivity(), AccountDetailsActivity.class);
                     Bundle bundle = new Bundle();

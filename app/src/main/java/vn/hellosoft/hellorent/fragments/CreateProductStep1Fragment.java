@@ -204,23 +204,9 @@ public class CreateProductStep1Fragment extends Fragment implements View.OnClick
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
-//        if (googleApiHelper.isConnected())
-//            googleApiHelper.disconnect();
-    }
-
-    @Override
     public void onMapReady(GoogleMap googleMap) {
         this.googleMap = googleMap;
         if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return;
         }
         this.googleMap.setMyLocationEnabled(true);
@@ -230,23 +216,23 @@ public class CreateProductStep1Fragment extends Fragment implements View.OnClick
 
     @Override
     public void onCameraChange(CameraPosition cameraPosition) {
-//        if (googleMap != null) {
-//            LatLngBounds bounds = this.googleMap.getProjection().getVisibleRegion().latLngBounds;
-//            latLng = bounds.getCenter();
-//
-//            timer = new Timer();
-//            timer.schedule(new TimerTask() {
-//                @Override
-//                public void run() {
-//                    Utils.startAddressService(getActivity(), addressResult, latLng);
-//                }
-//            }, Config.TIMER_DELAY);
-//        }
+        if (googleMap != null) {
+            LatLngBounds bounds = this.googleMap.getProjection().getVisibleRegion().latLngBounds;
+            latLng = bounds.getCenter();
+
+            timer = new Timer();
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    Utils.startAddressService(getActivity(), addressResult, latLng);
+                }
+            }, Config.TIMER_DELAY);
+        }
     }
 
     @Override
     public boolean onMyLocationButtonClick() {
-//        googleApiHelper.checkLocationSettings();
+        googleApiHelper.checkLocationSettings();
         return false;
     }
 

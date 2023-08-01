@@ -2,14 +2,13 @@ package vn.hellosoft.services;
 
 import android.app.IntentService;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import android.util.Log;
+
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-
+import com.google.android.gms.maps.model.LatLng;
 
 import org.json.JSONObject;
 
@@ -19,7 +18,6 @@ import java.io.IOException;
 
 import vn.hellosoft.app.AppController;
 import vn.hellosoft.app.Config;
-import vn.hellosoft.hellorent.R;
 import vn.hellosoft.hellorent.extras.EndPoints;
 import vn.hellosoft.hellorent.json.Parser;
 import vn.hellosoft.hellorent.json.Utils;
@@ -43,21 +41,21 @@ public class RegistrationIntentService extends IntentService {
                 case Config.SUBSCRIBE:
                     // subscribe to a topic
                     String topic = intent.getStringExtra(Config.TOPIC);
-//                    subscribeToTopic(topic);
+                    subscribeToTopic(topic);
                     break;
                 case Config.UNSUBSCRIBE:
                     break;
                 default:
                     String address = intent.getStringExtra(Config.ADDRESS_DATA);
-//                    LatLng latLng = intent.getParcelableExtra(Config.PARCELABLE_DATA);
-//                    registerGCM(address, latLng.latitude, latLng.longitude);
+                    LatLng latLng = intent.getParcelableExtra(Config.PARCELABLE_DATA);
+                    registerGCM(address, latLng.latitude, latLng.longitude);
             }
         }
     }
 
-//    private void registerGCM(String address, double lat, double lng) {
+    private void registerGCM(String address, double lat, double lng) {
 //        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-//
+
 //        try {
 //            InstanceID instanceID = InstanceID.getInstance(this);
 //            String token = instanceID.getToken(getString(R.string.gcm_defaultSenderId), GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
@@ -73,10 +71,10 @@ public class RegistrationIntentService extends IntentService {
 //
 //            sharedPreferences.edit().putBoolean(Config.SENT_TOKEN_TO_SERVER, false).apply();
 //        }
-//        // Notify UI that registration has completed, so the progress indicator can be hidden.
-//        Intent registrationComplete = new Intent(Config.REGISTRATION_COMPLETE);
-//        LocalBroadcastManager.getInstance(this).sendBroadcast(registrationComplete);
-//    }
+        // Notify UI that registration has completed, so the progress indicator can be hidden.
+        Intent registrationComplete = new Intent(Config.REGISTRATION_COMPLETE);
+        LocalBroadcastManager.getInstance(this).sendBroadcast(registrationComplete);
+    }
 
     private void sendRegistrationToServer(String token, String address, double lat, double lng) {
         MultipartRequest reqDevice = new MultipartRequest(EndPoints.URL_CREATE_DEVICE, null, Utils.mimeType, getDevicePathBody(token, address, lat, lng), new Response.Listener<JSONObject>() {
@@ -101,7 +99,7 @@ public class RegistrationIntentService extends IntentService {
     /**
      * Subscribe to a topic
      */
-//    public static void subscribeToTopic(String topic) {
+    public static void subscribeToTopic(String topic) {
 //        GcmPubSub pubSub = GcmPubSub.getInstance(AppController.getInstance().getApplicationContext());
 //        InstanceID instanceID = InstanceID.getInstance(AppController.getInstance().getApplicationContext());
 //        String token = null;
@@ -117,7 +115,7 @@ public class RegistrationIntentService extends IntentService {
 //        } catch (IOException e) {
 //            Log.e(TAG, "Topic subscribe error. Topic: " + topic + ", error: " + e.getMessage());
 //        }
-//    }
+    }
 
     private byte[] getDevicePathBody(String token, String address, double lat, double lng) {
 

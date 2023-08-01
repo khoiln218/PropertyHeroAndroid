@@ -33,6 +33,9 @@ dependencies {
 
     implementation 'androidx.multidex:multidex:2.0.1'
 
+    implementation(platform("com.google.firebase:firebase-bom:32.2.0"))
+    implementation("com.google.firebase:firebase-analytics")
+
     implementation 'com.google.android.gms:play-services-auth:20.6.0'
     implementation 'com.google.android.gms:play-services-location:21.0.1'
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
@@ -40,7 +43,7 @@ dependencies {
     implementation 'com.google.maps.android:android-maps-utils:3.4.0'
     implementation 'com.android.volley:volley:1.2.1'
 
-    implementation 'com.facebook.android:facebook-android-sdk:4.+'
+    implementation 'com.facebook.android:facebook-android-sdk:12.2.0'
 
     implementation 'androidx.appcompat:appcompat:1.0.0'
     implementation 'com.google.android.material:material:1.0.0'

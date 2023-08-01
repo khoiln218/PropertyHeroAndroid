@@ -3,9 +3,13 @@ package vn.hellosoft.hellorent.activities;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Build;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
+
 import androidx.appcompat.widget.Toolbar;
+
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -67,8 +71,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             PermissionHelper.hasAccountsPermission(this);
 
         data = getIntent().getBundleExtra(Config.DATA_EXTRA);
-        if (data == null)
-            finish();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -242,7 +244,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void handleLaunchActivity() {
-        String activity = data.getString(Config.STRING_DATA);
+        String activity = data == null ? "" : data.getString(Config.STRING_DATA);
 
         if (CreateProductActivity.class.getSimpleName().equals(activity)) {
 
@@ -259,7 +261,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         } else if (WarningActivity.class.getSimpleName().equals(activity)) {
 
-            long productID = data.getLong(Config.PRODUCT_ID, 0);
+            long productID = data == null ? 0 : data.getLong(Config.PRODUCT_ID, 0);
             Intent intent = new Intent(this, WarningActivity.class);
             intent.putExtra(Config.PRODUCT_ID, productID);
             startActivity(intent);

@@ -7,13 +7,10 @@ import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Environment;
-import android.provider.MediaStore;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
-import androidx.appcompat.widget.Toolbar;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,6 +18,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
@@ -189,11 +191,11 @@ public class AccountDetailsActivity extends AppCompatActivity implements View.On
                         captureUri = Uri.fromFile(file);
 
                         camera.putExtra(MediaStore.EXTRA_OUTPUT, captureUri);
-                        startActivityForResult(camera, Config.REQUEST_CAMERA);
+                        ActivityCompat.startActivityForResult(AccountDetailsActivity.this, camera, Config.REQUEST_CAMERA, null);
                         break;
                     case 1:
                         Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                        startActivityForResult(gallery, Config.REQUEST_GALLERY);
+                        ActivityCompat.startActivityForResult(AccountDetailsActivity.this, gallery, Config.REQUEST_GALLERY, null);
                         break;
                     default:
                         dialog.dismiss();
@@ -206,7 +208,7 @@ public class AccountDetailsActivity extends AppCompatActivity implements View.On
     }
 
     private void croppingImage() {
-        final ArrayList<CroppingOption> cropOptions = new ArrayList();
+        final ArrayList<CroppingOption> cropOptions = new ArrayList<>();
 
         Intent intent = new Intent("com.android.camera.action.CROP");
         intent.setType("image/*");
@@ -216,7 +218,6 @@ public class AccountDetailsActivity extends AppCompatActivity implements View.On
 
         if (size == 0) {
             Toast.makeText(this, "Cann't find image croping app", Toast.LENGTH_SHORT).show();
-            return;
         } else {
             intent.setData(captureUri);
             intent.putExtra("outputX", 512);
@@ -233,7 +234,7 @@ public class AccountDetailsActivity extends AppCompatActivity implements View.On
                 ResolveInfo res = list.get(0);
 
                 i.setComponent(new ComponentName(res.activityInfo.packageName, res.activityInfo.name));
-                startActivityForResult(i, Config.REQUEST_CROPPING);
+                ActivityCompat.startActivityForResult(this, i, Config.REQUEST_CROPPING, null);
             } else {
                 for (ResolveInfo res : list) {
                     final CroppingOption co = new CroppingOption();
@@ -252,7 +253,7 @@ public class AccountDetailsActivity extends AppCompatActivity implements View.On
                 builder.setAdapter(adapter, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        startActivityForResult(cropOptions.get(which).appIntent, Config.REQUEST_CROPPING);
+                        ActivityCompat.startActivityForResult(AccountDetailsActivity.this, cropOptions.get(which).appIntent, Config.REQUEST_CROPPING, null);
                     }
                 });
 

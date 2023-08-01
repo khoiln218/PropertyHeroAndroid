@@ -113,17 +113,9 @@ public class CreateProductActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         Fragment fragment = adapter.getItem(viewPager.getCurrentItem());
-        switch (requestCode) {
-            case Config.REQUEST_CHECK_SETTINGS:
-                if (fragment instanceof CreateProductStep1Fragment)
-                    fragment.onActivityResult(requestCode, resultCode, data);
-                break;
-            case Config.REQUEST_CAMERA:
-                if (fragment instanceof CreateProductStep2Fragment)
-                    fragment.onActivityResult(requestCode, resultCode, data);
-                break;
-            default:
-                break;
+        if (requestCode == Config.REQUEST_CAMERA) {
+            if (fragment instanceof CreateProductStep2Fragment)
+                fragment.onActivityResult(requestCode, resultCode, data);
         }
     }
 

@@ -20,7 +20,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import androidx.core.content.ContextCompat;
 import android.text.TextUtils;
 import android.view.Display;
 import android.view.MotionEvent;
@@ -29,6 +28,8 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+
+import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.maps.model.LatLng;
 
@@ -124,8 +125,11 @@ public class Utils {
             view.setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
-                    InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
-                    inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
+                    if (activity.getCurrentFocus() != null) {
+                        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+                        if (imm == null) return false;
+                        imm.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), InputMethodManager.RESULT_UNCHANGED_SHOWN);
+                    }
                     return false;
                 }
             });
@@ -252,7 +256,9 @@ public class Utils {
         Cursor cursor = context.getContentResolver().query(Uri.parse(path), null, null, null, null);
         cursor.moveToFirst();
 
-        return cursor.getString(cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA));
+        int col = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+        if (col >= 0) return cursor.getString(col);
+        return null;
     }
 
     public static void launchMapView(Activity activity, String title, LatLng latLng, int type) {
