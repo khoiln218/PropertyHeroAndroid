@@ -8,10 +8,10 @@ import android.database.sqlite.SQLiteStatement;
 import java.util.ArrayList;
 import java.util.List;
 
-import vn.hellosoft.hellorent.model.District;
-import vn.hellosoft.hellorent.model.Info;
-import vn.hellosoft.hellorent.model.Product;
-import vn.hellosoft.hellorent.model.Province;
+import vn.hellosoft.propertyhero.model.District;
+import vn.hellosoft.propertyhero.model.Info;
+import vn.hellosoft.propertyhero.model.Product;
+import vn.hellosoft.propertyhero.model.Province;
 
 /**
  * Created by CTO-HELLOSOFT on 3/31/2016.

@@ -1,0 +1,257 @@
+package vn.hellosoft.propertyhero.activities;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.RelativeLayout;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import com.android.volley.VolleyError;
+import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersDecoration;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import vn.hellosoft.app.AppController;
+import vn.hellosoft.app.Config;
+import vn.hellosoft.propertyhero.R;
+import vn.hellosoft.propertyhero.adapters.ProductListAdapter;
+import vn.hellosoft.propertyhero.callbacks.OnLoadMoreListener;
+import vn.hellosoft.propertyhero.callbacks.OnLoadProductListener;
+import vn.hellosoft.propertyhero.callbacks.OnRecyclerTouchListener;
+import vn.hellosoft.propertyhero.callbacks.RecyclerTouchListner;
+import vn.hellosoft.propertyhero.json.ProductRequest;
+import vn.hellosoft.propertyhero.model.Product;
+import vn.hellosoft.propertyhero.model.SearchInfo;
+import vn.hellosoft.helper.L;
+import vn.hellosoft.ui.DividerItemDecoration;
+
+public class ListViewProductActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener, OnLoadMoreListener {
+
+    private static final String TAG = ListViewProductActivity.class.getSimpleName();
+
+    private SearchInfo searchInfo;
+
+    private int status = Config.PRODUCT_CERTIFIED;
+    private int pageNo = 1;
+
+    private RelativeLayout resultLayout;
+    private SwipeRefreshLayout refreshLayout;
+    private RecyclerView recyclerProduct;
+
+
+    private int totalCertified = 0;
+    private int totalActivated = 0;
+    private List<Product> productList;
+    private ProductListAdapter adapter;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_list_view_product);
+
+        Bundle data = getIntent().getBundleExtra(Config.DATA_EXTRA);
+        if (data == null)
+            finish();
+
+        searchInfo = data.getParcelable(Config.PARCELABLE_DATA);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(data.getString(Config.STRING_DATA));
+
+        resultLayout = (RelativeLayout) findViewById(R.id.resultLayout);
+        resultLayout.setVisibility(View.GONE);
+
+        refreshLayout = (SwipeRefreshLayout) findViewById(R.id.refreshProduct);
+        recyclerProduct = (RecyclerView) findViewById(R.id.recyclerProduct);
+
+        refreshLayout.setRefreshing(true);
+        refreshLayout.setOnRefreshListener(this);
+
+
+        recyclerProduct.setItemAnimator(new DefaultItemAnimator());
+        recyclerProduct.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
+        recyclerProduct.setLayoutManager(new LinearLayoutManager(this));
+
+        productList = new ArrayList<>();
+        productList.add(null);
+        adapter = new ProductListAdapter(productList, recyclerProduct);
+
+        final StickyRecyclerHeadersDecoration headersDecor = new StickyRecyclerHeadersDecoration(adapter);
+        recyclerProduct.addItemDecoration(headersDecor);
+        recyclerProduct.setAdapter(adapter);
+
+        adapter.setLoadMoreListener(this);
+        adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onChanged() {
+                super.onChanged();
+                headersDecor.invalidateHeaders();
+            }
+        });
+
+
+        recyclerProduct.addOnItemTouchListener(new RecyclerTouchListner(this, recyclerProduct, new OnRecyclerTouchListener() {
+            @Override
+            public void onClick(View view, int position) {
+                Intent intent = new Intent(ListViewProductActivity.this, ProductDetailsActivity.class);
+                intent.putExtra(Config.DATA_EXTRA, productList.get(position).getId());
+                startActivity(intent);
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+
+            }
+        }));
+
+        fetchProductList();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_filter, menu);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+            case R.id.action_filter:
+                Intent intent = new Intent(this, FilterActivity.class);
+                intent.putExtra(Config.DATA_EXTRA, Config.UNDEFINED);
+                startActivityForResult(intent, Config.REQUEST_FILTER);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        ProductRequest.cancelRequest();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == Config.REQUEST_FILTER && resultCode == Config.SUCCESS_RESULT) {
+            onRefresh();
+        }
+    }
+
+    @Override
+    public void onRefresh() {
+        totalCertified = 0;
+        totalActivated = 0;
+
+        pageNo = 1;
+        status = Config.PRODUCT_CERTIFIED;
+
+        productList.clear();
+        adapter.addProductList(productList);
+
+        fetchProductList();
+    }
+
+    @Override
+    public void onLoadMore() {
+        if (!adapter.isLoading() && productList.size() < totalCertified + totalActivated) {
+            productList.add(null);
+            adapter.addProductList(productList);
+            pageNo++;
+
+            fetchProductList();
+        }
+    }
+
+    private void fetchProductList() {
+        ProductRequest.cancelRequest();
+        if (adapter != null)
+            adapter.setLoading();
+
+        Map<String, String> filterSet = AppController.getInstance().getPrefManager().getFilterSet();
+        if (searchInfo.getPropertyID() == null)
+            searchInfo.setPropertyID(filterSet.get(Config.KEY_PROPERTY));
+
+        searchInfo.setMinPrice(filterSet.get(Config.KEY_MIN_PRICE));
+        searchInfo.setMaxPrice(filterSet.get(Config.KEY_MAX_PRICE));
+        searchInfo.setMinArea(filterSet.get(Config.KEY_MIN_AREA));
+        searchInfo.setMaxArea(filterSet.get(Config.KEY_MAX_AREA));
+        searchInfo.setBed(filterSet.get(Config.KEY_BED));
+        searchInfo.setBath(filterSet.get(Config.KEY_BATH));
+        searchInfo.setStatus(String.valueOf(status));
+        searchInfo.setPageNo(String.valueOf(pageNo));
+
+        ProductRequest.search(searchInfo, new OnLoadProductListener() {
+            @Override
+            public void onSuccess(List<Product> products, int totalItems) {
+                if (totalItems != 0) {
+                    if (status == Config.PRODUCT_CERTIFIED)
+                        totalCertified = totalItems;
+                    else if (status == Config.PRODUCT_ACTIVATED)
+                        totalActivated = totalItems;
+                }
+
+                if (productList.size() > 0)
+                    productList.remove(productList.size() - 1);
+
+                productList.addAll(products);
+                adapter.addProductList(productList);
+                adapter.addTotalItems(totalCertified, totalActivated);
+
+                updateUI();
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                Log.e(TAG, "Error at fetchProductList()");
+                L.showToast(getString(R.string.request_time_out));
+            }
+        });
+    }
+
+    private void updateUI() {
+        refreshLayout.setRefreshing(false);
+
+        if (productList.size() == 0 && status == Config.PRODUCT_ACTIVATED)
+            resultLayout.setVisibility(View.VISIBLE);
+        else
+            resultLayout.setVisibility(View.GONE);
+
+        if (status == Config.PRODUCT_CERTIFIED && productList.size() == totalCertified) {
+            productList.add(null);
+            adapter.addProductList(productList);
+
+            pageNo = 1;
+            status = Config.PRODUCT_ACTIVATED;
+
+            new Timer().schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    fetchProductList();
+                }
+            }, Config.TIMER_DELAY);
+        }
+    }
+}

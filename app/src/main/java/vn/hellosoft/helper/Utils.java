@@ -48,8 +48,8 @@ import java.util.regex.Pattern;
 
 import vn.hellosoft.app.AppController;
 import vn.hellosoft.app.Config;
-import vn.hellosoft.hellorent.activities.MapViewProductActivity;
-import vn.hellosoft.hellorent.model.Feature;
+import vn.hellosoft.propertyhero.activities.MapViewProductActivity;
+import vn.hellosoft.propertyhero.model.Feature;
 import vn.hellosoft.services.AddressResultReceiver;
 import vn.hellosoft.services.FetchAddressIntentService;
 

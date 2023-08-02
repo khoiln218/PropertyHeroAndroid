@@ -15,7 +15,7 @@ import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
 
 import vn.hellosoft.database.HelloAppDb;
-import vn.hellosoft.hellorent.BuildConfig;
+import vn.hellosoft.propertyhero.BuildConfig;
 
 /**
  * Created by CTO-HELLOSOFT on 3/29/2016.

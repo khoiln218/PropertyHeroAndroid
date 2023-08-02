@@ -15,8 +15,8 @@ import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import vn.hellosoft.app.Config;
-import vn.hellosoft.hellorent.R;
-import vn.hellosoft.hellorent.model.Notify;
+import vn.hellosoft.propertyhero.R;
+import vn.hellosoft.propertyhero.model.Notify;
 
 /**
  * Created by CTO-HELLOSOFT on 5/19/2016.

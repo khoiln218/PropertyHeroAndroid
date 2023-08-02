@@ -7,18 +7,26 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:721105407584:android:41e570bea58319c9853d05",
+        "mobilesdk_app_id": "1:721105407584:android:729d3d13cfe0d95a853d05",
         "android_client_info": {
-          "package_name": "vn.hellosoft.hellorent"
+          "package_name": "vn.hellosoft.propertyhero"
         }
       },
       "oauth_client": [
         {
-          "client_id": "721105407584-otj42e4sg57sad6m3geij9a9gdfggdiu.apps.googleusercontent.com",
+          "client_id": "721105407584-45oqds00jvomakoj32rcrhunnhdh70vo.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "vn.hellosoft.hellorent",
+            "package_name": "vn.hellosoft.propertyhero",
             "certificate_hash": "5ae77e6bcec9cb9571ffc39224c05226c9b33007"
+          }
+        },
+        {
+          "client_id": "721105407584-tvj61von67bdrs59cvc5n4f6ci9e7fof.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "vn.hellosoft.propertyhero",
+            "certificate_hash": "ded2021cb1030a4784e473b176da4229a95554b5"
           }
         },
         {
@@ -28,7 +36,7 @@
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCmT0dbedMCO3Hl8s-VYcveCxtO5hDfAsM"
+          "current_key": "AIzaSyDyZlCV97lybIl_QcwTxPxv0EIYw6tIyJI"
         }
       ],
       "services": {

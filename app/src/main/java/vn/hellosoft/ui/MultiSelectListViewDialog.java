@@ -22,12 +22,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import vn.hellosoft.app.Config;
-import vn.hellosoft.hellorent.R;
-import vn.hellosoft.hellorent.adapters.FeatureListAdapter;
-import vn.hellosoft.hellorent.callbacks.OnLoadFeatureListener;
-import vn.hellosoft.hellorent.callbacks.OnMultiSelectDialogListener;
-import vn.hellosoft.hellorent.json.DataRequest;
-import vn.hellosoft.hellorent.model.Feature;
+import vn.hellosoft.propertyhero.R;
+import vn.hellosoft.propertyhero.adapters.FeatureListAdapter;
+import vn.hellosoft.propertyhero.callbacks.OnLoadFeatureListener;
+import vn.hellosoft.propertyhero.callbacks.OnMultiSelectDialogListener;
+import vn.hellosoft.propertyhero.json.DataRequest;
+import vn.hellosoft.propertyhero.model.Feature;
 
 /**
  * Created by CTO-HELLOSOFT on 4/18/2016.

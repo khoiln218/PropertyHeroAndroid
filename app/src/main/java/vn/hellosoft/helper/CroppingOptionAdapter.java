@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import vn.hellosoft.hellorent.R;
+import vn.hellosoft.propertyhero.R;
 
 /**
  * Created by CTO-HELLOSOFT on 4/21/2016.

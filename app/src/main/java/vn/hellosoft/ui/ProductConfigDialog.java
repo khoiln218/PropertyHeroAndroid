@@ -22,14 +22,14 @@ import androidx.fragment.app.DialogFragment;
 import com.android.volley.VolleyError;
 
 import vn.hellosoft.app.Config;
-import vn.hellosoft.hellorent.R;
-import vn.hellosoft.hellorent.activities.EditProductActivity;
-import vn.hellosoft.hellorent.activities.ProductDetailsActivity;
-import vn.hellosoft.hellorent.callbacks.OnProductConfigListener;
-import vn.hellosoft.hellorent.callbacks.OnResponseListener;
-import vn.hellosoft.hellorent.json.ProductRequest;
-import vn.hellosoft.hellorent.model.Product;
-import vn.hellosoft.hellorent.model.ResponseInfo;
+import vn.hellosoft.propertyhero.R;
+import vn.hellosoft.propertyhero.activities.EditProductActivity;
+import vn.hellosoft.propertyhero.activities.ProductDetailsActivity;
+import vn.hellosoft.propertyhero.callbacks.OnProductConfigListener;
+import vn.hellosoft.propertyhero.callbacks.OnResponseListener;
+import vn.hellosoft.propertyhero.json.ProductRequest;
+import vn.hellosoft.propertyhero.model.Product;
+import vn.hellosoft.propertyhero.model.ResponseInfo;
 import vn.hellosoft.helper.L;
 
 /**

@@ -11,11 +11,11 @@ import android.widget.Toast;
 
 import vn.hellosoft.app.AppController;
 import vn.hellosoft.app.Config;
-import vn.hellosoft.hellorent.R;
-import vn.hellosoft.hellorent.activities.ListViewProductActivity;
-import vn.hellosoft.hellorent.activities.UpdatePhoneNumberActivity;
-import vn.hellosoft.hellorent.model.Marker;
-import vn.hellosoft.hellorent.model.SearchInfo;
+import vn.hellosoft.propertyhero.R;
+import vn.hellosoft.propertyhero.activities.ListViewProductActivity;
+import vn.hellosoft.propertyhero.activities.UpdatePhoneNumberActivity;
+import vn.hellosoft.propertyhero.model.Marker;
+import vn.hellosoft.propertyhero.model.SearchInfo;
 
 /**
  * Created by CTO-HELLOSOFT on 3/29/2016.

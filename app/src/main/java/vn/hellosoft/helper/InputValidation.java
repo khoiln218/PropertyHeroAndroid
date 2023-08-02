@@ -9,7 +9,7 @@ import android.widget.EditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import vn.hellosoft.app.AppController;
-import vn.hellosoft.hellorent.R;
+import vn.hellosoft.propertyhero.R;
 
 /**
  * Created by CTO-HELLOSOFT on 4/6/2016.

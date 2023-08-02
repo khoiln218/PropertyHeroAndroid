@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Locale;
 
 import vn.hellosoft.app.Config;
-import vn.hellosoft.hellorent.R;
+import vn.hellosoft.propertyhero.R;
 
 
 public class FetchAddressIntentService extends IntentService {

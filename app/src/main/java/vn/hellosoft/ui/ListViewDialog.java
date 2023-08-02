@@ -22,10 +22,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import vn.hellosoft.app.Config;
-import vn.hellosoft.hellorent.R;
-import vn.hellosoft.hellorent.adapters.ParcelableListAdapter;
-import vn.hellosoft.hellorent.callbacks.OnListViewDialogListener;
-import vn.hellosoft.hellorent.json.DataRequest;
+import vn.hellosoft.propertyhero.R;
+import vn.hellosoft.propertyhero.adapters.ParcelableListAdapter;
+import vn.hellosoft.propertyhero.callbacks.OnListViewDialogListener;
+import vn.hellosoft.propertyhero.json.DataRequest;
 
 /**
  * Created by CTO-HELLOSOFT on 4/4/2016.

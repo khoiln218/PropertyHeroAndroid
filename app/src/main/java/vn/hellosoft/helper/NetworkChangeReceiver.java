@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
-import vn.hellosoft.hellorent.R;
+import vn.hellosoft.propertyhero.R;
 
 /**
  * Created by CTO-HELLOSOFT on 5/4/2016.

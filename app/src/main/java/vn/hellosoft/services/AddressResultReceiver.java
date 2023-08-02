@@ -5,7 +5,7 @@ import android.os.Handler;
 import android.os.ResultReceiver;
 
 import vn.hellosoft.app.Config;
-import vn.hellosoft.hellorent.callbacks.OnAddressResultListener;
+import vn.hellosoft.propertyhero.callbacks.OnAddressResultListener;
 
 /**
  * Created by CTO-HELLOSOFT on 6/3/2016.

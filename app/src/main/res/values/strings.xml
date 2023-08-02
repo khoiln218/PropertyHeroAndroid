@@ -10,8 +10,7 @@
     <string name="title_activity_management">Quản Lý Thông Tin</string>
 
     <!--API KEY-->
-    <string name="google_app_api">AIzaSyDlPApwRwfEYM-1Fg3RlKNd-zOHjnUITqk</string>
-    <string name="server_client_id">872286576235-lmmlrhugen56tn4e54n5coqbr0ciaiv8.apps.googleusercontent.com</string>
+    <string name="google_app_api">AIzaSyCmT0dbedMCO3Hl8s-VYcveCxtO5hDfAsM</string>
     <string name="facebook_app_id">252792145080242</string>
 
     <!--TODO: Main TabLayout List Icons-->
