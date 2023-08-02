@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import vn.hellosoft.app.Config;
+import vn.hellosoft.helper.Constants;
 import vn.hellosoft.propertyhero.model.Account;
 import vn.hellosoft.propertyhero.model.Advertising;
 import vn.hellosoft.propertyhero.model.District;
@@ -20,7 +21,6 @@ import vn.hellosoft.propertyhero.model.Product;
 import vn.hellosoft.propertyhero.model.Property;
 import vn.hellosoft.propertyhero.model.Province;
 import vn.hellosoft.propertyhero.model.ResponseInfo;
-import vn.hellosoft.helper.Constants;
 
 /**
  * Created by CTO-HELLOSOFT on 3/29/2016.

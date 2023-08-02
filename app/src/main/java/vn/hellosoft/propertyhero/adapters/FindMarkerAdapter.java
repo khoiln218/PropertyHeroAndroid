@@ -13,9 +13,9 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import vn.hellosoft.app.Config;
+import vn.hellosoft.helper.Utils;
 import vn.hellosoft.propertyhero.R;
 import vn.hellosoft.propertyhero.model.Marker;
-import vn.hellosoft.helper.Utils;
 
 /**
  * Created by CTO-HELLOSOFT on 5/5/2016.

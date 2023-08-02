@@ -22,6 +22,7 @@ import androidx.fragment.app.DialogFragment;
 import com.android.volley.VolleyError;
 
 import vn.hellosoft.app.Config;
+import vn.hellosoft.helper.L;
 import vn.hellosoft.propertyhero.R;
 import vn.hellosoft.propertyhero.activities.EditProductActivity;
 import vn.hellosoft.propertyhero.activities.ProductDetailsActivity;
@@ -30,7 +31,6 @@ import vn.hellosoft.propertyhero.callbacks.OnResponseListener;
 import vn.hellosoft.propertyhero.json.ProductRequest;
 import vn.hellosoft.propertyhero.model.Product;
 import vn.hellosoft.propertyhero.model.ResponseInfo;
-import vn.hellosoft.helper.L;
 
 /**
  * Created by CTO-HELLOSOFT on 5/31/2016.

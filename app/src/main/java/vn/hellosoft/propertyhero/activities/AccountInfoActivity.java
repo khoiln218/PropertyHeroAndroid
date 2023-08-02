@@ -33,6 +33,10 @@ import java.util.List;
 
 import vn.hellosoft.app.AppController;
 import vn.hellosoft.app.Config;
+import vn.hellosoft.helper.InputValidation;
+import vn.hellosoft.helper.L;
+import vn.hellosoft.helper.MultipartRequest;
+import vn.hellosoft.helper.Utils;
 import vn.hellosoft.propertyhero.R;
 import vn.hellosoft.propertyhero.callbacks.OnAccountRequestListener;
 import vn.hellosoft.propertyhero.callbacks.OnListViewDialogListener;
@@ -46,10 +50,6 @@ import vn.hellosoft.propertyhero.model.Account;
 import vn.hellosoft.propertyhero.model.District;
 import vn.hellosoft.propertyhero.model.Province;
 import vn.hellosoft.propertyhero.model.ResponseInfo;
-import vn.hellosoft.helper.InputValidation;
-import vn.hellosoft.helper.L;
-import vn.hellosoft.helper.MultipartRequest;
-import vn.hellosoft.helper.Utils;
 import vn.hellosoft.ui.ListViewDialog;
 
 public class AccountInfoActivity extends AppCompatActivity implements View.OnClickListener {

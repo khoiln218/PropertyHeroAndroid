@@ -16,11 +16,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import vn.hellosoft.app.Config;
+import vn.hellosoft.helper.Utils;
 import vn.hellosoft.propertyhero.R;
 import vn.hellosoft.propertyhero.adapters.GalleryAdapter;
 import vn.hellosoft.propertyhero.callbacks.OnRecyclerTouchListener;
 import vn.hellosoft.propertyhero.callbacks.RecyclerTouchListner;
-import vn.hellosoft.helper.Utils;
 
 public class GalleryActivity extends AppCompatActivity {
 

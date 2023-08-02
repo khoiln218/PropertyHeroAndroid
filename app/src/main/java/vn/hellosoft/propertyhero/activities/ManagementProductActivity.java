@@ -28,6 +28,8 @@ import java.util.List;
 
 import vn.hellosoft.app.AppController;
 import vn.hellosoft.app.Config;
+import vn.hellosoft.helper.L;
+import vn.hellosoft.helper.Utils;
 import vn.hellosoft.propertyhero.R;
 import vn.hellosoft.propertyhero.adapters.ManagementAdapter;
 import vn.hellosoft.propertyhero.callbacks.OnLoadMoreListener;
@@ -39,8 +41,6 @@ import vn.hellosoft.propertyhero.json.ProductRequest;
 import vn.hellosoft.propertyhero.model.Info;
 import vn.hellosoft.propertyhero.model.Product;
 import vn.hellosoft.propertyhero.model.ResponseInfo;
-import vn.hellosoft.helper.L;
-import vn.hellosoft.helper.Utils;
 import vn.hellosoft.ui.ProductConfigDialog;
 
 public class ManagementProductActivity extends AppCompatActivity implements View.OnClickListener, SwipeRefreshLayout.OnRefreshListener, OnLoadMoreListener {

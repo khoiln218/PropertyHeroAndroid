@@ -12,9 +12,9 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import vn.hellosoft.helper.Utils;
 import vn.hellosoft.propertyhero.R;
 import vn.hellosoft.propertyhero.model.ProductItem;
-import vn.hellosoft.helper.Utils;
 
 /**
  * Created by CTO-HELLOSOFT on 6/20/2016.

@@ -13,12 +13,12 @@ import java.util.List;
 
 import vn.hellosoft.app.AppController;
 import vn.hellosoft.app.Config;
+import vn.hellosoft.helper.MultipartRequest;
 import vn.hellosoft.propertyhero.callbacks.OnLoadProductListener;
 import vn.hellosoft.propertyhero.callbacks.OnResponseListener;
 import vn.hellosoft.propertyhero.extras.EndPoints;
 import vn.hellosoft.propertyhero.model.Product;
 import vn.hellosoft.propertyhero.model.SearchInfo;
-import vn.hellosoft.helper.MultipartRequest;
 
 /**
  * Created by CTO-HELLOSOFT on 4/20/2016.

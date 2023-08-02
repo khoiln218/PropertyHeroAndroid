@@ -23,13 +23,13 @@ import java.util.Map;
 
 import vn.hellosoft.app.AppController;
 import vn.hellosoft.app.Config;
+import vn.hellosoft.helper.L;
+import vn.hellosoft.helper.Utils;
 import vn.hellosoft.propertyhero.R;
 import vn.hellosoft.propertyhero.callbacks.OnListViewDialogListener;
 import vn.hellosoft.propertyhero.callbacks.OnLoadPropertyListener;
 import vn.hellosoft.propertyhero.json.DataRequest;
 import vn.hellosoft.propertyhero.model.Property;
-import vn.hellosoft.helper.L;
-import vn.hellosoft.helper.Utils;
 import vn.hellosoft.ui.ListViewDialog;
 
 public class FilterActivity extends AppCompatActivity implements View.OnClickListener {

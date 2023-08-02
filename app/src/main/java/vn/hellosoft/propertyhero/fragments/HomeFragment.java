@@ -34,6 +34,8 @@ import java.util.List;
 import vn.hellosoft.app.AppController;
 import vn.hellosoft.app.Config;
 import vn.hellosoft.app.GoogleApiHelper;
+import vn.hellosoft.helper.L;
+import vn.hellosoft.helper.Utils;
 import vn.hellosoft.propertyhero.R;
 import vn.hellosoft.propertyhero.activities.CreateProductActivity;
 import vn.hellosoft.propertyhero.activities.FindAreaActivity;
@@ -44,8 +46,6 @@ import vn.hellosoft.propertyhero.extras.UrlParams;
 import vn.hellosoft.propertyhero.json.Parser;
 import vn.hellosoft.propertyhero.model.Advertising;
 import vn.hellosoft.propertyhero.model.Marker;
-import vn.hellosoft.helper.L;
-import vn.hellosoft.helper.Utils;
 import vn.hellosoft.ui.ChildAnimation;
 import vn.hellosoft.ui.ExpandableHeightGridView;
 

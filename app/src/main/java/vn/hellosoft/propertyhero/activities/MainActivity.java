@@ -22,6 +22,7 @@ import java.util.List;
 
 import vn.hellosoft.app.AppController;
 import vn.hellosoft.app.Config;
+import vn.hellosoft.helper.NetworkChangeReceiver;
 import vn.hellosoft.propertyhero.R;
 import vn.hellosoft.propertyhero.adapters.ViewPagerAdapter;
 import vn.hellosoft.propertyhero.extras.EndPoints;
@@ -32,7 +33,6 @@ import vn.hellosoft.propertyhero.fragments.NotificationFragment;
 import vn.hellosoft.propertyhero.fragments.SearchFragment;
 import vn.hellosoft.propertyhero.json.Parser;
 import vn.hellosoft.propertyhero.model.Notify;
-import vn.hellosoft.helper.NetworkChangeReceiver;
 import vn.hellosoft.ui.NonSwipeableViewPager;
 import vn.hellosoft.ui.NotifyDialog;
 

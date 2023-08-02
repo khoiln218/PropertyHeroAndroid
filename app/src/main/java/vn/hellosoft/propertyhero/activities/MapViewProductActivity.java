@@ -47,6 +47,8 @@ import java.util.Map;
 
 import vn.hellosoft.app.AppController;
 import vn.hellosoft.app.Config;
+import vn.hellosoft.helper.L;
+import vn.hellosoft.helper.Utils;
 import vn.hellosoft.propertyhero.R;
 import vn.hellosoft.propertyhero.adapters.ClusterAdapter;
 import vn.hellosoft.propertyhero.callbacks.OnLoadProductListener;
@@ -56,8 +58,6 @@ import vn.hellosoft.propertyhero.json.ProductRequest;
 import vn.hellosoft.propertyhero.model.Product;
 import vn.hellosoft.propertyhero.model.ProductItem;
 import vn.hellosoft.propertyhero.model.SearchInfo;
-import vn.hellosoft.helper.L;
-import vn.hellosoft.helper.Utils;
 
 @SuppressLint("NonConstantResourceId")
 public class MapViewProductActivity extends AppCompatActivity implements OnMapReadyCallback, View.OnClickListener, ClusterManager.OnClusterClickListener<ProductItem>, ClusterManager.OnClusterItemClickListener<ProductItem> {

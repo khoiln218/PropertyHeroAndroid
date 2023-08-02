@@ -13,6 +13,7 @@ import java.util.List;
 
 import vn.hellosoft.app.AppController;
 import vn.hellosoft.app.Config;
+import vn.hellosoft.helper.MultipartRequest;
 import vn.hellosoft.propertyhero.callbacks.OnLoadDistrictListener;
 import vn.hellosoft.propertyhero.callbacks.OnLoadFeatureListener;
 import vn.hellosoft.propertyhero.callbacks.OnLoadInfoListener;
@@ -25,7 +26,6 @@ import vn.hellosoft.propertyhero.model.District;
 import vn.hellosoft.propertyhero.model.Info;
 import vn.hellosoft.propertyhero.model.Property;
 import vn.hellosoft.propertyhero.model.Province;
-import vn.hellosoft.helper.MultipartRequest;
 
 /**
  * Created by CTO-HELLOSOFT on 4/2/2016.

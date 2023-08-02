@@ -14,10 +14,10 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import vn.hellosoft.app.AppController;
 import vn.hellosoft.app.Config;
-import vn.hellosoft.propertyhero.R;
 import vn.hellosoft.helper.InputValidation;
 import vn.hellosoft.helper.L;
 import vn.hellosoft.helper.Utils;
+import vn.hellosoft.propertyhero.R;
 
 public class ContactActivity extends AppCompatActivity {
 

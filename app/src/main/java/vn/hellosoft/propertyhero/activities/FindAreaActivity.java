@@ -27,6 +27,8 @@ import java.util.TimerTask;
 
 import vn.hellosoft.app.AppController;
 import vn.hellosoft.app.Config;
+import vn.hellosoft.helper.L;
+import vn.hellosoft.helper.Utils;
 import vn.hellosoft.propertyhero.R;
 import vn.hellosoft.propertyhero.adapters.FindMarkerAdapter;
 import vn.hellosoft.propertyhero.callbacks.OnListViewDialogListener;
@@ -37,8 +39,6 @@ import vn.hellosoft.propertyhero.callbacks.RecyclerTouchListner;
 import vn.hellosoft.propertyhero.json.DataRequest;
 import vn.hellosoft.propertyhero.model.Marker;
 import vn.hellosoft.propertyhero.model.Province;
-import vn.hellosoft.helper.L;
-import vn.hellosoft.helper.Utils;
 import vn.hellosoft.ui.DividerItemDecoration;
 import vn.hellosoft.ui.ListViewDialog;
 

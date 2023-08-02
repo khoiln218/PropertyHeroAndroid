@@ -20,13 +20,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import vn.hellosoft.app.Config;
+import vn.hellosoft.helper.L;
+import vn.hellosoft.helper.Utils;
 import vn.hellosoft.propertyhero.R;
 import vn.hellosoft.propertyhero.activities.CreateProductActivity;
 import vn.hellosoft.propertyhero.activities.GalleryActivity;
 import vn.hellosoft.propertyhero.adapters.SelectedImageAdapter;
 import vn.hellosoft.propertyhero.callbacks.OnRecyclerItemClickListener;
-import vn.hellosoft.helper.L;
-import vn.hellosoft.helper.Utils;
 
 /**
  * A simple {@link Fragment} subclass.

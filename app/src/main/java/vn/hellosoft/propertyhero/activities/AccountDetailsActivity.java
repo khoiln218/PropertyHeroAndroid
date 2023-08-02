@@ -36,14 +36,14 @@ import vn.hellosoft.app.AppController;
 import vn.hellosoft.app.CircleTransform;
 import vn.hellosoft.app.Config;
 import vn.hellosoft.app.PermissionHelper;
-import vn.hellosoft.propertyhero.R;
-import vn.hellosoft.propertyhero.callbacks.OnResponseListener;
-import vn.hellosoft.propertyhero.json.AccountRequest;
-import vn.hellosoft.propertyhero.model.ResponseInfo;
 import vn.hellosoft.helper.CroppingOption;
 import vn.hellosoft.helper.CroppingOptionAdapter;
 import vn.hellosoft.helper.L;
 import vn.hellosoft.helper.Utils;
+import vn.hellosoft.propertyhero.R;
+import vn.hellosoft.propertyhero.callbacks.OnResponseListener;
+import vn.hellosoft.propertyhero.json.AccountRequest;
+import vn.hellosoft.propertyhero.model.ResponseInfo;
 
 public class AccountDetailsActivity extends AppCompatActivity implements View.OnClickListener {
 

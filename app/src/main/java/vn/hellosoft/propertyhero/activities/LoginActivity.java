@@ -37,11 +37,11 @@ import java.util.List;
 import vn.hellosoft.app.AppController;
 import vn.hellosoft.app.Config;
 import vn.hellosoft.app.PermissionHelper;
+import vn.hellosoft.helper.L;
 import vn.hellosoft.propertyhero.R;
 import vn.hellosoft.propertyhero.callbacks.OnAccountRequestListener;
 import vn.hellosoft.propertyhero.json.AccountRequest;
 import vn.hellosoft.propertyhero.model.Account;
-import vn.hellosoft.helper.L;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener,
         GoogleApiClient.OnConnectionFailedListener {

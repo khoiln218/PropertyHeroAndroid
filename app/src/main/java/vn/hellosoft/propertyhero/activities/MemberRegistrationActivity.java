@@ -26,6 +26,9 @@ import java.util.List;
 
 import vn.hellosoft.app.AppController;
 import vn.hellosoft.app.Config;
+import vn.hellosoft.helper.InputValidation;
+import vn.hellosoft.helper.L;
+import vn.hellosoft.helper.MultipartRequest;
 import vn.hellosoft.propertyhero.R;
 import vn.hellosoft.propertyhero.callbacks.OnAccountRequestListener;
 import vn.hellosoft.propertyhero.extras.EndPoints;
@@ -34,9 +37,6 @@ import vn.hellosoft.propertyhero.json.Parser;
 import vn.hellosoft.propertyhero.json.Utils;
 import vn.hellosoft.propertyhero.model.Account;
 import vn.hellosoft.propertyhero.model.ResponseInfo;
-import vn.hellosoft.helper.InputValidation;
-import vn.hellosoft.helper.L;
-import vn.hellosoft.helper.MultipartRequest;
 
 public class MemberRegistrationActivity extends AppCompatActivity implements View.OnClickListener {
 

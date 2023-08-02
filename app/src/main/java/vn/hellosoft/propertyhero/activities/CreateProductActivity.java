@@ -26,6 +26,7 @@ import java.util.List;
 import vn.hellosoft.app.AppController;
 import vn.hellosoft.app.Config;
 import vn.hellosoft.app.PermissionHelper;
+import vn.hellosoft.helper.NetworkChangeReceiver;
 import vn.hellosoft.propertyhero.R;
 import vn.hellosoft.propertyhero.adapters.ViewPagerAdapter;
 import vn.hellosoft.propertyhero.fragments.CreateProductStep1Fragment;
@@ -33,7 +34,6 @@ import vn.hellosoft.propertyhero.fragments.CreateProductStep2Fragment;
 import vn.hellosoft.propertyhero.fragments.CreateProductStep3Fragment;
 import vn.hellosoft.propertyhero.fragments.CreateProductStep4Fragment;
 import vn.hellosoft.propertyhero.model.Product;
-import vn.hellosoft.helper.NetworkChangeReceiver;
 import vn.hellosoft.ui.NonSwipeableViewPager;
 
 public class CreateProductActivity extends AppCompatActivity {

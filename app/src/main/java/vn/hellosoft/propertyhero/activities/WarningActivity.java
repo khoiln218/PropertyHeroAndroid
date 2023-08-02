@@ -22,13 +22,13 @@ import java.io.IOException;
 
 import vn.hellosoft.app.AppController;
 import vn.hellosoft.app.Config;
+import vn.hellosoft.helper.L;
+import vn.hellosoft.helper.MultipartRequest;
+import vn.hellosoft.helper.Utils;
 import vn.hellosoft.propertyhero.R;
 import vn.hellosoft.propertyhero.extras.EndPoints;
 import vn.hellosoft.propertyhero.json.Parser;
 import vn.hellosoft.propertyhero.model.ResponseInfo;
-import vn.hellosoft.helper.L;
-import vn.hellosoft.helper.MultipartRequest;
-import vn.hellosoft.helper.Utils;
 
 public class WarningActivity extends AppCompatActivity {
 

@@ -45,6 +45,8 @@ import java.util.List;
 import vn.hellosoft.app.AppController;
 import vn.hellosoft.app.Config;
 import vn.hellosoft.app.PermissionHelper;
+import vn.hellosoft.helper.L;
+import vn.hellosoft.helper.Utils;
 import vn.hellosoft.propertyhero.R;
 import vn.hellosoft.propertyhero.adapters.FeatureRecyclerAdapter;
 import vn.hellosoft.propertyhero.adapters.ImageSlideAdapter;
@@ -61,8 +63,6 @@ import vn.hellosoft.propertyhero.model.Advertising;
 import vn.hellosoft.propertyhero.model.Feature;
 import vn.hellosoft.propertyhero.model.Product;
 import vn.hellosoft.propertyhero.model.ResponseInfo;
-import vn.hellosoft.helper.L;
-import vn.hellosoft.helper.Utils;
 import vn.hellosoft.ui.WorkaroundMapFragment;
 
 public class ProductDetailsActivity extends AppCompatActivity implements OnMapReadyCallback, View.OnClickListener {

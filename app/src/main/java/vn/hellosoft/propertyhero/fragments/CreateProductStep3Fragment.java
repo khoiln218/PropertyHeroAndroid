@@ -20,6 +20,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import vn.hellosoft.app.Config;
+import vn.hellosoft.helper.InputValidation;
+import vn.hellosoft.helper.L;
+import vn.hellosoft.helper.Utils;
 import vn.hellosoft.propertyhero.R;
 import vn.hellosoft.propertyhero.activities.CreateProductActivity;
 import vn.hellosoft.propertyhero.callbacks.OnListViewDialogListener;
@@ -29,9 +32,6 @@ import vn.hellosoft.propertyhero.json.DataRequest;
 import vn.hellosoft.propertyhero.model.Feature;
 import vn.hellosoft.propertyhero.model.Info;
 import vn.hellosoft.propertyhero.model.Product;
-import vn.hellosoft.helper.InputValidation;
-import vn.hellosoft.helper.L;
-import vn.hellosoft.helper.Utils;
 import vn.hellosoft.ui.ListViewDialog;
 import vn.hellosoft.ui.MultiSelectListViewDialog;
 

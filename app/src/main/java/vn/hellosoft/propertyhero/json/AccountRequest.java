@@ -14,12 +14,12 @@ import java.io.IOException;
 
 import vn.hellosoft.app.AppController;
 import vn.hellosoft.app.Config;
+import vn.hellosoft.helper.MultipartRequest;
 import vn.hellosoft.propertyhero.callbacks.OnAccountRequestListener;
 import vn.hellosoft.propertyhero.callbacks.OnResponseListener;
 import vn.hellosoft.propertyhero.extras.EndPoints;
 import vn.hellosoft.propertyhero.extras.UrlParams;
 import vn.hellosoft.propertyhero.model.Account;
-import vn.hellosoft.helper.MultipartRequest;
 
 /**
  * Created by CTO-HELLOSOFT on 4/7/2016.

@@ -21,12 +21,12 @@ import java.util.List;
 
 import vn.hellosoft.app.AppController;
 import vn.hellosoft.app.Config;
+import vn.hellosoft.helper.L;
 import vn.hellosoft.propertyhero.R;
 import vn.hellosoft.propertyhero.extras.EndPoints;
 import vn.hellosoft.propertyhero.extras.UrlParams;
 import vn.hellosoft.propertyhero.json.Parser;
 import vn.hellosoft.propertyhero.model.Info;
-import vn.hellosoft.helper.L;
 
 public class InfoViewActivity extends AppCompatActivity {
 

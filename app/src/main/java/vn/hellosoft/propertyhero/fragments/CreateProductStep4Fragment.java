@@ -22,14 +22,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import vn.hellosoft.app.Config;
+import vn.hellosoft.helper.InputValidation;
+import vn.hellosoft.helper.L;
 import vn.hellosoft.propertyhero.R;
 import vn.hellosoft.propertyhero.activities.CreateProductActivity;
 import vn.hellosoft.propertyhero.callbacks.OnResponseListener;
 import vn.hellosoft.propertyhero.json.ProductRequest;
 import vn.hellosoft.propertyhero.model.Product;
 import vn.hellosoft.propertyhero.model.ResponseInfo;
-import vn.hellosoft.helper.InputValidation;
-import vn.hellosoft.helper.L;
 
 /**
  * A simple {@link Fragment} subclass.
