@@ -6,7 +6,6 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Looper;
 
-import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -46,7 +45,7 @@ public class GoogleApiHelper implements LocationListener {
     }
 
     @Override
-    public void onLocationChanged(@NonNull Location location) {
+    public void onLocationChanged(Location location) {
         for (LocationListener listener : listeners) {
             listener.onLocationChanged(location);
         }
@@ -65,5 +64,12 @@ public class GoogleApiHelper implements LocationListener {
 
     public void removeListener(LocationListener listener) {
         listeners.remove(listener);
+    }
+
+    public void getLastLocation() {
+        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        fusedLocationClient.getLastLocation().addOnSuccessListener(this::onLocationChanged);
     }
 }

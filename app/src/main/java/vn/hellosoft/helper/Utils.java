@@ -1,6 +1,6 @@
 package vn.hellosoft.helper;
 
-import android.annotation.TargetApi;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -43,6 +43,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.regex.Pattern;
 
 import vn.hellosoft.app.AppController;
 import vn.hellosoft.app.Config;
@@ -81,48 +83,23 @@ public class Utils {
         return 0;
     }
 
+    public static boolean isVNPhoneNumber(String phoneNumber) {
+        String regex = "^(\\+84|0)[35789][0-9]{8}$";
+        return Pattern.matches(regex, phoneNumber);
+    }
+
     public static boolean isValidPhoneNumber(String number) {
-
-        try {
-            double isNumber = Double.parseDouble(number);
-            int stChar = Integer.parseInt(Character.toString(number.charAt(0)));
-            int ndChar = Integer.parseInt(Character.toString(number.charAt(1)));
-            int rdChar = Integer.parseInt(Character.toString(number.charAt(2)));
-
-            if (stChar == 0) {
-                if (number.length() == 11 && ndChar == 1)
-                    return true;
-                if (number.length() == 10) {
-                    switch (ndChar) {
-                        case 9:
-                            return true;
-                        case 8:
-                            if (rdChar == 6 || rdChar == 8 || rdChar == 9)
-                                return true;
-                            else
-                                return false;
-                        default:
-                            return false;
-                    }
-                }
-            }
-        } catch (NumberFormatException ex) {
-            ex.printStackTrace();
-        }
-
-        return false;
+        return isVNPhoneNumber(number);
     }
 
     public static boolean isNullOrEmpty(String str) {
-        if (str != null && !str.isEmpty() && !str.equals("null"))
-            return false;
-
-        return true;
+        return str == null || str.isEmpty() || str.equals("null");
     }
 
     public static void hideSoftKeyboard(final Activity activity, View view) {
         if (!(view instanceof EditText)) {
             view.setOnTouchListener(new View.OnTouchListener() {
+                @SuppressLint("ClickableViewAccessibility")
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
                     if (activity.getCurrentFocus() != null) {
@@ -142,7 +119,7 @@ public class Utils {
     }
 
     public static Date strToDate(String str) {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault());
         try {
             return format.parse(str);
         } catch (ParseException e) {
@@ -152,7 +129,7 @@ public class Utils {
     }
 
     public static String dateToString(Date date) {
-        return new SimpleDateFormat("dd/MM/yyyy").format(date);
+        return new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(date);
     }
 
     public static int getScreenWidth() {
@@ -257,15 +234,17 @@ public class Utils {
         cursor.moveToFirst();
 
         int col = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
-        if (col >= 0) return cursor.getString(col);
-        return null;
+        String realPath = null;
+        if (col >= 0) realPath = cursor.getString(col);
+        cursor.close();
+        return realPath;
     }
 
     public static void launchMapView(Activity activity, String title, LatLng latLng, int type) {
         Intent intent = new Intent(activity, MapViewProductActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString(Config.STRING_DATA, title);
-//        bundle.putParcelable(Config.PARCELABLE_DATA, latLng);
+        bundle.putParcelable(Config.PARCELABLE_DATA, latLng);
         bundle.putInt(Config.DATA_TYPE, type);
         intent.putExtra(Config.DATA_EXTRA, bundle);
         activity.startActivityForResult(intent, Config.REQUEST_FIND_MARKER);
@@ -274,7 +253,7 @@ public class Utils {
     public static void startAddressService(Activity activity, AddressResultReceiver addressResult, LatLng location) {
         Intent addressService = new Intent(activity, FetchAddressIntentService.class);
         addressService.putExtra(Config.RECEIVER, addressResult);
-//        addressService.putExtra(Config.PARCELABLE_DATA, location);
+        addressService.putExtra(Config.PARCELABLE_DATA, location);
         activity.startService(addressService);
     }
 
@@ -282,7 +261,7 @@ public class Utils {
         Geocoder coder = new Geocoder(AppController.getInstance().getApplicationContext());
         try {
             List<Address> addressList = coder.getFromLocationName(strAddress, 5);
-            if (addressList.size() > 0 && addressList != null)
+            if (addressList.size() > 0)
                 return new LatLng(addressList.get(0).getLatitude(), addressList.get(0).getLongitude());
         } catch (IOException e) {
             e.printStackTrace();
@@ -317,8 +296,6 @@ public class Utils {
         }
     }
 
-
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private static Bitmap getBitmap(VectorDrawable vectorDrawable) {
         Bitmap bitmap = Bitmap.createBitmap(vectorDrawable.getIntrinsicWidth(),
                 vectorDrawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);

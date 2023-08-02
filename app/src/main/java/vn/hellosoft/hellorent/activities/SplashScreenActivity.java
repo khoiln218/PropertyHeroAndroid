@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.location.Location;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.maps.model.LatLng;
 
+import vn.hellosoft.app.AppController;
 import vn.hellosoft.app.Config;
 import vn.hellosoft.app.GoogleApiHelper;
 import vn.hellosoft.app.PermissionHelper;
@@ -61,7 +63,18 @@ public class SplashScreenActivity extends AppCompatActivity {
             launchUpdateGooglePlay();
 
         googleApiHelper = new GoogleApiHelper(this);
-        googleApiHelper.checkLocationSettings();
+
+        listener = new LocationListener() {
+            @Override
+            public void onLocationChanged(Location location) {
+                if (location != null)
+                    latLng = new LatLng(location.getLatitude(), location.getLongitude());
+                else
+                    latLng = AppController.getInstance().getPrefManager().getLastLatLng();
+
+                startAddressIntent();
+            }
+        };
 
         registrationReceiver = new BroadcastReceiver() {
             @Override
@@ -85,8 +98,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         int resultCode = apiAvailability.isGooglePlayServicesAvailable(this);
         if (resultCode != ConnectionResult.SUCCESS) {
             if (apiAvailability.isUserResolvableError(resultCode)) {
-                apiAvailability.getErrorDialog(this, resultCode, Config.PLAY_SERVICES_RESOLUTION_REQUEST)
-                        .show();
+                apiAvailability.getErrorDialog(this, resultCode, Config.PLAY_SERVICES_RESOLUTION_REQUEST).show();
             } else {
                 Log.i(TAG, "This device is not supported.");
             }
@@ -122,6 +134,22 @@ public class SplashScreenActivity extends AppCompatActivity {
         builder.show();
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == Config.PERMS_REQUEST) {
+            googleApiHelper.getLastLocation();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        googleApiHelper.registerListener(listener);
+        googleApiHelper.getLastLocation();
+        registerReceiver();
+    }
+
     private void registerReceiver() {
         if (!isRegisterReceiver) {
             LocalBroadcastManager.getInstance(this).registerReceiver(registrationReceiver, new IntentFilter(Config.REGISTRATION_COMPLETE));
@@ -130,42 +158,20 @@ public class SplashScreenActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == Config.PERMS_REQUEST)
-            getLocation();
-
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        getLocation();
-        registerReceiver();
-    }
-
-    private void getLocation() {
-        listener = location -> {
-            latLng = new LatLng(location.getLatitude(), location.getLongitude());
-            startAddressIntent();
-        };
-        googleApiHelper.registerListener(listener);
-    }
-
-    @Override
     protected void onPause() {
         super.onPause();
-
         googleApiHelper.removeListener(listener);
+        unregisterReceiver();
+    }
 
-        LocalBroadcastManager.getInstance(this).unregisterReceiver(registrationReceiver);
-        isRegisterReceiver = false;
+    private void unregisterReceiver() {
+        if (isRegisterReceiver) {
+            LocalBroadcastManager.getInstance(this).unregisterReceiver(registrationReceiver);
+            isRegisterReceiver = false;
+        }
     }
 
     private void startAddressIntent() {
-        if (latLng == null)
-            latLng = new LatLng(0, 0);
-
         Intent intent = new Intent(this, FetchAddressIntentService.class);
         intent.putExtra(Config.RECEIVER, addressReceiver);
         intent.putExtra(Config.PARCELABLE_DATA, latLng);
@@ -184,5 +190,4 @@ public class SplashScreenActivity extends AppCompatActivity {
         startActivity(new Intent(this, MainActivity.class));
         finish();
     }
-
 }

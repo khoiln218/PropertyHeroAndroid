@@ -1,7 +1,9 @@
 package vn.hellosoft.hellorent.fragments;
 
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.android.volley.Request;
@@ -97,46 +101,49 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-        googleApi = new GoogleApiHelper(getActivity());
-        googleApi.checkLocationSettings();
-        this.listener = location -> {
-            latLng = new LatLng(location.getLatitude(), location.getLongitude());
-            fetchAttractionNearby();
+        googleApi = new GoogleApiHelper(requireActivity());
+        listener = new LocationListener() {
+            @Override
+            public void onLocationChanged(@NonNull Location location) {
+                latLng = new LatLng(location.getLatitude(), location.getLongitude());
+                fetchAttractionNearby();
+            }
         };
-        googleApi.registerListener(listener);
 
         fetchImageSliderData();
         fetchUniversity();
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
+    public void onStart() {
+        super.onStart();
+        googleApi.registerListener(listener);
+        googleApi.checkLocationSettings();
     }
 
     @Override
     public void onStop() {
         super.onStop();
-
+        googleApi.removeListener(listener);
         imageSlider.stopAutoCycle();
-
         AppController.getInstance().cancelPedingRequesrs(TAG);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnViewAll:
-                Utils.launchMapView(getActivity(), getString(R.string.text_view_all), null, Config.UNDEFINED);
+                Utils.launchMapView(getActivity(), getString(R.string.text_view_all), latLng, Config.UNDEFINED);
                 break;
             case R.id.btnApartment:
-                Utils.launchMapView(getActivity(), getString(R.string.text_apartment), null, Config.PROPERTY_APARTMENT);
+                Utils.launchMapView(getActivity(), getString(R.string.text_apartment), latLng, Config.PROPERTY_APARTMENT);
                 break;
             case R.id.btnRoom:
-                Utils.launchMapView(getActivity(), getString(R.string.text_room), null, Config.PROPERTY_ROOM);
+                Utils.launchMapView(getActivity(), getString(R.string.text_room), latLng, Config.PROPERTY_ROOM);
                 break;
             case R.id.btnFindArea:
                 startActivity(new Intent(getActivity(), FindAreaActivity.class));
