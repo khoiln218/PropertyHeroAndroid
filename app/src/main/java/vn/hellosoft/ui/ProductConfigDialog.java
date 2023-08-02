@@ -7,9 +7,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.fragment.app.DialogFragment;
-import androidx.appcompat.app.AlertDialog;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +14,10 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.DialogFragment;
 
 import com.android.volley.VolleyError;
 
@@ -36,9 +37,8 @@ import vn.hellosoft.helper.L;
  */
 public class ProductConfigDialog extends DialogFragment implements View.OnClickListener {
 
-    private Product product;
-
     public OnProductConfigListener listener;
+    private Product product;
 
     public ProductConfigDialog() {
     }

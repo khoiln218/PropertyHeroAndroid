@@ -1,11 +1,8 @@
 package vn.hellosoft.hellorent.json;
 
-import android.util.Log;
-
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.google.gson.Gson;
 
 import org.json.JSONObject;
 
@@ -16,7 +13,6 @@ import java.util.List;
 
 import vn.hellosoft.app.AppController;
 import vn.hellosoft.app.Config;
-import vn.hellosoft.hellorent.callbacks.OnLoadInfoListener;
 import vn.hellosoft.hellorent.callbacks.OnLoadProductListener;
 import vn.hellosoft.hellorent.callbacks.OnResponseListener;
 import vn.hellosoft.hellorent.extras.EndPoints;

@@ -2,14 +2,11 @@ package vn.hellosoft.app;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.location.Location;
 
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * Created by CTO-HELLOSOFT on 3/29/2016.
@@ -17,14 +14,7 @@ import java.util.Set;
 public class AppPreferenceManager {
 
     private static final String TAG = AppPreferenceManager.class.getSimpleName();
-
-    private SharedPreferences pref;
-    private SharedPreferences.Editor editor;
-    private Context context;
-
-    int PRIVATE_MODE = 0;
     private static final String PREF_NAME = "HelloSoft.HelloRent";
-
     private static final String KEY_TOKEN = "TOKEN";
     private static final String KEY_FIRST_LAUNCH = "FirstLaunch";
     private static final String KEY_LANGUAGE = "LanguageType";
@@ -38,6 +28,10 @@ public class AppPreferenceManager {
     private static final String KEY_ACC_ROLE = "AccountRole";
     private static final String KEY_PASSWORD = "Password";
     private static final String KEY_PROVINCE = "DefaultProvince";
+    int PRIVATE_MODE = 0;
+    private SharedPreferences pref;
+    private SharedPreferences.Editor editor;
+    private Context context;
 
     public AppPreferenceManager(Context context) {
         this.context = context;

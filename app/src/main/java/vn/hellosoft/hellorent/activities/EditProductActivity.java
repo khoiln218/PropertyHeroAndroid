@@ -3,13 +3,9 @@ package vn.hellosoft.hellorent.activities;
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.pm.PackageManager;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcelable;
-import androidx.core.app.ActivityCompat;
-import androidx.core.widget.NestedScrollView;
-import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
-import androidx.appcompat.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -23,6 +19,11 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.widget.NestedScrollView;
 
 import com.android.volley.VolleyError;
 import com.google.android.gms.maps.CameraUpdateFactory;

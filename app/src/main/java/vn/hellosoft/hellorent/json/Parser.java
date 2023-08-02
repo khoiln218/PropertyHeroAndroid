@@ -1,9 +1,5 @@
 package vn.hellosoft.hellorent.json;
 
-import android.util.Log;
-
-import com.google.gson.Gson;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -14,14 +10,14 @@ import java.util.List;
 import vn.hellosoft.app.Config;
 import vn.hellosoft.hellorent.model.Account;
 import vn.hellosoft.hellorent.model.Advertising;
+import vn.hellosoft.hellorent.model.District;
+import vn.hellosoft.hellorent.model.Feature;
 import vn.hellosoft.hellorent.model.GiftCard;
+import vn.hellosoft.hellorent.model.Info;
 import vn.hellosoft.hellorent.model.Marker;
 import vn.hellosoft.hellorent.model.Notify;
 import vn.hellosoft.hellorent.model.Product;
 import vn.hellosoft.hellorent.model.Property;
-import vn.hellosoft.hellorent.model.District;
-import vn.hellosoft.hellorent.model.Feature;
-import vn.hellosoft.hellorent.model.Info;
 import vn.hellosoft.hellorent.model.Province;
 import vn.hellosoft.hellorent.model.ResponseInfo;
 import vn.hellosoft.helper.Constants;

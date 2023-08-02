@@ -1,9 +1,10 @@
 package vn.hellosoft.ui;
 
 import android.content.Context;
-import androidx.viewpager.widget.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+
+import androidx.viewpager.widget.ViewPager;
 
 /**
  * Created by CTO-HELLOSOFT on 3/29/2016.

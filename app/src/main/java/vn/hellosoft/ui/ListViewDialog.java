@@ -6,8 +6,6 @@ import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Parcelable;
-import androidx.annotation.NonNull;
-import androidx.fragment.app.DialogFragment;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
@@ -17,13 +15,16 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.DialogFragment;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import vn.hellosoft.app.Config;
+import vn.hellosoft.hellorent.R;
 import vn.hellosoft.hellorent.adapters.ParcelableListAdapter;
 import vn.hellosoft.hellorent.callbacks.OnListViewDialogListener;
-import vn.hellosoft.hellorent.R;
 import vn.hellosoft.hellorent.json.DataRequest;
 
 /**
@@ -32,14 +33,11 @@ import vn.hellosoft.hellorent.json.DataRequest;
 public class ListViewDialog extends DialogFragment implements AdapterView.OnItemClickListener {
 
     public static final String TAG = ListViewDialog.class.getSimpleName();
-
+    public OnListViewDialogListener listener;
     private ListView lvDialog;
-
     private int dataType;
     private List<Parcelable> parcelableList;
     private ParcelableListAdapter adapter;
-
-    public OnListViewDialogListener listener;
 
     public ListViewDialog() {
     }

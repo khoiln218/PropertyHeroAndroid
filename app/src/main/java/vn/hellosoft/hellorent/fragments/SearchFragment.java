@@ -2,12 +2,14 @@ package vn.hellosoft.hellorent.fragments;
 
 
 import android.os.Bundle;
-import com.google.android.material.tabs.TabLayout;
-import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.tabs.TabLayout;
 
 import vn.hellosoft.hellorent.R;
 import vn.hellosoft.hellorent.adapters.ViewPagerAdapter;
@@ -41,7 +43,7 @@ public class SearchFragment extends Fragment {
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        if(isVisibleToUser) {
+        if (isVisibleToUser) {
             pagerSearch.setOffscreenPageLimit(2);
             pagerSearchAdapter = new ViewPagerAdapter(getFragmentManager());
             pagerSearchAdapter.addFragment(new SearchLocationFragment(), getString(R.string.text_tab_location));

@@ -2,10 +2,7 @@ package vn.hellosoft.hellorent.activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import com.google.android.material.textfield.TextInputLayout;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -13,8 +10,12 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.google.android.material.textfield.TextInputLayout;
 
 import org.json.JSONObject;
 
@@ -25,8 +26,8 @@ import java.util.List;
 
 import vn.hellosoft.app.AppController;
 import vn.hellosoft.app.Config;
-import vn.hellosoft.hellorent.callbacks.OnAccountRequestListener;
 import vn.hellosoft.hellorent.R;
+import vn.hellosoft.hellorent.callbacks.OnAccountRequestListener;
 import vn.hellosoft.hellorent.extras.EndPoints;
 import vn.hellosoft.hellorent.json.AccountRequest;
 import vn.hellosoft.hellorent.json.Parser;

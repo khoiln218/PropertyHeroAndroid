@@ -1,8 +1,6 @@
 package vn.hellosoft.hellorent.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,6 +9,9 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;

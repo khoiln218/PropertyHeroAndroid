@@ -11,10 +11,10 @@
         android:background="@android:color/white"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingBottom="@dimen/layout_margin_half"
         android:paddingLeft="@dimen/layout_margin_quarter"
+        android:paddingTop="@dimen/layout_margin_half"
         android:paddingRight="@dimen/layout_margin_quarter"
-        android:paddingTop="@dimen/layout_margin_half">
+        android:paddingBottom="@dimen/layout_margin_half">
 
         <EditText
             android:id="@+id/inputKeyword"
@@ -26,10 +26,10 @@
             android:drawablePadding="@dimen/layout_margin_half"
             android:hint="@string/text_hint_find_marker"
             android:imeOptions="actionSearch"
-            android:paddingBottom="@dimen/layout_margin_half"
             android:paddingLeft="@dimen/layout_margin_quarter"
-            android:paddingRight="@dimen/layout_margin_quarter"
             android:paddingTop="@dimen/layout_margin_half"
+            android:paddingRight="@dimen/layout_margin_quarter"
+            android:paddingBottom="@dimen/layout_margin_half"
             android:singleLine="true"
             android:textColor="@color/colorSecondaryText"
             android:textSize="@dimen/text_size_secondary" />
@@ -42,10 +42,10 @@
             android:layout_weight="3"
             android:background="@drawable/border_layout"
             android:gravity="center_horizontal"
-            android:paddingBottom="@dimen/layout_margin_half"
             android:paddingLeft="@dimen/layout_margin_quarter"
-            android:paddingRight="@dimen/layout_margin_quarter"
             android:paddingTop="@dimen/layout_margin_half"
+            android:paddingRight="@dimen/layout_margin_quarter"
+            android:paddingBottom="@dimen/layout_margin_half"
             android:singleLine="true"
             android:textColor="@color/colorSecondaryText"
             android:textSize="@dimen/text_size_secondary"

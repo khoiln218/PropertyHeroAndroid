@@ -15,7 +15,7 @@ import java.util.Map;
 /**
  * Created by CTO-HELLOSOFT on 3/29/2016.
  */
-    public class MultipartRequest extends Request<JSONObject> {
+public class MultipartRequest extends Request<JSONObject> {
 
     private Response.Listener<JSONObject> responseListener;
     private Response.ErrorListener errorListener;

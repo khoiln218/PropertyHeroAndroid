@@ -38,8 +38,8 @@
                     android:id="@+id/btnViewAll"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/layout_margin_half"
                     android:layout_marginTop="@dimen/layout_margin"
+                    android:layout_marginBottom="@dimen/layout_margin_half"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
                     android:orientation="vertical">
@@ -67,8 +67,8 @@
                     android:id="@+id/btnApartment"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/layout_margin_half"
                     android:layout_marginTop="@dimen/layout_margin"
+                    android:layout_marginBottom="@dimen/layout_margin_half"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
                     android:orientation="vertical">
@@ -96,8 +96,8 @@
                     android:id="@+id/btnRoom"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/layout_margin_half"
                     android:layout_marginTop="@dimen/layout_margin"
+                    android:layout_marginBottom="@dimen/layout_margin_half"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
                     android:orientation="vertical">
@@ -176,10 +176,10 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/layout_margin"
                     android:layout_marginLeft="@dimen/layout_margin_half"
+                    android:layout_marginTop="@dimen/layout_margin"
                     android:layout_marginRight="@dimen/layout_margin_half"
-                    android:layout_marginTop="@dimen/layout_margin">
+                    android:layout_marginBottom="@dimen/layout_margin">
 
                     <include layout="@layout/item_progress" />
 
@@ -237,10 +237,10 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/layout_margin"
                     android:layout_marginLeft="@dimen/layout_margin_half"
+                    android:layout_marginTop="@dimen/layout_margin"
                     android:layout_marginRight="@dimen/layout_margin_half"
-                    android:layout_marginTop="@dimen/layout_margin">
+                    android:layout_marginBottom="@dimen/layout_margin">
 
                     <include layout="@layout/item_progress" />
 

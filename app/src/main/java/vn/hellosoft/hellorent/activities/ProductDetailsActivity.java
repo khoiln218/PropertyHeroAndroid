@@ -9,19 +9,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
-
-import androidx.core.app.ActivityCompat;
-import androidx.viewpager.widget.ViewPager;
-import androidx.core.widget.NestedScrollView;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.Toolbar;
-
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,6 +17,15 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.widget.NestedScrollView;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -374,7 +371,7 @@ public class ProductDetailsActivity extends AppCompatActivity implements OnMapRe
                 findViewById(R.id.furnitureLayout).setVisibility(View.GONE);
 
             fetchRelocationData(product.getProvinceID());
-        }else {
+        } else {
             Log.e(TAG, "updateUI: ");
         }
     }

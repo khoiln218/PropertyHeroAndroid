@@ -17,6 +17,6 @@
         android:id="@+id/chkImageGallery"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/layout_margin_quarter"
-        android:layout_alignParentRight="true" />
+        android:layout_alignParentRight="true"
+        android:paddingTop="@dimen/layout_margin_quarter" />
 </RelativeLayout>

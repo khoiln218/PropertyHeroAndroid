@@ -33,6 +33,27 @@ public class RegistrationIntentService extends IntentService {
         super(TAG);
     }
 
+    /**
+     * Subscribe to a topic
+     */
+    public static void subscribeToTopic(String topic) {
+//        GcmPubSub pubSub = GcmPubSub.getInstance(AppController.getInstance().getApplicationContext());
+//        InstanceID instanceID = InstanceID.getInstance(AppController.getInstance().getApplicationContext());
+//        String token = null;
+//        try {
+//            token = instanceID.getToken(AppController.getInstance().getApplicationContext().getString(R.string.gcm_defaultSenderId),
+//                    GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
+//            if (token != null) {
+//                pubSub.subscribe(token, "/topics/" + topic, null);
+//                Log.e(TAG, "Subscribed to topic: " + topic);
+//            } else {
+//                Log.e(TAG, "error: gcm registration id is null");
+//            }
+//        } catch (IOException e) {
+//            Log.e(TAG, "Topic subscribe error. Topic: " + topic + ", error: " + e.getMessage());
+//        }
+    }
+
     @Override
     protected void onHandleIntent(Intent intent) {
         if (intent != null) {
@@ -94,27 +115,6 @@ public class RegistrationIntentService extends IntentService {
         });
 
         AppController.getInstance().addToRequestQueue(reqDevice, TAG);
-    }
-
-    /**
-     * Subscribe to a topic
-     */
-    public static void subscribeToTopic(String topic) {
-//        GcmPubSub pubSub = GcmPubSub.getInstance(AppController.getInstance().getApplicationContext());
-//        InstanceID instanceID = InstanceID.getInstance(AppController.getInstance().getApplicationContext());
-//        String token = null;
-//        try {
-//            token = instanceID.getToken(AppController.getInstance().getApplicationContext().getString(R.string.gcm_defaultSenderId),
-//                    GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
-//            if (token != null) {
-//                pubSub.subscribe(token, "/topics/" + topic, null);
-//                Log.e(TAG, "Subscribed to topic: " + topic);
-//            } else {
-//                Log.e(TAG, "error: gcm registration id is null");
-//            }
-//        } catch (IOException e) {
-//            Log.e(TAG, "Topic subscribe error. Topic: " + topic + ", error: " + e.getMessage());
-//        }
     }
 
     private byte[] getDevicePathBody(String token, String address, double lat, double lng) {

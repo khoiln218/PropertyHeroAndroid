@@ -1,8 +1,9 @@
 package vn.hellosoft.hellorent.adapters;
 
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.ProgressBar;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import vn.hellosoft.hellorent.R;
 

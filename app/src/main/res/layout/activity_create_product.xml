@@ -22,10 +22,10 @@
             android:layout_height="wrap_content"
             android:background="#424242"
             android:orientation="horizontal"
-            android:paddingBottom="@dimen/title_margin"
             android:paddingLeft="@dimen/layout_margin"
+            android:paddingTop="@dimen/title_margin"
             android:paddingRight="@dimen/layout_margin"
-            android:paddingTop="@dimen/title_margin">
+            android:paddingBottom="@dimen/title_margin">
 
             <RelativeLayout
                 android:layout_width="match_parent"

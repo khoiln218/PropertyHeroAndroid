@@ -33,10 +33,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/layout_margin_half"
                 android:paddingLeft="@dimen/title_margin"
-                android:paddingRight="@dimen/title_margin"
                 android:paddingTop="@dimen/layout_margin"
+                android:paddingRight="@dimen/title_margin"
+                android:paddingBottom="@dimen/layout_margin_half"
                 android:text="@string/text_notify" />
 
             <LinearLayout
@@ -78,10 +78,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/layout_margin_half"
                 android:paddingLeft="@dimen/title_margin"
-                android:paddingRight="@dimen/title_margin"
                 android:paddingTop="@dimen/layout_margin"
+                android:paddingRight="@dimen/title_margin"
+                android:paddingBottom="@dimen/layout_margin_half"
                 android:text="@string/text_user_setting" />
 
             <TableLayout
@@ -121,8 +121,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/title_margin"
                             android:layout_weight="1"
-                            android:drawablePadding="@dimen/title_margin_half"
                             android:drawableRight="@drawable/vector_arrow_right"
+                            android:drawablePadding="@dimen/title_margin_half"
                             android:gravity="right"
                             android:singleLine="true"
                             android:text="Việt Nam"
@@ -176,8 +176,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/title_margin"
                             android:layout_weight="1"
-                            android:drawablePadding="@dimen/title_margin_half"
                             android:drawableRight="@drawable/vector_arrow_right"
+                            android:drawablePadding="@dimen/title_margin_half"
                             android:gravity="right"
                             android:singleLine="true"
                             android:textColor="@color/colorSecondaryText"
@@ -228,8 +228,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/title_margin"
                             android:layout_weight="1"
-                            android:drawablePadding="@dimen/title_margin_half"
                             android:drawableRight="@drawable/vector_arrow_right"
+                            android:drawablePadding="@dimen/title_margin_half"
                             android:gravity="right"
                             android:singleLine="true"
                             android:text="Tiếng việt"
@@ -263,8 +263,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/title_margin"
                     android:layout_weight="1"
-                    android:drawablePadding="@dimen/title_margin_half"
                     android:drawableRight="@drawable/vector_arrow_right"
+                    android:drawablePadding="@dimen/title_margin_half"
                     android:singleLine="true"
                     android:text="@string/text_about"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -278,20 +278,21 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/title_margin_double"
                 android:layout_weight="1"
                 android:background="@color/colorWindowBackground"
                 android:gravity="bottom"
                 android:orientation="vertical"
-                android:layout_marginTop="@dimen/title_margin_double"
                 android:padding="@dimen/title_margin">
 
                 <TextView
                     android:id="@+id/tvVersion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_secondary"
                     android:gravity="center"
-                    android:textColor="@color/colorSecondaryText" />
+                    android:textColor="@color/colorSecondaryText"
+                    android:textSize="@dimen/text_size_secondary" />
+
                 <TextView
                     android:id="@+id/tvCopyright"
                     android:layout_width="match_parent"

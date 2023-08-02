@@ -1,18 +1,19 @@
 package vn.hellosoft.hellorent.adapters;
 
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import vn.hellosoft.hellorent.callbacks.OnRecyclerItemClickListener;
 import vn.hellosoft.hellorent.R;
+import vn.hellosoft.hellorent.callbacks.OnRecyclerItemClickListener;
 
 /**
  * Created by CTO-HELLOSOFT on 4/15/2016.

@@ -3,12 +3,14 @@ package vn.hellosoft.hellorent.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
-import com.google.android.material.tabs.TabLayout;
-import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.tabs.TabLayout;
 
 import vn.hellosoft.app.AppController;
 import vn.hellosoft.hellorent.R;

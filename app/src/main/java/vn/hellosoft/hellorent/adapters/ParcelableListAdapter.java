@@ -12,10 +12,10 @@ import java.util.List;
 
 import vn.hellosoft.app.Config;
 import vn.hellosoft.hellorent.R;
-import vn.hellosoft.hellorent.model.Property;
 import vn.hellosoft.hellorent.model.District;
 import vn.hellosoft.hellorent.model.Info;
 import vn.hellosoft.hellorent.model.Marker;
+import vn.hellosoft.hellorent.model.Property;
 import vn.hellosoft.hellorent.model.Province;
 
 /**

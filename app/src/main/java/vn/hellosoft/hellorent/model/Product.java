@@ -424,16 +424,16 @@ public class Product implements Parcelable {
         return note;
     }
 
+    public void setNote(String note) {
+        this.note = note;
+    }
+
     public long getAccountID() {
         return accountID;
     }
 
     public void setAccountID(long accountID) {
         this.accountID = accountID;
-    }
-
-    public void setNote(String note) {
-        this.note = note;
     }
 
     public String getContactName() {
@@ -480,16 +480,16 @@ public class Product implements Parcelable {
         return propertyName;
     }
 
+    public void setPropertyName(String propertyName) {
+        this.propertyName = propertyName;
+    }
+
     public int getIsLikeThis() {
         return isLikeThis;
     }
 
     public void setIsLikeThis(int isLikeThis) {
         this.isLikeThis = isLikeThis;
-    }
-
-    public void setPropertyName(String propertyName) {
-        this.propertyName = propertyName;
     }
 
     public String getDirectionName() {

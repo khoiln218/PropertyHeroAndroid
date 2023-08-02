@@ -173,6 +173,7 @@
                 android:orientation="vertical">
 
                 <include layout="@layout/layout_divider_horizontal" />
+
                 <LinearLayout
                     android:id="@+id/btnSettings"
                     android:layout_width="match_parent"
@@ -205,7 +206,8 @@
             </LinearLayout>
         </LinearLayout>
 
-        <include layout="@layout/layout_progress"
-            android:visibility="gone"/>
+        <include
+            layout="@layout/layout_progress"
+            android:visibility="gone" />
     </FrameLayout>
 </androidx.core.widget.NestedScrollView>

@@ -19,7 +19,7 @@ public class WorkaroundMapFragment extends SupportMapFragment {
 
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View layout =  super.onCreateView(layoutInflater, viewGroup, bundle);
+        View layout = super.onCreateView(layoutInflater, viewGroup, bundle);
 
         TouchableWrapper frameLayout = new TouchableWrapper(getActivity());
 

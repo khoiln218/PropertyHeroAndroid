@@ -2,10 +2,8 @@ package vn.hellosoft.hellorent.activities;
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
-import android.os.Parcelable;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.appcompat.widget.Toolbar;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -16,6 +14,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;

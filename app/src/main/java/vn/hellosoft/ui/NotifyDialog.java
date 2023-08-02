@@ -4,11 +4,12 @@ import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import androidx.fragment.app.DialogFragment;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+
+import androidx.fragment.app.DialogFragment;
 
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;

@@ -1,15 +1,16 @@
 package vn.hellosoft.hellorent.activities;
 
 import android.content.Intent;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,7 +56,7 @@ public class GalleryActivity extends AppCompatActivity {
                 CheckBox checkBox = (CheckBox) view.findViewById(R.id.chkImageGallery);
                 boolean checked = !checkBox.isChecked();
                 checkBox.setChecked(checked);
-                if(checked)
+                if (checked)
                     selectedList.add(imageList.get(position));
                 else
                     selectedList.remove(imageList.get(position));

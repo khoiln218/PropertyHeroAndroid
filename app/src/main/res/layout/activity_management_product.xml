@@ -31,10 +31,10 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingBottom="@dimen/layout_margin_half"
             android:paddingLeft="@dimen/layout_margin_quarter"
+            android:paddingTop="@dimen/layout_margin_half"
             android:paddingRight="@dimen/layout_margin_quarter"
-            android:paddingTop="@dimen/layout_margin_half">
+            android:paddingBottom="@dimen/layout_margin_half">
 
 
             <TextView
@@ -44,12 +44,12 @@
                 android:layout_marginRight="@dimen/layout_margin_quarter"
                 android:layout_weight="4"
                 android:background="@drawable/border_layout"
-                android:paddingBottom="@dimen/layout_margin_half"
-                android:paddingLeft="@dimen/layout_margin_quarter"
-                android:paddingRight="@dimen/layout_margin_quarter"
-                android:paddingTop="@dimen/layout_margin_half"
-                android:singleLine="true"
                 android:gravity="center"
+                android:paddingLeft="@dimen/layout_margin_quarter"
+                android:paddingTop="@dimen/layout_margin_half"
+                android:paddingRight="@dimen/layout_margin_quarter"
+                android:paddingBottom="@dimen/layout_margin_half"
+                android:singleLine="true"
                 android:textColor="@color/colorSecondaryText"
                 android:textSize="@dimen/text_size_secondary"
                 android:textStyle="bold" />
@@ -64,10 +64,10 @@
                 android:drawablePadding="@dimen/layout_margin_half"
                 android:hint="@string/text_hint_management_search"
                 android:imeOptions="actionSearch"
-                android:paddingBottom="@dimen/layout_margin_half"
                 android:paddingLeft="@dimen/layout_margin_quarter"
-                android:paddingRight="@dimen/layout_margin_quarter"
                 android:paddingTop="@dimen/layout_margin_half"
+                android:paddingRight="@dimen/layout_margin_quarter"
+                android:paddingBottom="@dimen/layout_margin_half"
                 android:singleLine="true"
                 android:textColor="@color/colorSecondaryText"
                 android:textSize="@dimen/text_size_secondary" />

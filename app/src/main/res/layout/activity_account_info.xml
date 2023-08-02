@@ -32,8 +32,8 @@
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/layout_margin_half"
                 android:layout_marginTop="@dimen/layout_margin"
+                android:layout_marginBottom="@dimen/layout_margin_half"
                 android:background="@android:color/white"
                 android:shrinkColumns="*">
 
@@ -63,8 +63,8 @@
                 </TableRow>
 
                 <TableRow
-                    android:layout_marginBottom="@dimen/title_margin"
-                    android:layout_marginTop="@dimen/title_margin">
+                    android:layout_marginTop="@dimen/title_margin"
+                    android:layout_marginBottom="@dimen/title_margin">
 
                     <View
                         android:layout_width="match_parent"
@@ -97,8 +97,8 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignParentBottom="true"
                             android:layout_alignParentRight="true"
+                            android:layout_alignParentBottom="true"
                             android:adjustViewBounds="true"
                             android:src="@drawable/vector_dropdown_corner" />
 
@@ -113,8 +113,8 @@
                 </TableRow>
 
                 <TableRow
-                    android:layout_marginBottom="@dimen/title_margin"
-                    android:layout_marginTop="@dimen/title_margin">
+                    android:layout_marginTop="@dimen/title_margin"
+                    android:layout_marginBottom="@dimen/title_margin">
 
                     <View
                         android:layout_width="match_parent"
@@ -146,8 +146,8 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignParentBottom="true"
                             android:layout_alignParentRight="true"
+                            android:layout_alignParentBottom="true"
                             android:adjustViewBounds="true"
                             android:src="@drawable/vector_dropdown_corner" />
 
@@ -164,8 +164,8 @@
                 </TableRow>
 
                 <TableRow
-                    android:layout_marginBottom="@dimen/title_margin"
-                    android:layout_marginTop="@dimen/title_margin">
+                    android:layout_marginTop="@dimen/title_margin"
+                    android:layout_marginBottom="@dimen/title_margin">
 
                     <View
                         android:layout_width="match_parent"
@@ -199,8 +199,8 @@
                 </TableRow>
 
                 <TableRow
-                    android:layout_marginBottom="@dimen/title_margin"
-                    android:layout_marginTop="@dimen/title_margin">
+                    android:layout_marginTop="@dimen/title_margin"
+                    android:layout_marginBottom="@dimen/title_margin">
 
                     <View
                         android:layout_width="match_parent"
@@ -233,8 +233,8 @@
                 </TableRow>
 
                 <TableRow
-                    android:layout_marginBottom="@dimen/title_margin"
-                    android:layout_marginTop="@dimen/title_margin">
+                    android:layout_marginTop="@dimen/title_margin"
+                    android:layout_marginBottom="@dimen/title_margin">
 
                     <View
                         android:layout_width="match_parent"
@@ -266,8 +266,8 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignParentBottom="true"
                             android:layout_alignParentRight="true"
+                            android:layout_alignParentBottom="true"
                             android:adjustViewBounds="true"
                             android:src="@drawable/vector_dropdown_corner" />
 
@@ -285,8 +285,8 @@
                 </TableRow>
 
                 <TableRow
-                    android:layout_marginBottom="@dimen/title_margin"
-                    android:layout_marginTop="@dimen/title_margin">
+                    android:layout_marginTop="@dimen/title_margin"
+                    android:layout_marginBottom="@dimen/title_margin">
 
                     <View
                         android:layout_width="match_parent"
@@ -318,8 +318,8 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignParentBottom="true"
                             android:layout_alignParentRight="true"
+                            android:layout_alignParentBottom="true"
                             android:adjustViewBounds="true"
                             android:src="@drawable/vector_dropdown_corner" />
 
@@ -358,7 +358,6 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <include
-        layout="@layout/layout_progress"/>
+    <include layout="@layout/layout_progress" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

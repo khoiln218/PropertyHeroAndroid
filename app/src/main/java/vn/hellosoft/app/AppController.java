@@ -1,10 +1,10 @@
 package vn.hellosoft.app;
 
 import android.content.Context;
+import android.text.TextUtils;
 
 import androidx.multidex.MultiDex;
 import androidx.multidex.MultiDexApplication;
-import android.text.TextUtils;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -32,6 +32,10 @@ public class AppController extends MultiDexApplication {
     private RequestQueue requestQueue;
     private ImageLoader imageLoader;
     private LruBitmapCache lruBitmapCache;
+
+    public static synchronized AppController getInstance() {
+        return appInstance;
+    }
 
     @Override
     protected void attachBaseContext(Context base) {
@@ -67,10 +71,6 @@ public class AppController extends MultiDexApplication {
 
     public Context getAppContext() {
         return appInstance.getApplicationContext();
-    }
-
-    public static synchronized AppController getInstance() {
-        return appInstance;
     }
 
     public AppPreferenceManager getPrefManager() {

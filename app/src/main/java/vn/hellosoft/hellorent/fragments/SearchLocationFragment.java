@@ -3,7 +3,6 @@ package vn.hellosoft.hellorent.fragments;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Parcelable;
-import androidx.fragment.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 import com.android.volley.VolleyError;
 import com.google.android.gms.maps.model.LatLng;

@@ -1,10 +1,11 @@
 package vn.hellosoft.hellorent.callbacks;
 
 import android.content.Context;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by CTO-HELLOSOFT on 5/5/2016.

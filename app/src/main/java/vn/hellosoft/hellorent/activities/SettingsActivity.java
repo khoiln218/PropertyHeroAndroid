@@ -2,14 +2,15 @@ package vn.hellosoft.hellorent.activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.Parcelable;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.appcompat.widget.Toolbar;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.android.volley.VolleyError;
 
@@ -57,7 +58,6 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
 
         progressDialog = L.progressDialog(this, null, getString(R.string.text_loading));
         fetchProvinceData();
-
 
 
         findViewById(R.id.btnProvince).setOnClickListener(this);

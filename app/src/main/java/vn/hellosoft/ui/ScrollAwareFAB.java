@@ -1,11 +1,13 @@
 package vn.hellosoft.ui;
 
 import android.content.Context;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import androidx.core.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.View;
+
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.core.view.ViewCompat;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 /**
  * Created by CTO-HELLOSOFT on 5/16/2016.

@@ -1,9 +1,6 @@
 package vn.hellosoft.services;
 
-import android.content.Intent;
-import android.util.Log;
-
-public class AppInstanceIDListenerService /*extends InstanceIDListenerService */{
+public class AppInstanceIDListenerService /*extends InstanceIDListenerService */ {
 
     public static final String TAG = AppInstanceIDListenerService.class.getSimpleName();
 

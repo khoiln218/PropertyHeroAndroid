@@ -11,10 +11,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/title_margin"
             android:paddingLeft="@dimen/title_margin"
-            android:paddingRight="@dimen/title_margin"
             android:paddingTop="@dimen/layout_margin"
+            android:paddingRight="@dimen/title_margin"
+            android:paddingBottom="@dimen/title_margin"
             android:text="@string/text_content_details" />
 
         <LinearLayout
@@ -57,16 +57,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:maxLength="180"
                 android:hint="@string/text_hint_title_product"
+                android:maxLength="180"
                 android:singleLine="true" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginBottom="@dimen/layout_margin_half"
                 android:layout_marginTop="@dimen/layout_margin"
+                android:layout_marginBottom="@dimen/layout_margin_half"
                 android:orientation="horizontal">
 
                 <TextView
@@ -97,8 +97,8 @@
                 android:gravity="left|top"
                 android:hint="@string/text_hint_content_product"
                 android:inputType="textMultiLine"
-                android:maxLength="3000"
                 android:lines="8"
+                android:maxLength="3000"
                 android:scrollbars="vertical" />
 
         </LinearLayout>

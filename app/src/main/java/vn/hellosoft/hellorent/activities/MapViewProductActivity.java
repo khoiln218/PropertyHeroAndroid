@@ -266,6 +266,61 @@ public class MapViewProductActivity extends AppCompatActivity implements OnMapRe
         return false;
     }
 
+    private void fetchProductData(LatLng southwest, LatLng northeast) {
+        searchInfo.setStartLat(String.valueOf(southwest.latitude));
+        searchInfo.setStartLng(String.valueOf(southwest.longitude));
+        searchInfo.setEndLat(String.valueOf(northeast.latitude));
+        searchInfo.setEndLng(String.valueOf(northeast.longitude));
+
+        Map<String, String> filterSet = AppController.getInstance().getPrefManager().getFilterSet();
+        if (searchInfo.getPropertyID() == null)
+            searchInfo.setPropertyID(filterSet.get(Config.KEY_PROPERTY));
+
+        searchInfo.setMinPrice(filterSet.get(Config.KEY_MIN_PRICE));
+        searchInfo.setMaxPrice(filterSet.get(Config.KEY_MAX_PRICE));
+        searchInfo.setMinArea(filterSet.get(Config.KEY_MIN_AREA));
+        searchInfo.setMaxArea(filterSet.get(Config.KEY_MAX_AREA));
+        searchInfo.setBed(filterSet.get(Config.KEY_BED));
+        searchInfo.setBath(filterSet.get(Config.KEY_BATH));
+        searchInfo.setStatus(String.valueOf(Config.UNDEFINED));
+
+        ProductRequest.search(searchInfo, new OnLoadProductListener() {
+            @Override
+            public void onSuccess(List<Product> products, int totalItems) {
+                tvNumItems.setText(numItems.replace("...", String.valueOf(totalItems)));
+                addItems(products);
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                Log.e(TAG, "Error at fetchProductList()");
+                L.showToast(getString(R.string.request_time_out));
+            }
+        });
+    }
+
+    private void addItems(List<Product> products) {
+        clusterManager.clearItems();
+        if (products.size() == 0) {
+            Snackbar snackbar = Snackbar.make(coordinatorMapView, getString(R.string.text_no_product), Snackbar.LENGTH_LONG);
+            snackbar.show();
+        }
+
+        for (Product obj : products)
+            clusterManager.addItem(new ProductItem(obj.getId(), obj.getThumbnail(), obj.getPrice(), obj.getAddresss(), obj.getLatitude(), obj.getLongitude()));
+
+        clusterManager.cluster();
+
+        if (mapLoading.getVisibility() == View.VISIBLE)
+            mapLoading.setVisibility(View.GONE);
+    }
+
+    private void launchProductDetails(long id) {
+        Intent intent = new Intent(this, ProductDetailsActivity.class);
+        intent.putExtra(Config.DATA_EXTRA, id);
+        startActivity(intent);
+    }
+
     private class ProductRender extends DefaultClusterRenderer<ProductItem> implements GoogleMap.OnCameraIdleListener {
 
         public ProductRender(Context context, GoogleMap map, ClusterManager<ProductItem> clusterManager) {
@@ -334,60 +389,5 @@ public class MapViewProductActivity extends AppCompatActivity implements OnMapRe
             if (aFloat > 7)
                 fetchProductData(bounds.southwest, bounds.northeast);
         }
-    }
-
-    private void fetchProductData(LatLng southwest, LatLng northeast) {
-        searchInfo.setStartLat(String.valueOf(southwest.latitude));
-        searchInfo.setStartLng(String.valueOf(southwest.longitude));
-        searchInfo.setEndLat(String.valueOf(northeast.latitude));
-        searchInfo.setEndLng(String.valueOf(northeast.longitude));
-
-        Map<String, String> filterSet = AppController.getInstance().getPrefManager().getFilterSet();
-        if (searchInfo.getPropertyID() == null)
-            searchInfo.setPropertyID(filterSet.get(Config.KEY_PROPERTY));
-
-        searchInfo.setMinPrice(filterSet.get(Config.KEY_MIN_PRICE));
-        searchInfo.setMaxPrice(filterSet.get(Config.KEY_MAX_PRICE));
-        searchInfo.setMinArea(filterSet.get(Config.KEY_MIN_AREA));
-        searchInfo.setMaxArea(filterSet.get(Config.KEY_MAX_AREA));
-        searchInfo.setBed(filterSet.get(Config.KEY_BED));
-        searchInfo.setBath(filterSet.get(Config.KEY_BATH));
-        searchInfo.setStatus(String.valueOf(Config.UNDEFINED));
-
-        ProductRequest.search(searchInfo, new OnLoadProductListener() {
-            @Override
-            public void onSuccess(List<Product> products, int totalItems) {
-                tvNumItems.setText(numItems.replace("...", String.valueOf(totalItems)));
-                addItems(products);
-            }
-
-            @Override
-            public void onError(VolleyError error) {
-                Log.e(TAG, "Error at fetchProductList()");
-                L.showToast(getString(R.string.request_time_out));
-            }
-        });
-    }
-
-    private void addItems(List<Product> products) {
-        clusterManager.clearItems();
-        if (products.size() == 0) {
-            Snackbar snackbar = Snackbar.make(coordinatorMapView, getString(R.string.text_no_product), Snackbar.LENGTH_LONG);
-            snackbar.show();
-        }
-
-        for (Product obj : products)
-            clusterManager.addItem(new ProductItem(obj.getId(), obj.getThumbnail(), obj.getPrice(), obj.getAddresss(), obj.getLatitude(), obj.getLongitude()));
-
-        clusterManager.cluster();
-
-        if (mapLoading.getVisibility() == View.VISIBLE)
-            mapLoading.setVisibility(View.GONE);
-    }
-
-    private void launchProductDetails(long id) {
-        Intent intent = new Intent(this, ProductDetailsActivity.class);
-        intent.putExtra(Config.DATA_EXTRA, id);
-        startActivity(intent);
     }
 }

@@ -10,7 +10,6 @@ import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
-import java.io.File;
 import java.io.IOException;
 
 import vn.hellosoft.app.AppController;

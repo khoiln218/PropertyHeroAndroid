@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import androidx.fragment.app.DialogFragment;
 import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
@@ -14,6 +13,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import androidx.fragment.app.DialogFragment;
 
 import com.android.volley.VolleyError;
 
@@ -34,15 +35,12 @@ import vn.hellosoft.hellorent.model.Feature;
 public class MultiSelectListViewDialog extends DialogFragment implements View.OnClickListener {
 
     private static final String TAG = MultiSelectListViewDialog.class.getSimpleName();
-
+    public OnMultiSelectDialogListener listener;
     private int dataType;
     private ListView listView;
-
     private List<Feature> featureList;
     private FeatureListAdapter featureAdapter;
     private ArrayList<Feature> selectedItems;
-
-    public OnMultiSelectDialogListener listener;
 
     public MultiSelectListViewDialog() {
     }

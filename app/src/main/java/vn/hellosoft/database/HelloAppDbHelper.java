@@ -11,16 +11,10 @@ import android.util.Log;
  */
 public class HelloAppDbHelper extends SQLiteOpenHelper {
 
-    private static final String TAG = HelloAppDbHelper.class.getSimpleName();
-
-    private static final String DB_NAME = "hellosoft_hellorent_db";
-    private static final int DB_VERSION = 1;
-
     public static final String TABLE_PROVINCE = "Province";
     public static final String TABLE_DISTRICT = "District";
     public static final String TABLE_DIRECTION = "HouseDirection";
     public static final String TABLE_PRODUCT = "Product";
-
     public static final String COL_ID = "Id";
     public static final String COL_NAME = "Name";
     public static final String COL_POSTAL_CODE = "PostalCode";
@@ -33,7 +27,9 @@ public class HelloAppDbHelper extends SQLiteOpenHelper {
     public static final String COL_TITLE = "Title";
     public static final String COL_ADDRESS = "Address";
     public static final String COL_PHONE = "Phone";
-
+    private static final String TAG = HelloAppDbHelper.class.getSimpleName();
+    private static final String DB_NAME = "hellosoft_hellorent_db";
+    private static final int DB_VERSION = 1;
     private static final String CREATE_TABLE_PROVINCE = "CREATE TABLE " + TABLE_PROVINCE
             + " ("
             + COL_ID + " INTEGER PRIMARY KEY, "

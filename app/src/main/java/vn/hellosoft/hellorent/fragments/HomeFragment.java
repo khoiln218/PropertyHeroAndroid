@@ -21,7 +21,6 @@ import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.gson.Gson;
 
 import org.json.JSONObject;
 

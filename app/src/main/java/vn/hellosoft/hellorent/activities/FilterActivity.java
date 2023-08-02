@@ -1,10 +1,8 @@
 package vn.hellosoft.hellorent.activities;
 
 import android.app.ProgressDialog;
-import android.os.Parcelable;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.appcompat.widget.Toolbar;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,6 +11,9 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.android.volley.VolleyError;
 
@@ -141,7 +142,7 @@ public class FilterActivity extends AppCompatActivity implements View.OnClickLis
                     }
                 } else
                     propertyList.addAll(properties);
-                
+
                 updateUI();
                 progressDialog.dismiss();
             }

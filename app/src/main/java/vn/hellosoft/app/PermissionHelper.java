@@ -18,9 +18,9 @@ public class PermissionHelper {
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.READ_EXTERNAL_STORAGE,
     };
-    private static final String CAMERA_PERMS =  Manifest.permission.CAMERA;
-    private static final String PHONE_PERMS =  Manifest.permission.CALL_PHONE;
-    private static final String ACCOUNTS_PERMS =  Manifest.permission.GET_ACCOUNTS;
+    private static final String CAMERA_PERMS = Manifest.permission.CAMERA;
+    private static final String PHONE_PERMS = Manifest.permission.CALL_PHONE;
+    private static final String ACCOUNTS_PERMS = Manifest.permission.GET_ACCOUNTS;
 
     public static void initPermissions(Activity activity) {
         List<String> missingPermissions = new ArrayList<>();

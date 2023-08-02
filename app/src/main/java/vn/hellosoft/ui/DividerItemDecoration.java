@@ -5,20 +5,19 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.view.View;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import android.view.View;
 
 /**
  * Created by CTO-HELLOSOFT on 5/5/2016.
  */
 public class DividerItemDecoration extends RecyclerView.ItemDecoration {
 
-    private static final int[] ATTR = new int[]{android.R.attr.listDivider};
-
     public static final int HORIZONTAL = LinearLayoutManager.HORIZONTAL;
     public static final int VERTICAL = LinearLayoutManager.VERTICAL;
-
+    private static final int[] ATTR = new int[]{android.R.attr.listDivider};
     private Drawable divider;
     private int orientation;
 

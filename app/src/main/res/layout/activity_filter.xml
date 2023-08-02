@@ -38,10 +38,10 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="@dimen/layout_margin_half"
                     android:paddingLeft="@dimen/title_margin"
-                    android:paddingRight="@dimen/title_margin"
                     android:paddingTop="@dimen/layout_margin"
+                    android:paddingRight="@dimen/title_margin"
+                    android:paddingBottom="@dimen/layout_margin_half"
                     android:text="@string/text_property" />
 
                 <TextView
@@ -64,10 +64,10 @@
                 android:layout_height="wrap_content"
                 android:gravity="bottom"
                 android:orientation="horizontal"
-                android:paddingBottom="@dimen/layout_margin_half"
                 android:paddingLeft="@dimen/title_margin"
+                android:paddingTop="@dimen/layout_margin"
                 android:paddingRight="@dimen/title_margin"
-                android:paddingTop="@dimen/layout_margin">
+                android:paddingBottom="@dimen/layout_margin_half">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -89,10 +89,10 @@
                 android:layout_height="wrap_content"
                 android:background="@android:color/white"
                 android:orientation="horizontal"
-                android:paddingBottom="@dimen/layout_margin_half"
                 android:paddingLeft="@dimen/title_margin"
+                android:paddingTop="@dimen/layout_margin_half"
                 android:paddingRight="@dimen/title_margin"
-                android:paddingTop="@dimen/layout_margin_half">
+                android:paddingBottom="@dimen/layout_margin_half">
 
                 <EditText
                     android:id="@+id/inputMinPrice"
@@ -137,10 +137,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/layout_margin_half"
                 android:paddingLeft="@dimen/title_margin"
-                android:paddingRight="@dimen/title_margin"
                 android:paddingTop="@dimen/layout_margin"
+                android:paddingRight="@dimen/title_margin"
+                android:paddingBottom="@dimen/layout_margin_half"
                 android:text="@string/text_gross_floor_area" />
 
             <LinearLayout
@@ -148,10 +148,10 @@
                 android:layout_height="wrap_content"
                 android:background="@android:color/white"
                 android:orientation="horizontal"
-                android:paddingBottom="@dimen/layout_margin_half"
                 android:paddingLeft="@dimen/title_margin"
+                android:paddingTop="@dimen/layout_margin_half"
                 android:paddingRight="@dimen/title_margin"
-                android:paddingTop="@dimen/layout_margin_half">
+                android:paddingBottom="@dimen/layout_margin_half">
 
                 <EditText
                     android:id="@+id/inputMinArea"
@@ -196,10 +196,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/layout_margin_half"
                 android:paddingLeft="@dimen/title_margin"
-                android:paddingRight="@dimen/title_margin"
                 android:paddingTop="@dimen/layout_margin"
+                android:paddingRight="@dimen/title_margin"
+                android:paddingBottom="@dimen/layout_margin_half"
                 android:text="@string/text_beds" />
 
             <RadioGroup
@@ -208,10 +208,10 @@
                 android:layout_height="wrap_content"
                 android:background="@android:color/white"
                 android:orientation="horizontal"
-                android:paddingBottom="@dimen/layout_margin_half"
                 android:paddingLeft="@dimen/title_margin"
+                android:paddingTop="@dimen/layout_margin_half"
                 android:paddingRight="@dimen/title_margin"
-                android:paddingTop="@dimen/layout_margin_half">
+                android:paddingBottom="@dimen/layout_margin_half">
 
                 <RadioButton
                     android:id="@+id/bedAny"
@@ -268,10 +268,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/layout_margin_half"
                 android:paddingLeft="@dimen/title_margin"
-                android:paddingRight="@dimen/title_margin"
                 android:paddingTop="@dimen/layout_margin"
+                android:paddingRight="@dimen/title_margin"
+                android:paddingBottom="@dimen/layout_margin_half"
                 android:text="@string/text_baths" />
 
             <RadioGroup
@@ -280,10 +280,10 @@
                 android:layout_height="wrap_content"
                 android:background="@android:color/white"
                 android:orientation="horizontal"
-                android:paddingBottom="@dimen/layout_margin_half"
                 android:paddingLeft="@dimen/title_margin"
+                android:paddingTop="@dimen/layout_margin_half"
                 android:paddingRight="@dimen/title_margin"
-                android:paddingTop="@dimen/layout_margin_half">
+                android:paddingBottom="@dimen/layout_margin_half">
 
                 <RadioButton
                     android:id="@+id/bathAny"
@@ -341,10 +341,10 @@
                 android:id="@+id/btnUpdateFilter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/layout_margin_double"
                 android:layout_marginLeft="@dimen/layout_margin"
-                android:layout_marginRight="@dimen/layout_margin"
                 android:layout_marginTop="@dimen/layout_margin_double"
+                android:layout_marginRight="@dimen/layout_margin"
+                android:layout_marginBottom="@dimen/layout_margin_double"
                 android:background="@drawable/btn_primary_bg"
                 android:text="@string/btn_update"
                 android:textAllCaps="false"

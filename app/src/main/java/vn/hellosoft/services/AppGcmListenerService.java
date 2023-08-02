@@ -1,9 +1,5 @@
 package vn.hellosoft.services;
 
-import android.os.Bundle;
-import android.util.Log;
-
-
 public class AppGcmListenerService /*extends GcmListenerService*/ {
 
     private static final String TAG = AppGcmListenerService.class.getSimpleName();

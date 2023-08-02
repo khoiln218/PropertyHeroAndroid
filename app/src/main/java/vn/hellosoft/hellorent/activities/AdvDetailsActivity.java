@@ -1,10 +1,11 @@
 package vn.hellosoft.hellorent.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.ImageView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.squareup.picasso.Picasso;
 

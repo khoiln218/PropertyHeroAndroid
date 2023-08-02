@@ -17,8 +17,8 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
             android:adjustViewBounds="true"
             android:src="@drawable/vector_dropdown_corner" />
 
@@ -47,8 +47,8 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
             android:adjustViewBounds="true"
             android:src="@drawable/vector_dropdown_corner" />
 

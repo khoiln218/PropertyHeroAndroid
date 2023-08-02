@@ -36,10 +36,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/title_margin"
                 android:paddingLeft="@dimen/title_margin"
-                android:paddingRight="@dimen/title_margin"
                 android:paddingTop="@dimen/layout_margin"
+                android:paddingRight="@dimen/title_margin"
+                android:paddingBottom="@dimen/title_margin"
                 android:text="@string/text_property" />
             <!--Property-->
             <TextView
@@ -58,10 +58,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/title_margin"
                 android:paddingLeft="@dimen/title_margin"
-                android:paddingRight="@dimen/title_margin"
                 android:paddingTop="@dimen/layout_margin"
+                android:paddingRight="@dimen/title_margin"
+                android:paddingBottom="@dimen/title_margin"
                 android:text="@string/text_key_info" />
 
             <LinearLayout
@@ -104,14 +104,15 @@
                 android:background="@android:color/white"
                 android:orientation="vertical"
                 android:visibility="gone">
+
                 <TextView
                     android:id="@+id/tvBuilding"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:drawableLeft="@drawable/vector_building"
-                    android:drawablePadding="@dimen/layout_margin_half"
                     android:drawableRight="@drawable/vector_arrow_right"
+                    android:drawablePadding="@dimen/layout_margin_half"
                     android:padding="@dimen/title_margin"
                     android:singleLine="true"
                     android:text="@string/text_building"
@@ -148,9 +149,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/btn_primary_bg"
+                    android:enabled="false"
                     android:text="@string/text_location"
-                    android:textColor="@android:color/white"
-                    android:enabled="false"/>
+                    android:textColor="@android:color/white" />
             </LinearLayout>
 
             <include layout="@layout/layout_divider_horizontal" />
@@ -198,10 +199,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/title_margin"
                 android:paddingLeft="@dimen/title_margin"
-                android:paddingRight="@dimen/title_margin"
                 android:paddingTop="@dimen/layout_margin"
+                android:paddingRight="@dimen/title_margin"
+                android:paddingBottom="@dimen/title_margin"
                 android:text="@string/text_details_info" />
 
             <TableLayout
@@ -242,9 +243,9 @@
                 </TableRow>
 
                 <TableRow
-                    android:layout_marginBottom="@dimen/layout_margin_half"
                     android:layout_marginLeft="@dimen/title_margin"
-                    android:layout_marginTop="@dimen/layout_margin_half">
+                    android:layout_marginTop="@dimen/layout_margin_half"
+                    android:layout_marginBottom="@dimen/layout_margin_half">
 
                     <View
                         android:layout_width="match_parent"
@@ -284,8 +285,8 @@
                 </TableRow>
 
                 <TableRow
-                    android:layout_marginBottom="@dimen/title_margin"
-                    android:layout_marginTop="@dimen/title_margin">
+                    android:layout_marginTop="@dimen/title_margin"
+                    android:layout_marginBottom="@dimen/title_margin">
 
                     <View
                         android:layout_width="match_parent"
@@ -319,9 +320,9 @@
                 </TableRow>
 
                 <TableRow
-                    android:layout_marginBottom="@dimen/layout_margin_half"
                     android:layout_marginLeft="@dimen/title_margin"
-                    android:layout_marginTop="@dimen/layout_margin_half">
+                    android:layout_marginTop="@dimen/layout_margin_half"
+                    android:layout_marginBottom="@dimen/layout_margin_half">
 
                     <View
                         android:layout_width="match_parent"
@@ -361,8 +362,8 @@
                 </TableRow>
 
                 <TableRow
-                    android:layout_marginBottom="@dimen/title_margin"
-                    android:layout_marginTop="@dimen/title_margin">
+                    android:layout_marginTop="@dimen/title_margin"
+                    android:layout_marginBottom="@dimen/title_margin">
 
                     <View
                         android:layout_width="match_parent"
@@ -403,9 +404,9 @@
                 </TableRow>
 
                 <TableRow
-                    android:layout_marginBottom="@dimen/layout_margin_half"
                     android:layout_marginLeft="@dimen/title_margin"
                     android:layout_marginTop="@dimen/layout_margin_half"
+                    android:layout_marginBottom="@dimen/layout_margin_half"
                     android:visibility="gone">
 
                     <View
@@ -446,8 +447,8 @@
                 </TableRow>
 
                 <TableRow
-                    android:layout_marginBottom="@dimen/title_margin"
-                    android:layout_marginTop="@dimen/title_margin">
+                    android:layout_marginTop="@dimen/title_margin"
+                    android:layout_marginBottom="@dimen/title_margin">
 
                     <View
                         android:layout_width="match_parent"
@@ -481,9 +482,9 @@
                 </TableRow>
 
                 <TableRow
-                    android:layout_marginBottom="@dimen/layout_margin_half"
                     android:layout_marginLeft="@dimen/title_margin"
-                    android:layout_marginTop="@dimen/layout_margin_half">
+                    android:layout_marginTop="@dimen/layout_margin_half"
+                    android:layout_marginBottom="@dimen/layout_margin_half">
 
                     <View
                         android:layout_width="match_parent"
@@ -518,8 +519,8 @@
                 </TableRow>
 
                 <TableRow
-                    android:layout_marginBottom="@dimen/title_margin"
-                    android:layout_marginTop="@dimen/title_margin">
+                    android:layout_marginTop="@dimen/title_margin"
+                    android:layout_marginBottom="@dimen/title_margin">
 
                     <View
                         android:layout_width="match_parent"
@@ -529,9 +530,9 @@
                 </TableRow>
                 <!--Service Fee-->
                 <TableRow
-                    android:layout_marginBottom="@dimen/title_margin"
                     android:layout_marginLeft="@dimen/title_margin"
-                    android:layout_marginRight="@dimen/title_margin">
+                    android:layout_marginRight="@dimen/title_margin"
+                    android:layout_marginBottom="@dimen/title_margin">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -572,9 +573,9 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="@dimen/layout_margin_half"
                     android:paddingLeft="@dimen/title_margin"
                     android:paddingRight="@dimen/title_margin"
+                    android:paddingBottom="@dimen/layout_margin_half"
                     android:text="@string/text_feature" />
 
 
@@ -583,8 +584,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:color/white"
-                    android:drawablePadding="@dimen/layout_margin_quarter"
                     android:drawableRight="@drawable/vector_arrow_right"
+                    android:drawablePadding="@dimen/layout_margin_quarter"
                     android:padding="@dimen/title_margin"
                     android:singleLine="true"
                     android:text="@string/text_hint_feature"
@@ -604,9 +605,9 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="@dimen/layout_margin_half"
                     android:paddingLeft="@dimen/title_margin"
                     android:paddingRight="@dimen/title_margin"
+                    android:paddingBottom="@dimen/layout_margin_half"
                     android:text="@string/text_furniture" />
 
 
@@ -615,8 +616,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:color/white"
-                    android:drawablePadding="@dimen/layout_margin_quarter"
                     android:drawableRight="@drawable/vector_arrow_right"
+                    android:drawablePadding="@dimen/layout_margin_quarter"
                     android:padding="@dimen/title_margin"
                     android:singleLine="true"
                     android:text="@string/text_hint_furniture"
@@ -629,10 +630,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/title_margin"
                 android:paddingLeft="@dimen/title_margin"
-                android:paddingRight="@dimen/title_margin"
                 android:paddingTop="@dimen/layout_margin"
+                android:paddingRight="@dimen/title_margin"
+                android:paddingBottom="@dimen/title_margin"
                 android:text="@string/text_more_info" />
 
             <LinearLayout
@@ -664,8 +665,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/title_margin"
                         android:layout_weight="1"
-                        android:drawablePadding="@dimen/layout_margin_quarter"
                         android:drawableRight="@drawable/vector_arrow_right"
+                        android:drawablePadding="@dimen/layout_margin_quarter"
                         android:gravity="right"
                         android:singleLine="true"
                         android:textColor="@color/colorSecondaryText"
@@ -765,10 +766,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/title_margin"
                 android:paddingLeft="@dimen/title_margin"
-                android:paddingRight="@dimen/title_margin"
                 android:paddingTop="@dimen/layout_margin"
+                android:paddingRight="@dimen/title_margin"
+                android:paddingBottom="@dimen/title_margin"
                 android:text="@string/text_content_details" />
 
             <LinearLayout
@@ -817,8 +818,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginBottom="@dimen/layout_margin_half"
                     android:layout_marginTop="@dimen/layout_margin"
+                    android:layout_marginBottom="@dimen/layout_margin_half"
                     android:orientation="horizontal">
 
                     <TextView

@@ -3,25 +3,25 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@android:color/white"
-    android:paddingBottom="@dimen/layout_margin_half"
-    android:paddingLeft="@dimen/title_margin">
+    android:paddingLeft="@dimen/title_margin"
+    android:paddingBottom="@dimen/layout_margin_half">
 
     <ImageView
         android:id="@+id/thumbnail"
         android:layout_width="@dimen/product_thumb_side"
         android:layout_height="@dimen/product_thumb_side"
         android:layout_centerVertical="true"
+        android:layout_marginTop="@dimen/layout_margin_half"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
-        android:layout_marginTop="@dimen/layout_margin_half"
         android:src="@drawable/emptyimg" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
         android:layout_marginLeft="@dimen/title_margin"
         android:layout_marginTop="@dimen/layout_margin_half"
-        android:layout_centerVertical="true"
         android:layout_marginRight="@dimen/title_margin"
         android:layout_toRightOf="@+id/thumbnail"
         android:orientation="vertical">

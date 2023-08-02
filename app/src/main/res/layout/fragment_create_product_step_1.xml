@@ -15,10 +15,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/title_margin"
             android:paddingLeft="@dimen/title_margin"
-            android:paddingRight="@dimen/title_margin"
             android:paddingTop="@dimen/layout_margin"
+            android:paddingRight="@dimen/title_margin"
+            android:paddingBottom="@dimen/title_margin"
             android:text="@string/text_hint_property" />
 
         <TextView
@@ -37,10 +37,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/title_margin"
             android:paddingLeft="@dimen/title_margin"
-            android:paddingRight="@dimen/title_margin"
             android:paddingTop="@dimen/layout_margin"
+            android:paddingRight="@dimen/title_margin"
+            android:paddingBottom="@dimen/title_margin"
             android:text="@string/text_key_info" />
         <!--Province - District-->
         <LinearLayout
@@ -90,8 +90,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:drawableLeft="@drawable/vector_building"
-                android:drawablePadding="@dimen/layout_margin_half"
                 android:drawableRight="@drawable/vector_arrow_right"
+                android:drawablePadding="@dimen/layout_margin_half"
                 android:padding="@dimen/title_margin"
                 android:singleLine="true"
                 android:text="@string/text_building"
@@ -128,11 +128,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/btn_primary_bg"
-                android:text="@string/text_location"
+                android:enabled="false"
                 android:paddingLeft="@dimen/title_margin"
                 android:paddingRight="@dimen/title_margin"
-                android:textColor="@android:color/white"
-                android:enabled="false"/>
+                android:text="@string/text_location"
+                android:textColor="@android:color/white" />
         </LinearLayout>
 
         <include layout="@layout/layout_divider_horizontal" />
@@ -182,9 +182,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:layout_marginBottom="@dimen/layout_margin_double"
-            android:layout_marginRight="@dimen/layout_margin"
             android:layout_marginTop="@dimen/layout_margin_double"
+            android:layout_marginRight="@dimen/layout_margin"
+            android:layout_marginBottom="@dimen/layout_margin_double"
             android:background="@drawable/btn_primary_bg"
             android:text="@string/btn_continues"
             android:textColor="@android:color/white" />

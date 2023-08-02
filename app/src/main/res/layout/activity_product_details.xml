@@ -34,16 +34,16 @@
                     android:id="@+id/tvImage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
                     android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
                     android:layout_margin="@dimen/layout_margin_half"
                     android:background="@drawable/btn_float_bg"
                     android:drawableLeft="@drawable/ic_vector_image"
                     android:drawablePadding="@dimen/layout_margin_half"
-                    android:paddingBottom="@dimen/layout_margin_quarter"
                     android:paddingLeft="@dimen/title_margin"
-                    android:paddingRight="@dimen/title_margin"
                     android:paddingTop="@dimen/layout_margin_quarter"
+                    android:paddingRight="@dimen/title_margin"
+                    android:paddingBottom="@dimen/layout_margin_quarter"
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/text_size_secondary" />
             </RelativeLayout>
@@ -101,8 +101,8 @@
                 android:layout_height="wrap_content"
                 android:background="@android:color/white"
                 android:orientation="horizontal"
-                android:paddingBottom="@dimen/layout_margin_half"
-                android:paddingTop="@dimen/layout_margin_half">
+                android:paddingTop="@dimen/layout_margin_half"
+                android:paddingBottom="@dimen/layout_margin_half">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -125,8 +125,8 @@
                         android:layout_height="wrap_content"
                         android:gravity="bottom"
                         android:orientation="horizontal"
-                        android:paddingBottom="@dimen/layout_margin_half"
-                        android:paddingTop="@dimen/layout_margin_quarter">
+                        android:paddingTop="@dimen/layout_margin_quarter"
+                        android:paddingBottom="@dimen/layout_margin_half">
 
                         <TextView
                             android:id="@+id/tvArea"
@@ -169,8 +169,8 @@
                         android:layout_height="wrap_content"
                         android:gravity="bottom"
                         android:orientation="horizontal"
-                        android:paddingBottom="@dimen/layout_margin_half"
-                        android:paddingTop="@dimen/layout_margin_quarter">
+                        android:paddingTop="@dimen/layout_margin_quarter"
+                        android:paddingBottom="@dimen/layout_margin_half">
 
                         <TextView
                             android:id="@+id/tvFloor"
@@ -203,8 +203,8 @@
                         android:layout_height="wrap_content"
                         android:gravity="bottom"
                         android:orientation="horizontal"
-                        android:paddingBottom="@dimen/layout_margin_half"
-                        android:paddingTop="@dimen/layout_margin_quarter">
+                        android:paddingTop="@dimen/layout_margin_quarter"
+                        android:paddingBottom="@dimen/layout_margin_half">
 
                         <TextView
                             android:id="@+id/tvServiceFee"
@@ -248,10 +248,10 @@
                     android:layout_alignParentBottom="true"
                     android:background="@color/colorOverlay"
                     android:gravity="center"
-                    android:paddingBottom="@dimen/title_margin_half"
                     android:paddingLeft="@dimen/title_margin"
-                    android:paddingRight="@dimen/title_margin"
                     android:paddingTop="@dimen/title_margin_half"
+                    android:paddingRight="@dimen/title_margin"
+                    android:paddingBottom="@dimen/title_margin_half"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textColor="@android:color/white" />
 
@@ -262,10 +262,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/title_margin"
                 android:paddingLeft="@dimen/title_margin"
-                android:paddingRight="@dimen/title_margin"
                 android:paddingTop="@dimen/layout_margin"
+                android:paddingRight="@dimen/title_margin"
+                android:paddingBottom="@dimen/title_margin"
                 android:text="@string/text_details_info"
                 android:textColor="@color/colorSecondaryText"
                 android:textSize="@dimen/text_size_primary"
@@ -275,8 +275,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@android:color/white"
-                android:paddingBottom="@dimen/title_margin"
-                android:paddingTop="@dimen/title_margin">
+                android:paddingTop="@dimen/title_margin"
+                android:paddingBottom="@dimen/title_margin">
                 <!--Property-->
                 <TableRow
                     android:layout_marginLeft="@dimen/title_margin"
@@ -302,9 +302,9 @@
                 </TableRow>
 
                 <TableRow
-                    android:layout_marginBottom="@dimen/title_margin"
                     android:layout_marginLeft="@dimen/title_margin"
-                    android:layout_marginTop="@dimen/title_margin">
+                    android:layout_marginTop="@dimen/title_margin"
+                    android:layout_marginBottom="@dimen/title_margin">
 
                     <View
                         android:layout_width="match_parent"
@@ -377,9 +377,9 @@
                 </TableRow>
 
                 <TableRow
-                    android:layout_marginBottom="@dimen/title_margin"
                     android:layout_marginLeft="@dimen/title_margin"
-                    android:layout_marginTop="@dimen/title_margin">
+                    android:layout_marginTop="@dimen/title_margin"
+                    android:layout_marginBottom="@dimen/title_margin">
 
                     <View
                         android:layout_width="match_parent"
@@ -436,9 +436,9 @@
                 </TableRow>
 
                 <TableRow
-                    android:layout_marginBottom="@dimen/title_margin"
                     android:layout_marginLeft="@dimen/title_margin"
-                    android:layout_marginTop="@dimen/title_margin">
+                    android:layout_marginTop="@dimen/title_margin"
+                    android:layout_marginBottom="@dimen/title_margin">
 
                     <View
                         android:layout_width="match_parent"
@@ -485,9 +485,9 @@
                 </TableRow>
 
                 <TableRow
-                    android:layout_marginBottom="@dimen/title_margin"
                     android:layout_marginLeft="@dimen/title_margin"
-                    android:layout_marginTop="@dimen/title_margin">
+                    android:layout_marginTop="@dimen/title_margin"
+                    android:layout_marginBottom="@dimen/title_margin">
 
                     <View
                         android:layout_width="match_parent"
@@ -544,9 +544,9 @@
                 </TableRow>
 
                 <TableRow
-                    android:layout_marginBottom="@dimen/title_margin"
                     android:layout_marginLeft="@dimen/title_margin"
-                    android:layout_marginTop="@dimen/title_margin">
+                    android:layout_marginTop="@dimen/title_margin"
+                    android:layout_marginBottom="@dimen/title_margin">
 
                     <View
                         android:layout_width="match_parent"
@@ -578,9 +578,9 @@
                 </TableRow>
 
                 <TableRow
-                    android:layout_marginBottom="@dimen/title_margin"
                     android:layout_marginLeft="@dimen/title_margin"
-                    android:layout_marginTop="@dimen/title_margin">
+                    android:layout_marginTop="@dimen/title_margin"
+                    android:layout_marginBottom="@dimen/title_margin">
 
                     <View
                         android:layout_width="match_parent"
@@ -612,9 +612,9 @@
                 </TableRow>
 
                 <TableRow
-                    android:layout_marginBottom="@dimen/title_margin"
                     android:layout_marginLeft="@dimen/title_margin"
-                    android:layout_marginTop="@dimen/title_margin">
+                    android:layout_marginTop="@dimen/title_margin"
+                    android:layout_marginBottom="@dimen/title_margin">
 
                     <View
                         android:layout_width="match_parent"
@@ -646,9 +646,9 @@
                 </TableRow>
 
                 <TableRow
-                    android:layout_marginBottom="@dimen/title_margin"
                     android:layout_marginLeft="@dimen/title_margin"
-                    android:layout_marginTop="@dimen/title_margin">
+                    android:layout_marginTop="@dimen/title_margin"
+                    android:layout_marginBottom="@dimen/title_margin">
 
                     <View
                         android:layout_width="match_parent"
@@ -716,10 +716,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/title_margin"
                 android:paddingLeft="@dimen/title_margin"
-                android:paddingRight="@dimen/title_margin"
                 android:paddingTop="@dimen/layout_margin"
+                android:paddingRight="@dimen/title_margin"
+                android:paddingBottom="@dimen/title_margin"
                 android:text="@string/text_relocation"
                 android:textColor="@color/colorSecondaryText"
                 android:textSize="@dimen/text_size_primary"
@@ -767,10 +767,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/title_margin"
                 android:paddingLeft="@dimen/title_margin"
-                android:paddingRight="@dimen/title_margin"
                 android:paddingTop="@dimen/layout_margin"
+                android:paddingRight="@dimen/title_margin"
+                android:paddingBottom="@dimen/title_margin"
                 android:text="@string/text_content_product"
                 android:textColor="@color/colorSecondaryText"
                 android:textSize="@dimen/text_size_primary"

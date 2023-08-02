@@ -3,16 +3,13 @@ package vn.hellosoft.hellorent.activities;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Build;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-
-import androidx.appcompat.widget.Toolbar;
-
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.android.volley.VolleyError;
 import com.facebook.CallbackManager;
@@ -32,7 +29,6 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 
-
 import org.json.JSONObject;
 
 import java.util.Arrays;
@@ -41,8 +37,8 @@ import java.util.List;
 import vn.hellosoft.app.AppController;
 import vn.hellosoft.app.Config;
 import vn.hellosoft.app.PermissionHelper;
-import vn.hellosoft.hellorent.callbacks.OnAccountRequestListener;
 import vn.hellosoft.hellorent.R;
+import vn.hellosoft.hellorent.callbacks.OnAccountRequestListener;
 import vn.hellosoft.hellorent.json.AccountRequest;
 import vn.hellosoft.hellorent.model.Account;
 import vn.hellosoft.helper.L;

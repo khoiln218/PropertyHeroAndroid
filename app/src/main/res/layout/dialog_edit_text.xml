@@ -11,8 +11,8 @@
         android:layout_margin="@dimen/title_margin"
         android:background="@drawable/border_layout"
         android:gravity="top|left"
-        android:padding="@dimen/layout_margin_half"
         android:lines="8"
+        android:padding="@dimen/layout_margin_half"
         android:singleLine="false"
         android:textColor="@color/colorSecondaryText"
         android:textSize="@dimen/text_size_secondary" />

@@ -13,17 +13,17 @@ import java.util.List;
 
 import vn.hellosoft.app.AppController;
 import vn.hellosoft.app.Config;
-import vn.hellosoft.hellorent.callbacks.OnLoadMarkerListener;
-import vn.hellosoft.hellorent.callbacks.OnLoadPropertyListener;
 import vn.hellosoft.hellorent.callbacks.OnLoadDistrictListener;
 import vn.hellosoft.hellorent.callbacks.OnLoadFeatureListener;
 import vn.hellosoft.hellorent.callbacks.OnLoadInfoListener;
+import vn.hellosoft.hellorent.callbacks.OnLoadMarkerListener;
+import vn.hellosoft.hellorent.callbacks.OnLoadPropertyListener;
 import vn.hellosoft.hellorent.callbacks.OnLoadProvinceListener;
 import vn.hellosoft.hellorent.extras.EndPoints;
 import vn.hellosoft.hellorent.extras.UrlParams;
-import vn.hellosoft.hellorent.model.Property;
 import vn.hellosoft.hellorent.model.District;
 import vn.hellosoft.hellorent.model.Info;
+import vn.hellosoft.hellorent.model.Property;
 import vn.hellosoft.hellorent.model.Province;
 import vn.hellosoft.helper.MultipartRequest;
 

@@ -74,7 +74,7 @@ public class Property implements Parcelable {
         dest.writeString(name);
         dest.writeInt(type);
     }
-    
+
     @Override
     public String toString() {
         return this.name;

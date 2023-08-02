@@ -1,11 +1,12 @@
 package vn.hellosoft.helper;
 
 import android.app.Activity;
-import com.google.android.material.textfield.TextInputLayout;
 import android.util.Patterns;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
+
+import com.google.android.material.textfield.TextInputLayout;
 
 import vn.hellosoft.app.AppController;
 import vn.hellosoft.hellorent.R;
@@ -67,7 +68,7 @@ public class InputValidation {
         String input = editText.getText().toString();
         String pwd = AppController.getInstance().getPrefManager().getPassword();
 
-        if(input.isEmpty() || !input.equals(pwd)) {
+        if (input.isEmpty() || !input.equals(pwd)) {
             inputLayout.setError(activity.getString(R.string.text_err_old_pwd));
             requestFocus(activity, editText);
             return false;

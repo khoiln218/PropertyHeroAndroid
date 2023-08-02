@@ -5,15 +5,16 @@ import android.content.IntentFilter;
 import android.content.res.TypedArray;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
-import com.google.android.material.tabs.TabLayout;
-import androidx.fragment.app.Fragment;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.ViewGroup;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.android.material.tabs.TabLayout;
 
 import org.json.JSONObject;
 

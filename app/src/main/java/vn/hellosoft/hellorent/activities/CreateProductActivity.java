@@ -8,16 +8,17 @@ import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.net.ConnectivityManager;
 import android.os.Build;
-import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,8 +28,8 @@ import vn.hellosoft.app.Config;
 import vn.hellosoft.app.PermissionHelper;
 import vn.hellosoft.hellorent.R;
 import vn.hellosoft.hellorent.adapters.ViewPagerAdapter;
-import vn.hellosoft.hellorent.fragments.CreateProductStep2Fragment;
 import vn.hellosoft.hellorent.fragments.CreateProductStep1Fragment;
+import vn.hellosoft.hellorent.fragments.CreateProductStep2Fragment;
 import vn.hellosoft.hellorent.fragments.CreateProductStep3Fragment;
 import vn.hellosoft.hellorent.fragments.CreateProductStep4Fragment;
 import vn.hellosoft.hellorent.model.Product;
@@ -41,14 +42,11 @@ public class CreateProductActivity extends AppCompatActivity {
 
     private static final int selectedColor = Color.parseColor("#FFC000");
     private static final int unSelectedColor = Color.parseColor("#E0E0E0");
-
-    private NetworkChangeReceiver networkChangeReceiver;
-
-    private NonSwipeableViewPager viewPager;
-    private ViewPagerAdapter adapter;
-
     public Product productInfo;
     public List<String> imageList;
+    private NetworkChangeReceiver networkChangeReceiver;
+    private NonSwipeableViewPager viewPager;
+    private ViewPagerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
