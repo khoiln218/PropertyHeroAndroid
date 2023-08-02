@@ -2,8 +2,8 @@
 <resources>
     <color name="colorPrimary">#FFFFFF</color>
     <color name="colorPrimaryDark">#212121</color>
-    <color name="colorPrimaryLight">#FFDD00</color>
-    <color name="colorAccent">#FFC000</color>
+    <color name="colorPrimaryLight">#1b20f2</color>
+    <color name="colorAccent">#2b50f6</color>
 
     <color name="colorPrimaryText">#424242</color>
     <color name="colorSecondaryText">#808080</color>
@@ -24,4 +24,5 @@
     <color name="colorButtonPrimaryPressed">#FFA000</color>
     <color name="colorButtonEnable">#E0E0E0</color>
     <color name="colorButtonBorder">#CFD8DC</color>
+    <color name="bgEmpty">#f3f6f9</color>
 </resources>

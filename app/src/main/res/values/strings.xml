@@ -105,7 +105,7 @@
     <string name="text_user_setting">Cài đặt người dùng</string>
     <string name="text_country">Quốc gia</string>
     <string name="text_language">Ngôn ngữ</string>
-    <string name="text_about">Thông tin về Hello Rent</string>
+    <string name="text_about">Thông tin về Property Hero</string>
     <string name="text_version">Phiên bản:&#160;</string>
     <string name="text_copyright" tools:ignore="TypographyEllipsis">\u00a9... Một sản phẩm của HelloSoft</string>
 
@@ -186,7 +186,7 @@
 
     <string name="text_hint_content">Nhập nội dung góp ý</string>
     <string name="text_err_content">Vui lòng nhập nội dung</string>
-    <string name="text_contact_success">Rất cảm ơn bạn đã đóng góp ý kiến về Hello Rent.</string>
+    <string name="text_contact_success">Rất cảm ơn bạn đã đóng góp ý kiến về Property Hero.</string>
 
     <string name="title_update_phone">Cập nhật Số điện thoại</string>
     <string name="msg_update_phone">Thành viên chưa có Số điện thoại liên hệ không thể đăng tin. Vui lòng cập nhật số điện thoại liên hệ</string>
@@ -282,7 +282,7 @@
     <string name="text_msg_update" tools:ignore="TypographyEllipsis">Đang cập nhật...</string>
     <string name="text_update_success">Cập nhật thành công</string>
 
-    <string name="btn_rating">Bình chọn cho Hello Rent</string>
+    <string name="btn_rating">Bình chọn cho Property Hero</string>
     <string name="btn_management_product">Quản lý tin đăng</string>
     <string name="btn_contact">Email góp ý</string>
     <string name="btn_setting">Cài đặt</string>
@@ -354,7 +354,7 @@
     <string name="invalid_location">Invalid latitude or longitude used</string>
 
     <string name="text_info_content">
-        Hello Rent là ứng dụng điện thoại di động đầu tiên tại Việt Nam để “Tìm kiếm” và “Đăng tin” các địa điểm bất động sản cho thuê tại Việt Nam… Mọi thông tin đăng trên Hello Rent đều được KIỂM TRA và XÁC NHẬN.
+        Property Hero là ứng dụng điện thoại di động đầu tiên tại Việt Nam để “Tìm kiếm” và “Đăng tin” các địa điểm bất động sản cho thuê tại Việt Nam… Mọi thông tin đăng trên Property Hero đều được KIỂM TRA và XÁC NHẬN.
         Với cách sắp xếp thông tin rõ ràng cụ thể, hình ảnh thực tế chính xác sẽ giúp bạn tìm địa điểm tốt nhất và ưng ý nhất.
 
         \n\nTính năng chính của ứng dụng HelloRent:

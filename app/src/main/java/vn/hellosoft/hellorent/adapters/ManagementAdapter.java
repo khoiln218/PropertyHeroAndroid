@@ -1,7 +1,6 @@
 package vn.hellosoft.hellorent.adapters;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +9,12 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.squareup.picasso.Picasso;
 
+import java.text.MessageFormat;
 import java.util.List;
 
 import vn.hellosoft.app.Config;
@@ -96,9 +99,9 @@ public class ManagementAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         if (holder instanceof ManagementViewHolder) {
-            Product product = productList.get(position);
+            Product product = productList.get(holder.getAdapterPosition());
 
             if (product.getStatus() == Config.PRODUCT_ACTIVATED)
                 ((ManagementViewHolder) holder).markLayout.setVisibility(View.GONE);
@@ -115,16 +118,16 @@ public class ManagementAdapter extends RecyclerView.Adapter {
                     .resize(width, width)
                     .into(((ManagementViewHolder) holder).thumb);
 
-            ((ManagementViewHolder) holder).tvPrice.setText(product.getPrice() + "");
-            ((ManagementViewHolder) holder).tvAddress.setText(product.getGrossFloorArea() + "");
+            ((ManagementViewHolder) holder).tvPrice.setText(String.valueOf(product.getPrice()));
+            ((ManagementViewHolder) holder).tvAddress.setText(String.valueOf(product.getGrossFloorArea()));
             ((ManagementViewHolder) holder).tvTitle.setText(product.getTitle());
             ((ManagementViewHolder) holder).tvAddress.setText(product.getAddresss());
 
-            ((ManagementViewHolder) holder).tvProductID.setText("#" + product.getId());
+            ((ManagementViewHolder) holder).tvProductID.setText(MessageFormat.format("#{0}", product.getId()));
             ((ManagementViewHolder) holder).tvNote.setText(product.getNote());
 
-            ((ManagementViewHolder) holder).tvNumView.setText(product.getNumView() + "");
-            ((ManagementViewHolder) holder).tvNumLike.setText(product.getNumLike() + "");
+            ((ManagementViewHolder) holder).tvNumView.setText(String.valueOf(product.getNumView()));
+            ((ManagementViewHolder) holder).tvNumLike.setText(String.valueOf(product.getNumLike()));
 
             ((ManagementViewHolder) holder).btnManagementOption.setOnClickListener(new View.OnClickListener() {
                 @Override

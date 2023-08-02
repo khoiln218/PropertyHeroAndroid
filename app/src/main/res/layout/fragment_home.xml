@@ -50,7 +50,7 @@
                         android:layout_marginBottom="@dimen/layout_margin_half"
                         android:adjustViewBounds="true"
                         android:scaleType="centerCrop"
-                        android:src="@mipmap/ic_option_view_all" />
+                        android:src="@drawable/ic_option_view_all" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -79,7 +79,7 @@
                         android:layout_marginBottom="@dimen/layout_margin_half"
                         android:adjustViewBounds="true"
                         android:scaleType="centerCrop"
-                        android:src="@mipmap/ic_option_apartment" />
+                        android:src="@drawable/ic_option_apartment" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -108,7 +108,7 @@
                         android:layout_marginBottom="@dimen/layout_margin_half"
                         android:adjustViewBounds="true"
                         android:scaleType="centerCrop"
-                        android:src="@mipmap/ic_option_room" />
+                        android:src="@drawable/ic_option_room" />
 
                     <TextView
                         android:layout_width="wrap_content"

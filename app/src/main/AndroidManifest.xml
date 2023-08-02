@@ -28,18 +28,14 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:usesCleartextTraffic="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_app_api" />
-<!--        <meta-data-->
-<!--            android:name="com.google.android.gms.version"-->
-<!--            android:value="@integer/google_play_services_version" />-->
-<!--        <meta-data-->
-<!--            android:name="com.google.android.gms.wallet.api.enabled"-->
-<!--            android:value="true" />-->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
@@ -53,7 +49,8 @@
         <activity
             android:name=".activities.SplashScreenActivity"
             android:exported="true"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -74,17 +71,6 @@
             android:name=".activities.OnboardingActivity"
             android:screenOrientation="portrait" />
 
-<!--        <receiver-->
-<!--            android:name="com.google.android.gms.gcm.GcmReceiver"-->
-<!--            android:exported="true"-->
-<!--            android:permission="com.google.android.c2dm.permission.SEND">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="com.google.android.c2dm.intent.RECEIVE" />-->
-
-<!--                <category android:name="gcm.play.android.samples.com.gcmquickstart" />-->
-<!--            </intent-filter>-->
-<!--        </receiver>-->
-
         <service
             android:name="vn.hellosoft.services.RegistrationIntentService"
             android:exported="false">
@@ -92,20 +78,6 @@
                 <action android:name="com.google.android.gms.iid.InstanceID" />
             </intent-filter>
         </service>
-<!--        <service-->
-<!--            android:name="vn.hellosoft.services.AppGcmListenerService"-->
-<!--            android:exported="false">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="com.google.android.gms.iid.InstanceID" />-->
-<!--            </intent-filter>-->
-<!--        </service>-->
-<!--        <service-->
-<!--            android:name="vn.hellosoft.services.AppInstanceIDListenerService"-->
-<!--            android:exported="false">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="com.google.android.gms.iid.InstanceID" />-->
-<!--            </intent-filter>-->
-<!--        </service>-->
         <service
             android:name="vn.hellosoft.services.FetchAddressIntentService"
             android:exported="false" />
