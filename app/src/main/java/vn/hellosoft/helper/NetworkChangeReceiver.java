@@ -1,6 +1,5 @@
 package vn.hellosoft.helper;
 
-import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import vn.hellosoft.propertyhero.R;
 
 /**
@@ -17,10 +18,10 @@ import vn.hellosoft.propertyhero.R;
  */
 public class NetworkChangeReceiver extends BroadcastReceiver {
 
-    private Activity activity;
+    private AppCompatActivity activity;
     private ViewGroup rootView;
 
-    public NetworkChangeReceiver(Activity activity, ViewGroup rootView) {
+    public NetworkChangeReceiver(AppCompatActivity activity, ViewGroup rootView) {
         this.activity = activity;
         this.rootView = rootView;
     }

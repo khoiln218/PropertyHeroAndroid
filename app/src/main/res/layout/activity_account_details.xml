@@ -47,7 +47,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_alignParentBottom="true"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/vector_action_photo" />
+                    app:srcCompat="@drawable/vector_action_photo" />
             </RelativeLayout>
 
             <TextView
@@ -91,7 +91,7 @@
                         android:layout_marginLeft="@dimen/title_margin"
                         android:adjustViewBounds="true"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/vector_action_info" />
+                        app:srcCompat="@drawable/vector_action_info" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -127,7 +127,7 @@
                             android:layout_marginLeft="@dimen/title_margin"
                             android:adjustViewBounds="true"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/vector_action_pwd" />
+                            app:srcCompat="@drawable/vector_action_pwd" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -162,7 +162,7 @@
                     android:layout_marginLeft="@dimen/title_margin"
                     android:adjustViewBounds="true"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/vector_action_logout" />
+                    app:srcCompat="@drawable/vector_action_logout" />
 
                 <TextView
                     android:layout_width="match_parent"

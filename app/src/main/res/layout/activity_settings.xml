@@ -52,7 +52,7 @@
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/ic_vector_notify" />
+                    app:srcCompat="@drawable/ic_vector_notify" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -100,7 +100,7 @@
                         android:layout_marginRight="@dimen/title_margin"
                         android:adjustViewBounds="true"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/ic_vector_country" />
+                        app:srcCompat="@drawable/ic_vector_country" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -154,7 +154,7 @@
                         android:layout_marginRight="@dimen/title_margin"
                         android:adjustViewBounds="true"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/ic_vector_province" />
+                        app:srcCompat="@drawable/ic_vector_province" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -207,7 +207,7 @@
                         android:layout_marginRight="@dimen/title_margin"
                         android:adjustViewBounds="true"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/ic_vector_language" />
+                        app:srcCompat="@drawable/ic_vector_language" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -256,7 +256,7 @@
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/ic_vector_info" />
+                    app:srcCompat="@drawable/ic_vector_info" />
 
                 <TextView
                     android:layout_width="wrap_content"

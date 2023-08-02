@@ -39,7 +39,7 @@
                 android:layout_marginTop="@dimen/title_margin_double"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_main" />
+                app:srcCompat="@drawable/ic_main" />
 
             <LinearLayout
                 android:layout_width="match_parent"

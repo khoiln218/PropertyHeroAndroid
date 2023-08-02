@@ -1,8 +1,9 @@
 package vn.hellosoft.app;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.pm.PackageManager;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,7 @@ public class PermissionHelper {
     private static final String PHONE_PERMS = Manifest.permission.CALL_PHONE;
     private static final String ACCOUNTS_PERMS = Manifest.permission.GET_ACCOUNTS;
 
-    public static void initPermissions(Activity activity) {
+    public static void initPermissions(AppCompatActivity activity) {
         List<String> missingPermissions = new ArrayList<>();
 
         for (String perm : INITIAL_PERMS) {
@@ -37,19 +38,19 @@ public class PermissionHelper {
         }
     }
 
-    public static void hasCameraPermission(Activity activity) {
+    public static void hasCameraPermission(AppCompatActivity activity) {
         if (PackageManager.PERMISSION_GRANTED != activity.checkSelfPermission(CAMERA_PERMS)) {
             activity.requestPermissions(new String[]{CAMERA_PERMS}, Config.PERMS_REQUEST);
         }
     }
 
-    public static void hasAccountsPermission(Activity activity) {
+    public static void hasAccountsPermission(AppCompatActivity activity) {
         if (PackageManager.PERMISSION_GRANTED != activity.checkSelfPermission(ACCOUNTS_PERMS)) {
             activity.requestPermissions(new String[]{ACCOUNTS_PERMS}, Config.PERMS_REQUEST);
         }
     }
 
-    public static void hasPhonePermission(Activity activity) {
+    public static void hasPhonePermission(AppCompatActivity activity) {
         if (PackageManager.PERMISSION_GRANTED != activity.checkSelfPermission(PHONE_PERMS)) {
             activity.requestPermissions(new String[]{PHONE_PERMS}, Config.PERMS_REQUEST);
         }

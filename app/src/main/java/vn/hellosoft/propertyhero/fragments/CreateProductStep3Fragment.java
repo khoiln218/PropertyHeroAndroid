@@ -78,7 +78,7 @@ public class CreateProductStep3Fragment extends Fragment implements View.OnClick
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_create_product_step_3, container, false);
 
-        vn.hellosoft.helper.Utils.hideSoftKeyboard(getActivity(), root.findViewById(R.id.layoutStep3));
+        Utils.hideSoftKeyboard(requireActivity(), root.findViewById(R.id.layoutStep3));
 
         inputDepositProduct = (EditText) root.findViewById(R.id.inputDepositProduct);
         inputPriceProduct = (EditText) root.findViewById(R.id.inputPriceProduct);

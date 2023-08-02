@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.textfield.TextInputLayout;
 
 import vn.hellosoft.app.AppController;
@@ -16,7 +18,7 @@ import vn.hellosoft.propertyhero.R;
  */
 public class InputValidation {
 
-    public static boolean userName(Activity activity, TextInputLayout inputLayout, EditText editText) {
+    public static boolean userName(AppCompatActivity activity, TextInputLayout inputLayout, EditText editText) {
         String userName = editText.getText().toString().trim();
 
         if (userName.isEmpty()) {
@@ -35,7 +37,7 @@ public class InputValidation {
         return true;
     }
 
-    public static boolean password(Activity activity, TextInputLayout inputLayout, EditText editText, String errEmpty, String errLength) {
+    public static boolean password(AppCompatActivity activity, TextInputLayout inputLayout, EditText editText, String errEmpty, String errLength) {
         String pwd = editText.getText().toString().trim();
         if (pwd.isEmpty()) {
             inputLayout.setError(errEmpty);
@@ -51,7 +53,7 @@ public class InputValidation {
         return true;
     }
 
-    public static boolean confirmPassword(Activity activity, TextInputLayout inputLayout, EditText editText, String pwd) {
+    public static boolean confirmPassword(AppCompatActivity activity, TextInputLayout inputLayout, EditText editText, String pwd) {
         String str = editText.getText().toString();
 
         if (str.isEmpty() || !str.equals(pwd)) {
@@ -64,7 +66,7 @@ public class InputValidation {
         return true;
     }
 
-    public static boolean oldPassword(Activity activity, TextInputLayout inputLayout, EditText editText) {
+    public static boolean oldPassword(AppCompatActivity activity, TextInputLayout inputLayout, EditText editText) {
         String input = editText.getText().toString();
         String pwd = AppController.getInstance().getPrefManager().getPassword();
 
@@ -78,7 +80,7 @@ public class InputValidation {
         return true;
     }
 
-    public static boolean phoneNumber(Activity activity, TextInputLayout inputLayout, EditText editText) {
+    public static boolean phoneNumber(AppCompatActivity activity, TextInputLayout inputLayout, EditText editText) {
         String phone = editText.getText().toString().trim();
 
         if (phone.isEmpty()) {
@@ -96,7 +98,7 @@ public class InputValidation {
 
     }
 
-    public static boolean inputText(Activity activity, TextInputLayout inputLayout, EditText editText, String errMsg) {
+    public static boolean inputText(AppCompatActivity activity, TextInputLayout inputLayout, EditText editText, String errMsg) {
         if (editText.getText().toString().trim().isEmpty()) {
             inputLayout.setError(errMsg);
             requestFocus(activity, editText);

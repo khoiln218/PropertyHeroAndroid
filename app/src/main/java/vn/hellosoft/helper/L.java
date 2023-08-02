@@ -1,13 +1,14 @@
 package vn.hellosoft.helper;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
 
 import vn.hellosoft.app.AppController;
 import vn.hellosoft.app.Config;

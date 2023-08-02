@@ -24,6 +24,7 @@ import java.util.List;
 import vn.hellosoft.app.Config;
 import vn.hellosoft.helper.InputValidation;
 import vn.hellosoft.helper.L;
+import vn.hellosoft.helper.Utils;
 import vn.hellosoft.propertyhero.R;
 import vn.hellosoft.propertyhero.activities.CreateProductActivity;
 import vn.hellosoft.propertyhero.callbacks.OnResponseListener;
@@ -76,7 +77,7 @@ public class CreateProductStep4Fragment extends Fragment implements View.OnClick
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_create_product_step_4, container, false);
 
-        vn.hellosoft.helper.Utils.hideSoftKeyboard(getActivity(), root.findViewById(R.id.layoutStep4));
+        Utils.hideSoftKeyboard(getActivity(), root.findViewById(R.id.layoutStep4));
 
         tvTitleLength = (TextView) root.findViewById(R.id.tvTitleLength);
         tvContentLength = (TextView) root.findViewById(R.id.tvContentLength);

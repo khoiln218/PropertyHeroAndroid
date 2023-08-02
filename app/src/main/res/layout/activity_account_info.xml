@@ -100,7 +100,7 @@
                             android:layout_alignParentRight="true"
                             android:layout_alignParentBottom="true"
                             android:adjustViewBounds="true"
-                            android:src="@drawable/vector_dropdown_corner" />
+                            app:srcCompat="@drawable/vector_dropdown_corner" />
 
                         <Spinner
                             android:id="@+id/spnGender"
@@ -149,7 +149,7 @@
                             android:layout_alignParentRight="true"
                             android:layout_alignParentBottom="true"
                             android:adjustViewBounds="true"
-                            android:src="@drawable/vector_dropdown_corner" />
+                            app:srcCompat="@drawable/vector_dropdown_corner" />
 
                         <TextView
                             android:id="@+id/tvBirthDate"
@@ -269,7 +269,7 @@
                             android:layout_alignParentRight="true"
                             android:layout_alignParentBottom="true"
                             android:adjustViewBounds="true"
-                            android:src="@drawable/vector_dropdown_corner" />
+                            app:srcCompat="@drawable/vector_dropdown_corner" />
 
                         <TextView
                             android:id="@+id/tvProvince"
@@ -321,7 +321,7 @@
                             android:layout_alignParentRight="true"
                             android:layout_alignParentBottom="true"
                             android:adjustViewBounds="true"
-                            android:src="@drawable/vector_dropdown_corner" />
+                            app:srcCompat="@drawable/vector_dropdown_corner" />
 
                         <TextView
                             android:id="@+id/tvDistrict"

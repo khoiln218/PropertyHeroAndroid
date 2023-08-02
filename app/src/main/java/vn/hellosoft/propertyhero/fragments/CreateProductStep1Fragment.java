@@ -133,7 +133,7 @@ public class CreateProductStep1Fragment extends Fragment implements View.OnClick
         }
 
 
-        vn.hellosoft.helper.Utils.hideSoftKeyboard(getActivity(), root.findViewById(R.id.layoutStep1));
+        Utils.hideSoftKeyboard(getActivity(), root.findViewById(R.id.layoutStep1));
         int height = (int) (Utils.getScreenWidth() / 1.5);
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, height);
         root.findViewById(R.id.layoutLocation).setLayoutParams(layoutParams);

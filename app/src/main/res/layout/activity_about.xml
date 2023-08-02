@@ -50,14 +50,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/title_margin_double"
                     android:background="@null"
-                    android:src="@drawable/vector_action_facebook" />
+                    app:srcCompat="@drawable/vector_action_facebook" />
 
                 <ImageButton
                     android:id="@+id/btnGoogle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@null"
-                    android:src="@drawable/vector_action_google" />
+                    app:srcCompat="@drawable/vector_action_google" />
             </LinearLayout>
 
             <include layout="@layout/layout_divider_horizontal" />

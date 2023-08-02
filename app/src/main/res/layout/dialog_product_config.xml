@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/layout_margin"
@@ -20,7 +21,7 @@
             android:layout_marginLeft="@dimen/layout_margin_half"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_vector_view" />
+            app:srcCompat="@drawable/ic_vector_view" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -63,7 +64,7 @@
             android:layout_marginLeft="@dimen/layout_margin_half"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_vector_note" />
+            app:srcCompat="@drawable/ic_vector_note" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -106,7 +107,7 @@
             android:layout_marginLeft="@dimen/layout_margin_half"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_vector_edit" />
+            app:srcCompat="@drawable/ic_vector_edit" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -150,7 +151,7 @@
             android:layout_marginLeft="@dimen/layout_margin_half"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_vector_recycling" />
+            app:srcCompat="@drawable/ic_vector_recycling" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -193,7 +194,7 @@
             android:layout_marginLeft="@dimen/layout_margin_half"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_vector_start_certified" />
+            app:srcCompat="@drawable/ic_vector_start_certified" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -236,7 +237,7 @@
             android:layout_marginLeft="@dimen/layout_margin_half"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_vector_completed" />
+            app:srcCompat="@drawable/ic_vector_completed" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -279,7 +280,7 @@
             android:layout_marginLeft="@dimen/layout_margin_half"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_vector_end_certified" />
+            app:srcCompat="@drawable/ic_vector_end_certified" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -314,5 +315,5 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/layout_margin"
         android:background="@null"
-        android:src="@drawable/vector_action_close" />
+        app:srcCompat="@drawable/vector_action_close" />
 </LinearLayout>
