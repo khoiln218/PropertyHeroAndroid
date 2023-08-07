@@ -1,5 +1,6 @@
 package com.gomicorp.propertyhero.activities;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -46,16 +47,24 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnFacebook:
-                Intent facebookIntent = new Intent(Intent.ACTION_VIEW);
-                String facebookUrl = getFacebookPageURL();
-                facebookIntent.setData(Uri.parse(facebookUrl));
-                startActivity(facebookIntent);
+                try {
+                    Intent facebookIntent = new Intent(Intent.ACTION_VIEW);
+                    String facebookUrl = getFacebookPageURL();
+                    facebookIntent.setData(Uri.parse(facebookUrl));
+                    startActivity(facebookIntent);
+                } catch (ActivityNotFoundException e) {
+                    e.printStackTrace();
+                }
                 break;
             case R.id.btnGoogle:
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(GOOGLE_URL));
-                intent.setPackage("com.google.android.apps.plus");
-                if (intent.resolveActivity(getPackageManager()) != null)
-                    startActivity(intent);
+                try {
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(GOOGLE_URL));
+                    intent.setPackage("com.google.android.apps.plus");
+                    if (intent.resolveActivity(getPackageManager()) != null)
+                        startActivity(intent);
+                } catch (ActivityNotFoundException e) {
+                    e.printStackTrace();
+                }
                 break;
             default:
                 break;

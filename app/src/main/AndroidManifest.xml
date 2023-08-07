@@ -18,7 +18,7 @@
         tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission
-        android:name="vn.hellosoft.hellorent.permission.MAPS_RECEIVE"
+        android:name="com.gomicorp.propertyhero.permission.MAPS_RECEIVE"
         android:protectionLevel="signature" />
 
     <uses-feature

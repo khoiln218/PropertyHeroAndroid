@@ -106,7 +106,7 @@
     <string name="text_language">Ngôn ngữ</string>
     <string name="text_about">Thông tin về Property Hero</string>
     <string name="text_version">Phiên bản:&#160;</string>
-    <string name="text_copyright" tools:ignore="TypographyEllipsis">\u00a9... Một sản phẩm của HelloSoft</string>
+    <string name="text_copyright" tools:ignore="TypographyEllipsis">\u00a9... Một sản phẩm của Gomi Corporation</string>
 
     <string name="text_view_all">Tất Cả</string>
     <string name="text_apartment">Căn Hộ</string>
@@ -118,7 +118,7 @@
     <string name="text_hello_toon">Trải Nghiệm Hello Toon</string>
     <string name="text_hello_toon_more">Xem tất cả ></string>
     <string name="text_reg_note">Đồng ý với Điều khoản và Sự Siêng tư để tiếp tục</string>
-    <string name="text_terms">Điều khoản và Thỏa thuận dịch vụ HelloRent</string>
+    <string name="text_terms">Điều khoản và Thỏa thuận dịch vụ Property Hero</string>
     <string name="text_privacy">Đồng ý với Việc Thu Thập và Sử Dụng Thông Tin cá nhân</string>
 
     <string name="text_loading" tools:ignore="TypographyEllipsis">Đang tải dữ liệu...</string>
@@ -128,7 +128,7 @@
     <string name="err_title_login">Sai Username/Password</string>
     <string name="err_msg_login">Vui lòng kiểm tra lại thông tin đăng nhập và thử lại</string>
     <string name="title_acc_locked">Tài khoản bị tạm khóa</string>
-    <string name="msg_acc_locked">Vui lòng kiểm tra lại thông tin đăng nhập hoặc liên hệ HelloRent để biết chi tiết</string>
+    <string name="msg_acc_locked">Vui lòng kiểm tra lại thông tin đăng nhập hoặc liên hệ Property Hero để biết chi tiết</string>
 
     <string name="text_register">Đăng ký</string>
     <string name="text_msg_reg" tools:ignore="TypographyEllipsis">Đang đăng ký...</string>
@@ -356,7 +356,7 @@
         Property Hero là ứng dụng điện thoại di động đầu tiên tại Việt Nam để “Tìm kiếm” và “Đăng tin” các địa điểm bất động sản cho thuê tại Việt Nam… Mọi thông tin đăng trên Property Hero đều được KIỂM TRA và XÁC NHẬN.
         Với cách sắp xếp thông tin rõ ràng cụ thể, hình ảnh thực tế chính xác sẽ giúp bạn tìm địa điểm tốt nhất và ưng ý nhất.
 
-        \n\nTính năng chính của ứng dụng HelloRent:
+        \n\nTính năng chính của ứng dụng Property Hero:
         \n\n* THÔNG TIN XÁC NHẬN
         \n- Thông tin được đội ngũ kiểm định chất lượng (Checking Team) đảm bảo kiểm tra tận nơi xác nhận nội dung, hình ảnh thực tế.
         \n- Thực trạng, và phản hồi về thông tin của tin đăng sẽ được hệ thống xử lý và có thể đội ngũ kiểm định chất lượng (Checking Team) sẽ đi kiểm tra ngay lập tức

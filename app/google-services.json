@@ -7,6 +7,61 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:721105407584:android:571e59fda4408899853d05",
+        "android_client_info": {
+          "package_name": "com.gomicorp.propertyhero"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "721105407584-c62uu0t17n7gj21s1e6mqur7322j0bvn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gomicorp.propertyhero",
+            "certificate_hash": "5ae77e6bcec9cb9571ffc39224c05226c9b33007"
+          }
+        },
+        {
+          "client_id": "721105407584-s3srd4k5fvoe2jokq0d5o6ieivpo3l3o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gomicorp.propertyhero",
+            "certificate_hash": "ded2021cb1030a4784e473b176da4229a95554b5"
+          }
+        },
+        {
+          "client_id": "721105407584-cko8m5r1popcbm0i1oj3t7n2bipchhhs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmT0dbedMCO3Hl8s-VYcveCxtO5hDfAsM"
+        },
+        {
+          "current_key": "AIzaSyDyZlCV97lybIl_QcwTxPxv0EIYw6tIyJI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "721105407584-cko8m5r1popcbm0i1oj3t7n2bipchhhs.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "721105407584-q2mrjf5fa50pg3tsge8m31n4baeus4bv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "vn.hellosoft.propertyhero"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:721105407584:android:729d3d13cfe0d95a853d05",
         "android_client_info": {
           "package_name": "vn.hellosoft.propertyhero"
@@ -36,6 +91,9 @@
       ],
       "api_key": [
         {
+          "current_key": "AIzaSyCmT0dbedMCO3Hl8s-VYcveCxtO5hDfAsM"
+        },
+        {
           "current_key": "AIzaSyDyZlCV97lybIl_QcwTxPxv0EIYw6tIyJI"
         }
       ],
@@ -45,6 +103,13 @@
             {
               "client_id": "721105407584-cko8m5r1popcbm0i1oj3t7n2bipchhhs.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "721105407584-q2mrjf5fa50pg3tsge8m31n4baeus4bv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "vn.hellosoft.propertyhero"
+              }
             }
           ]
         }

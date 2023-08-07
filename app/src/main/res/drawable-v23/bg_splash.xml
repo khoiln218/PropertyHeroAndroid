@@ -5,9 +5,9 @@
             <solid android:color="@color/colorPrimary" />
         </shape>
     </item>
-    <item>
-        <bitmap
-            android:gravity="center"
-            android:src="@drawable/ic_splash" />
-    </item>
+    <item
+        android:width="216dp"
+        android:height="216dp"
+        android:drawable="@drawable/ic_splash"
+        android:gravity="center" />
 </layer-list>
