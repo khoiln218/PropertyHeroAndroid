@@ -20,7 +20,7 @@
             app:tabIndicatorHeight="0dp"
             app:tabMode="fixed" />
 
-        <vn.hellosoft.ui.NonSwipeableViewPager
+        <com.gomicorp.ui.NonSwipeableViewPager
             android:id="@+id/pagerMain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -235,7 +235,7 @@
 
                 <fragment
                     android:id="@+id/mapProductLocation"
-                    android:name="vn.hellosoft.ui.WorkaroundMapFragment"
+                    android:name="com.gomicorp.ui.WorkaroundMapFragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

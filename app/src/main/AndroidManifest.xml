@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="vn.hellosoft.propertyhero">
+    package="com.gomicorp.propertyhero">
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -26,7 +26,7 @@
         android:required="true" />
 
     <application
-        android:name="vn.hellosoft.app.AppController"
+        android:name="com.gomicorp.app.AppController"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -49,7 +49,7 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             tools:replace="android:theme" />
         <activity
-            android:name="vn.hellosoft.propertyhero.activities.SplashScreenActivity"
+            android:name="com.gomicorp.propertyhero.activities.SplashScreenActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/SplashTheme">
@@ -60,7 +60,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="vn.hellosoft.propertyhero.activities.MainActivity"
+            android:name="com.gomicorp.propertyhero.activities.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -70,114 +70,114 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="vn.hellosoft.propertyhero.activities.OnboardingActivity"
+            android:name="com.gomicorp.propertyhero.activities.OnboardingActivity"
             android:screenOrientation="portrait" />
 
         <service
-            android:name="vn.hellosoft.services.RegistrationIntentService"
+            android:name="com.gomicorp.services.RegistrationIntentService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.android.gms.iid.InstanceID" />
             </intent-filter>
         </service>
         <service
-            android:name="vn.hellosoft.services.FetchAddressIntentService"
+            android:name="com.gomicorp.services.FetchAddressIntentService"
             android:exported="false" />
 
         <activity
-            android:name="vn.hellosoft.propertyhero.activities.ListViewProductActivity"
+            android:name="com.gomicorp.propertyhero.activities.ListViewProductActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="vn.hellosoft.propertyhero.activities.MapViewProductActivity"
+            android:name="com.gomicorp.propertyhero.activities.MapViewProductActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="vn.hellosoft.propertyhero.activities.FilterActivity"
+            android:name="com.gomicorp.propertyhero.activities.FilterActivity"
             android:label="@string/title_activity_filter"
             android:screenOrientation="portrait" />
         <activity
-            android:name="vn.hellosoft.propertyhero.activities.LoginActivity"
+            android:name="com.gomicorp.propertyhero.activities.LoginActivity"
             android:label="@string/title_activity_login"
             android:screenOrientation="portrait" />
         <activity
-            android:name="vn.hellosoft.propertyhero.activities.MemberRegistrationActivity"
+            android:name="com.gomicorp.propertyhero.activities.MemberRegistrationActivity"
             android:label="@string/title_activity_member_regis"
             android:screenOrientation="portrait" />
         <activity
-            android:name="vn.hellosoft.propertyhero.activities.InfoViewActivity"
+            android:name="com.gomicorp.propertyhero.activities.InfoViewActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="vn.hellosoft.propertyhero.activities.CreateProductActivity"
+            android:name="com.gomicorp.propertyhero.activities.CreateProductActivity"
             android:label="@string/title_activity_create_product"
             android:screenOrientation="portrait" />
         <activity
-            android:name="vn.hellosoft.propertyhero.activities.LoginEmailActivity"
+            android:name="com.gomicorp.propertyhero.activities.LoginEmailActivity"
             android:label="@string/text_btn_email"
             android:screenOrientation="portrait" />
         <activity
-            android:name="vn.hellosoft.propertyhero.activities.UpdatePhoneNumberActivity"
+            android:name="com.gomicorp.propertyhero.activities.UpdatePhoneNumberActivity"
             android:label="@string/title_update_phone"
             android:screenOrientation="portrait" />
         <activity
-            android:name="vn.hellosoft.propertyhero.activities.GalleryActivity"
+            android:name="com.gomicorp.propertyhero.activities.GalleryActivity"
             android:label="@string/title_activity_gallery"
             android:screenOrientation="portrait" />
         <activity
-            android:name="vn.hellosoft.propertyhero.activities.AccountDetailsActivity"
+            android:name="com.gomicorp.propertyhero.activities.AccountDetailsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="vn.hellosoft.propertyhero.activities.AccountInfoActivity"
+            android:name="com.gomicorp.propertyhero.activities.AccountInfoActivity"
             android:label="@string/btn_user_info"
             android:screenOrientation="portrait" />
         <activity
-            android:name="vn.hellosoft.propertyhero.activities.ChangePasswordActivity"
+            android:name="com.gomicorp.propertyhero.activities.ChangePasswordActivity"
             android:label="@string/btn_change_pws"
             android:screenOrientation="portrait" />
         <activity
-            android:name="vn.hellosoft.propertyhero.activities.FindAreaActivity"
+            android:name="com.gomicorp.propertyhero.activities.FindAreaActivity"
             android:label="@string/title_activity_find_area"
             android:screenOrientation="portrait" />
         <activity
-            android:name="vn.hellosoft.propertyhero.activities.ContactActivity"
+            android:name="com.gomicorp.propertyhero.activities.ContactActivity"
             android:label="@string/btn_contact"
             android:screenOrientation="portrait" />
         <activity
-            android:name="vn.hellosoft.propertyhero.activities.ProductDetailsActivity"
+            android:name="com.gomicorp.propertyhero.activities.ProductDetailsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Overlay" />
         <activity
-            android:name="vn.hellosoft.propertyhero.activities.AdvDetailsActivity"
+            android:name="com.gomicorp.propertyhero.activities.AdvDetailsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Overlay" />
         <activity
-            android:name="vn.hellosoft.propertyhero.activities.ImageSliderActivity"
+            android:name="com.gomicorp.propertyhero.activities.ImageSliderActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="vn.hellosoft.propertyhero.activities.GiftCardActivity"
+            android:name="com.gomicorp.propertyhero.activities.GiftCardActivity"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.Overlay" />
         <activity
-            android:name="vn.hellosoft.propertyhero.activities.ManagementProductActivity"
+            android:name="com.gomicorp.propertyhero.activities.ManagementProductActivity"
             android:label="@string/title_activity_management"
             android:screenOrientation="portrait" />
         <activity
-            android:name="vn.hellosoft.propertyhero.activities.EditProductActivity"
+            android:name="com.gomicorp.propertyhero.activities.EditProductActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="vn.hellosoft.propertyhero.activities.SettingsActivity"
+            android:name="com.gomicorp.propertyhero.activities.SettingsActivity"
             android:label="@string/btn_setting"
             android:screenOrientation="portrait" />
         <activity
-            android:name="vn.hellosoft.propertyhero.activities.AboutActivity"
+            android:name="com.gomicorp.propertyhero.activities.AboutActivity"
             android:label="@string/text_about"
             android:screenOrientation="portrait" />
         <activity
-            android:name="vn.hellosoft.propertyhero.activities.WarningActivity"
+            android:name="com.gomicorp.propertyhero.activities.WarningActivity"
             android:label="@string/text_warning"
             android:screenOrientation="portrait" />
 
         <!-- Used for install referrer tracking -->
         <receiver
-            android:name="vn.hellosoft.propertyhero.ReferrerReceiver"
+            android:name="com.gomicorp.propertyhero.ReferrerReceiver"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.android.vending.INSTALL_REFERRER" />

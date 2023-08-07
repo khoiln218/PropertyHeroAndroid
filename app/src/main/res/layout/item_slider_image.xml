@@ -29,7 +29,7 @@
         android:layout_centerInParent="true"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/ic_vector_certified"
-        android:visibility="gone" />
+        android:visibility="gone"
+        app:srcCompat="@drawable/ic_vector_certified" />
 
 </RelativeLayout>

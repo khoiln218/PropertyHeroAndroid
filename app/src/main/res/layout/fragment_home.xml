@@ -183,7 +183,7 @@
 
                     <include layout="@layout/item_progress" />
 
-                    <vn.hellosoft.ui.ExpandableHeightGridView
+                    <com.gomicorp.ui.ExpandableHeightGridView
                         android:id="@+id/grvAttractionNearby"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -244,7 +244,7 @@
 
                     <include layout="@layout/item_progress" />
 
-                    <vn.hellosoft.ui.ExpandableHeightGridView
+                    <com.gomicorp.ui.ExpandableHeightGridView
                         android:id="@+id/grvUniversity"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -269,6 +269,6 @@
         android:layout_gravity="bottom|right"
         android:layout_margin="@dimen/layout_margin"
         android:src="@mipmap/ic_dialog_add"
-        app:layout_behavior="vn.hellosoft.ui.ScrollAwareFAB" />
+        app:layout_behavior="com.gomicorp.ui.ScrollAwareFAB" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

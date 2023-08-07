@@ -23,6 +23,6 @@
         android:adjustViewBounds="true"
         android:padding="@dimen/layout_margin_quarter"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/vector_selected"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        app:srcCompat="@drawable/vector_selected" />
 </LinearLayout>

@@ -79,8 +79,8 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="$PROJECT_DIR$/../hero_512x512.png" />
-                                                <entry key="scalingPercent" value="55" />
+                                                <entry key="imagePath" value="$PROJECT_DIR$/../NEW/Logo/hero_icon_2.jpg" />
+                                                <entry key="scalingPercent" value="56" />
                                               </map>
                                             </option>
                                           </PersistentState>
