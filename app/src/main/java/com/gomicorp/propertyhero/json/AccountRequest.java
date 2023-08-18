@@ -2,6 +2,7 @@ package com.gomicorp.propertyhero.json;
 
 import android.graphics.Bitmap;
 
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -31,7 +32,7 @@ public class AccountRequest {
         String url = EndPoints.URL_VERIFY_USER
                 .replace(UrlParams.USER_NAME, userName);
 
-        JsonObjectRequest reqVerify = new JsonObjectRequest(url, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest reqVerify = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 listener.onSuccess(Parser.accountList(response));
@@ -134,7 +135,7 @@ public class AccountRequest {
     public static void getDetails(long accountID, final OnAccountRequestListener listener) {
         String url = EndPoints.GET_DETAILS.replace(UrlParams.ACCOUNT_ID, String.valueOf(accountID));
 
-        JsonObjectRequest regDetail = new JsonObjectRequest(url, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest regDetail = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 listener.onSuccess(Parser.accountList(response));

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -47,7 +48,7 @@ public class ReferrerReceiver extends BroadcastReceiver {
 
     private void insertGmob(String term) {
         String url = "http://www.admin.hellosoft.vn/api/Utilities/Gmob/ClickID=" + term + "/";
-        JsonObjectRequest reqInsert = new JsonObjectRequest(url, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest reqInsert = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
 

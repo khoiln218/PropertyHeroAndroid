@@ -2,6 +2,7 @@ package com.gomicorp.propertyhero.json;
 
 import android.util.Log;
 
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -48,7 +49,7 @@ public class DataRequest {
         } else {
             String url = EndPoints.URL_LIST_PROVINCE
                     .replace(UrlParams.COUNTRY_ID, String.valueOf(Config.VIETNAM));
-            JsonObjectRequest reqProvince = new JsonObjectRequest(url, null, new Response.Listener<JSONObject>() {
+            JsonObjectRequest reqProvince = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
                     List<Province> provinces = Parser.provinceList(response);
@@ -76,7 +77,7 @@ public class DataRequest {
         } else {
             String url = EndPoints.URL_LIST_DISTRICT
                     .replace(UrlParams.PROVINCE_ID, String.valueOf(provinceID));
-            JsonObjectRequest reqDistrict = new JsonObjectRequest(url, null, new Response.Listener<JSONObject>() {
+            JsonObjectRequest reqDistrict = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
                     List<District> districts = Parser.districtList(response);
@@ -100,7 +101,7 @@ public class DataRequest {
 
         String url = EndPoints.URL_LIST_PROPERTY.replace(UrlParams.LANGUAGE_TYPE, String.valueOf(AppController.getInstance().getPrefManager().getLanguageType()));
 
-        JsonObjectRequest reqCate = new JsonObjectRequest(url, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest reqCate = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 List<Property> categories = Parser.propertyList(response);
@@ -124,7 +125,7 @@ public class DataRequest {
                 .replace(UrlParams.DISTRICT_ID, String.valueOf(distID))
                 .replace(UrlParams.LANGUAGE_TYPE, String.valueOf(AppController.getInstance().getPrefManager().getLanguageType()));
 
-        JsonObjectRequest reqBuilding = new JsonObjectRequest(url, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest reqBuilding = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 listener.onSuccess(Parser.markerList(response));
@@ -143,7 +144,7 @@ public class DataRequest {
 
         String url = EndPoints.URL_LIST_FEATURE.replace(UrlParams.LANGUAGE_TYPE, String.valueOf(AppController.getInstance().getPrefManager().getLanguageType()));
 
-        JsonObjectRequest reqFeature = new JsonObjectRequest(url, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest reqFeature = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 listener.onSuccess(Parser.featureList(response));
@@ -162,7 +163,7 @@ public class DataRequest {
 
         String url = EndPoints.URL_LIST_FURNITURE.replace(UrlParams.LANGUAGE_TYPE, String.valueOf(AppController.getInstance().getPrefManager().getLanguageType()));
 
-        JsonObjectRequest reqFurniture = new JsonObjectRequest(url, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest reqFurniture = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 listener.onSuccess(Parser.featureList(response));
@@ -185,7 +186,7 @@ public class DataRequest {
 
             String url = EndPoints.URL_LIST_DIRECTION.replace(UrlParams.LANGUAGE_TYPE, String.valueOf(AppController.getInstance().getPrefManager().getLanguageType()));
 
-            JsonObjectRequest reqDirection = new JsonObjectRequest(url, null, new Response.Listener<JSONObject>() {
+            JsonObjectRequest reqDirection = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
                     List<Info> infos = Parser.infoList(response);

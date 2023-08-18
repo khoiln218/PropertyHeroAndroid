@@ -16,8 +16,8 @@ public class PermissionHelper {
     private static final String[] INITIAL_PERMS = {
             Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.ACCESS_COARSE_LOCATION,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            Manifest.permission.READ_EXTERNAL_STORAGE,
+//            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+//            Manifest.permission.READ_EXTERNAL_STORAGE,
     };
     private static final String CAMERA_PERMS = Manifest.permission.CAMERA;
     private static final String PHONE_PERMS = Manifest.permission.CALL_PHONE;

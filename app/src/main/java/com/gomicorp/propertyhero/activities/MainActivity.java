@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -104,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void fetchNotify() {
-        JsonObjectRequest reqNotify = new JsonObjectRequest(EndPoints.URL_NOTIFY_LAUNCHER, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest reqNotify = new JsonObjectRequest(Request.Method.GET, EndPoints.URL_NOTIFY_LAUNCHER, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 List<Notify> list = Parser.notifyList(response);

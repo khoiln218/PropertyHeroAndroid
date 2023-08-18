@@ -9,6 +9,7 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -86,7 +87,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
                 .replace(UrlParams.ACCOUNT_ID, String.valueOf(AppController.getInstance().getPrefManager().getUserID()))
                 .replace(UrlParams.PASSWORD, pwd);
 
-        JsonObjectRequest request = new JsonObjectRequest(url, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 ResponseInfo info = Parser.responseInfo(response);

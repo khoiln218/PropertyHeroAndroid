@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -110,6 +111,7 @@ public class FavoriteFragment extends Fragment {
 
             if (productList.size() == 0)
                 resultLayout.setVisibility(View.VISIBLE);
+            else resultLayout.setVisibility(View.GONE);
 
             return;
         }
@@ -118,7 +120,7 @@ public class FavoriteFragment extends Fragment {
                 .replace(UrlParams.USER_ID, String.valueOf(AppController.getInstance().getPrefManager().getUserID()))
                 .replace(UrlParams.LANGUAGE_TYPE, String.valueOf(AppController.getInstance().getPrefManager().getLanguageType()));
 
-        JsonObjectRequest request = new JsonObjectRequest(url, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 productList.clear();

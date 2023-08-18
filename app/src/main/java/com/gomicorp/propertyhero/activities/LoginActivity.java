@@ -62,8 +62,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-            PermissionHelper.hasAccountsPermission(this);
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+//            PermissionHelper.hasAccountsPermission(this);
 
         data = getIntent().getBundleExtra(Config.DATA_EXTRA);
 

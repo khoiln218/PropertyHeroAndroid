@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -108,7 +109,7 @@ public class NotificationFragment extends Fragment {
         String url = EndPoints.URL_GET_GIFT_CARD
                 .replace(UrlParams.ACCOUNT_ID, String.valueOf(AppController.getInstance().getPrefManager().getUserID()));
 
-        JsonObjectRequest request = new JsonObjectRequest(url, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 cardList.clear();

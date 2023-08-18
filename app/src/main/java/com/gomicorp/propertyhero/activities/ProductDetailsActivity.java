@@ -1,14 +1,9 @@
 package com.gomicorp.propertyhero.activities;
 
-import static com.android.volley.Request.Method.GET;
-
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -20,19 +15,18 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
 import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.gomicorp.app.AppController;
 import com.gomicorp.app.Config;
-import com.gomicorp.app.PermissionHelper;
 import com.gomicorp.helper.L;
 import com.gomicorp.helper.Utils;
 import com.gomicorp.propertyhero.R;
@@ -99,8 +93,8 @@ public class ProductDetailsActivity extends AppCompatActivity implements OnMapRe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_details);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-            PermissionHelper.hasPhonePermission(this);
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+//            PermissionHelper.hasPhonePermission(this);
 
         id = getIntent().getLongExtra(Config.DATA_EXTRA, 0);
 
@@ -223,11 +217,11 @@ public class ProductDetailsActivity extends AppCompatActivity implements OnMapRe
                 break;
             case R.id.btnContact:
                 if (phone != null) {
-                    Intent callIntent = new Intent(Intent.ACTION_CALL);
+                    Intent callIntent = new Intent(Intent.ACTION_DIAL);
                     callIntent.setData(Uri.parse("tel:" + phone));
-                    if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                        return;
-                    }
+//                    if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+//                        return;
+//                    }
                     startActivity(callIntent);
                 }
                 break;
@@ -388,7 +382,7 @@ public class ProductDetailsActivity extends AppCompatActivity implements OnMapRe
         String url = EndPoints.URL_LIST_POWER_LINK
                 .replace(UrlParams.PROVINCE_ID, String.valueOf(provinceID));
 
-        JsonObjectRequest reqPower = new JsonObjectRequest(GET, url, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest reqPower = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 relocationList.clear();
