@@ -11,7 +11,9 @@
 
     <!--API KEY-->
     <string name="google_app_api">AIzaSyCmT0dbedMCO3Hl8s-VYcveCxtO5hDfAsM</string>
-    <string name="facebook_app_id">252792145080242</string>
+    <string name="facebook_app_id">835680071452810</string>
+    <string name="fb_login_protocol_scheme">fb835680071452810</string>
+    <string name="facebook_client_token">c7ef9f04cdbf5b0c85dd4ba7cc37513f</string>
 
     <!--TODO: Main TabLayout List Icons-->
     <array name="tab_icons">
