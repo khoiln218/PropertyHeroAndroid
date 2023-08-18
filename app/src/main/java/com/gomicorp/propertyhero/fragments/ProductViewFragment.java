@@ -81,7 +81,7 @@ public class ProductViewFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        productList = AppController.getInstance().getWritableDb().getProductList();
+        productList = AppController.getInstance().getPrefManager().getProductViews();
         Collections.reverse(productList);
         adapter.setProductList(productList);
 
@@ -106,7 +106,7 @@ public class ProductViewFragment extends Fragment {
                         startActivity(intent);
                         break;
                     case 1:
-                        AppController.getInstance().getWritableDb().deleteProductByID(id);
+                        AppController.getInstance().getPrefManager().removeProductView(id);
                         onStart();
                         break;
                     default:

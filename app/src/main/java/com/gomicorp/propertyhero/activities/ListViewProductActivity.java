@@ -236,10 +236,10 @@ public class ListViewProductActivity extends AppCompatActivity implements SwipeR
     private void updateUI() {
         refreshLayout.setRefreshing(false);
 
-//        if (productList.size() == 0 && status == Config.PRODUCT_ACTIVATED)
-//            resultLayout.setVisibility(View.VISIBLE);
-//        else
-//            resultLayout.setVisibility(View.GONE);
+        if (productList.size() == 0) /*&& status == Config.PRODUCT_ACTIVATED)*/
+            resultLayout.setVisibility(View.VISIBLE);
+        else
+            resultLayout.setVisibility(View.GONE);
 
 //        if (status == Config.PRODUCT_CERTIFIED && productList.size() == totalCertified) {
 //            productList.add(null);

@@ -94,16 +94,16 @@ public class FavoriteFragment extends Fragment {
             adapter.addProductList(productList);
             fetchListUserLikes();
 
-            resultLayout.setVisibility(View.GONE);
+//            resultLayout.setVisibility(View.GONE);
         } else
             resultLayout.setVisibility(View.VISIBLE);
 
     }
 
     private void fetchListUserLikes() {
-        if(Config.USE_V2) {
+        if (Config.USE_V2) {
             productList.clear();
-            List<Product> newList = AppController.getInstance().getPrefManager().getProductList();
+            List<Product> newList = AppController.getInstance().getPrefManager().getProductFavorites();
             Collections.reverse(newList);
             productList.addAll(newList);
             adapter.addProductList(productList);

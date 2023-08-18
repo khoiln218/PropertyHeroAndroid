@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.ViewGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -65,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Fragment fragment = pagerMainAdapter.getItem(pagerMain.getCurrentItem());
         if (requestCode == Config.REQUEST_FIND_MARKER) {
             if (resultCode == RESULT_OK)
                 pagerMain.setCurrentItem(1);

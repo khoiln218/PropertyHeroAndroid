@@ -286,8 +286,9 @@ public class ProductDetailsActivity extends AppCompatActivity implements OnMapRe
                 if (products.size() > 0) {
                     product = products.get(0);
                     if (Config.USE_V2) {
-                        AppController.getInstance().getPrefManager().updateProduct(product);
-                        product.setIsLikeThis(AppController.getInstance().getPrefManager().getProductById(product.getId()) != null ? 1 : 0);
+                        AppController.getInstance().getPrefManager().updateProductFavorite(product);
+                        AppController.getInstance().getPrefManager().updateProductView(product);
+                        product.setIsLikeThis(AppController.getInstance().getPrefManager().getProductFavoriteById(product.getId()) != null ? 1 : 0);
                     }
                 }
 
@@ -306,7 +307,7 @@ public class ProductDetailsActivity extends AppCompatActivity implements OnMapRe
         if (product != null) {
             findViewById(R.id.progressLayout).setVisibility(View.GONE);
 
-            AppController.getInstance().getWritableDb().insertProduct(product);
+            AppController.getInstance().getPrefManager().insertProductView(product);
             this.phone = product.getContactPhone();
             getSupportActionBar().setTitle(title.replace("...", String.valueOf(product.getId())));
             setupIsFavorite();
@@ -460,10 +461,10 @@ public class ProductDetailsActivity extends AppCompatActivity implements OnMapRe
 
         if (Config.USE_V2) {
             if (product.getIsLikeThis() == 0) {
-                AppController.getInstance().getPrefManager().insertProduct(product);
+                AppController.getInstance().getPrefManager().insertProductFavorite(product);
                 product.setIsLikeThis(1);
             } else {
-                AppController.getInstance().getPrefManager().removeProduct(product);
+                AppController.getInstance().getPrefManager().removeProductFavorite(product.getId());
                 product.setIsLikeThis(0);
             }
 
