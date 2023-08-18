@@ -2,6 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:fillViewport="true">
 
     <FrameLayout
@@ -45,6 +46,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            tools:text="Lê Ngọc Khôi"
                             android:id="@+id/tvFullName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -60,7 +62,7 @@
                             android:text="@string/btn_user_info"
                             android:textColor="@color/colorSecondaryText"
                             android:textSize="@dimen/text_size_secondary"
-                            android:visibility="gone" />
+                            android:visibility="visible" />
                     </LinearLayout>
                 </LinearLayout>
             </RelativeLayout>

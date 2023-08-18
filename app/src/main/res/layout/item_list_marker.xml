@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@android:color/white"
@@ -27,7 +28,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="@color/colorPrimaryText" />
+            android:textColor="@color/colorPrimaryText"
+            tools:text="Ben Thanh Times Square" />
 
         <TextView
             android:id="@+id/tvAddress"
@@ -36,6 +38,7 @@
             android:layout_marginTop="@dimen/title_margin_half"
             android:singleLine="true"
             android:textColor="@color/colorSecondaryText"
-            android:textSize="@dimen/text_size_secondary" />
+            android:textSize="@dimen/text_size_secondary"
+            tools:text="172-174 Ký Con, Nguyễn Thái Bình, Quận 1, TP.HCM" />
     </LinearLayout>
 </LinearLayout>

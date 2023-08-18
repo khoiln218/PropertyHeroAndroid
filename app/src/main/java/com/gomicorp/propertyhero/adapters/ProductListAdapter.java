@@ -131,12 +131,12 @@ public class ProductListAdapter extends RecyclerView.Adapter implements StickyRe
 
     @Override
     public long getHeaderId(int position) {
-        if (productList.size() == 0)
-            return -1;
-        else if (productList.get(position) == null)
-            return -1;
-        else
-            return productList.get(position).getStatus();
+//        if (productList.size() == 0)
+        return -1;
+//        else if (productList.get(position) == null)
+//            return -1;
+//        else
+//            return productList.get(position).getStatus();
     }
 
     @Override

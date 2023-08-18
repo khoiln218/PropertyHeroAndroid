@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="@dimen/ic_link_width"
     android:layout_height="wrap_content"
     app:cardCornerRadius="0dp">
@@ -27,7 +28,8 @@
             android:padding="@dimen/layout_margin_quarter"
             android:singleLine="true"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:textColor="@color/colorBlueGradientText" />
+            android:textColor="@color/colorBlueGradientText"
+            tools:text="Chợ Bến Thành" />
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

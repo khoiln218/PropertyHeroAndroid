@@ -5,6 +5,8 @@ package com.gomicorp.app;
  */
 public class Config {
 
+    public static final boolean USE_V2 = true;
+    public static final int LIMITED = 20;
     public static final String DEVICE_TYPE = "1"; // Android
     public static final int VIETNAM = 1;
 

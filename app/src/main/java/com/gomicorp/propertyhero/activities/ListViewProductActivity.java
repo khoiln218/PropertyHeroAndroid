@@ -43,7 +43,7 @@ public class ListViewProductActivity extends AppCompatActivity implements SwipeR
 
     private SearchInfo searchInfo;
 
-    private int status = Config.PRODUCT_CERTIFIED;
+    private int status = Config.UNDEFINED; //Config.PRODUCT_CERTIFIED;
     private int pageNo = 1;
 
     private RelativeLayout resultLayout;
@@ -51,8 +51,9 @@ public class ListViewProductActivity extends AppCompatActivity implements SwipeR
     private RecyclerView recyclerProduct;
 
 
-    private int totalCertified = 0;
-    private int totalActivated = 0;
+//    private int totalCertified = 0;
+//    private int totalActivated = 0;
+    private boolean isFinished = false;
     private List<Product> productList;
     private ProductListAdapter adapter;
 
@@ -161,11 +162,12 @@ public class ListViewProductActivity extends AppCompatActivity implements SwipeR
 
     @Override
     public void onRefresh() {
-        totalCertified = 0;
-        totalActivated = 0;
+//        totalCertified = 0;
+//        totalActivated = 0;
+        isFinished = false;
 
         pageNo = 1;
-        status = Config.PRODUCT_CERTIFIED;
+//        status = Config.PRODUCT_CERTIFIED;
 
         productList.clear();
         adapter.addProductList(productList);
@@ -175,7 +177,7 @@ public class ListViewProductActivity extends AppCompatActivity implements SwipeR
 
     @Override
     public void onLoadMore() {
-        if (!adapter.isLoading() && productList.size() < totalCertified + totalActivated) {
+        if (!adapter.isLoading() && !isFinished/*productList.size() < totalCertified + totalActivated*/) {
             productList.add(null);
             adapter.addProductList(productList);
             pageNo++;
@@ -205,19 +207,20 @@ public class ListViewProductActivity extends AppCompatActivity implements SwipeR
         ProductRequest.search(searchInfo, new OnLoadProductListener() {
             @Override
             public void onSuccess(List<Product> products, int totalItems) {
-                if (totalItems != 0) {
-                    if (status == Config.PRODUCT_CERTIFIED)
-                        totalCertified = totalItems;
-                    else if (status == Config.PRODUCT_ACTIVATED)
-                        totalActivated = totalItems;
-                }
+//                if (totalItems != 0) {
+//                    if (status == Config.PRODUCT_CERTIFIED)
+//                        totalCertified = totalItems;
+//                    else if (status == Config.PRODUCT_ACTIVATED)
+//                        totalActivated = totalItems;
+//                }
+                isFinished = totalItems < Config.LIMITED;
 
                 if (productList.size() > 0)
                     productList.remove(productList.size() - 1);
 
                 productList.addAll(products);
                 adapter.addProductList(productList);
-                adapter.addTotalItems(totalCertified, totalActivated);
+//                adapter.addTotalItems(totalCertified, totalActivated);
 
                 updateUI();
             }
@@ -233,24 +236,24 @@ public class ListViewProductActivity extends AppCompatActivity implements SwipeR
     private void updateUI() {
         refreshLayout.setRefreshing(false);
 
-        if (productList.size() == 0 && status == Config.PRODUCT_ACTIVATED)
-            resultLayout.setVisibility(View.VISIBLE);
-        else
-            resultLayout.setVisibility(View.GONE);
+//        if (productList.size() == 0 && status == Config.PRODUCT_ACTIVATED)
+//            resultLayout.setVisibility(View.VISIBLE);
+//        else
+//            resultLayout.setVisibility(View.GONE);
 
-        if (status == Config.PRODUCT_CERTIFIED && productList.size() == totalCertified) {
-            productList.add(null);
-            adapter.addProductList(productList);
-
-            pageNo = 1;
-            status = Config.PRODUCT_ACTIVATED;
-
-            new Timer().schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    fetchProductList();
-                }
-            }, Config.TIMER_DELAY);
-        }
+//        if (status == Config.PRODUCT_CERTIFIED && productList.size() == totalCertified) {
+//            productList.add(null);
+//            adapter.addProductList(productList);
+//
+//            pageNo = 1;
+//            status = Config.PRODUCT_ACTIVATED;
+//
+//            new Timer().schedule(new TimerTask() {
+//                @Override
+//                public void run() {
+//                    fetchProductList();
+//                }
+//            }, Config.TIMER_DELAY);
+//        }
     }
 }

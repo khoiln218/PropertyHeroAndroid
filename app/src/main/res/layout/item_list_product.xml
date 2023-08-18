@@ -32,6 +32,7 @@
                 android:id="@+id/tvPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="5.5"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:textColor="@color/colorAccent" />
 
@@ -74,6 +75,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/layout_margin_quarter"
             android:maxLines="2"
+            android:text="Ben Thanh Times Square"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@color/colorPrimaryText" />
 
@@ -83,6 +85,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/layout_margin_half"
             android:singleLine="true"
+            android:text="172-174 Ký Con, Nguyễn Thái Bình, Quận 1, TP.HCM"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@color/colorSecondaryText" />
     </LinearLayout>

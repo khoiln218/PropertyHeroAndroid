@@ -1,5 +1,7 @@
 package com.gomicorp.propertyhero.json;
 
+import android.util.Log;
+
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -11,6 +13,7 @@ import com.gomicorp.propertyhero.callbacks.OnResponseListener;
 import com.gomicorp.propertyhero.extras.EndPoints;
 import com.gomicorp.propertyhero.model.Product;
 import com.gomicorp.propertyhero.model.SearchInfo;
+import com.google.gson.Gson;
 
 import org.json.JSONObject;
 
@@ -104,7 +107,30 @@ public class ProductRequest {
         return null;
     }
 
+    public static void search_v2(SearchInfo searchInfo, final OnLoadProductListener listener) {
+        Log.e(TAG, "search: " + new Gson().toJson(searchInfo));
+
+        MultipartRequest reqSearch = new MultipartRequest(EndPoints.URL_SEARCH_PRODUCT_V2, null, Utils.mimeType, pathBodySearch(searchInfo), new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.e("search_v2", "onResponse: " + new Gson().toJson(response));
+                listener.onSuccess(Parser.productList(response), (int) Parser.totalRows(response));
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                listener.onError(error);
+            }
+        });
+
+        AppController.getInstance().addToRequestQueue(reqSearch, TAG);
+    }
+
     public static void search(SearchInfo searchInfo, final OnLoadProductListener listener) {
+        if (Config.USE_V2) {
+            search_v2(searchInfo, listener);
+            return;
+        }
 
         MultipartRequest reqSearch = new MultipartRequest(EndPoints.URL_SEARCH_PRODUCT, null, Utils.mimeType, pathBodySearch(searchInfo), new Response.Listener<JSONObject>() {
             @Override
@@ -153,7 +179,28 @@ public class ProductRequest {
         return null;
     }
 
+    public static void getProduct_v2(long id, int isMeViewThis, final OnLoadProductListener listener) {
+        MultipartRequest reqGet = new MultipartRequest(EndPoints.URL_GET_PRODUCT_V2, null, Utils.mimeType, pathBodyRequestInfo(id, isMeViewThis), new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.e("getProduct_v2", "onResponse: " + new Gson().toJson(response));
+                listener.onSuccess(Parser.productList(response), 1);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                listener.onError(error);
+            }
+        });
+
+        AppController.getInstance().addToRequestQueue(reqGet, TAG);
+    }
+
     public static void getProduct(long id, int isMeViewThis, final OnLoadProductListener listener) {
+        if (Config.USE_V2) {
+            getProduct_v2(id, isMeViewThis, listener);
+            return;
+        }
         MultipartRequest reqGet = new MultipartRequest(EndPoints.URL_GET_PRODUCT, null, Utils.mimeType, pathBodyRequestInfo(id, isMeViewThis), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {

@@ -49,9 +49,12 @@ public class EndPoints {
 
     // TODO: EndPoint Product
     private static final String API_PRODUCT = BASE_URL + "api/Product/";
+    private static final String API_PRODUCT_V2 = BASE_URL + "api/v2.0/Product/";
     public static final String URL_CREATE_PRODUCT = API_PRODUCT + "Create";
     public static final String URL_SEARCH_PRODUCT = API_PRODUCT + "Search";
+    public static final String URL_SEARCH_PRODUCT_V2 = API_PRODUCT_V2 + "Search";
     public static final String URL_GET_PRODUCT = API_PRODUCT + "GetByID";
+    public static final String URL_GET_PRODUCT_V2 = API_PRODUCT_V2 + "GetByID";
     public static final String URL_SEARCH_BY_ACCOUNT = API_PRODUCT + "SearchByAccount";
     public static final String URL_FAVORITE_PRODUCT = API_PRODUCT + "Favorite";
     public static final String URL_LIST_USER_LIKE = API_PRODUCT + "ListUserLike/UserID={userID}/Language={language}/";
