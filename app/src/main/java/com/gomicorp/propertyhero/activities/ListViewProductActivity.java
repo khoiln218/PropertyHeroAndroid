@@ -34,8 +34,6 @@ import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersDecoration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class ListViewProductActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener, OnLoadMoreListener {
 
@@ -51,7 +49,7 @@ public class ListViewProductActivity extends AppCompatActivity implements SwipeR
     private RecyclerView recyclerProduct;
 
 
-//    private int totalCertified = 0;
+    //    private int totalCertified = 0;
 //    private int totalActivated = 0;
     private boolean isFinished = false;
     private List<Product> productList;
@@ -229,6 +227,8 @@ public class ListViewProductActivity extends AppCompatActivity implements SwipeR
             public void onError(VolleyError error) {
                 Log.e(TAG, "Error at fetchProductList()");
                 L.showToast(getString(R.string.request_time_out));
+                
+                updateUI();
             }
         });
     }

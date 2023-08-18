@@ -283,8 +283,13 @@ public class ProductDetailsActivity extends AppCompatActivity implements OnMapRe
         ProductRequest.getProduct(id, isMeViewThis, new OnLoadProductListener() {
             @Override
             public void onSuccess(List<Product> products, int totalItems) {
-                if (products.size() > 0)
+                if (products.size() > 0) {
                     product = products.get(0);
+                    if (Config.USE_V2) {
+                        AppController.getInstance().getPrefManager().updateProduct(product);
+                        product.setIsLikeThis(AppController.getInstance().getPrefManager().getProductById(product.getId()) != null ? 1 : 0);
+                    }
+                }
 
                 updateUI();
             }
@@ -452,6 +457,19 @@ public class ProductDetailsActivity extends AppCompatActivity implements OnMapRe
     }
 
     private void requestFavorite() {
+
+        if (Config.USE_V2) {
+            if (product.getIsLikeThis() == 0) {
+                AppController.getInstance().getPrefManager().insertProduct(product);
+                product.setIsLikeThis(1);
+            } else {
+                AppController.getInstance().getPrefManager().removeProduct(product);
+                product.setIsLikeThis(0);
+            }
+
+            setupIsFavorite();
+            return;
+        }
         ProductRequest.favorite(product.getId(), new OnResponseListener() {
             @Override
             public void onSuccess(ResponseInfo info) {

@@ -111,8 +111,10 @@ public class ProductListAdapter extends RecyclerView.Adapter implements StickyRe
             Product product = productList.get(position);
 
             int width = com.gomicorp.helper.Utils.getScreenWidth() / 3;
+
+            String imageUrl = product.getThumbnail().split(", ")[0];
             Picasso.with(holder.itemView.getContext())
-                    .load(product.getThumbnail())
+                    .load(imageUrl)
                     .centerCrop()
                     .placeholder(R.drawable.emptyimg)
                     .resize(width, width)

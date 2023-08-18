@@ -132,7 +132,7 @@
                     android:textColor="@color/colorTitleText" />
             </LinearLayout>
 
-            <include layout="@layout/layout_divider_horizontal" />
+<!--            <include layout="@layout/layout_divider_horizontal" />-->
 
             <!--Management-->
             <LinearLayout

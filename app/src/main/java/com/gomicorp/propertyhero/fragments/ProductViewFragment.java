@@ -26,6 +26,7 @@ import com.gomicorp.propertyhero.model.Product;
 import com.gomicorp.ui.DividerItemDecoration;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -81,6 +82,7 @@ public class ProductViewFragment extends Fragment {
         super.onStart();
 
         productList = AppController.getInstance().getWritableDb().getProductList();
+        Collections.reverse(productList);
         adapter.setProductList(productList);
 
         if (productList.size() == 0)

@@ -44,8 +44,9 @@ public class ProductCollectionAdapter extends RecyclerView.Adapter<ProductCollec
         holder.tvAddress.setText(obj.getAddresss());
         holder.tvContact.setText(obj.getContactName() + " (" + obj.getContactPhone() + ")");
 
+        String imageUrl = obj.getThumbnail().split(", ")[0];
         Picasso.with(holder.itemView.getContext())
-                .load(obj.getThumbnail())
+                .load(imageUrl)
                 .centerCrop()
                 .placeholder(R.drawable.emptyimg)
                 .resize(96, 96)

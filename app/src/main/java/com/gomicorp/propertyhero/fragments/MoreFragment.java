@@ -63,6 +63,8 @@ public class MoreFragment extends Fragment implements View.OnClickListener {
         root.findViewById(R.id.btnAccount).setOnClickListener(this);
         root.findViewById(R.id.btnRating).setOnClickListener(this);
         root.findViewById(R.id.btnContact).setOnClickListener(this);
+
+        root.findViewById(R.id.btnManagement).setVisibility(Config.DISABLE_CREATE ? View.GONE : View.VISIBLE);
         root.findViewById(R.id.btnManagement).setOnClickListener(this);
         root.findViewById(R.id.btnSettings).setOnClickListener(this);
 

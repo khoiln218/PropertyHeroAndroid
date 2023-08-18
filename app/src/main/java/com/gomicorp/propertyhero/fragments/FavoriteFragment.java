@@ -34,6 +34,7 @@ import com.gomicorp.ui.DividerItemDecoration;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -100,6 +101,19 @@ public class FavoriteFragment extends Fragment {
     }
 
     private void fetchListUserLikes() {
+        if(Config.USE_V2) {
+            productList.clear();
+            List<Product> newList = AppController.getInstance().getPrefManager().getProductList();
+            Collections.reverse(newList);
+            productList.addAll(newList);
+            adapter.addProductList(productList);
+
+            if (productList.size() == 0)
+                resultLayout.setVisibility(View.VISIBLE);
+
+            return;
+        }
+
         String url = EndPoints.URL_LIST_USER_LIKE
                 .replace(UrlParams.USER_ID, String.valueOf(AppController.getInstance().getPrefManager().getUserID()))
                 .replace(UrlParams.LANGUAGE_TYPE, String.valueOf(AppController.getInstance().getPrefManager().getLanguageType()));

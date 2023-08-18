@@ -42,6 +42,7 @@ import com.gomicorp.ui.ChildAnimation;
 import com.gomicorp.ui.ExpandableHeightGridView;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.gson.Gson;
 
 import org.json.JSONObject;
 
@@ -94,6 +95,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         root.findViewById(R.id.btnApartment).setOnClickListener(this);
         root.findViewById(R.id.btnRoom).setOnClickListener(this);
         root.findViewById(R.id.btnFindArea).setOnClickListener(this);
+
+        root.findViewById(R.id.fabAddInfo).setVisibility(Config.DISABLE_CREATE ? View.GONE : View.VISIBLE);
         root.findViewById(R.id.fabAddInfo).setOnClickListener(this);
 
         return root;
@@ -235,6 +238,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         JsonObjectRequest reqAttractionNearby = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+                Log.e("fetchAttractionNearby", "onResponse: " + new Gson().toJson(response));
                 areaList = Parser.markerList(response);
                 areaNearbyAdapter.setAttractionList(areaList);
             }

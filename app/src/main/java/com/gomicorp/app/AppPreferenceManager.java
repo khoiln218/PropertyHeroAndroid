@@ -3,9 +3,15 @@ package com.gomicorp.app;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.gomicorp.propertyhero.model.Product;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -28,6 +34,7 @@ public class AppPreferenceManager {
     private static final String KEY_ACC_ROLE = "AccountRole";
     private static final String KEY_PASSWORD = "Password";
     private static final String KEY_PROVINCE = "DefaultProvince";
+    private static final String PRODUCT_FAVORITE = "PRODUCT_FAVORITE";
     int PRIVATE_MODE = 0;
     private SharedPreferences pref;
     private SharedPreferences.Editor editor;
@@ -37,6 +44,64 @@ public class AppPreferenceManager {
         this.context = context;
         pref = context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
         editor = pref.edit();
+    }
+
+    public void saveProductList(List<Product> products) {
+        editor.putString(PRODUCT_FAVORITE, new Gson().toJson(products));
+        editor.apply();
+    }
+
+    public List<Product> getProductList() {
+        String jsonString = pref.getString(PRODUCT_FAVORITE, null);
+        List<Product> products = new Gson().fromJson(jsonString, new TypeToken<List<Product>>() {
+        }.getType());
+        return products == null ? new ArrayList<>() : products;
+    }
+
+    public void insertProduct(Product product) {
+        String jsonString = pref.getString(PRODUCT_FAVORITE, null);
+        List<Product> products = new Gson().fromJson(jsonString, new TypeToken<List<Product>>() {
+        }.getType());
+        if (products == null) {
+            saveProductList(Collections.singletonList(product));
+        } else {
+            boolean isExits = products.stream().anyMatch(it -> it.getId() == product.getId());
+            if (isExits) return;
+            products.add(product);
+            saveProductList(products);
+        }
+    }
+
+    public void removeProduct(Product product) {
+        String jsonString = pref.getString(PRODUCT_FAVORITE, null);
+        List<Product> products = new Gson().fromJson(jsonString, new TypeToken<List<Product>>() {
+        }.getType());
+        if (products == null) return;
+        Product exitProduct = products.stream().filter(it -> it.getId() == product.getId()).findFirst().orElse(null);
+        if (exitProduct != null) {
+            products.remove(exitProduct);
+            saveProductList(products);
+        }
+    }
+
+    public void updateProduct(Product product) {
+        String jsonString = pref.getString(PRODUCT_FAVORITE, null);
+        List<Product> products = new Gson().fromJson(jsonString, new TypeToken<List<Product>>() {
+        }.getType());
+        if (products == null) return;
+        Product exitProduct = products.stream().filter(it -> it.getId() == product.getId()).findFirst().orElse(null);
+        if (exitProduct != null) {
+            products.set(products.indexOf(exitProduct), product);
+            saveProductList(products);
+        }
+    }
+
+    public Product getProductById(long id) {
+        String jsonString = pref.getString(PRODUCT_FAVORITE, null);
+        List<Product> products = new Gson().fromJson(jsonString, new TypeToken<List<Product>>() {
+        }.getType());
+        if (products == null) return null;
+        return products.stream().filter(it -> it.getId() == id).findFirst().orElse(null);
     }
 
     public void Logout() {

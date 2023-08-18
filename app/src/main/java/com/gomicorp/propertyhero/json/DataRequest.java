@@ -1,5 +1,7 @@
 package com.gomicorp.propertyhero.json;
 
+import android.util.Log;
+
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -18,6 +20,7 @@ import com.gomicorp.propertyhero.model.District;
 import com.gomicorp.propertyhero.model.Info;
 import com.gomicorp.propertyhero.model.Property;
 import com.gomicorp.propertyhero.model.Province;
+import com.google.gson.Gson;
 
 import org.json.JSONObject;
 
@@ -205,6 +208,7 @@ public class DataRequest {
         MultipartRequest reqMarkerByKeyword = new MultipartRequest(EndPoints.URL_MARKER_BY_KEYWORD, null, Utils.mimeType, pathBodyFindByKeyWord(keyword, provinceID, markerType), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+                Log.e("findByKeyword", "onResponse: " + new Gson().toJson(response));
                 listener.onSuccess(Parser.markerList(response));
             }
         }, new Response.ErrorListener() {
