@@ -44,8 +44,8 @@
     </string-array>
 
     <string-array name="image_option">
-        <item>Chụp ảnh</item>
-        <item>Chọn hình từ thư viện</item>
+        <item>Máy ảnh</item>
+        <item>Bộ sưu tập</item>
         <item>Hủy bỏ</item>
     </string-array>
 
@@ -194,7 +194,7 @@
     <string name="text_hint_phone">Số điện thoại liên hệ</string>
     <string name="text_hint_phone_num">Số điện thoại</string>
     <string name="text_err_phone_empty">Vui lòng nhập số điện thoại</string>
-    <string name="text_err_phone">Số điện thoại không đúng định dạng (09xxxxxxxx, 01xxxxxxxxx, 08xxxxxxxx)</string>
+    <string name="text_err_phone">Số điện thoại không đúng định dạng (03xxxxxxxx, 05xxxxxxxx, 07xxxxxxxx, 08xxxxxxxx, 09xxxxxxxx)</string>
 
     <string name="text_hint_gender">Giới tính</string>
     <string name="text_hint_birth_date">Ngày sinh</string>
@@ -353,6 +353,10 @@
     <string name="no_location_data_provided">No Location Data Provided</string>
     <string name="service_not_available">Sorry, the service is not available</string>
     <string name="invalid_location">Invalid latitude or longitude used</string>
+    <string name="permission_external_storage">Ứng dụng cần quyền truy cập bộ nhớ</string>
+    <string name="permission_camera">Ứng dụng cần sử dụng quyền chụp ảnh</string>
+    <string name="create_avatar_title">Tạo ảnh đại diện</string>
+    <string name="edit_image">Chỉnh sửa ảnh</string>
 
     <string name="text_info_content">
         Property Hero là ứng dụng điện thoại di động đầu tiên tại Việt Nam để “Tìm kiếm” và “Đăng tin” các địa điểm bất động sản cho thuê tại Việt Nam… Mọi thông tin đăng trên Property Hero đều được KIỂM TRA và XÁC NHẬN.

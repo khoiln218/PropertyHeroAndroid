@@ -1,15 +1,12 @@
 package com.gomicorp.propertyhero.activities;
 
-import android.content.ComponentName;
-import android.content.DialogInterface;
+import android.content.ContentResolver;
 import android.content.Intent;
-import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
+import android.graphics.ImageDecoder;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
-import android.os.Handler;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.MenuItem;
@@ -19,53 +16,40 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.ImageLoader;
 import com.gomicorp.app.AppController;
 import com.gomicorp.app.CircleTransform;
 import com.gomicorp.app.Config;
-import com.gomicorp.app.PermissionHelper;
-import com.gomicorp.helper.CroppingOption;
-import com.gomicorp.helper.CroppingOptionAdapter;
+import com.gomicorp.helper.ImagePickerActivity;
 import com.gomicorp.helper.L;
 import com.gomicorp.helper.Utils;
 import com.gomicorp.propertyhero.R;
 import com.gomicorp.propertyhero.callbacks.OnResponseListener;
 import com.gomicorp.propertyhero.json.AccountRequest;
 import com.gomicorp.propertyhero.model.ResponseInfo;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 public class AccountDetailsActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = AccountDetailsActivity.class.getSimpleName();
+    private static final int REQUEST_IMAGE = 1;
+    private static final int AVATAR_MAX_SIZE = 512;
     private static final int TIMER_CHANGE_AVATR = 3000; // 3s Auto change
 
     private ImageView imgAvatar;
     private TextView tvFullName, tvUserName;
-
     private LinearLayout btnChangePwd;
-
-    private ImageLoader imageLoader;
-    private Uri captureUri;
-    private File outPutFile = null;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_details);
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-            PermissionHelper.hasCameraPermission(this);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -78,19 +62,21 @@ public class AccountDetailsActivity extends AppCompatActivity implements View.On
 
         btnChangePwd = (LinearLayout) findViewById(R.id.btnChangePwd);
 
-        imageLoader = AppController.getInstance().getImageLoader();
-        outPutFile = new File(Environment.getExternalStorageDirectory(), "temp.jpg");
-
         Bundle data = getIntent().getBundleExtra(Config.DATA_EXTRA);
-        if (data == null)
+        if (data == null) {
             finish();
+            return;
+        }
 
         getSupportActionBar().setTitle(AppController.getInstance().getPrefManager().getFullName());
 
+        String avatarUrl = data.getString(Config.AVATAR_URL);
         Picasso.with(this)
-                .load(data.getString(Config.AVATAR_URL))
+                .load(avatarUrl)
                 .placeholder(R.drawable.default_avatar)
                 .transform(new CircleTransform())
+                .networkPolicy(NetworkPolicy.NO_CACHE)
+                .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
                 .into(imgAvatar);
 
         tvFullName.setText(AppController.getInstance().getPrefManager().getFullName());
@@ -119,164 +105,112 @@ public class AccountDetailsActivity extends AppCompatActivity implements View.On
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btnChangeAvatar:
-                if (Utils.isSDPresent())
-                    selectImageOption();
-                else
-                    Toast.makeText(getApplicationContext(), getString(R.string.err_msg_sd_card), Toast.LENGTH_LONG).show();
-                break;
-            case R.id.btnUserInfo:
-                startActivity(new Intent(this, AccountInfoActivity.class));
-                break;
-            case R.id.btnChangePwd:
-                startActivity(new Intent(this, ChangePasswordActivity.class));
-                break;
-            case R.id.btnLogout:
-                String userName = AppController.getInstance().getPrefManager().getUserName();
-                AppController.getInstance().getPrefManager().Logout();
-                AppController.getInstance().getPrefManager().addUserName(userName);
-
-                Intent intent = new Intent(this, MainActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-
-                finish();
-                break;
+        int id = v.getId();
+        if (id == R.id.btnChangeAvatar) {
+            showImagePickerOptions();
+        } else if (id == R.id.btnUserInfo) {
+            startActivity(new Intent(this, AccountInfoActivity.class));
+        } else if (id == R.id.btnChangePwd) {
+            startActivity(new Intent(this, ChangePasswordActivity.class));
+        } else if (id == R.id.btnLogout) {
+            String userName = AppController.getInstance().getPrefManager().getUserName();
+            AppController.getInstance().getPrefManager().Logout();
+            AppController.getInstance().getPrefManager().addUserName(userName);
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            finish();
         }
+    }
+
+    public void showImagePickerOptions() {
+        ImagePickerActivity.showImagePickerOptions(this, new ImagePickerActivity.PickerOptionListener() {
+            @Override
+            public void onCameraSelected() {
+                launchCamera();
+            }
+
+            @Override
+            public void onGallerySelected() {
+                launchGallery();
+            }
+        });
+    }
+
+    public void launchCamera() {
+        Intent intent = new Intent(this, ImagePickerActivity.class);
+        intent.putExtra(ImagePickerActivity.REQUEST_CODE_TYPE, ImagePickerActivity.REQUEST_IMAGE_CAPTURE);
+
+        intent.putExtra(ImagePickerActivity.EXTRA_LOCK_ASPECT_RATIO, true);
+        intent.putExtra(ImagePickerActivity.EXTRA_ASPECT_RATIO_X, 1);
+        intent.putExtra(ImagePickerActivity.EXTRA_ASPECT_RATIO_Y, 1);
+
+        intent.putExtra(ImagePickerActivity.EXTRA_SET_BITMAP_MAX_WIDTH_HEIGHT, true);
+        intent.putExtra(ImagePickerActivity.EXTRA_BITMAP_MAX_WIDTH, AVATAR_MAX_SIZE);
+        intent.putExtra(ImagePickerActivity.EXTRA_BITMAP_MAX_HEIGHT, AVATAR_MAX_SIZE);
+
+        ActivityCompat.startActivityForResult(this, intent, REQUEST_IMAGE, null);
+    }
+
+    public void launchGallery() {
+        Intent intent = new Intent(this, ImagePickerActivity.class);
+        intent.putExtra(ImagePickerActivity.REQUEST_CODE_TYPE, ImagePickerActivity.REQUEST_IMAGE_GALLERY);
+
+        intent.putExtra(ImagePickerActivity.EXTRA_LOCK_ASPECT_RATIO, true);
+        intent.putExtra(ImagePickerActivity.EXTRA_ASPECT_RATIO_X, 1);
+        intent.putExtra(ImagePickerActivity.EXTRA_ASPECT_RATIO_Y, 1);
+
+        intent.putExtra(ImagePickerActivity.EXTRA_SET_BITMAP_MAX_WIDTH_HEIGHT, true);
+        intent.putExtra(ImagePickerActivity.EXTRA_BITMAP_MAX_WIDTH, AVATAR_MAX_SIZE);
+        intent.putExtra(ImagePickerActivity.EXTRA_BITMAP_MAX_HEIGHT, AVATAR_MAX_SIZE);
+
+        ActivityCompat.startActivityForResult(this, intent, REQUEST_IMAGE, null);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode) {
-            case Config.REQUEST_CAMERA:
-                if (resultCode == RESULT_OK)
-                    croppingImage();
-                break;
-            case Config.REQUEST_GALLERY:
-                if (resultCode == RESULT_OK && data != null) {
-                    captureUri = data.getData();
-                    croppingImage();
+        if (requestCode == REQUEST_IMAGE) {
+            if (resultCode == RESULT_OK && data != null) {
+                Uri uri = data.getParcelableExtra("path");
+                try {
+                    final Bitmap bitmap = getBitmap(uri);
+                    handleChangeAvatar(bitmap);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    L.showToast(e.getLocalizedMessage());
                 }
-                break;
-            case Config.REQUEST_CROPPING:
-                if (outPutFile.exists()) {
-                    final Bitmap bitmap = Utils.decodeFile(outPutFile, 512, 512);
-                    imgAvatar.setImageBitmap(bitmap);
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            handleChangeAvatar(bitmap);
-                        }
-                    }, TIMER_CHANGE_AVATR);
-                }
-                break;
+            }
         }
     }
 
-    private void selectImageOption() {
-        final CharSequence[] items = getResources().getStringArray(R.array.image_option);
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setItems(items, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                switch (which) {
-                    case 0:
-                        Intent camera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-                        File file = new File(android.os.Environment.getExternalStorageDirectory(), "temp1.jpg");
-                        captureUri = Uri.fromFile(file);
-
-                        camera.putExtra(MediaStore.EXTRA_OUTPUT, captureUri);
-                        ActivityCompat.startActivityForResult(AccountDetailsActivity.this, camera, Config.REQUEST_CAMERA, null);
-                        break;
-                    case 1:
-                        Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                        ActivityCompat.startActivityForResult(AccountDetailsActivity.this, gallery, Config.REQUEST_GALLERY, null);
-                        break;
-                    default:
-                        dialog.dismiss();
-                        break;
-                }
-            }
-        });
-
-        builder.show();
-    }
-
-    private void croppingImage() {
-        final ArrayList<CroppingOption> cropOptions = new ArrayList<>();
-
-        Intent intent = new Intent("com.android.camera.action.CROP");
-        intent.setType("image/*");
-
-        List<ResolveInfo> list = getPackageManager().queryIntentActivities(intent, 0);
-        int size = list.size();
-
-        if (size == 0) {
-            Toast.makeText(this, "Cann't find image croping app", Toast.LENGTH_SHORT).show();
+    private Bitmap getBitmap(Uri imageUri) throws Exception {
+        Bitmap bitmap;
+        ContentResolver contentResolver = getContentResolver();
+        if (Build.VERSION.SDK_INT < 28) {
+            bitmap = MediaStore.Images.Media.getBitmap(contentResolver, imageUri);
         } else {
-            intent.setData(captureUri);
-            intent.putExtra("outputX", 512);
-            intent.putExtra("outputY", 512);
-
-            intent.putExtra("aspectX", 1);
-            intent.putExtra("aspectY", 1);
-
-            intent.putExtra("scale", true);
-            intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(outPutFile));
-
-            if (size == 1) {
-                Intent i = new Intent(intent);
-                ResolveInfo res = list.get(0);
-
-                i.setComponent(new ComponentName(res.activityInfo.packageName, res.activityInfo.name));
-                ActivityCompat.startActivityForResult(this, i, Config.REQUEST_CROPPING, null);
-            } else {
-                for (ResolveInfo res : list) {
-                    final CroppingOption co = new CroppingOption();
-
-                    co.title = getPackageManager().getApplicationLabel(res.activityInfo.applicationInfo);
-                    co.icon = getPackageManager().getApplicationIcon(res.activityInfo.applicationInfo);
-                    co.appIntent = new Intent(intent);
-                    co.appIntent.setComponent(new ComponentName(res.activityInfo.packageName, res.activityInfo.name));
-                    cropOptions.add(co);
-                }
-
-                CroppingOptionAdapter adapter = new CroppingOptionAdapter(getApplicationContext(), cropOptions);
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setTitle("Choose Croping App");
-                builder.setCancelable(false);
-                builder.setAdapter(adapter, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        ActivityCompat.startActivityForResult(AccountDetailsActivity.this, cropOptions.get(which).appIntent, Config.REQUEST_CROPPING, null);
-                    }
-                });
-
-                builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
-                    @Override
-                    public void onCancel(DialogInterface dialog) {
-                        if (captureUri != null) {
-                            getContentResolver().delete(captureUri, null, null);
-                            captureUri = null;
-                        }
-                    }
-                });
-                AlertDialog alert = builder.create();
-                alert.show();
-            }
+            ImageDecoder.Source source = ImageDecoder.createSource(contentResolver, imageUri);
+            bitmap = ImageDecoder.decodeBitmap(source);
         }
+        return bitmap;
     }
 
     private void handleChangeAvatar(Bitmap bitmap) {
         AccountRequest.changeAvatar(bitmap, new OnResponseListener() {
             @Override
             public void onSuccess(ResponseInfo info) {
-                if (info != null && info.isSuccess())
+                if (info != null && info.isSuccess()) {
+                    String avatarUrl = getIntent().getBundleExtra(Config.DATA_EXTRA).getString(Config.AVATAR_URL);
+                    Picasso.with(AccountDetailsActivity.this)
+                            .load(avatarUrl)
+                            .placeholder(R.drawable.default_avatar)
+                            .transform(new CircleTransform())
+                            .networkPolicy(NetworkPolicy.NO_CACHE)
+                            .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
+                            .into(imgAvatar);
                     Toast.makeText(getApplicationContext(), getString(R.string.text_update_success), Toast.LENGTH_LONG).show();
+                }
             }
 
             @Override

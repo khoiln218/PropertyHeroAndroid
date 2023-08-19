@@ -13,26 +13,42 @@ import java.util.List;
  */
 public class PermissionHelper {
 
-    private static final String[] INITIAL_PERMS = {
+    private static final String[] LOCATION_PERMS = {
             Manifest.permission.ACCESS_FINE_LOCATION,
-            Manifest.permission.ACCESS_COARSE_LOCATION,
-//            Manifest.permission.WRITE_EXTERNAL_STORAGE,
-//            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.ACCESS_COARSE_LOCATION
+    };
+
+    private static final String[] GALLERY_PERM = {
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
     private static final String CAMERA_PERMS = Manifest.permission.CAMERA;
-    private static final String PHONE_PERMS = Manifest.permission.CALL_PHONE;
-    private static final String ACCOUNTS_PERMS = Manifest.permission.GET_ACCOUNTS;
 
-    public static void initPermissions(AppCompatActivity activity) {
+    public static void hasLocationPermissions(AppCompatActivity activity) {
         List<String> missingPermissions = new ArrayList<>();
 
-        for (String perm : INITIAL_PERMS) {
+        for (String perm : LOCATION_PERMS) {
             if (PackageManager.PERMISSION_GRANTED != activity.checkSelfPermission(perm))
                 missingPermissions.add(perm);
         }
 
         if (missingPermissions.size() > 0) {
-            String[] permissions = missingPermissions.toArray(new String[missingPermissions.size()]);
+            String[] permissions = missingPermissions.toArray(new String[0]);
+            activity.requestPermissions(permissions, Config.PERMS_REQUEST);
+
+        }
+    }
+
+    public static void hasGalleryPermissions(AppCompatActivity activity) {
+        List<String> missingPermissions = new ArrayList<>();
+
+        for (String perm : GALLERY_PERM) {
+            if (PackageManager.PERMISSION_GRANTED != activity.checkSelfPermission(perm))
+                missingPermissions.add(perm);
+        }
+
+        if (missingPermissions.size() > 0) {
+            String[] permissions = missingPermissions.toArray(new String[0]);
             activity.requestPermissions(permissions, Config.PERMS_REQUEST);
 
         }
@@ -41,18 +57,6 @@ public class PermissionHelper {
     public static void hasCameraPermission(AppCompatActivity activity) {
         if (PackageManager.PERMISSION_GRANTED != activity.checkSelfPermission(CAMERA_PERMS)) {
             activity.requestPermissions(new String[]{CAMERA_PERMS}, Config.PERMS_REQUEST);
-        }
-    }
-
-    public static void hasAccountsPermission(AppCompatActivity activity) {
-        if (PackageManager.PERMISSION_GRANTED != activity.checkSelfPermission(ACCOUNTS_PERMS)) {
-            activity.requestPermissions(new String[]{ACCOUNTS_PERMS}, Config.PERMS_REQUEST);
-        }
-    }
-
-    public static void hasPhonePermission(AppCompatActivity activity) {
-        if (PackageManager.PERMISSION_GRANTED != activity.checkSelfPermission(PHONE_PERMS)) {
-            activity.requestPermissions(new String[]{PHONE_PERMS}, Config.PERMS_REQUEST);
         }
     }
 }

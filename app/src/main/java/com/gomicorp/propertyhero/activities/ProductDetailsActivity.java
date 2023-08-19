@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -164,7 +165,7 @@ public class ProductDetailsActivity extends AppCompatActivity implements OnMapRe
         if (id == 0)
             finish();
 
-        int isMeViewThis = AppController.getInstance().getWritableDb().getProductByID(id) != null ? 1 : 0;
+        int isMeViewThis = AppController.getInstance().getPrefManager().getProductFavoriteById(id) != null ? 1 : 0;
         fetchProductDetails(isMeViewThis);
     }
 
@@ -206,7 +207,6 @@ public class ProductDetailsActivity extends AppCompatActivity implements OnMapRe
     @Override
     public void onMapReady(GoogleMap googleMap) {
         this.googleMap = googleMap;
-        this.googleMap.setOnCameraChangeListener(null);
     }
 
     @Override
@@ -446,7 +446,7 @@ public class ProductDetailsActivity extends AppCompatActivity implements OnMapRe
     private void handleFavorite() {
         if (AppController.getInstance().getPrefManager().getUserID() == 0) {
             Intent intentLogin = new Intent(this, LoginActivity.class);
-            startActivityForResult(intentLogin, Config.REQUEST_PRODUCT);
+            ActivityCompat.startActivityForResult(this, intentLogin, Config.REQUEST_PRODUCT, null);
         } else
             requestFavorite();
     }

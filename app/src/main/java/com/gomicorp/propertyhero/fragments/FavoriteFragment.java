@@ -95,7 +95,6 @@ public class FavoriteFragment extends Fragment {
             adapter.addProductList(productList);
             fetchListUserLikes();
 
-//            resultLayout.setVisibility(View.GONE);
         } else
             resultLayout.setVisibility(View.VISIBLE);
 

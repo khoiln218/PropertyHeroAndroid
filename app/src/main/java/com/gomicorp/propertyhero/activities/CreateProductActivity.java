@@ -54,7 +54,8 @@ public class CreateProductActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_product);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            PermissionHelper.initPermissions(this);
+            PermissionHelper.hasLocationPermissions(this);
+            PermissionHelper.hasGalleryPermissions(this);
             PermissionHelper.hasCameraPermission(this);
         }
 

@@ -56,7 +56,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         splashScreen.setKeepOnScreenCondition(() -> true);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-            PermissionHelper.initPermissions(this);
+            PermissionHelper.hasLocationPermissions(this);
 
         if (!checkPlayServices())
             launchUpdateGooglePlay();

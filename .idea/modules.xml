@@ -7,6 +7,10 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/HelloRentAndroid.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/HelloRentAndroid.app.androidTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/HelloRentAndroid.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/HelloRentAndroid.app.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/HelloRentAndroid.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/HelloRentAndroid.app.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ucrop/HelloRentAndroid.ucrop.iml" filepath="$PROJECT_DIR$/.idea/modules/ucrop/HelloRentAndroid.ucrop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ucrop/HelloRentAndroid.ucrop.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/ucrop/HelloRentAndroid.ucrop.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ucrop/HelloRentAndroid.ucrop.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ucrop/HelloRentAndroid.ucrop.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ucrop/HelloRentAndroid.ucrop.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/ucrop/HelloRentAndroid.ucrop.unitTest.iml" />
     </modules>
   </component>
 </project>
