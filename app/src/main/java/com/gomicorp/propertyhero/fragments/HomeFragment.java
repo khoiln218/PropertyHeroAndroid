@@ -110,6 +110,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         listener = new LocationListener() {
             @Override
             public void onLocationChanged(@NonNull Location location) {
+                if (latLng != null && location.getLatitude() == latLng.latitude && location.getLongitude() == latLng.longitude)
+                    return;
+
                 latLng = new LatLng(location.getLatitude(), location.getLongitude());
                 fetchAttractionNearby();
             }

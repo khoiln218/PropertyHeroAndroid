@@ -10,6 +10,7 @@ import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -130,15 +131,15 @@ public class ListViewProductActivity extends AppCompatActivity implements SwipeR
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                finish();
-                return true;
-            case R.id.action_filter:
-                Intent intent = new Intent(this, FilterActivity.class);
-                intent.putExtra(Config.DATA_EXTRA, Config.UNDEFINED);
-                startActivityForResult(intent, Config.REQUEST_FILTER);
-                return true;
+        int itemId = item.getItemId();
+        if (itemId == android.R.id.home) {
+            finish();
+            return true;
+        } else if (itemId == R.id.action_filter) {
+            Intent intent = new Intent(this, FilterActivity.class);
+            intent.putExtra(Config.DATA_EXTRA, Config.UNDEFINED);
+            ActivityCompat.startActivityForResult(this, intent, Config.REQUEST_FILTER, null);
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -227,7 +228,7 @@ public class ListViewProductActivity extends AppCompatActivity implements SwipeR
             public void onError(VolleyError error) {
                 Log.e(TAG, "Error at fetchProductList()");
                 L.showToast(getString(R.string.request_time_out));
-                
+
                 updateUI();
             }
         });

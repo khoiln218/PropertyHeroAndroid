@@ -207,7 +207,7 @@ public class MapViewProductActivity extends AppCompatActivity implements OnMapRe
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == Config.REQUEST_FILTER && resultCode == RESULT_OK) {
+        if (requestCode == Config.REQUEST_FILTER && resultCode == Config.SUCCESS_RESULT) {
             if (this.googleMap != null)
                 this.googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
             else

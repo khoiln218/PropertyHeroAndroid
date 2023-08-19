@@ -104,16 +104,12 @@ public class FilterActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btnProperty:
-                if (propertyList != null)
-                    showListViewDialog();
-                break;
-            case R.id.btnUpdateFilter:
-                submitUpdateFilter();
-                break;
-            default:
-                break;
+        int id = v.getId();
+        if (id == R.id.btnProperty) {
+            if (propertyList != null)
+                showListViewDialog();
+        } else if (id == R.id.btnUpdateFilter) {
+            submitUpdateFilter();
         }
     }
 
