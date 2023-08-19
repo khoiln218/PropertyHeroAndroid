@@ -241,7 +241,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         JsonObjectRequest reqAttractionNearby = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.e("fetchAttractionNearby", "onResponse: " + new Gson().toJson(response));
+                if (Config.DEBUG)
+                    Log.e("fetchAttractionNearby", "onResponse: " + new Gson().toJson(response));
                 areaList = Parser.markerList(response);
                 areaNearbyAdapter.setAttractionList(areaList);
             }

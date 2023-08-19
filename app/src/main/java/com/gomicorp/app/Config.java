@@ -1,5 +1,7 @@
 package com.gomicorp.app;
 
+import com.gomicorp.propertyhero.BuildConfig;
+
 /**
  * Created by CTO-HELLOSOFT on 3/29/2016.
  */
@@ -126,4 +128,5 @@ public class Config {
     public static final String PRODUCT_ID = "ProductID";
     public static final String STATUS_DATA = "StatusData";
 
+    public static final boolean DEBUG = BuildConfig.DEBUG;
 }

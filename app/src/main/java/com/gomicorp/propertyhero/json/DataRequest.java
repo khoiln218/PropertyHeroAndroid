@@ -209,7 +209,8 @@ public class DataRequest {
         MultipartRequest reqMarkerByKeyword = new MultipartRequest(EndPoints.URL_MARKER_BY_KEYWORD, null, Utils.mimeType, pathBodyFindByKeyWord(keyword, provinceID, markerType), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.e("findByKeyword", "onResponse: " + new Gson().toJson(response));
+                if (Config.DEBUG)
+                    Log.e("findByKeyword", "onResponse: " + new Gson().toJson(response));
                 listener.onSuccess(Parser.markerList(response));
             }
         }, new Response.ErrorListener() {

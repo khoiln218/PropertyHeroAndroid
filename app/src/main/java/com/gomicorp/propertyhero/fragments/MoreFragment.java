@@ -80,9 +80,14 @@ public class MoreFragment extends Fragment implements View.OnClickListener {
         root.findViewById(R.id.btnManagement).setOnClickListener(this);
         root.findViewById(R.id.btnSettings).setOnClickListener(this);
 
-        setupUI();
-
         return root;
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser)
+            setupUI();
     }
 
     private void setupUI() {

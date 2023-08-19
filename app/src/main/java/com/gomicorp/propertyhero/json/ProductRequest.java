@@ -108,12 +108,14 @@ public class ProductRequest {
     }
 
     public static void search_v2(SearchInfo searchInfo, final OnLoadProductListener listener) {
-        Log.e(TAG, "search: " + new Gson().toJson(searchInfo));
+        if (Config.DEBUG)
+            Log.e(TAG, "search: " + new Gson().toJson(searchInfo));
 
         MultipartRequest reqSearch = new MultipartRequest(EndPoints.URL_SEARCH_PRODUCT_V2, null, Utils.mimeType, pathBodySearch(searchInfo), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.e("search_v2", "onResponse: " + new Gson().toJson(response));
+                if (Config.DEBUG)
+                    Log.e("search_v2", "onResponse: " + new Gson().toJson(response));
                 listener.onSuccess(Parser.productList(response), (int) Parser.totalRows(response));
             }
         }, new Response.ErrorListener() {
@@ -183,7 +185,8 @@ public class ProductRequest {
         MultipartRequest reqGet = new MultipartRequest(EndPoints.URL_GET_PRODUCT_V2, null, Utils.mimeType, pathBodyRequestInfo(id, isMeViewThis), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.e("getProduct_v2", "onResponse: " + new Gson().toJson(response));
+                if (Config.DEBUG)
+                    Log.e("getProduct_v2", "onResponse: " + new Gson().toJson(response));
                 listener.onSuccess(Parser.productList(response), 1);
             }
         }, new Response.ErrorListener() {
