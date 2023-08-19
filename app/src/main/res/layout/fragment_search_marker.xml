@@ -50,8 +50,8 @@
             android:singleLine="true"
             android:textColor="@color/colorSecondaryText"
             android:textSize="@dimen/text_size_secondary"
-            tools:text="Quận Bình Thạnh"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:text="Quận Bình Thạnh" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

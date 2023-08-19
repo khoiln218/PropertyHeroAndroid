@@ -43,8 +43,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private static final String TAG = LoginActivity.class.getSimpleName();
     private static final int RC_SIGN_IN = 812;
-    private Bundle data;
     public CallbackManager callbackManager;
+    private Bundle data;
     private LoginButton fbButton;
     private GoogleSignInClient mGoogleSignInClient;
     private ProgressDialog progressDialog;

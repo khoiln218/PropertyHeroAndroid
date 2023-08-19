@@ -1,8 +1,8 @@
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:fillViewport="true">
 
     <FrameLayout
@@ -46,13 +46,13 @@
                         android:orientation="vertical">
 
                         <TextView
-                            tools:text="Lê Ngọc Khôi"
                             android:id="@+id/tvFullName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:singleLine="true"
                             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                            android:textColor="@color/colorTitleText" />
+                            android:textColor="@color/colorTitleText"
+                            tools:text="Lê Ngọc Khôi" />
 
                         <TextView
                             android:id="@+id/tvUserName"
@@ -132,7 +132,7 @@
                     android:textColor="@color/colorTitleText" />
             </LinearLayout>
 
-<!--            <include layout="@layout/layout_divider_horizontal" />-->
+            <!--            <include layout="@layout/layout_divider_horizontal" />-->
 
             <!--Management-->
             <LinearLayout
