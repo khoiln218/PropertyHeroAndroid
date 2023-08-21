@@ -122,7 +122,9 @@ public class ProductListAdapter extends RecyclerView.Adapter implements StickyRe
 
             ((ViewHolderProduct) holder).tvPrice.setText(product.getPrice() + " ");
             ((ViewHolderProduct) holder).tvArea.setText(product.getGrossFloorArea() + " ");
-            ((ViewHolderProduct) holder).tvTitle.setText(product.getTitle());
+            String characterFilter = "[^\\p{L}\\p{M}\\p{N}\\p{P}\\p{Z}\\p{Cf}\\p{Cs}\\s]";
+            String title = product.getTitle().replaceAll(characterFilter,"").trim();
+            ((ViewHolderProduct) holder).tvTitle.setText(title);
             ((ViewHolderProduct) holder).tvAddress.setText(product.getAddresss());
 
             if (position == productList.size() - 1)

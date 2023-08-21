@@ -115,6 +115,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tvTitle"
                     android:layout_marginTop="@dimen/title_margin_half"
+                    android:ellipsize="end"
                     android:paddingRight="@dimen/title_margin"
                     android:singleLine="true"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
