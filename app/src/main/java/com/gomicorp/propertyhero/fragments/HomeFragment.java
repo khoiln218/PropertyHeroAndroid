@@ -106,6 +106,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        latLng = AppController.getInstance().getPrefManager().getLastLatLng();
         googleApi = new GoogleApiHelper(requireActivity());
         listener = new LocationListener() {
             @Override
@@ -119,6 +120,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         };
 
         fetchImageSliderData();
+        fetchAttractionNearby();
         fetchUniversity();
     }
 

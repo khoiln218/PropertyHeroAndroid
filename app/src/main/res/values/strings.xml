@@ -376,4 +376,5 @@
         \n- Cho phép người dùng đăng tin cho thuê bất động sản mới.
 
     </string>
+    <string name="gps_perm_description">Ứng dụng cần sử dụng GPS để xác định vị trí</string>
 </resources>

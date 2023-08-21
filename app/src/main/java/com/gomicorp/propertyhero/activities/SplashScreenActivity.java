@@ -1,5 +1,6 @@
 package com.gomicorp.propertyhero.activities;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -8,7 +9,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.location.Location;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -22,7 +22,6 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import com.gomicorp.app.AppController;
 import com.gomicorp.app.Config;
 import com.gomicorp.app.GoogleApiHelper;
-import com.gomicorp.app.PermissionHelper;
 import com.gomicorp.propertyhero.R;
 import com.gomicorp.propertyhero.callbacks.OnAddressResultListener;
 import com.gomicorp.services.AddressResultReceiver;
@@ -33,8 +32,12 @@ import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.maps.model.LatLng;
 
+import java.util.List;
+
+import pub.devrel.easypermissions.EasyPermissions;
+
 @SuppressLint("CustomSplashScreen")
-public class SplashScreenActivity extends AppCompatActivity {
+public class SplashScreenActivity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks {
 
     private static final String TAG = SplashScreenActivity.class.getSimpleName();
 
@@ -54,9 +57,6 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
         splashScreen.setKeepOnScreenCondition(() -> true);
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-            PermissionHelper.hasLocationPermissions(this);
 
         if (!checkPlayServices())
             launchUpdateGooglePlay();
@@ -90,6 +90,34 @@ public class SplashScreenActivity extends AppCompatActivity {
                 startRegistration(address);
             }
         };
+
+        checkLocationPermissions();
+    }
+
+    private void checkLocationPermissions() {
+        String[] perms = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
+        if (EasyPermissions.hasPermissions(this, perms)) {
+            googleApiHelper.getLastLocation();
+        } else {
+            EasyPermissions.requestPermissions(this, getString(R.string.gps_perm_description), Config.PERMS_REQUEST, perms);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
+    }
+
+    @Override
+    public void onPermissionsGranted(int requestCode, @NonNull List<String> perms) {
+
+    }
+
+    @Override
+    public void onPermissionsDenied(int requestCode, @NonNull List<String> perms) {
+
     }
 
     private boolean checkPlayServices() {
@@ -131,14 +159,6 @@ public class SplashScreenActivity extends AppCompatActivity {
         });
 
         builder.show();
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == Config.PERMS_REQUEST) {
-            googleApiHelper.getLastLocation();
-        }
     }
 
     @Override
