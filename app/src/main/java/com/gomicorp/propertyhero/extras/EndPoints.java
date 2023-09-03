@@ -64,6 +64,10 @@ public class EndPoints {
     private static final String API_PRODUCT_V2 = BASE_URL + "api/v2.0/Product/";
     public static final String URL_SEARCH_PRODUCT_V2 = API_PRODUCT_V2 + "Search";
     public static final String URL_GET_PRODUCT_V2 = API_PRODUCT_V2 + "GetByID";
+    public static final String URL_GET_FAVORITE = API_PRODUCT_V2 + "GetFavourite";
+    public static final String URL_GET_RECENTLY = API_PRODUCT_V2 + "GetRecentlyViewed";
+    public static final String URL_FAVORITE = API_PRODUCT_V2 + "Favorite";
+    public static final String URL_FAVORITE_DELETE = API_PRODUCT_V2 + "Favorite/Delete";
     // TODO: EndPoint Notify
     private static final String API_NOTIFY = BASE_URL + "api/Notify/";
     public static final String URL_NOTIFY_LAUNCHER = API_NOTIFY + "GetMainLauncher/";

@@ -219,6 +219,56 @@ public class ProductRequest {
         AppController.getInstance().addToRequestQueue(reqGet, TAG);
     }
 
+    public static void favoriteDelete_V2(long id, final OnResponseListener listener) {
+        MultipartRequest reqGet = new MultipartRequest(EndPoints.URL_FAVORITE_DELETE, null, com.gomicorp.propertyhero.json.Utils.mimeType, pathBodyRequestInfo(id), new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                listener.onSuccess(Parser.responseInfo(response));
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                listener.onError(error);
+            }
+        });
+
+        AppController.getInstance().addToRequestQueue(reqGet, TAG);
+    }
+
+    public static void favorite_V2(long id, final OnResponseListener listener) {
+        MultipartRequest reqGet = new MultipartRequest(EndPoints.URL_FAVORITE, null, com.gomicorp.propertyhero.json.Utils.mimeType, pathBodyRequestInfo(id), new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                listener.onSuccess(Parser.responseInfo(response));
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                listener.onError(error);
+            }
+        });
+
+        AppController.getInstance().addToRequestQueue(reqGet, TAG);
+    }
+
+    private static byte[] pathBodyRequestInfo(long id) {
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        DataOutputStream dos = new DataOutputStream(bos);
+
+        try {
+            com.gomicorp.propertyhero.json.Utils.buildTextPart(dos, "ProductID", String.valueOf(id));
+            com.gomicorp.propertyhero.json.Utils.buildTextPart(dos, "AccountID", String.valueOf(AppController.getInstance().getPrefManager().getUserID()));
+
+            dos.writeBytes(com.gomicorp.propertyhero.json.Utils.twoHyphens + com.gomicorp.propertyhero.json.Utils.boundary + com.gomicorp.propertyhero.json.Utils.twoHyphens + com.gomicorp.propertyhero.json.Utils.lineEnd);
+            // pass to multipart body
+            return bos.toByteArray();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
     public static void favorite(long id, final OnResponseListener listener) {
         MultipartRequest reqFavorite = new MultipartRequest(EndPoints.URL_FAVORITE_PRODUCT, null, Utils.mimeType, pathBodyRequestInfo(id, 0), new Response.Listener<JSONObject>() {
             @Override

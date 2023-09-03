@@ -1,6 +1,7 @@
 package com.gomicorp.propertyhero.adapters;
 
 import android.graphics.Color;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -113,17 +114,21 @@ public class ProductListAdapter extends RecyclerView.Adapter implements StickyRe
             int width = com.gomicorp.helper.Utils.getScreenWidth() / 3;
 
             String imageUrl = product.getThumbnail().split(", ")[0];
-            Picasso.with(holder.itemView.getContext())
-                    .load(imageUrl)
-                    .centerCrop()
-                    .placeholder(R.drawable.emptyimg)
-                    .resize(width, width)
-                    .into(((ViewHolderProduct) holder).thumb);
+            if (TextUtils.isEmpty(imageUrl)) {
+                ((ViewHolderProduct) holder).thumb.setImageResource(R.drawable.emptyimg);
+            } else {
+                Picasso.with(holder.itemView.getContext())
+                        .load(imageUrl)
+                        .centerCrop()
+                        .placeholder(R.drawable.emptyimg)
+                        .resize(width, width)
+                        .into(((ViewHolderProduct) holder).thumb);
+            }
 
             ((ViewHolderProduct) holder).tvPrice.setText(product.getPrice() + " ");
             ((ViewHolderProduct) holder).tvArea.setText(product.getGrossFloorArea() + " ");
             String characterFilter = "[^\\p{L}\\p{M}\\p{N}\\p{P}\\p{Z}\\p{Cf}\\p{Cs}\\s]";
-            String title = product.getTitle().replaceAll(characterFilter,"").trim();
+            String title = product.getTitle().replaceAll(characterFilter, "").trim();
             ((ViewHolderProduct) holder).tvTitle.setText(title);
             ((ViewHolderProduct) holder).tvAddress.setText(product.getAddresss());
 
@@ -135,12 +140,7 @@ public class ProductListAdapter extends RecyclerView.Adapter implements StickyRe
 
     @Override
     public long getHeaderId(int position) {
-//        if (productList.size() == 0)
         return -1;
-//        else if (productList.get(position) == null)
-//            return -1;
-//        else
-//            return productList.get(position).getStatus();
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.gomicorp.propertyhero.adapters;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,14 +44,19 @@ public class ProductCollectionAdapter extends RecyclerView.Adapter<ProductCollec
         holder.tvTitle.setText(obj.getTitle());
         holder.tvAddress.setText(obj.getAddresss());
         holder.tvContact.setText(obj.getContactName() + " (" + obj.getContactPhone() + ")");
+        holder.tvContact.setVisibility(View.GONE);
 
         String imageUrl = obj.getThumbnail().split(", ")[0];
-        Picasso.with(holder.itemView.getContext())
-                .load(imageUrl)
-                .centerCrop()
-                .placeholder(R.drawable.emptyimg)
-                .resize(96, 96)
-                .into(holder.thumbnail);
+        if (TextUtils.isEmpty(imageUrl)) {
+            holder.thumbnail.setImageResource(R.drawable.emptyimg);
+        } else {
+            Picasso.with(holder.itemView.getContext())
+                    .load(imageUrl)
+                    .centerCrop()
+                    .placeholder(R.drawable.emptyimg)
+                    .resize(96, 96)
+                    .into(holder.thumbnail);
+        }
     }
 
     @Override

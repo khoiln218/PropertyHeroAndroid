@@ -4,6 +4,7 @@ package com.gomicorp.propertyhero.fragments;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,16 +16,28 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.gomicorp.app.AppController;
 import com.gomicorp.app.Config;
+import com.gomicorp.helper.L;
+import com.gomicorp.helper.MultipartRequest;
 import com.gomicorp.propertyhero.R;
 import com.gomicorp.propertyhero.activities.ProductDetailsActivity;
 import com.gomicorp.propertyhero.adapters.ProductCollectionAdapter;
 import com.gomicorp.propertyhero.callbacks.OnRecyclerTouchListener;
 import com.gomicorp.propertyhero.callbacks.RecyclerTouchListner;
+import com.gomicorp.propertyhero.extras.EndPoints;
+import com.gomicorp.propertyhero.json.Parser;
+import com.gomicorp.propertyhero.json.Utils;
 import com.gomicorp.propertyhero.model.Product;
 import com.gomicorp.ui.DividerItemDecoration;
 
+import org.json.JSONObject;
+
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -33,7 +46,7 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  */
 public class ProductViewFragment extends Fragment {
-
+    private static final String TAG = FavoriteFragment.class.getSimpleName();
 
     private RecyclerView recyclerViewItems;
     private RelativeLayout resultLayout;
@@ -81,15 +94,7 @@ public class ProductViewFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        productList = AppController.getInstance().getPrefManager().getProductViews();
-        Collections.reverse(productList);
-        adapter.setProductList(productList);
-
-        if (productList.size() == 0)
-            resultLayout.setVisibility(View.VISIBLE);
-        else
-            resultLayout.setVisibility(View.GONE);
-
+        fetchListUserViews_V2();
     }
 
     private void showSelectConfirm(final long id) {
@@ -106,7 +111,7 @@ public class ProductViewFragment extends Fragment {
                         startActivity(intent);
                         break;
                     case 1:
-                        AppController.getInstance().getPrefManager().removeProductView(id);
+//                        AppController.getInstance().getPrefManager().removeProductView(id);
                         onStart();
                         break;
                     default:
@@ -118,5 +123,44 @@ public class ProductViewFragment extends Fragment {
         });
 
         builder.show();
+    }
+    private void fetchListUserViews_V2() {
+        MultipartRequest reqGet = new MultipartRequest(EndPoints.URL_GET_RECENTLY, null, Utils.mimeType, pathBodyRequestInfo(), new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                productList.clear();
+                productList.addAll(Parser.productList_Favorite(response));
+                adapter.setProductList(productList);
+
+                if (productList.size() == 0)
+                    resultLayout.setVisibility(View.VISIBLE);
+                else resultLayout.setVisibility(View.GONE);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                L.showToast(getString(R.string.request_time_out));
+                Log.e(TAG, "Error at fetchListUserLikes()");
+            }
+        });
+
+        AppController.getInstance().addToRequestQueue(reqGet, TAG);
+    }
+
+    private static byte[] pathBodyRequestInfo() {
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        DataOutputStream dos = new DataOutputStream(bos);
+
+        try {
+            Utils.buildTextPart(dos, "AccountID", String.valueOf(AppController.getInstance().getPrefManager().getUserID()));
+
+            dos.writeBytes(Utils.twoHyphens + Utils.boundary + Utils.twoHyphens + Utils.lineEnd);
+            // pass to multipart body
+            return bos.toByteArray();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }

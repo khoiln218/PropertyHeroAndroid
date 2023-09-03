@@ -3,15 +3,9 @@ package com.gomicorp.app;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.gomicorp.propertyhero.model.Product;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -34,8 +28,6 @@ public class AppPreferenceManager {
     private static final String KEY_ACC_ROLE = "AccountRole";
     private static final String KEY_PASSWORD = "Password";
     private static final String KEY_PROVINCE = "DefaultProvince";
-    private static final String PRODUCT_FAVORITE = "PRODUCT_FAVORITE";
-    private static final String PRODUCT_VIEW = "PRODUCT_VIEW";
     int PRIVATE_MODE = 0;
     private SharedPreferences pref;
     private SharedPreferences.Editor editor;
@@ -45,104 +37,6 @@ public class AppPreferenceManager {
         this.context = context;
         pref = context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
         editor = pref.edit();
-    }
-
-    private void saveProductList(List<Product> products, String source) {
-        editor.putString(source, new Gson().toJson(products));
-        editor.apply();
-    }
-
-    public List<Product> getProductFavorites() {
-        return getProductList(PRODUCT_FAVORITE);
-    }
-
-    public List<Product> getProductViews() {
-        return getProductList(PRODUCT_VIEW);
-    }
-
-    private List<Product> getProductList(String source) {
-        String jsonString = pref.getString(source, null);
-        List<Product> products = new Gson().fromJson(jsonString, new TypeToken<List<Product>>() {
-        }.getType());
-        return products == null ? new ArrayList<>() : products;
-    }
-
-    public void insertProductFavorite(Product product) {
-        insertProduct(product, PRODUCT_FAVORITE);
-    }
-
-    public void insertProductView(Product product) {
-        insertProduct(product, PRODUCT_VIEW);
-    }
-
-    private void insertProduct(Product product, String source) {
-        String jsonString = pref.getString(source, null);
-        List<Product> products = new Gson().fromJson(jsonString, new TypeToken<List<Product>>() {
-        }.getType());
-        if (products == null) {
-            saveProductList(Collections.singletonList(product), source);
-        } else {
-            boolean isExits = products.stream().anyMatch(it -> it.getId() == product.getId());
-            if (isExits) return;
-            products.add(product);
-            saveProductList(products, source);
-        }
-    }
-
-    public void removeProductFavorite(long id) {
-        removeProduct(id, PRODUCT_FAVORITE);
-    }
-
-    public void removeProductView(long id) {
-        removeProduct(id, PRODUCT_VIEW);
-    }
-
-    private void removeProduct(long id, String source) {
-        String jsonString = pref.getString(source, null);
-        List<Product> products = new Gson().fromJson(jsonString, new TypeToken<List<Product>>() {
-        }.getType());
-        if (products == null) return;
-        Product exitProduct = products.stream().filter(it -> it.getId() == id).findFirst().orElse(null);
-        if (exitProduct != null) {
-            products.remove(exitProduct);
-            saveProductList(products, source);
-        }
-    }
-
-    public void updateProductFavorite(Product product) {
-        updateProduct(product, PRODUCT_FAVORITE);
-    }
-
-    public void updateProductView(Product product) {
-        updateProduct(product, PRODUCT_VIEW);
-    }
-
-    private void updateProduct(Product product, String source) {
-        String jsonString = pref.getString(source, null);
-        List<Product> products = new Gson().fromJson(jsonString, new TypeToken<List<Product>>() {
-        }.getType());
-        if (products == null) return;
-        Product exitProduct = products.stream().filter(it -> it.getId() == product.getId()).findFirst().orElse(null);
-        if (exitProduct != null) {
-            products.set(products.indexOf(exitProduct), product);
-            saveProductList(products, source);
-        }
-    }
-
-    public Product getProductFavoriteById(long id) {
-        return getProductById(id, PRODUCT_FAVORITE);
-    }
-
-    public Product getProductViewById(long id) {
-        return getProductById(id, PRODUCT_VIEW);
-    }
-
-    private Product getProductById(long id, String source) {
-        String jsonString = pref.getString(source, null);
-        List<Product> products = new Gson().fromJson(jsonString, new TypeToken<List<Product>>() {
-        }.getType());
-        if (products == null) return null;
-        return products.stream().filter(it -> it.getId() == id).findFirst().orElse(null);
     }
 
     public void Logout() {

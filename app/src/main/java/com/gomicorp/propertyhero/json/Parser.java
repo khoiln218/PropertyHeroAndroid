@@ -371,6 +371,89 @@ public class Parser {
         return infos;
     }
 
+    public static List<Product> productList_Favorite(JSONObject response) {
+        List<Product> products = new ArrayList<>();
+        try {
+            JSONArray jsonArray = response.getJSONArray(Keys.DATA);
+
+            for (int i = 0; i < jsonArray.length(); i++) {
+
+                long id = -1;
+                String addresss = Constants.NA;
+                double latitude = -1;
+                double longitude = -1;
+                int countryID = -1;
+                int provinceID = -1;
+                int districtID = -1;
+                int propertyID = -1;
+                int buildingID = -1;
+                int directionID = -1;
+                String thumbnail = Constants.NA;
+                double deposit = -1;
+                double price = -1;
+                int floor = -1;
+                int floorCount = -1;
+                double siteArea = -1;
+                double grossFloorArea = -1;
+                int bedroom = -1;
+                int bathroom = -1;
+                String propertyName = Constants.NA;
+                String directionName = Constants.NA;
+                String buildingName = Constants.NA;
+                double serviceFee = -1;
+                List<Feature> features = new ArrayList<>();
+                List<Feature> furnitures = new ArrayList<>();
+                byte elevator = -1;
+                byte pets = -1;
+                int numPerson = -1;
+                String title = Constants.NA;
+                String content = Constants.NA;
+                String note = Constants.NA;
+                long accountID = -1;
+                int isLike = -1;
+                String contactName = Constants.NA;
+                String contactPhone = Constants.NA;
+                int status = -1;
+                int numView = -1;
+                int numLike = -1;
+
+                JSONObject obj = jsonArray.getJSONObject(i);
+                //Id
+                if (Utils.keyContains(obj, "ProductID"))
+                    id = obj.getLong("ProductID");
+                //Address
+                if (Utils.keyContains(obj, Keys.ADDR))
+                    addresss = obj.getString(Keys.ADDR);
+                // Images
+                if (Utils.keyContains(obj, "Avatar"))
+                    thumbnail = obj.getString("Avatar");
+                // Price
+                if (Utils.keyContains(obj, Keys.PRICE))
+                    price = obj.getDouble(Keys.PRICE);
+                // GFArea
+                if (Utils.keyContains(obj, Keys.GFAREA))
+                    grossFloorArea = obj.getDouble(Keys.GFAREA);
+                // Title
+                if (Utils.keyContains(obj, Keys.TITLE))
+                    title = obj.getString(Keys.TITLE);
+                // Acount ID
+                if (Utils.keyContains(obj, Keys.ACC_ID))
+                    accountID = obj.getLong(Keys.ACC_ID);
+                // Status
+                if (Utils.keyContains(obj, Keys.STATUS))
+                    status = obj.getInt(Keys.STATUS);
+
+                products.add(new Product(id, addresss, latitude, longitude, countryID, provinceID, districtID, propertyID, buildingID, directionID, thumbnail, deposit, price, floor, floorCount, siteArea, grossFloorArea, bedroom,
+                        bathroom, serviceFee, elevator, pets, numPerson, title, content, note, accountID, contactName, contactPhone, status, numView, numLike, isLike, propertyName, directionName, buildingName, features, furnitures));
+
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return products;
+    }
+
     public static List<Product> productList(JSONObject response) {
         List<Product> products = new ArrayList<>();
         try {

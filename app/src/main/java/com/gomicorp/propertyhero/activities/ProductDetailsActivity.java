@@ -94,9 +94,6 @@ public class ProductDetailsActivity extends AppCompatActivity implements OnMapRe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_details);
 
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-//            PermissionHelper.hasPhonePermission(this);
-
         id = getIntent().getLongExtra(Config.DATA_EXTRA, 0);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -165,8 +162,7 @@ public class ProductDetailsActivity extends AppCompatActivity implements OnMapRe
         if (id == 0)
             finish();
 
-        int isMeViewThis = AppController.getInstance().getPrefManager().getProductFavoriteById(id) != null ? 1 : 0;
-        fetchProductDetails(isMeViewThis);
+        fetchProductDetails();
     }
 
     @Override
@@ -219,9 +215,6 @@ public class ProductDetailsActivity extends AppCompatActivity implements OnMapRe
                 if (phone != null) {
                     Intent callIntent = new Intent(Intent.ACTION_DIAL);
                     callIntent.setData(Uri.parse("tel:" + phone));
-//                    if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-//                        return;
-//                    }
                     startActivity(callIntent);
                 }
                 break;
@@ -273,17 +266,12 @@ public class ProductDetailsActivity extends AppCompatActivity implements OnMapRe
         }));
     }
 
-    private void fetchProductDetails(int isMeViewThis) {
-        ProductRequest.getProduct(id, isMeViewThis, new OnLoadProductListener() {
+    private void fetchProductDetails() {
+        ProductRequest.getProduct(id, 0, new OnLoadProductListener() {
             @Override
             public void onSuccess(List<Product> products, int totalItems) {
                 if (products.size() > 0) {
                     product = products.get(0);
-                    if (Config.USE_V2) {
-                        AppController.getInstance().getPrefManager().updateProductFavorite(product);
-                        AppController.getInstance().getPrefManager().updateProductView(product);
-                        product.setIsLikeThis(AppController.getInstance().getPrefManager().getProductFavoriteById(product.getId()) != null ? 1 : 0);
-                    }
                 }
 
                 updateUI();
@@ -301,7 +289,6 @@ public class ProductDetailsActivity extends AppCompatActivity implements OnMapRe
         if (product != null) {
             findViewById(R.id.progressLayout).setVisibility(View.GONE);
 
-            AppController.getInstance().getPrefManager().insertProductView(product);
             this.phone = product.getContactPhone();
             getSupportActionBar().setTitle(title.replace("...", String.valueOf(product.getId())));
             setupIsFavorite();
@@ -452,14 +439,11 @@ public class ProductDetailsActivity extends AppCompatActivity implements OnMapRe
     }
 
     private void requestFavorite() {
-
         if (Config.USE_V2) {
             if (product.getIsLikeThis() == 0) {
-                AppController.getInstance().getPrefManager().insertProductFavorite(product);
-                product.setIsLikeThis(1);
+                requestFavorite_V2();
             } else {
-                AppController.getInstance().getPrefManager().removeProductFavorite(product.getId());
-                product.setIsLikeThis(0);
+                requestDeleteFavorite_V2();
             }
 
             setupIsFavorite();
@@ -487,4 +471,49 @@ public class ProductDetailsActivity extends AppCompatActivity implements OnMapRe
         });
     }
 
+    private void requestFavorite_V2() {
+        ProductRequest.favorite_V2(product.getId(), new OnResponseListener() {
+            @Override
+            public void onSuccess(ResponseInfo info) {
+                if (info != null && info.isSuccess()) {
+                    if (product.getIsLikeThis() == 0)
+                        product.setIsLikeThis(1);
+                    else
+                        product.setIsLikeThis(0);
+                } else
+                    L.showToast(getString(R.string.err_request_api));
+
+                setupIsFavorite();
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                L.showToast(getString(R.string.request_time_out));
+                Log.e(TAG, "Error at requestFavorite_V2()");
+            }
+        });
+    }
+
+    private void requestDeleteFavorite_V2() {
+        ProductRequest.favoriteDelete_V2(product.getId(), new OnResponseListener() {
+            @Override
+            public void onSuccess(ResponseInfo info) {
+                if (info != null && info.isSuccess()) {
+                    if (product.getIsLikeThis() == 0)
+                        product.setIsLikeThis(1);
+                    else
+                        product.setIsLikeThis(0);
+                } else
+                    L.showToast(getString(R.string.err_request_api));
+
+                setupIsFavorite();
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                L.showToast(getString(R.string.request_time_out));
+                Log.e(TAG, "Error at requestFavorite_V2()");
+            }
+        });
+    }
 }

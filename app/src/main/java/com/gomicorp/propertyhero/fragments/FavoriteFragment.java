@@ -21,6 +21,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.gomicorp.app.AppController;
 import com.gomicorp.app.Config;
 import com.gomicorp.helper.L;
+import com.gomicorp.helper.MultipartRequest;
 import com.gomicorp.propertyhero.R;
 import com.gomicorp.propertyhero.activities.ProductDetailsActivity;
 import com.gomicorp.propertyhero.adapters.ProductListAdapter;
@@ -29,13 +30,16 @@ import com.gomicorp.propertyhero.callbacks.RecyclerTouchListner;
 import com.gomicorp.propertyhero.extras.EndPoints;
 import com.gomicorp.propertyhero.extras.UrlParams;
 import com.gomicorp.propertyhero.json.Parser;
+import com.gomicorp.propertyhero.json.Utils;
 import com.gomicorp.propertyhero.model.Product;
 import com.gomicorp.ui.DividerItemDecoration;
 
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -97,21 +101,11 @@ public class FavoriteFragment extends Fragment {
 
         } else
             resultLayout.setVisibility(View.VISIBLE);
-
     }
 
     private void fetchListUserLikes() {
         if (Config.USE_V2) {
-            productList.clear();
-            List<Product> newList = AppController.getInstance().getPrefManager().getProductFavorites();
-            Collections.reverse(newList);
-            productList.addAll(newList);
-            adapter.addProductList(productList);
-
-            if (productList.size() == 0)
-                resultLayout.setVisibility(View.VISIBLE);
-            else resultLayout.setVisibility(View.GONE);
-
+            fetchListUserLikes_V2();
             return;
         }
 
@@ -128,6 +122,7 @@ public class FavoriteFragment extends Fragment {
 
                 if (productList.size() == 0)
                     resultLayout.setVisibility(View.VISIBLE);
+                else resultLayout.setVisibility(View.GONE);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -140,4 +135,43 @@ public class FavoriteFragment extends Fragment {
         AppController.getInstance().addToRequestQueue(request, TAG);
     }
 
+    private void fetchListUserLikes_V2() {
+        MultipartRequest reqGet = new MultipartRequest(EndPoints.URL_GET_FAVORITE, null, Utils.mimeType, pathBodyRequestInfo(), new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                productList.clear();
+                productList.addAll(Parser.productList_Favorite(response));
+                adapter.addProductList(productList);
+
+                if (productList.size() == 0)
+                    resultLayout.setVisibility(View.VISIBLE);
+                else resultLayout.setVisibility(View.GONE);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                L.showToast(getString(R.string.request_time_out));
+                Log.e(TAG, "Error at fetchListUserLikes()");
+            }
+        });
+
+        AppController.getInstance().addToRequestQueue(reqGet, TAG);
+    }
+
+    private static byte[] pathBodyRequestInfo() {
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        DataOutputStream dos = new DataOutputStream(bos);
+
+        try {
+            Utils.buildTextPart(dos, "AccountID", String.valueOf(AppController.getInstance().getPrefManager().getUserID()));
+
+            dos.writeBytes(Utils.twoHyphens + Utils.boundary + Utils.twoHyphens + Utils.lineEnd);
+            // pass to multipart body
+            return bos.toByteArray();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 }
