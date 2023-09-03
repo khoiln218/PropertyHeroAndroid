@@ -374,10 +374,7 @@ public class CreateProductStep1Fragment extends Fragment implements View.OnClick
                     case Config.PROPERTY_TYPE:
                         property = (Property) object;
                         tvSelectProperty.setText(property.getName());
-                        if (property.getType() == Config.PROPERTY_APARTMENT)
-                            updateBuildingLayout(new Marker(0, getString(R.string.text_building), "", 0, 0));
-                        else
-                            updateBuildingLayout(null);
+                        updateBuildingLayout(null);
                         break;
                     case Config.PROVINCE_TYPE:
                         productInfo.setProvinceID(((Province) object).getId());
@@ -389,8 +386,6 @@ public class CreateProductStep1Fragment extends Fragment implements View.OnClick
                     case Config.DISTRICT_TYPE:
                         tvDistrictCreateProduct.setText(((District) object).getName());
                         productInfo.setDistrictID(((District) object).getId());
-                        if (property != null && property.getType() == Config.PROPERTY_APARTMENT)
-                            updateBuildingLayout(new Marker(0, getString(R.string.text_building), "", 0, 0));
                         break;
                     case Config.MARKER_TYPE:
                         building = (Marker) object;
@@ -435,9 +430,6 @@ public class CreateProductStep1Fragment extends Fragment implements View.OnClick
     private void handleNextStep() {
         if (property == null) {
             L.showAlert(getActivity(), null, getString(R.string.text_err_property));
-            return;
-        } else if (property.getType() == Config.PROPERTY_APARTMENT && building == null) {
-            L.showAlert(getActivity(), null, getString(R.string.text_err_building));
             return;
         }
 

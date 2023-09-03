@@ -41,17 +41,13 @@ public class ListViewProductActivity extends AppCompatActivity implements SwipeR
     private static final String TAG = ListViewProductActivity.class.getSimpleName();
 
     private SearchInfo searchInfo;
-
-    private int status = Config.UNDEFINED; //Config.PRODUCT_CERTIFIED;
+    private String propertyId;
     private int pageNo = 1;
 
     private RelativeLayout resultLayout;
     private SwipeRefreshLayout refreshLayout;
     private RecyclerView recyclerProduct;
 
-
-    //    private int totalCertified = 0;
-//    private int totalActivated = 0;
     private boolean isFinished = false;
     private List<Product> productList;
     private ProductListAdapter adapter;
@@ -66,6 +62,7 @@ public class ListViewProductActivity extends AppCompatActivity implements SwipeR
             finish();
 
         searchInfo = data.getParcelable(Config.PARCELABLE_DATA);
+        propertyId = searchInfo.getPropertyID();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -137,7 +134,6 @@ public class ListViewProductActivity extends AppCompatActivity implements SwipeR
             return true;
         } else if (itemId == R.id.action_filter) {
             Intent intent = new Intent(this, FilterActivity.class);
-            intent.putExtra(Config.DATA_EXTRA, Config.UNDEFINED);
             ActivityCompat.startActivityForResult(this, intent, Config.REQUEST_FILTER, null);
             return true;
         }
@@ -161,12 +157,8 @@ public class ListViewProductActivity extends AppCompatActivity implements SwipeR
 
     @Override
     public void onRefresh() {
-//        totalCertified = 0;
-//        totalActivated = 0;
         isFinished = false;
-
         pageNo = 1;
-//        status = Config.PRODUCT_CERTIFIED;
 
         productList.clear();
         adapter.addProductList(productList);
@@ -191,7 +183,7 @@ public class ListViewProductActivity extends AppCompatActivity implements SwipeR
             adapter.setLoading();
 
         Map<String, String> filterSet = AppController.getInstance().getPrefManager().getFilterSet();
-        if (searchInfo.getPropertyID() == null)
+        if (propertyId == null)
             searchInfo.setPropertyID(filterSet.get(Config.KEY_PROPERTY));
 
         searchInfo.setMinPrice(filterSet.get(Config.KEY_MIN_PRICE));
@@ -200,18 +192,12 @@ public class ListViewProductActivity extends AppCompatActivity implements SwipeR
         searchInfo.setMaxArea(filterSet.get(Config.KEY_MAX_AREA));
         searchInfo.setBed(filterSet.get(Config.KEY_BED));
         searchInfo.setBath(filterSet.get(Config.KEY_BATH));
-        searchInfo.setStatus(String.valueOf(status));
+        searchInfo.setStatus(String.valueOf(Config.UNDEFINED));
         searchInfo.setPageNo(String.valueOf(pageNo));
 
         ProductRequest.search(searchInfo, new OnLoadProductListener() {
             @Override
             public void onSuccess(List<Product> products, int totalItems) {
-//                if (totalItems != 0) {
-//                    if (status == Config.PRODUCT_CERTIFIED)
-//                        totalCertified = totalItems;
-//                    else if (status == Config.PRODUCT_ACTIVATED)
-//                        totalActivated = totalItems;
-//                }
                 isFinished = totalItems < Config.LIMITED;
 
                 if (productList.size() > 0)
@@ -219,7 +205,6 @@ public class ListViewProductActivity extends AppCompatActivity implements SwipeR
 
                 productList.addAll(products);
                 adapter.addProductList(productList);
-//                adapter.addTotalItems(totalCertified, totalActivated);
 
                 updateUI();
             }
@@ -237,24 +222,9 @@ public class ListViewProductActivity extends AppCompatActivity implements SwipeR
     private void updateUI() {
         refreshLayout.setRefreshing(false);
 
-        if (productList.size() == 0) /*&& status == Config.PRODUCT_ACTIVATED)*/
+        if (productList.size() == 0)
             resultLayout.setVisibility(View.VISIBLE);
         else
             resultLayout.setVisibility(View.GONE);
-
-//        if (status == Config.PRODUCT_CERTIFIED && productList.size() == totalCertified) {
-//            productList.add(null);
-//            adapter.addProductList(productList);
-//
-//            pageNo = 1;
-//            status = Config.PRODUCT_ACTIVATED;
-//
-//            new Timer().schedule(new TimerTask() {
-//                @Override
-//                public void run() {
-//                    fetchProductList();
-//                }
-//            }, Config.TIMER_DELAY);
-//        }
     }
 }

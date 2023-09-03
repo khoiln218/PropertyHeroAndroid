@@ -232,7 +232,31 @@ public class Parser {
                 if (Utils.keyContains(obj, Keys.TYPE))
                     type = obj.getInt(Keys.TYPE);
 
-                categories.add(new Property(id, name, type));
+                categories.add(new Property(id, name));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return categories;
+    }
+
+    public static List<Property> propertyList_V2(JSONObject response) {
+        List<Property> categories = new ArrayList<>();
+        try {
+            JSONObject jsonObject = response.getJSONObject(Keys.DATA);
+            JSONArray jsonArray = jsonObject.getJSONArray("options");
+            for (int i = 0; i < jsonArray.length(); i++) {
+                int id = -1;
+                String name = Constants.NA;
+
+                JSONObject obj = jsonArray.getJSONObject(i);
+                if (Utils.keyContains(obj, "id"))
+                    id = Integer.parseInt(obj.getString("id"));
+                if (Utils.keyContains(obj, "value"))
+                    name = obj.getString("value");
+
+                categories.add(new Property(id, name));
             }
         } catch (JSONException e) {
             e.printStackTrace();

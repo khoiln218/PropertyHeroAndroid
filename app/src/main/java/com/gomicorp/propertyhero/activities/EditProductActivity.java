@@ -529,12 +529,6 @@ public class EditProductActivity extends AppCompatActivity implements View.OnCli
                         property = (Property) object;
                         product.setPropertyID(property.getId());
                         tvSelectProperty.setText(property.getName());
-                        if (property.getType() == Config.PROPERTY_APARTMENT) {
-                            if (product.getBuildingID() > 0)
-                                showBuildingLayout(new Marker(product.getBuildingID(), product.getBuildingName(), product.getAddresss(), product.getLatitude(), product.getLongitude()));
-                            else
-                                showBuildingLayout(new Marker(0, getString(R.string.text_building), "", 0, 0));
-                        }
                         break;
                     case Config.PROVINCE_TYPE:
                         product.setProvinceID(((Province) object).getId());
@@ -545,9 +539,6 @@ public class EditProductActivity extends AppCompatActivity implements View.OnCli
                     case Config.DISTRICT_TYPE:
                         product.setDistrictID(((District) object).getId());
                         tvDistrict.setText(((District) object).getName());
-                        if ((property != null && property.getType() == Config.PROPERTY_APARTMENT) || product.getBuildingID() > 0)
-                            showBuildingLayout(new Marker(0, getString(R.string.text_building), "", 0, 0));
-
                         break;
                     case Config.MARKER_TYPE:
                         building = (Marker) object;
@@ -580,11 +571,6 @@ public class EditProductActivity extends AppCompatActivity implements View.OnCli
     }
 
     private boolean submitEditProduct() {
-        if (property != null && property.getType() == Config.PROPERTY_APARTMENT && building == null) {
-            L.showAlert(this, null, getString(R.string.text_err_building));
-            return false;
-        }
-
         if (product.getDistrictID() == 0) {
             L.showAlert(this, null, getString(R.string.text_err_district));
             return false;

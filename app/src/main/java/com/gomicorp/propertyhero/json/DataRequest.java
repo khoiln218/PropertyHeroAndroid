@@ -97,6 +97,28 @@ public class DataRequest {
         }
     }
 
+    public static void propertyList_V2(final OnLoadPropertyListener listener) {
+
+        String url = EndPoints.URL_LIST_PROPERTY_V2;
+
+        JsonObjectRequest reqCate = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                List<Property> categories = Parser.propertyList_V2(response);
+                if (categories.size() > 0) {
+                    listener.onSuccess(categories);
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                listener.onError(error);
+            }
+        });
+
+        AppController.getInstance().addToRequestQueue(reqCate, TAG);
+    }
+
     public static void propertyList(final OnLoadPropertyListener listener) {
 
         String url = EndPoints.URL_LIST_PROPERTY.replace(UrlParams.LANGUAGE_TYPE, String.valueOf(AppController.getInstance().getPrefManager().getLanguageType()));

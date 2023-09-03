@@ -20,7 +20,6 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
@@ -141,7 +140,8 @@
                 android:paddingTop="@dimen/layout_margin"
                 android:paddingRight="@dimen/title_margin"
                 android:paddingBottom="@dimen/layout_margin_half"
-                android:text="@string/text_gross_floor_area" />
+                android:text="@string/text_gross_floor_area"
+                android:visibility="gone" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -151,7 +151,8 @@
                 android:paddingLeft="@dimen/title_margin"
                 android:paddingTop="@dimen/layout_margin_half"
                 android:paddingRight="@dimen/title_margin"
-                android:paddingBottom="@dimen/layout_margin_half">
+                android:paddingBottom="@dimen/layout_margin_half"
+                android:visibility="gone">
 
                 <EditText
                     android:id="@+id/inputMinArea"
@@ -272,7 +273,8 @@
                 android:paddingTop="@dimen/layout_margin"
                 android:paddingRight="@dimen/title_margin"
                 android:paddingBottom="@dimen/layout_margin_half"
-                android:text="@string/text_baths" />
+                android:text="@string/text_baths"
+                android:visibility="gone" />
 
             <RadioGroup
                 android:id="@+id/groupBaths"
@@ -283,7 +285,8 @@
                 android:paddingLeft="@dimen/title_margin"
                 android:paddingTop="@dimen/layout_margin_half"
                 android:paddingRight="@dimen/title_margin"
-                android:paddingBottom="@dimen/layout_margin_half">
+                android:paddingBottom="@dimen/layout_margin_half"
+                android:visibility="gone">
 
                 <RadioButton
                     android:id="@+id/bathAny"
@@ -351,5 +354,4 @@
                 android:textColor="@android:color/white" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

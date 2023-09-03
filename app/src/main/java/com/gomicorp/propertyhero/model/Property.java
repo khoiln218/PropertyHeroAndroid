@@ -22,7 +22,6 @@ public class Property implements Parcelable {
 
     private int id;
     private String name;
-    private int type;
 
     public Property() {
     }
@@ -30,13 +29,11 @@ public class Property implements Parcelable {
     public Property(Parcel parcel) {
         id = parcel.readInt();
         name = parcel.readString();
-        type = parcel.readInt();
     }
 
-    public Property(int id, String name, int type) {
+    public Property(int id, String name) {
         this.id = id;
         this.name = name;
-        this.type = type;
     }
 
     public int getId() {
@@ -55,14 +52,6 @@ public class Property implements Parcelable {
         this.name = name;
     }
 
-    public int getType() {
-        return type;
-    }
-
-    public void setType(int type) {
-        this.type = type;
-    }
-
     @Override
     public int describeContents() {
         return 0;
@@ -72,7 +61,6 @@ public class Property implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(id);
         dest.writeString(name);
-        dest.writeInt(type);
     }
 
     @Override

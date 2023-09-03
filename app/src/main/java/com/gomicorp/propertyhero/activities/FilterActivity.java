@@ -39,7 +39,6 @@ public class FilterActivity extends AppCompatActivity implements View.OnClickLis
     private EditText inputMinPrice, inputMaxPrice, inputMinArea, inputMaxArea;
     private RadioGroup groupBeds, groupBaths;
 
-    private int propertyType;
     private Map<String, String> filterSet;
 
     private List<Property> propertyList;
@@ -69,9 +68,7 @@ public class FilterActivity extends AppCompatActivity implements View.OnClickLis
         progressDialog = L.progressDialog(this, null, getString(R.string.text_loading));
 
         propertyList = new ArrayList<>();
-        propertyList.add(new Property(0, getString(R.string.text_view_all), 0));
-
-        propertyType = getIntent().getIntExtra(Config.DATA_EXTRA, Config.UNDEFINED);
+        propertyList.add(new Property(1000, getString(R.string.text_view_all)));
 
         btnProperty.setOnClickListener(this);
         findViewById(R.id.btnUpdateFilter).setOnClickListener(this);
@@ -127,16 +124,10 @@ public class FilterActivity extends AppCompatActivity implements View.OnClickLis
 
     private void fetchPropertyData() {
         progressDialog.show();
-        DataRequest.propertyList(new OnLoadPropertyListener() {
+        DataRequest.propertyList_V2(new OnLoadPropertyListener() {
             @Override
             public void onSuccess(List<Property> properties) {
-                if (propertyType != Config.UNDEFINED) {
-                    for (Property obj : properties) {
-                        if (obj.getType() == propertyType)
-                            propertyList.add(obj);
-                    }
-                } else
-                    propertyList.addAll(properties);
+                propertyList.addAll(properties);
 
                 updateUI();
                 progressDialog.dismiss();
@@ -203,9 +194,9 @@ public class FilterActivity extends AppCompatActivity implements View.OnClickLis
 
     private void updateUI() {
         if (property == null) {
-            int cateID = filterSet.get(Config.KEY_PROPERTY) == null ? 0 : Integer.parseInt(filterSet.get(Config.KEY_PROPERTY));
+            int propertyID = filterSet.get(Config.KEY_PROPERTY) == null ? 0 : Integer.parseInt(filterSet.get(Config.KEY_PROPERTY));
             for (Property obj : propertyList) {
-                if (obj.getType() == cateID) {
+                if (obj.getId() == propertyID) {
                     property = obj;
                     break;
                 }

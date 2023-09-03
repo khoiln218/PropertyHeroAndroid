@@ -355,7 +355,7 @@
     <string name="invalid_location">Invalid latitude or longitude used</string>
     <string name="permission_external_storage">Ứng dụng cần quyền truy cập bộ nhớ</string>
     <string name="permission_camera">Ứng dụng cần sử dụng quyền chụp ảnh</string>
-    <string name="create_avatar_title">Tạo ảnh đại diện</string>
+    <string name="create_avatar_title">Đổi ảnh đại diện</string>
     <string name="edit_image">Chỉnh sửa ảnh</string>
 
     <string name="text_info_content">

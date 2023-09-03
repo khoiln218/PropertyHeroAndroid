@@ -42,6 +42,9 @@ public class EndPoints {
     public static final String URL_LIST_POWER_LINK = API_UTIL + "ListPowerLink/ProvinceID={provinceID}/";
     public static final String URL_SEND_WARTNING = API_UTIL + "SendWarning";
     public static final String URL_GET_INFO = API_UTIL + "GetInfoByType/InfoType={type}/LanguageType={language}/";
+    public static final String API_UTIL_V2 = BASE_URL + "api/v2.0/Utilities/";
+    public static final String URL_LIST_PROPERTY_V2 = API_UTIL_V2 + "ListProperty";
+
     //TODO: GIFT CARD
     public static final String URL_GET_GIFT_CARD = API_UTIL + "GetGiftCard/AccountID={accountID}/";
     public static final String URL_UPDATE_ACC_GIFT = API_UTIL + "UpdateAccountGift";

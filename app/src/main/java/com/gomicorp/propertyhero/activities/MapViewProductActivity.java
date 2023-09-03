@@ -68,6 +68,7 @@ public class MapViewProductActivity extends AppCompatActivity implements OnMapRe
     private Marker marker;
     private LatLng latLng;
     private SearchInfo searchInfo;
+    private String propertyId;
     private String title;
     private String numItems;
     private CoordinatorLayout coordinatorMapView;
@@ -99,8 +100,22 @@ public class MapViewProductActivity extends AppCompatActivity implements OnMapRe
         if (latLng == null)
             latLng = AppController.getInstance().getPrefManager().getLastLatLng();
 
-        searchInfo = new SearchInfo(latLng.latitude, latLng.longitude, 0, data != null ? data.getInt(Config.DATA_TYPE, Config.UNDEFINED) : 0);
+        int propertyType = data != null ? data.getInt(Config.DATA_TYPE, Config.UNDEFINED) : 0;
+
+        searchInfo = new SearchInfo(latLng.latitude, latLng.longitude, 0, propertyType);
         clusterTask = new ClusterTask();
+
+        switch (propertyType) {
+            case Config.PROPERTY_APARTMENT:
+                propertyId = "1010";
+                break;
+            case Config.PROPERTY_ROOM:
+                propertyId = "1050";
+                break;
+            default:
+                propertyId = "1000";
+                break;
+        }
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapFragment);
         if (mapFragment != null) {
@@ -270,10 +285,9 @@ public class MapViewProductActivity extends AppCompatActivity implements OnMapRe
         searchInfo.setStartLng(String.valueOf(southwest.longitude));
         searchInfo.setEndLat(String.valueOf(northeast.latitude));
         searchInfo.setEndLng(String.valueOf(northeast.longitude));
+        searchInfo.setPropertyID(propertyId);
 
         Map<String, String> filterSet = AppController.getInstance().getPrefManager().getFilterSet();
-        if (searchInfo.getPropertyID() == null)
-            searchInfo.setPropertyID(filterSet.get(Config.KEY_PROPERTY));
 
         searchInfo.setMinPrice(filterSet.get(Config.KEY_MIN_PRICE));
         searchInfo.setMaxPrice(filterSet.get(Config.KEY_MAX_PRICE));
