@@ -147,7 +147,7 @@ public class SearchLocationFragment extends Fragment implements View.OnClickList
             parcelables.addAll(districtList);
 
         ListViewDialog dialog = ListViewDialog.instance(dataType, parcelables);
-        dialog.show(getFragmentManager(), "search_location");
+        dialog.show(getChildFragmentManager(), "search_location");
         dialog.listener = new OnListViewDialogListener() {
             @Override
             public void onClick(Object object) {

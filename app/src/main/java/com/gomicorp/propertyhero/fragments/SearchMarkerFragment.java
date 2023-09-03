@@ -1,6 +1,7 @@
 package com.gomicorp.propertyhero.fragments;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.text.Editable;
@@ -15,6 +16,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -116,8 +118,8 @@ public class SearchMarkerFragment extends Fragment implements View.OnClickListen
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
         Utils.hideSoftKeyboard(getActivity(), findAreaLayout);
     }
 
@@ -133,7 +135,7 @@ public class SearchMarkerFragment extends Fragment implements View.OnClickListen
 
     private void showListViewDialog() {
         ListViewDialog dialog = ListViewDialog.instance(Config.PROVINCE_TYPE, new ArrayList<Parcelable>(provinceList));
-        dialog.show(getFragmentManager(), "find_area");
+        dialog.show(getChildFragmentManager(), "find_area");
         dialog.listener = new OnListViewDialogListener() {
             @Override
             public void onClick(Object object) {

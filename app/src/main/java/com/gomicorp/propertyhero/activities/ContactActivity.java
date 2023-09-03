@@ -9,6 +9,7 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 
 import com.gomicorp.app.AppController;
 import com.gomicorp.app.Config;
@@ -21,7 +22,7 @@ import com.google.android.material.textfield.TextInputLayout;
 public class ContactActivity extends AppCompatActivity {
 
     private static final String TAG = ContactActivity.class.getSimpleName();
-    private static final String[] recipients = {"support@hellorent.vn"};
+    private static final String[] recipients = {"info@gomicorp.vn"};
 
     private TextInputLayout inputLayoutFullName, inputLayoutPhoneNumber, inputLayoutContent;
     private EditText inputFullName, inputPhoneNumber, inputContent;
@@ -79,14 +80,13 @@ public class ContactActivity extends AppCompatActivity {
         String subject = inputFullName.getText().toString() + " - " + inputPhoneNumber.getText().toString();
 
         Intent email = new Intent(Intent.ACTION_SEND);
-        email.setData(Uri.parse("mailto:"));
+        email.setDataAndType(Uri.parse("mailto:"), "message/rfc822");
         email.putExtra(Intent.EXTRA_EMAIL, recipients);
         email.putExtra(Intent.EXTRA_SUBJECT, subject);
         email.putExtra(Intent.EXTRA_TEXT, inputContent.getText().toString());
-        email.setType("message/rfc822");
 
         try {
-            startActivityForResult(Intent.createChooser(email, "Send Email"), Config.REQUEST_SEND_EMAIL);
+            ActivityCompat.startActivityForResult(this, Intent.createChooser(email, "Send Email"), Config.REQUEST_SEND_EMAIL, null);
         } catch (android.content.ActivityNotFoundException ex) {
             L.showToast("No email client installed.");
         }

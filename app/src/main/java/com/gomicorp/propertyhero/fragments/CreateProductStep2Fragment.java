@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -136,14 +137,14 @@ public class CreateProductStep2Fragment extends Fragment implements View.OnClick
                 if (Utils.isSDPresent()) {
                     Intent gallery = new Intent(getActivity(), GalleryActivity.class);
                     gallery.putStringArrayListExtra(Config.DATA_EXTRA, (ArrayList<String>) imageList);
-                    startActivityForResult(gallery, Config.REQUEST_GALLERY);
+                    ActivityCompat.startActivityForResult(requireActivity(), gallery, Config.REQUEST_GALLERY, null);
                 } else
                     L.showToast(getString(R.string.err_msg_sd_card));
                 break;
             case R.id.btnCaptureImage:
                 if (Utils.isSDPresent()) {
                     Intent takePhoto = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    getActivity().startActivityForResult(takePhoto, Config.REQUEST_CAMERA);
+                    ActivityCompat.startActivityForResult(requireActivity(), takePhoto, Config.REQUEST_CAMERA, null);
                 } else
                     L.showToast(getString(R.string.err_msg_sd_card));
                 break;
