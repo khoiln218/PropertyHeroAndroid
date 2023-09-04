@@ -109,14 +109,16 @@ public class LoginEmailActivity extends AppCompatActivity implements View.OnClic
             public void onSuccess(List<Account> accounts) {
                 Account acc = accounts.size() > 0 ? accounts.get(0) : null;
                 if (acc != null) {
-                    if (acc.getAccType() != Config.ACC_LOCKED) {
+                    if (acc.getAccType() == Config.ACC_LOCKED) {
+                        L.showAlert(LoginEmailActivity.this, getString(R.string.title_acc_locked), getString(R.string.msg_acc_locked));
+                    } else if (acc.getAccType() == Config.ACC_DELETION) {
+                        L.showAlert(LoginEmailActivity.this, getString(R.string.title_acc_deletion), getString(R.string.msg_acc_locked));
+                    } else {
                         AppController.getInstance().getPrefManager().addUserInfo(acc.getId(), acc.getUserName(), acc.getFullName(), acc.getPhoneNumber(), acc.getAccRole(), pwd);
                         Toast.makeText(LoginEmailActivity.this, getString(R.string.text_login_success), Toast.LENGTH_LONG).show();
                         setResult(Config.SUCCESS_RESULT);
                         finish();
-                    } else
-                        L.showAlert(LoginEmailActivity.this, getString(R.string.title_acc_locked), getString(R.string.msg_acc_locked));
-
+                    }
                 } else
                     L.showAlert(LoginEmailActivity.this, getString(R.string.err_title_login), getString(R.string.err_msg_login));
 

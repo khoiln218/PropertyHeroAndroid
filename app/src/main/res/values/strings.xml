@@ -130,6 +130,7 @@
     <string name="err_title_login">Sai Username/Password</string>
     <string name="err_msg_login">Vui lòng kiểm tra lại thông tin đăng nhập và thử lại</string>
     <string name="title_acc_locked">Tài khoản bị tạm khóa</string>
+    <string name="title_acc_deletion">Tài khoản đã bị xóa</string>
     <string name="msg_acc_locked">Vui lòng kiểm tra lại thông tin đăng nhập hoặc liên hệ Property Hero để biết chi tiết</string>
 
     <string name="text_register">Đăng ký</string>

@@ -68,6 +68,7 @@ public class Config {
 
     // Account Status
     public static final int ACC_LOCKED = 200;
+    public static final int ACC_DELETION = 250;
 
     // Marker Type
     public static final int MARKER_BUILDING = 0;
