@@ -19,6 +19,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
+import androidx.core.graphics.drawable.RoundedBitmapDrawable;
+import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 
 import com.android.volley.VolleyError;
 import com.gomicorp.app.AppController;
@@ -40,11 +42,11 @@ public class AccountDetailsActivity extends AppCompatActivity implements View.On
     private static final String TAG = AccountDetailsActivity.class.getSimpleName();
     private static final int REQUEST_IMAGE = 1;
     private static final int AVATAR_MAX_SIZE = 512;
-    private static final int TIMER_CHANGE_AVATR = 3000; // 3s Auto change
 
     private ImageView imgAvatar;
     private TextView tvFullName, tvUserName;
     private LinearLayout btnChangePwd;
+    private String avatarUrl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +72,7 @@ public class AccountDetailsActivity extends AppCompatActivity implements View.On
 
         getSupportActionBar().setTitle(AppController.getInstance().getPrefManager().getFullName());
 
-        String avatarUrl = data.getString(Config.AVATAR_URL);
+        avatarUrl = data.getString(Config.AVATAR_URL);
         Picasso.with(this)
                 .load(avatarUrl)
                 .placeholder(R.drawable.default_avatar)
@@ -175,6 +177,9 @@ public class AccountDetailsActivity extends AppCompatActivity implements View.On
                 Uri uri = data.getParcelableExtra("path");
                 try {
                     final Bitmap bitmap = getBitmap(uri);
+                    RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(getResources(), bitmap);
+                    roundedBitmapDrawable.setCircular(true);
+                    imgAvatar.setImageDrawable(roundedBitmapDrawable);
                     handleChangeAvatar(bitmap);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -201,7 +206,8 @@ public class AccountDetailsActivity extends AppCompatActivity implements View.On
             @Override
             public void onSuccess(ResponseInfo info) {
                 if (info != null && info.isSuccess()) {
-                    String avatarUrl = getIntent().getBundleExtra(Config.DATA_EXTRA).getString(Config.AVATAR_URL);
+                    Toast.makeText(getApplicationContext(), getString(R.string.text_update_success), Toast.LENGTH_LONG).show();
+                } else {
                     Picasso.with(AccountDetailsActivity.this)
                             .load(avatarUrl)
                             .placeholder(R.drawable.default_avatar)
@@ -209,7 +215,7 @@ public class AccountDetailsActivity extends AppCompatActivity implements View.On
                             .networkPolicy(NetworkPolicy.NO_CACHE)
                             .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
                             .into(imgAvatar);
-                    Toast.makeText(getApplicationContext(), getString(R.string.text_update_success), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.err_request_api), Toast.LENGTH_LONG).show();
                 }
             }
 

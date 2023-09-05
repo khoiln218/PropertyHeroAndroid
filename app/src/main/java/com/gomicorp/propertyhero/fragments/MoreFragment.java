@@ -84,6 +84,20 @@ public class MoreFragment extends Fragment implements View.OnClickListener {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        if (account != null) {
+            Picasso.with(getActivity())
+                    .load(account.getAvatar())
+                    .placeholder(R.drawable.default_avatar)
+                    .transform(new CircleTransform())
+                    .networkPolicy(NetworkPolicy.NO_CACHE)
+                    .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
+                    .into(imgAvatar);
+        }
+    }
+
+    @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser)
