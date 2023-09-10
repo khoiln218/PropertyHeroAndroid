@@ -97,7 +97,7 @@ public class SearchMarkerFragment extends Fragment implements View.OnClickListen
         adapter = new FindMarkerAdapter(markerList, Config.MARKER_BUILDING);
         recyclerFindArea.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerFindArea.setItemAnimator(new DefaultItemAnimator());
-        recyclerFindArea.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
+        recyclerFindArea.addItemDecoration(new DividerItemDecoration(requireActivity(), LinearLayoutManager.VERTICAL));
         recyclerFindArea.setAdapter(adapter);
         recyclerFindArea.addOnItemTouchListener(new RecyclerTouchListner(getContext(), recyclerFindArea, new OnRecyclerTouchListener() {
             @Override
@@ -123,11 +123,9 @@ public class SearchMarkerFragment extends Fragment implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.tvSelectProvince:
-                if (provinceList != null)
-                    showListViewDialog();
-                break;
+        if (v.getId() == R.id.tvSelectProvince) {
+            if (provinceList != null)
+                showListViewDialog();
         }
     }
 
@@ -211,13 +209,11 @@ public class SearchMarkerFragment extends Fragment implements View.OnClickListen
                 timer.schedule(new TimerTask() {
                     @Override
                     public void run() {
-                        getActivity().runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
+                        if (getActivity() != null)
+                            getActivity().runOnUiThread(() -> {
                                 if (!inputKeyword.getText().toString().trim().isEmpty())
                                     searchByKeyword();
-                            }
-                        });
+                            });
                     }
                 }, Config.TIMER_DELAY);
             }
