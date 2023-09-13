@@ -5,7 +5,7 @@ package com.gomicorp.propertyhero.extras;
  */
 public class EndPoints {
 
-    public static final String BASE_URL = "https://hellorentapi.gomimall.vn/";
+    public static final String BASE_URL = "https://hellorent-api.gomimall.vn/";
 
     public static final String URL_CREATE_DEVICE = BASE_URL + "api/Device/CreateDevice";
 
