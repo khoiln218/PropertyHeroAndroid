@@ -272,6 +272,9 @@ public class ProductDetailsActivity extends AppCompatActivity implements OnMapRe
             public void onSuccess(List<Product> products, int totalItems) {
                 if (products.size() > 0) {
                     product = products.get(0);
+                } else {
+                    L.showToast("Tin đã hết hạn");
+                    requestDeleteFavorite_V2();
                 }
 
                 updateUI();
@@ -495,9 +498,13 @@ public class ProductDetailsActivity extends AppCompatActivity implements OnMapRe
     }
 
     private void requestDeleteFavorite_V2() {
-        ProductRequest.favoriteDelete_V2(product.getId(), new OnResponseListener() {
+        ProductRequest.favoriteDelete_V2(id, new OnResponseListener() {
             @Override
             public void onSuccess(ResponseInfo info) {
+                if (product == null) {
+                    finish();
+                    return;
+                }
                 if (info != null && info.isSuccess()) {
                     if (product.getIsLikeThis() == 0)
                         product.setIsLikeThis(1);
